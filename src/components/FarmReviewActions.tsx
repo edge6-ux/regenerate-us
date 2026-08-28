@@ -70,7 +70,7 @@ export default function FarmReviewActions({
               type="checkbox"
               checked={certConfirmed}
               onChange={(e) => setCertConfirmed(e.target.checked)}
-              className="mt-0.5 h-4 w-4 rounded border-amber-400 text-[#2d6a4f] focus:ring-[#2d6a4f]"
+              className="mt-0.5 h-4 w-4 rounded border-amber-400 text-[#1e293b] focus:ring-[#1e293b]"
             />
             <span>
               I confirm I have reviewed and verified this farm&apos;s third-party certification
@@ -85,7 +85,7 @@ export default function FarmReviewActions({
           type="button"
           disabled={loading !== null}
           onClick={() => submit('approved')}
-          className={`${btnBase} bg-emerald-600 text-white hover:bg-emerald-700`}
+          className={`${btnBase} bg-slate-600 text-white hover:bg-slate-700`}
         >
           {loading === 'approved' ? 'Saving…' : 'Approve'}
         </button>

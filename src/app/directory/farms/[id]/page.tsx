@@ -50,7 +50,7 @@ export default async function FarmProfilePage({
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <Link
         href="/directory"
-        className="text-sm text-[#2d6a4f] hover:underline mb-8 inline-block"
+        className="text-sm text-[#1e293b] hover:underline mb-8 inline-block"
       >
         ← Back to Directory
       </Link>
@@ -70,7 +70,7 @@ export default async function FarmProfilePage({
           <h1 className="text-3xl font-bold text-stone-900 mb-1">{farm.name}</h1>
           <p className="text-stone-500">{farm.city}, {farm.state}</p>
         </div>
-        <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-semibold bg-green-100 text-green-800 border border-green-200 self-start">
+        <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-semibold bg-slate-100 text-slate-800 border border-slate-200 self-start">
           Regenerate US Verified Farm
         </span>
       </div>
@@ -105,7 +105,7 @@ export default async function FarmProfilePage({
                 <h3 className="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-2">Produce</h3>
                 <div className="flex flex-wrap gap-2">
                   {produce.map((item) => (
-                    <span key={item} className="px-3 py-1.5 rounded-lg bg-green-50 text-green-800 border border-green-200 text-sm font-medium">
+                    <span key={item} className="px-3 py-1.5 rounded-lg bg-slate-50 text-slate-800 border border-slate-200 text-sm font-medium">
                       {item}
                     </span>
                   ))}
@@ -123,7 +123,7 @@ export default async function FarmProfilePage({
               {practices.map((practice) => (
                 <span
                   key={practice}
-                  className="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200 text-sm font-medium"
+                  className="px-3 py-1.5 rounded-lg bg-slate-50 text-slate-900 border border-slate-200 text-sm font-medium"
                 >
                   {practice}
                 </span>
@@ -139,7 +139,7 @@ export default async function FarmProfilePage({
               {healthTags.map((p) => (
                 <span
                   key={p}
-                  className="px-3 py-1.5 rounded-lg bg-[#2d6a4f]/10 text-[#2d6a4f] border border-[#2d6a4f]/25 text-sm font-medium"
+                  className="px-3 py-1.5 rounded-lg bg-[#1e293b]/10 text-[#1e293b] border border-[#1e293b]/25 text-sm font-medium"
                 >
                   {p}
                 </span>
@@ -198,7 +198,7 @@ export default async function FarmProfilePage({
                 <svg className="w-4 h-4 text-stone-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                 </svg>
-                <a href={farm.website} target="_blank" rel="noopener noreferrer" className="text-[#2d6a4f] hover:underline">
+                <a href={farm.website} target="_blank" rel="noopener noreferrer" className="text-[#1e293b] hover:underline">
                   {farm.website.replace(/^https?:\/\//, '')}
                 </a>
               </div>

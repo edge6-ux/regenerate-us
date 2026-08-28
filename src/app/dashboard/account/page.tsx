@@ -141,12 +141,12 @@ export default function DashboardAccountPage() {
   }
 
   const inputClass =
-    'w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent outline-none';
+    'w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e293b] focus:border-transparent outline-none';
 
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#2d6a4f]" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#1e293b]" />
       </div>
     );
   }
@@ -165,7 +165,7 @@ export default function DashboardAccountPage() {
           </div>
           <div className="flex items-center justify-between">
             <span className="text-stone-500">Role</span>
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#2d6a4f]/10 text-[#2d6a4f] capitalize">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#1e293b]/10 text-[#1e293b] capitalize">
               {role}
             </span>
           </div>
@@ -188,7 +188,7 @@ export default function DashboardAccountPage() {
           {contactMessage && (
             <div className={`mb-4 px-4 py-3 rounded-lg text-sm ${
               contactMessage.type === 'success'
-                ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+                ? 'bg-slate-50 border border-slate-200 text-slate-800'
                 : 'bg-red-50 border border-red-200 text-red-700'
             }`}>
               {contactMessage.text}
@@ -240,7 +240,7 @@ export default function DashboardAccountPage() {
             <button
               type="submit"
               disabled={contactSaving}
-              className="bg-[#2d6a4f] text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#1b4332] transition-colors disabled:opacity-50"
+              className="bg-[#1e293b] text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#0f172a] transition-colors disabled:opacity-50"
             >
               {contactSaving ? 'Saving…' : 'Save Contact Info'}
             </button>
@@ -254,7 +254,7 @@ export default function DashboardAccountPage() {
         {pwMessage && (
           <div className={`mb-4 px-4 py-3 rounded-lg text-sm ${
             pwMessage.type === 'success'
-              ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+              ? 'bg-slate-50 border border-slate-200 text-slate-800'
               : 'bg-red-50 border border-red-200 text-red-700'
           }`}>
             {pwMessage.text}
@@ -288,7 +288,7 @@ export default function DashboardAccountPage() {
           <button
             type="submit"
             disabled={pwSaving}
-            className="bg-[#2d6a4f] text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#1b4332] transition-colors disabled:opacity-50"
+            className="bg-[#1e293b] text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#0f172a] transition-colors disabled:opacity-50"
           >
             {pwSaving ? 'Updating…' : 'Update Password'}
           </button>

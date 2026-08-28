@@ -61,7 +61,7 @@ export default async function SubmissionsPage({
         <h1 className="text-2xl font-bold text-stone-900 mb-1">All applications</h1>
         <p className="text-sm text-stone-500">
           Full archive with status filters. For items that need action now, use the{' '}
-          <Link href="/admin/review-queue" className="text-[#2d6a4f] font-medium hover:underline">
+          <Link href="/admin/review-queue" className="text-[#1e293b] font-medium hover:underline">
             Review queue
           </Link>
           .
@@ -96,7 +96,7 @@ export default async function SubmissionsPage({
             href={statusHref(s.key)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               filterStatus === s.key
-                ? 'bg-[#2d6a4f] text-white'
+                ? 'bg-[#1e293b] text-white'
                 : 'bg-white text-stone-600 border border-stone-200 hover:bg-stone-50'
             }`}
           >
@@ -142,7 +142,7 @@ export default async function SubmissionsPage({
                       <td className="px-6 py-4 text-right">
                         <Link
                           href={`/admin/submissions/${submission.id}`}
-                          className="text-[#2d6a4f] hover:underline font-medium whitespace-nowrap"
+                          className="text-[#1e293b] hover:underline font-medium whitespace-nowrap"
                         >
                           Review →
                         </Link>
@@ -159,7 +159,7 @@ export default async function SubmissionsPage({
       {/* ── Farms tab ───────────────────────────────────────────────────────── */}
       {activeTab === 'farms' && (
         <>
-          <div className="mb-6 rounded-xl border border-[#2d6a4f]/20 bg-[#2d6a4f]/5 px-4 py-4 text-sm">
+          <div className="mb-6 rounded-xl border border-[#1e293b]/20 bg-[#1e293b]/5 px-4 py-4 text-sm">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <p className="font-medium text-stone-900">Farms & map coordinates</p>
@@ -170,7 +170,7 @@ export default async function SubmissionsPage({
               <div className="flex flex-wrap gap-2 shrink-0">
                 <Link
                   href="/admin/farmers"
-                  className="inline-flex items-center justify-center rounded-lg bg-[#2d6a4f] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#1b4332] transition-colors"
+                  className="inline-flex items-center justify-center rounded-lg bg-[#1e293b] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0f172a] transition-colors"
                 >
                   Open farms
                 </Link>
@@ -213,7 +213,7 @@ export default async function SubmissionsPage({
                         {farm.cert_type ? (
                           <span className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full ${
                             farm.cert_type === 'usda'
-                              ? 'bg-green-100 text-green-800'
+                              ? 'bg-slate-100 text-slate-800'
                               : farm.cert_type === 'none'
                               ? 'bg-stone-100 text-stone-500'
                               : 'bg-blue-100 text-blue-800'
@@ -238,7 +238,7 @@ export default async function SubmissionsPage({
                               ? `/admin/farms/${farm.id}/review`
                               : `/admin/farms/${farm.id}`
                           }
-                          className="text-[#2d6a4f] hover:underline font-medium whitespace-nowrap"
+                          className="text-[#1e293b] hover:underline font-medium whitespace-nowrap"
                         >
                           {farm.status === 'pending' ? 'Review →' : 'Manage →'}
                         </Link>

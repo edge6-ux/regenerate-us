@@ -18,7 +18,7 @@ export default function GlobalError({ reset }: { error: Error & { digest?: strin
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
               <button
                 onClick={reset}
-                style={{ background: '#2d6a4f', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: 8, fontSize: '0.875rem', fontWeight: 500, cursor: 'pointer' }}
+                style={{ background: '#1e293b', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: 8, fontSize: '0.875rem', fontWeight: 500, cursor: 'pointer' }}
               >
                 Try Again
               </button>

@@ -34,7 +34,7 @@ export default async function AdminRestaurantsPage() {
       <p className="text-sm text-stone-500 mb-8 max-w-2xl">
         Edit restaurant profiles, participation level, health practices, and map coordinates. Submission and
         dish review workflows stay under{' '}
-        <Link href="/admin/submissions" className="text-[#2d6a4f] font-medium hover:underline">
+        <Link href="/admin/submissions" className="text-[#1e293b] font-medium hover:underline">
           All applications
         </Link>{' '}
         → Restaurants.
@@ -74,8 +74,8 @@ export default async function AdminRestaurantsPage() {
                             <span
                               className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full ${
                                 r.participation_level === 'certified'
-                                  ? 'bg-[#2d6a4f] text-white'
-                                  : 'bg-green-100 text-green-800'
+                                  ? 'bg-[#1e293b] text-white'
+                                  : 'bg-slate-100 text-slate-800'
                               }`}
                             >
                               {r.participation_level === 'certified' ? 'Certified' : 'Participant'}
@@ -87,8 +87,8 @@ export default async function AdminRestaurantsPage() {
                             <span
                               className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full ${
                                 r.participation_level === 'certified'
-                                  ? 'bg-[#2d6a4f] text-white'
-                                  : 'bg-green-100 text-green-800'
+                                  ? 'bg-[#1e293b] text-white'
+                                  : 'bg-slate-100 text-slate-800'
                               }`}
                             >
                               {r.participation_level === 'certified' ? 'Certified' : 'Participant'}
@@ -115,7 +115,7 @@ export default async function AdminRestaurantsPage() {
                     <td className="px-6 py-4 text-right">
                       <Link
                         href={`/admin/restaurants/${r.id}`}
-                        className="text-[#2d6a4f] hover:underline font-medium whitespace-nowrap"
+                        className="text-[#1e293b] hover:underline font-medium whitespace-nowrap"
                       >
                         Edit →
                       </Link>

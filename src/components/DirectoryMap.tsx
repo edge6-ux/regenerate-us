@@ -38,7 +38,7 @@ const restaurantIcon = L.divIcon({
 
 const farmIcon = L.divIcon({
   className: 'custom-marker',
-  html: `<div style="background:#2d6a4f;color:white;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">
+  html: `<div style="background:#1e293b;color:white;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M6 9.25 3.75 6.5 6.75 6M18 9.25l2.25-2.75-3 .5M8.25 8.5h7.5A3.75 3.75 0 0 1 19.5 12.25V14a4.5 4.5 0 0 1-4.5 4.5h-6A4.5 4.5 0 0 1 4.5 14v-1.75A3.75 3.75 0 0 1 8.25 8.5Z" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
       <circle cx="9.25" cy="12.25" r="0.85" fill="white"/>
@@ -102,10 +102,10 @@ export default function DirectoryMap({ pins, center, zoom }: DirectoryMapProps) 
         <div style="min-width:180px">
           <div style="font-weight:600;font-size:14px;margin-bottom:4px;">${pin.name}</div>
           <div style="color:#78716c;font-size:12px;margin-bottom:6px;">${pin.city}, ${pin.state}</div>
-          <div style="display:inline-block;background:${pin.type === 'restaurant' ? '#b45309' : '#2d6a4f'};color:white;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:500;">
+          <div style="display:inline-block;background:${pin.type === 'restaurant' ? '#b45309' : '#1e293b'};color:white;padding:2px 8px;border-radius:9999px;font-size:11px;font-weight:500;">
             ${pin.type === 'restaurant' ? 'Restaurant' : 'Farm'}
           </div>
-          ${pin.href ? `<div style="margin-top:8px;"><a href="${pin.href}" style="color:#2d6a4f;font-size:12px;font-weight:500;text-decoration:underline;">View Profile →</a></div>` : ''}
+          ${pin.href ? `<div style="margin-top:8px;"><a href="${pin.href}" style="color:#1e293b;font-size:12px;font-weight:500;text-decoration:underline;">View Profile →</a></div>` : ''}
         </div>
       `;
 
@@ -150,7 +150,7 @@ export default function DirectoryMap({ pins, center, zoom }: DirectoryMapProps) 
             <span className="text-stone-600">Restaurant</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <div className="w-4 h-4 rounded-full bg-[#2d6a4f] border border-white shadow"></div>
+            <div className="w-4 h-4 rounded-full bg-[#1e293b] border border-white shadow"></div>
             <span className="text-stone-600">Farm</span>
           </div>
         </div>

@@ -13,7 +13,7 @@ interface DishFormSectionProps {
   canRemove: boolean;
 }
 
-const input = 'w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent outline-none';
+const input = 'w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e293b] focus:border-transparent outline-none';
 
 export default function DishFormSection({ index, dish, onChange, onRemove, canRemove }: DishFormSectionProps) {
   const [uploading, setUploading] = useState(false);
@@ -128,7 +128,7 @@ export default function DishFormSection({ index, dish, onChange, onRemove, canRe
 
         {/* Step 1 — USDA question */}
         <p className="text-sm font-medium text-stone-700 mb-3">
-          Is the main element of this dish <span className="text-[#2d6a4f] font-semibold">USDA Organic Certified</span>?
+          Is the main element of this dish <span className="text-[#1e293b] font-semibold">USDA Organic Certified</span>?
         </p>
         <div className="flex gap-4 mb-4">
           <label className="flex items-center gap-2 cursor-pointer">
@@ -137,7 +137,7 @@ export default function DishFormSection({ index, dish, onChange, onRemove, canRe
               name={`usda-${index}`}
               checked={dish.main_element_cert_type === 'usda_organic'}
               onChange={() => update('main_element_cert_type', 'usda_organic')}
-              className="h-4 w-4 text-[#2d6a4f] focus:ring-[#2d6a4f]"
+              className="h-4 w-4 text-[#1e293b] focus:ring-[#1e293b]"
             />
             <span className="text-sm text-stone-700">Yes</span>
           </label>
@@ -151,7 +151,7 @@ export default function DishFormSection({ index, dish, onChange, onRemove, canRe
                   update('main_element_cert_type', 'none');
                 }
               }}
-              className="h-4 w-4 text-[#2d6a4f] focus:ring-[#2d6a4f]"
+              className="h-4 w-4 text-[#1e293b] focus:ring-[#1e293b]"
             />
             <span className="text-sm text-stone-700">No</span>
           </label>
@@ -159,7 +159,7 @@ export default function DishFormSection({ index, dish, onChange, onRemove, canRe
 
         {/* USDA confirmed */}
         {isUsda && (
-          <div className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-lg px-4 py-3 text-sm text-emerald-800">
+          <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-800">
             <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
@@ -180,7 +180,7 @@ export default function DishFormSection({ index, dish, onChange, onRemove, canRe
                   name={`cert-type-${index}`}
                   checked={dish.main_element_cert_type === 'aga'}
                   onChange={() => update('main_element_cert_type', 'aga')}
-                  className="h-4 w-4 text-[#2d6a4f] focus:ring-[#2d6a4f]"
+                  className="h-4 w-4 text-[#1e293b] focus:ring-[#1e293b]"
                 />
                 <span className="text-sm text-stone-700">AGA Certified (American Grassfed Association)</span>
               </label>
@@ -190,7 +190,7 @@ export default function DishFormSection({ index, dish, onChange, onRemove, canRe
                   name={`cert-type-${index}`}
                   checked={dish.main_element_cert_type === 'raa'}
                   onChange={() => update('main_element_cert_type', 'raa')}
-                  className="h-4 w-4 text-[#2d6a4f] focus:ring-[#2d6a4f]"
+                  className="h-4 w-4 text-[#1e293b] focus:ring-[#1e293b]"
                 />
                 <span className="text-sm text-stone-700">Regenerative Alliance of America Certified</span>
               </label>
@@ -200,7 +200,7 @@ export default function DishFormSection({ index, dish, onChange, onRemove, canRe
                   name={`cert-type-${index}`}
                   checked={dish.main_element_cert_type === 'other'}
                   onChange={() => update('main_element_cert_type', 'other')}
-                  className="h-4 w-4 text-[#2d6a4f] focus:ring-[#2d6a4f]"
+                  className="h-4 w-4 text-[#1e293b] focus:ring-[#1e293b]"
                 />
                 <span className="text-sm text-stone-700">Other certification</span>
               </label>
@@ -210,7 +210,7 @@ export default function DishFormSection({ index, dish, onChange, onRemove, canRe
                   name={`cert-type-${index}`}
                   checked={dish.main_element_cert_type === 'none'}
                   onChange={() => { update('main_element_cert_type', 'none'); update('main_element_cert_other', ''); }}
-                  className="h-4 w-4 text-[#2d6a4f] focus:ring-[#2d6a4f]"
+                  className="h-4 w-4 text-[#1e293b] focus:ring-[#1e293b]"
                 />
                 <span className="text-sm text-stone-700">None of the above</span>
               </label>
@@ -245,11 +245,11 @@ export default function DishFormSection({ index, dish, onChange, onRemove, canRe
                   accept=".jpg,.jpeg,.png,.webp,.pdf"
                   onChange={handleCertFileChange}
                   disabled={uploading}
-                  className="block w-full text-sm text-stone-600 file:mr-3 file:py-1.5 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-[#2d6a4f]/10 file:text-[#2d6a4f] hover:file:bg-[#2d6a4f]/20 disabled:opacity-50"
+                  className="block w-full text-sm text-stone-600 file:mr-3 file:py-1.5 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-[#1e293b]/10 file:text-[#1e293b] hover:file:bg-[#1e293b]/20 disabled:opacity-50"
                 />
                 {uploading && (
                   <p className="text-xs text-stone-400 mt-1.5 flex items-center gap-1.5">
-                    <span className="inline-block w-3 h-3 border-2 border-[#2d6a4f] border-t-transparent rounded-full animate-spin" />
+                    <span className="inline-block w-3 h-3 border-2 border-[#1e293b] border-t-transparent rounded-full animate-spin" />
                     Uploading…
                   </p>
                 )}
@@ -257,7 +257,7 @@ export default function DishFormSection({ index, dish, onChange, onRemove, canRe
                   <p className="text-xs text-red-600 mt-1.5">{uploadError}</p>
                 )}
                 {dish.cert_file_url && !uploading && (
-                  <p className="text-xs text-emerald-700 mt-1.5 flex items-center gap-1.5">
+                  <p className="text-xs text-slate-700 mt-1.5 flex items-center gap-1.5">
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                     Document uploaded successfully.
                   </p>
@@ -358,7 +358,7 @@ export default function DishFormSection({ index, dish, onChange, onRemove, canRe
             type="checkbox"
             checked={dish.meets_non_negotiables}
             onChange={(e) => update('meets_non_negotiables', e.target.checked)}
-            className="mt-0.5 h-4 w-4 rounded border-stone-300 text-[#2d6a4f] focus:ring-[#2d6a4f]"
+            className="mt-0.5 h-4 w-4 rounded border-stone-300 text-[#1e293b] focus:ring-[#1e293b]"
           />
           <span className="text-sm text-stone-700">
             This dish meets all non-negotiable sourcing requirements

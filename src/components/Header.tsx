@@ -110,12 +110,12 @@ export default function Header() {
   const menuItemClass = (href: string) =>
     `block px-4 py-2.5 text-sm font-medium transition-colors ${
       pathname === href
-        ? 'text-[#2d6a4f] bg-[#2d6a4f]/5'
+        ? 'text-[#1e293b] bg-[#1e293b]/5'
         : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900'
     }`;
 
   return (
-    <header className={`${isHome ? 'absolute' : 'relative'} top-0 left-0 right-0 z-50 border-b ${isHome ? 'bg-transparent border-white/10' : 'bg-[#2d6a4f] border-[#1b4332]'}`}>
+    <header className={`${isHome ? 'absolute' : 'relative'} top-0 left-0 right-0 z-50 border-b ${isHome ? 'bg-transparent border-white/10' : 'bg-[#1e293b] border-[#0f172a]'}`}>
       <div className="w-full pl-2 pr-2 sm:pl-3 sm:pr-3 md:pl-4 md:pr-4">
         <div className="flex justify-between items-center h-16 gap-2">
 

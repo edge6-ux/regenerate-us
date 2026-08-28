@@ -68,7 +68,7 @@ export default async function RestaurantVerificationPage({
     <div className="min-h-screen bg-stone-50">
 
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
-      <div className="bg-[#1b4332] text-white">
+      <div className="bg-[#0f172a] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12">
 
           {/* Regenerate US wordmark */}
@@ -81,7 +81,7 @@ export default async function RestaurantVerificationPage({
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
             <div>
               {/* Certification label */}
-              <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-3 py-1 text-xs font-semibold text-green-200 mb-4">
+              <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-3 py-1 text-xs font-semibold text-slate-200 mb-4">
                 <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.403 12.652a3 3 0 0 0 0-5.304 3 3 0 0 0-3.75-3.751 3 3 0 0 0-5.305 0 3 3 0 0 0-3.751 3.75 3 3 0 0 0 0 5.305 3 3 0 0 0 3.75 3.751 3 3 0 0 0 5.305 0 3 3 0 0 0 3.751-3.75Zm-2.546-4.46a.75.75 0 0 0-1.214-.883l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
                 </svg>
@@ -91,7 +91,7 @@ export default async function RestaurantVerificationPage({
               <h1 className={`${wordmark.className} text-4xl sm:text-5xl font-bold text-white leading-tight`}>
                 {restaurant.name}
               </h1>
-              <p className="text-green-300 mt-2 text-lg">
+              <p className="text-slate-300 mt-2 text-lg">
                 {restaurant.city}, {restaurant.state}
               </p>
             </div>
@@ -100,21 +100,21 @@ export default async function RestaurantVerificationPage({
             <div className="flex gap-3 sm:flex-col sm:items-end">
               <div className="bg-white/10 border border-white/20 rounded-xl px-5 py-3 text-center">
                 <div className="text-3xl font-bold text-white">{approvedDishes.length}</div>
-                <div className="text-xs text-green-300 mt-0.5">Certified {approvedDishes.length === 1 ? 'dish' : 'dishes'}</div>
+                <div className="text-xs text-slate-300 mt-0.5">Certified {approvedDishes.length === 1 ? 'dish' : 'dishes'}</div>
               </div>
               {approvedSubmission && (
                 <div className="bg-white/10 border border-white/20 rounded-xl px-5 py-3 text-center">
                   <div className="text-sm font-semibold text-white">
                     {new Date(approvedSubmission.reviewed_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                   </div>
-                  <div className="text-xs text-green-300 mt-0.5">Verified</div>
+                  <div className="text-xs text-slate-300 mt-0.5">Verified</div>
                 </div>
               )}
             </div>
           </div>
 
           {restaurant.description && (
-            <p className="text-green-100/80 mt-6 text-sm max-w-2xl leading-relaxed">
+            <p className="text-slate-100/80 mt-6 text-sm max-w-2xl leading-relaxed">
               {restaurant.description}
             </p>
           )}
@@ -124,7 +124,7 @@ export default async function RestaurantVerificationPage({
               href={restaurant.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 mt-4 text-green-300 hover:text-white text-sm transition-colors"
+              className="inline-flex items-center gap-1.5 mt-4 text-slate-300 hover:text-white text-sm transition-colors"
             >
               Visit restaurant website
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -150,7 +150,7 @@ export default async function RestaurantVerificationPage({
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {standards.map((s) => (
               <div key={s.title} className="bg-white border border-stone-200 rounded-xl p-6">
-                <div className="text-[#2d6a4f] mb-3">{s.icon}</div>
+                <div className="text-[#1e293b] mb-3">{s.icon}</div>
                 <h3 className="font-semibold text-stone-900 text-sm mb-1">{s.title}</h3>
                 <p className="text-xs text-stone-500 leading-relaxed">{s.body}</p>
               </div>
@@ -170,7 +170,7 @@ export default async function RestaurantVerificationPage({
                   Each dish below meets Regenerate US standards for its main element.
                 </p>
               </div>
-              <span className="bg-[#2d6a4f] text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+              <span className="bg-[#1e293b] text-white text-xs font-semibold px-3 py-1.5 rounded-full">
                 {approvedDishes.length} verified
               </span>
             </div>
@@ -193,7 +193,7 @@ export default async function RestaurantVerificationPage({
                 {restaurant.health_practices.map((p: string) => (
                   <span
                     key={p}
-                    className="inline-flex items-center gap-1.5 bg-[#2d6a4f]/8 text-[#2d6a4f] text-sm font-medium px-3 py-1.5 rounded-full border border-[#2d6a4f]/20"
+                    className="inline-flex items-center gap-1.5 bg-[#1e293b]/8 text-[#1e293b] text-sm font-medium px-3 py-1.5 rounded-full border border-[#1e293b]/20"
                   >
                     <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -207,19 +207,19 @@ export default async function RestaurantVerificationPage({
         )}
 
         {/* ── CTA ───────────────────────────────────────────────────────────── */}
-        <section className="bg-[#1b4332] rounded-2xl p-8 text-center">
-          <span className={`${greatVibes.className} text-green-300 text-3xl`}>
+        <section className="bg-[#0f172a] rounded-2xl p-8 text-center">
+          <span className={`${greatVibes.className} text-slate-300 text-3xl`}>
             Regenerate US
           </span>
           <h3 className={`${wordmark.className} text-xl font-bold text-white mt-1 mb-3`}>
             Find more restaurants like this one
           </h3>
-          <p className="text-green-200/80 text-sm mb-6 max-w-md mx-auto">
+          <p className="text-slate-200/80 text-sm mb-6 max-w-md mx-auto">
             Regenerate US is building a verified network of restaurants committed to clean sourcing and honest ingredients.
           </p>
           <Link
             href="/restaurants"
-            className="inline-flex items-center gap-2 bg-white text-[#1b4332] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-green-50 transition-colors"
+            className="inline-flex items-center gap-2 bg-white text-[#0f172a] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-slate-50 transition-colors"
           >
             Explore the directory
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -235,7 +235,7 @@ export default async function RestaurantVerificationPage({
             ongoing review. Certification is based on restaurant attestation, supplier transparency,
             and selective verification by Regenerate US.
           </p>
-          <Link href="/restaurants" className="inline-block mt-4 text-xs text-[#2d6a4f] hover:underline">
+          <Link href="/restaurants" className="inline-block mt-4 text-xs text-[#1e293b] hover:underline">
             ← Back to directory
           </Link>
         </div>

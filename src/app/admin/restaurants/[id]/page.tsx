@@ -213,7 +213,7 @@ export default function AdminRestaurantDetailPage() {
         <button
           type="button"
           onClick={() => confirmDiscardAndGo('/admin/restaurants')}
-          className="text-[#2d6a4f] text-sm font-medium mt-2 inline-block hover:underline"
+          className="text-[#1e293b] text-sm font-medium mt-2 inline-block hover:underline"
         >
           ← Restaurants
         </button>
@@ -227,7 +227,7 @@ export default function AdminRestaurantDetailPage() {
         <button
           type="button"
           onClick={() => confirmDiscardAndGo('/admin/restaurants')}
-          className="text-sm text-[#2d6a4f] hover:underline font-medium"
+          className="text-sm text-[#1e293b] hover:underline font-medium"
         >
           ← Restaurants
         </button>
@@ -405,11 +405,11 @@ export default function AdminRestaurantDetailPage() {
             type="button"
             onClick={() => void handleSave()}
             disabled={saving}
-            className="rounded-lg bg-[#2d6a4f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#1b4332] disabled:opacity-60"
+            className="rounded-lg bg-[#1e293b] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#0f172a] disabled:opacity-60"
           >
             {saving ? 'Saving…' : 'Save changes'}
           </button>
-          {saved && <span className="text-sm text-green-700">Saved.</span>}
+          {saved && <span className="text-sm text-slate-700">Saved.</span>}
         </div>
       </div>
 
@@ -422,12 +422,12 @@ export default function AdminRestaurantDetailPage() {
           type="button"
           onClick={() => void handlePasswordReset()}
           disabled={pwResetting}
-          className="text-sm font-medium text-[#2d6a4f] hover:underline disabled:opacity-50"
+          className="text-sm font-medium text-[#1e293b] hover:underline disabled:opacity-50"
         >
           {pwResetting ? 'Sending…' : 'Send password reset email'}
         </button>
         {pwMessage && (
-          <p className={`mt-2 text-xs ${pwMessage.type === 'success' ? 'text-green-800' : 'text-red-700'}`}>
+          <p className={`mt-2 text-xs ${pwMessage.type === 'success' ? 'text-slate-800' : 'text-red-700'}`}>
             {pwMessage.text}
           </p>
         )}

@@ -7,7 +7,7 @@ import { createClient } from '@/lib/supabase/client';
 
 interface Props {
   accountHref: string;
-  /** 'dark' = admin sidebar (green bg), 'light' = dashboard header (white bg) */
+  /** 'dark' = admin sidebar (navy bg), 'light' = dashboard header (white bg) */
   variant?: 'dark' | 'light';
   /** Which direction the dropdown opens */
   dropDirection?: 'up' | 'down';
@@ -57,7 +57,7 @@ export default function ProfileDropdown({
 
   const avatarClass =
     variant === 'dark'
-      ? 'bg-[#2d6a4f] text-white border border-[#52b788] hover:bg-[#40916c]'
+      ? 'bg-[#1e293b] text-white border border-[#52b788] hover:bg-[#40916c]'
       : 'bg-stone-200 text-stone-700 hover:bg-stone-300';
 
   const dropPos =
@@ -67,12 +67,12 @@ export default function ProfileDropdown({
 
   const panelClass =
     variant === 'dark'
-      ? 'bg-[#112d21] border-[#2d6a4f] text-white'
+      ? 'bg-[#112d21] border-[#1e293b] text-white'
       : 'bg-white border-stone-200 text-stone-900';
 
   const itemClass =
     variant === 'dark'
-      ? 'text-green-200 hover:bg-[#2d6a4f]/50 hover:text-white'
+      ? 'text-slate-200 hover:bg-[#1e293b]/50 hover:text-white'
       : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900';
 
   return (
@@ -90,8 +90,8 @@ export default function ProfileDropdown({
           className={`absolute ${dropPos} z-50 w-56 rounded-xl shadow-lg border overflow-hidden ${panelClass}`}
         >
           {/* Email header */}
-          <div className={`px-4 py-3 border-b ${variant === 'dark' ? 'border-[#2d6a4f]' : 'border-stone-100'}`}>
-            <p className={`text-xs mb-0.5 ${variant === 'dark' ? 'text-green-400' : 'text-stone-400'}`}>
+          <div className={`px-4 py-3 border-b ${variant === 'dark' ? 'border-[#1e293b]' : 'border-stone-100'}`}>
+            <p className={`text-xs mb-0.5 ${variant === 'dark' ? 'text-slate-400' : 'text-stone-400'}`}>
               Signed in as
             </p>
             <p className="text-sm font-medium truncate">{email}</p>
@@ -106,7 +106,7 @@ export default function ProfileDropdown({
             >
               Account Settings
             </Link>
-            <div className={`my-1 border-t ${variant === 'dark' ? 'border-[#2d6a4f]' : 'border-stone-100'}`} />
+            <div className={`my-1 border-t ${variant === 'dark' ? 'border-[#1e293b]' : 'border-stone-100'}`} />
             <button
               onClick={handleSignOut}
               className={`w-full flex items-center gap-2 px-4 py-2.5 text-sm transition-colors ${

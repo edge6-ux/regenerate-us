@@ -14,7 +14,7 @@ export default function SuccessPage() {
         </p>
         <p className="text-stone-600 mb-8 text-sm leading-relaxed">
           You can sign in anytime at{' '}
-          <Link href="/login" className="text-[#2d6a4f] font-medium hover:underline">
+          <Link href="/login" className="text-[#1e293b] font-medium hover:underline">
             /login
           </Link>{' '}
           with your contact email and the password you chose.
@@ -22,7 +22,7 @@ export default function SuccessPage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/login"
-            className="bg-[#2d6a4f] text-white px-6 py-2.5 rounded-lg font-medium hover:bg-[#1b4332] transition-colors"
+            className="bg-[#1e293b] text-white px-6 py-2.5 rounded-lg font-medium hover:bg-[#0f172a] transition-colors"
           >
             Sign In
           </Link>

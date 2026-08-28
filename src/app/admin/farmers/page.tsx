@@ -59,7 +59,7 @@ export default async function AdminFarmersPage({
         {adminTier >= 3 && (
           <Link
             href="/admin/farmers/new"
-            className="inline-flex items-center justify-center rounded-lg bg-[#2d6a4f] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1b4332] transition-colors"
+            className="inline-flex items-center justify-center rounded-lg bg-[#1e293b] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0f172a] transition-colors"
           >
             + New farm
           </Link>
@@ -68,7 +68,7 @@ export default async function AdminFarmersPage({
       <p className="text-sm text-stone-500 mb-8 max-w-2xl">
         Manage farm profiles, map coordinates, and reviews. For the full historical list with the
         same filters, see{' '}
-        <Link href="/admin/submissions?tab=farms" className="text-[#2d6a4f] font-medium hover:underline">
+        <Link href="/admin/submissions?tab=farms" className="text-[#1e293b] font-medium hover:underline">
           All applications → Farms
         </Link>
         .
@@ -85,7 +85,7 @@ export default async function AdminFarmersPage({
             href={s.key === 'all' ? '/admin/farmers' : `/admin/farmers?status=${s.key}`}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               filterStatus === s.key
-                ? 'bg-[#2d6a4f] text-white'
+                ? 'bg-[#1e293b] text-white'
                 : 'bg-white text-stone-600 border border-stone-200 hover:bg-stone-50'
             }`}
           >
@@ -143,7 +143,7 @@ export default async function AdminFarmersPage({
                           ? `/admin/farms/${farm.id}/review`
                           : `/admin/farms/${farm.id}`
                       }
-                      className="text-[#2d6a4f] hover:underline font-medium"
+                      className="text-[#1e293b] hover:underline font-medium"
                     >
                       {farm.status === 'pending' ? 'Review →' : 'Manage →'}
                     </Link>

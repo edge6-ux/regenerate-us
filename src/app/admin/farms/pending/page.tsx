@@ -27,7 +27,7 @@ export default async function AdminFarmsPendingPage() {
         <div className="mb-8">
           <Link
             href={`/admin/farms/${firstId}/review`}
-            className="inline-flex items-center gap-2 bg-[#2d6a4f] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#1b4332] transition-colors"
+            className="inline-flex items-center gap-2 bg-[#1e293b] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#0f172a] transition-colors"
           >
             Start reviewing
             <span className="opacity-90">({pending.length} pending)</span>
@@ -75,7 +75,7 @@ export default async function AdminFarmsPendingPage() {
                     <td className="px-6 py-4 text-right whitespace-nowrap">
                       <Link
                         href={`/admin/farms/${farm.id}/review`}
-                        className="text-[#2d6a4f] hover:underline font-medium"
+                        className="text-[#1e293b] hover:underline font-medium"
                       >
                         Review {i + 1} →
                       </Link>
@@ -89,7 +89,7 @@ export default async function AdminFarmsPendingPage() {
       </div>
 
       <p className="mt-6 text-xs text-stone-500">
-        Tip: The <Link href="/admin/review-queue" className="text-[#2d6a4f] hover:underline">Review queue</Link> shows pending farms alongside restaurant submissions; <Link href="/admin/submissions?tab=farms" className="text-[#2d6a4f] hover:underline">All applications → Farms</Link> lists every farm with filters.
+        Tip: The <Link href="/admin/review-queue" className="text-[#1e293b] hover:underline">Review queue</Link> shows pending farms alongside restaurant submissions; <Link href="/admin/submissions?tab=farms" className="text-[#1e293b] hover:underline">All applications → Farms</Link> lists every farm with filters.
       </p>
     </div>
   );

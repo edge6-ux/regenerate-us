@@ -121,7 +121,7 @@ export default function AdminAccountPage() {
     setPwSaving(false);
   }
 
-  const inputClass = 'w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent outline-none';
+  const inputClass = 'w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e293b] focus:border-transparent outline-none';
 
   const tierColor = adminTier === 3
     ? 'bg-purple-100 text-purple-800'
@@ -143,7 +143,7 @@ export default function AdminAccountPage() {
           </div>
           <div className="flex items-center justify-between">
             <span className="text-stone-500">Role</span>
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#2d6a4f]/10 text-[#2d6a4f]">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#1e293b]/10 text-[#1e293b]">
               Admin
             </span>
           </div>
@@ -171,7 +171,7 @@ export default function AdminAccountPage() {
         <ul className="space-y-2">
           {TIER_PERMISSIONS[adminTier]?.map((perm) => (
             <li key={perm} className="flex items-start gap-2.5 text-sm text-stone-700">
-              <svg className="w-4 h-4 text-[#2d6a4f] mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg className="w-4 h-4 text-[#1e293b] mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
               {perm}
@@ -186,7 +186,7 @@ export default function AdminAccountPage() {
         {pwMessage && (
           <div className={`mb-4 px-4 py-3 rounded-lg text-sm ${
             pwMessage.type === 'success'
-              ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+              ? 'bg-slate-50 border border-slate-200 text-slate-800'
               : 'bg-red-50 border border-red-200 text-red-700'
           }`}>
             {pwMessage.text}
@@ -201,7 +201,7 @@ export default function AdminAccountPage() {
             <label className="block text-sm font-medium text-stone-700 mb-1">Confirm New Password</label>
             <input type="password" required minLength={8} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className={inputClass} placeholder="Re-enter new password" />
           </div>
-          <button type="submit" disabled={pwSaving} className="bg-[#2d6a4f] text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#1b4332] transition-colors disabled:opacity-50">
+          <button type="submit" disabled={pwSaving} className="bg-[#1e293b] text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#0f172a] transition-colors disabled:opacity-50">
             {pwSaving ? 'Updating…' : 'Update Password'}
           </button>
         </form>
@@ -225,7 +225,7 @@ export default function AdminAccountPage() {
                   </p>
                 </div>
                 <span className={`text-xs px-2 py-0.5 rounded-full flex-shrink-0 font-medium ${
-                  item.status === 'approved' ? 'bg-green-100 text-green-800'
+                  item.status === 'approved' ? 'bg-slate-100 text-slate-800'
                   : item.status === 'rejected' ? 'bg-red-100 text-red-700'
                   : item.status === 'needs_clarification' ? 'bg-amber-100 text-amber-800'
                   : 'bg-stone-100 text-stone-600'

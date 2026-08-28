@@ -136,7 +136,7 @@ export default function AddRestaurantDishesPage() {
             <button
               type="button"
               onClick={addDish}
-              className="flex items-center gap-1.5 text-sm font-medium text-[#2d6a4f] hover:text-[#1b4332]"
+              className="flex items-center gap-1.5 text-sm font-medium text-[#1e293b] hover:text-[#0f172a]"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -185,7 +185,7 @@ export default function AddRestaurantDishesPage() {
                   type="checkbox"
                   checked={attestations[key]}
                   onChange={(e) => setAttestations({ ...attestations, [key]: e.target.checked })}
-                  className="mt-0.5 h-4 w-4 rounded border-stone-300 text-[#2d6a4f] focus:ring-[#2d6a4f]"
+                  className="mt-0.5 h-4 w-4 rounded border-stone-300 text-[#1e293b] focus:ring-[#1e293b]"
                 />
                 <span className="text-sm text-stone-700 leading-relaxed group-hover:text-stone-900">{text}</span>
               </label>
@@ -196,7 +196,7 @@ export default function AddRestaurantDishesPage() {
         <button
           type="submit"
           disabled={submitting || !allAttested}
-          className="w-full bg-[#2d6a4f] text-white py-3.5 rounded-xl font-semibold hover:bg-[#1b4332] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+          className="w-full bg-[#1e293b] text-white py-3.5 rounded-xl font-semibold hover:bg-[#0f172a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
         >
           {submitting ? 'Submitting…' : 'Submit for review'}
         </button>

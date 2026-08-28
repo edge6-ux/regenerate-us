@@ -40,18 +40,18 @@ export default async function AdminDashboard() {
 
       <Link
         href="/admin/review-queue"
-        className="mb-8 block rounded-xl border border-[#2d6a4f]/25 bg-[#2d6a4f]/5 px-5 py-4 transition-colors hover:bg-[#2d6a4f]/10"
+        className="mb-8 block rounded-xl border border-[#1e293b]/25 bg-[#1e293b]/5 px-5 py-4 transition-colors hover:bg-[#1e293b]/10"
       >
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div className="text-sm font-semibold text-[#1b4332]">Review queue</div>
+            <div className="text-sm font-semibold text-[#0f172a]">Review queue</div>
             <p className="text-sm text-stone-600 mt-0.5">
               {reviewQueueTotal === 0
                 ? 'Nothing waiting — you’re all caught up.'
                 : `${reviewQueueTotal} item${reviewQueueTotal === 1 ? '' : 's'} ${reviewQueueTotal === 1 ? 'needs' : 'need'} a decision.`}
             </p>
           </div>
-          <span className="text-sm font-semibold text-[#2d6a4f] shrink-0">
+          <span className="text-sm font-semibold text-[#1e293b] shrink-0">
             Open queue →
           </span>
         </div>
@@ -63,7 +63,7 @@ export default async function AdminDashboard() {
         {[
           { label: 'Total', value: subTotal, color: 'bg-stone-100 text-stone-800' },
           { label: 'Pending', value: subPending, color: 'bg-yellow-50 text-yellow-800' },
-          { label: 'Approved', value: subApproved, color: 'bg-green-50 text-green-800' },
+          { label: 'Approved', value: subApproved, color: 'bg-slate-50 text-slate-800' },
           { label: 'Rejected', value: subRejected, color: 'bg-red-50 text-red-800' },
         ].map((stat) => (
           <div key={stat.label} className={`${stat.color} rounded-xl p-5 border border-stone-200`}>
@@ -79,7 +79,7 @@ export default async function AdminDashboard() {
         {[
           { label: 'Total', value: farmTotal, color: 'bg-stone-100 text-stone-800' },
           { label: 'Pending', value: farmPending, color: 'bg-yellow-50 text-yellow-800' },
-          { label: 'Approved', value: farmApproved, color: 'bg-green-50 text-green-800' },
+          { label: 'Approved', value: farmApproved, color: 'bg-slate-50 text-slate-800' },
         ].map((stat) => (
           <div key={stat.label} className={`${stat.color} rounded-xl p-5 border border-stone-200`}>
             <div className="text-2xl font-bold mb-0.5">{stat.value}</div>
@@ -94,7 +94,7 @@ export default async function AdminDashboard() {
         <div className="bg-white border border-stone-200 rounded-xl">
           <div className="flex items-center justify-between p-6 border-b border-stone-200">
             <h2 className="text-lg font-semibold text-stone-900">Recent Submissions</h2>
-            <Link href="/admin/submissions?tab=restaurants" className="text-sm text-[#2d6a4f] hover:underline font-medium">
+            <Link href="/admin/submissions?tab=restaurants" className="text-sm text-[#1e293b] hover:underline font-medium">
               View all →
             </Link>
           </div>
@@ -130,10 +130,10 @@ export default async function AdminDashboard() {
           <div className="flex items-center justify-between p-6 border-b border-stone-200">
             <h2 className="text-lg font-semibold text-stone-900">Recent Farms</h2>
             <div className="flex items-center gap-4">
-              <Link href="/admin/review-queue" className="text-sm text-[#2d6a4f] hover:underline font-medium">
+              <Link href="/admin/review-queue" className="text-sm text-[#1e293b] hover:underline font-medium">
                 Review queue
               </Link>
-              <Link href="/admin/submissions?tab=farms" className="text-sm text-[#2d6a4f] hover:underline font-medium">
+              <Link href="/admin/submissions?tab=farms" className="text-sm text-[#1e293b] hover:underline font-medium">
                 View all →
               </Link>
             </div>

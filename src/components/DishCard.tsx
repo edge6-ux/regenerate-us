@@ -41,7 +41,7 @@ export default function DishCard({ dish, showStatus = false }: DishCardProps) {
               href={dish.supplier_website}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#2d6a4f] hover:underline text-xs"
+              className="text-[#1e293b] hover:underline text-xs"
             >
               {dish.supplier_website}
             </a>
@@ -53,7 +53,7 @@ export default function DishCard({ dish, showStatus = false }: DishCardProps) {
           )}
         </div>
         {dish.meets_non_negotiables && (
-          <div className="flex items-center gap-1 text-green-700 text-xs">
+          <div className="flex items-center gap-1 text-slate-700 text-xs">
             Meets non-negotiable sourcing requirements
           </div>
         )}

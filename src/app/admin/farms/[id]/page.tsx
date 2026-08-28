@@ -249,7 +249,7 @@ export default function AdminFarmDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#2d6a4f]"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#1e293b]"></div>
       </div>
     );
   }
@@ -258,7 +258,7 @@ export default function AdminFarmDetailPage() {
     return (
       <div className="text-center py-20 text-stone-500">
         Farm not found.
-        <button onClick={() => router.push('/admin/farmers')} className="block mx-auto mt-4 text-[#2d6a4f] hover:underline">
+        <button onClick={() => router.push('/admin/farmers')} className="block mx-auto mt-4 text-[#1e293b] hover:underline">
           ← Back to farms
         </button>
       </div>
@@ -272,26 +272,26 @@ export default function AdminFarmDetailPage() {
     <div className="max-w-4xl">
       {cropperModal}
       {saved && (
-        <div className="mb-6 bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3 rounded-lg text-sm font-medium">
+        <div className="mb-6 bg-slate-50 border border-slate-200 text-slate-800 px-4 py-3 rounded-lg text-sm font-medium">
           Changes saved successfully.
         </div>
       )}
       <button
         onClick={() => confirmDiscardAndGo('/admin/farmers')}
-        className="text-sm text-[#2d6a4f] hover:underline mb-6 inline-block"
+        className="text-sm text-[#1e293b] hover:underline mb-6 inline-block"
       >
         ← Back to farms
       </button>
 
       {farm.status === 'pending' && (
-        <div className="mb-6 rounded-xl border border-[#2d6a4f]/30 bg-[#2d6a4f]/5 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+        <div className="mb-6 rounded-xl border border-[#1e293b]/30 bg-[#1e293b]/5 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
           <p className="text-sm text-stone-700">
             <strong className="text-stone-900">Review workspace:</strong> Approve / reject / pending with certification
             checks and queue navigation.
           </p>
           <Link
             href={`/admin/farms/${id}/review`}
-            className="shrink-0 text-sm font-semibold text-white bg-[#2d6a4f] hover:bg-[#1b4332] px-4 py-2 rounded-lg transition-colors"
+            className="shrink-0 text-sm font-semibold text-white bg-[#1e293b] hover:bg-[#0f172a] px-4 py-2 rounded-lg transition-colors"
           >
             Open farm review →
           </Link>
@@ -315,51 +315,51 @@ export default function AdminFarmDetailPage() {
             <label className="block text-sm font-medium text-stone-700 mb-1">Contact Name</label>
             <input type="text" value={editFields.contact_name}
               onChange={(e) => setEditFields({ ...editFields, contact_name: e.target.value })}
-              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent" />
+              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent" />
           </div>
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-1">Email</label>
             <input type="email" value={editFields.contact_email}
               onChange={(e) => setEditFields({ ...editFields, contact_email: e.target.value })}
-              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent" />
+              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent" />
           </div>
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-1">Phone</label>
             <input type="text" value={editFields.contact_phone}
               onChange={(e) => setEditFields({ ...editFields, contact_phone: e.target.value })}
-              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent" />
+              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent" />
           </div>
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-1">Website</label>
             <input type="url" value={editFields.website}
               onChange={(e) => setEditFields({ ...editFields, website: e.target.value })}
               placeholder="https://"
-              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent" />
+              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent" />
           </div>
           <div className="sm:col-span-2">
             <label className="block text-sm font-medium text-stone-700 mb-1">Street Address</label>
             <input type="text" value={editFields.address}
               onChange={(e) => setEditFields({ ...editFields, address: e.target.value })}
-              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent" />
+              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent" />
           </div>
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-1">City</label>
             <input type="text" value={editFields.city}
               onChange={(e) => setEditFields({ ...editFields, city: e.target.value })}
-              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent" />
+              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent" />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-1">State</label>
               <input type="text" value={editFields.state} maxLength={2}
                 onChange={(e) => setEditFields({ ...editFields, state: e.target.value.toUpperCase() })}
-                className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent" />
+                className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent" />
             </div>
             <div>
               <label className="block text-sm font-medium text-stone-700 mb-1">ZIP</label>
               <input type="text" value={editFields.zip}
                 onChange={(e) => setEditFields({ ...editFields, zip: e.target.value })}
-                className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent" />
+                className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent" />
             </div>
           </div>
         </div>
@@ -375,7 +375,7 @@ export default function AdminFarmDetailPage() {
               value={editFields.description}
               onChange={(e) => setEditFields({ ...editFields, description: e.target.value })}
               rows={3}
-              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent"
+              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent"
             />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -385,7 +385,7 @@ export default function AdminFarmDetailPage() {
                 type="text"
                 value={editFields.livestock_types}
                 onChange={(e) => setEditFields({ ...editFields, livestock_types: e.target.value })}
-                className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent"
+                className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent"
                 placeholder="Comma-separated"
               />
             </div>
@@ -395,7 +395,7 @@ export default function AdminFarmDetailPage() {
                 type="text"
                 value={editFields.produce_types}
                 onChange={(e) => setEditFields({ ...editFields, produce_types: e.target.value })}
-                className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent"
+                className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent"
                 placeholder="Comma-separated"
               />
             </div>
@@ -406,7 +406,7 @@ export default function AdminFarmDetailPage() {
               value={editFields.regenerative_practices}
               onChange={(e) => setEditFields({ ...editFields, regenerative_practices: e.target.value })}
               rows={2}
-              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent"
+              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent"
               placeholder="Comma-separated"
             />
           </div>
@@ -416,7 +416,7 @@ export default function AdminFarmDetailPage() {
               type="text"
               value={editFields.certifications}
               onChange={(e) => setEditFields({ ...editFields, certifications: e.target.value })}
-              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent"
+              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent"
               placeholder="Comma-separated"
             />
           </div>
@@ -426,7 +426,7 @@ export default function AdminFarmDetailPage() {
               value={editFields.farm_practices_other}
               onChange={(e) => setEditFields({ ...editFields, farm_practices_other: e.target.value })}
               rows={2}
-              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent"
+              className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent"
               placeholder="From applicant “Other” field — verify before promoting"
             />
           </div>
@@ -482,7 +482,7 @@ export default function AdminFarmDetailPage() {
         <p className="text-sm text-stone-500 mb-4">
           Use <strong>Approve</strong>, <strong>Reject</strong>, or <strong>Pending</strong> for decisions. For pending
           applications, the{' '}
-          <Link href={`/admin/farms/${id}/review`} className="text-[#2d6a4f] font-medium hover:underline">
+          <Link href={`/admin/farms/${id}/review`} className="text-[#1e293b] font-medium hover:underline">
             review workspace
           </Link>{' '}
           shows certifications and queue navigation.
@@ -526,7 +526,7 @@ export default function AdminFarmDetailPage() {
           {dangerMessage && (
             <div className={`mb-4 px-4 py-3 rounded-lg text-sm ${
               dangerMessage.type === 'success'
-                ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+                ? 'bg-slate-50 border border-slate-200 text-slate-800'
                 : 'bg-red-50 border border-red-200 text-red-700'
             }`}>
               {dangerMessage.text}
@@ -546,7 +546,7 @@ export default function AdminFarmDetailPage() {
                   <button
                     onClick={handleFarmPasswordReset}
                     disabled={dangerWorking}
-                    className="text-xs px-3 py-1.5 bg-[#2d6a4f] text-white rounded-lg hover:bg-[#1b4332] transition-colors disabled:opacity-50"
+                    className="text-xs px-3 py-1.5 bg-[#1e293b] text-white rounded-lg hover:bg-[#0f172a] transition-colors disabled:opacity-50"
                   >
                     {dangerWorking ? 'Sending…' : 'Send'}
                   </button>

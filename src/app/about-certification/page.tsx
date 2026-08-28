@@ -89,7 +89,7 @@ export default function AboutCertificationPage() {
     <div className="bg-white">
 
       {/* ── Hero ── */}
-      <section className="relative bg-[#1b4332] text-white overflow-hidden">
+      <section className="relative bg-[#0f172a] text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{ backgroundImage: "url('/regenerate-hero2.avif')" }}
@@ -110,7 +110,7 @@ export default function AboutCertificationPage() {
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/apply"
-              className="bg-white text-[#1b4332] px-6 py-3 rounded-lg font-semibold hover:bg-stone-100 transition-colors text-center"
+              className="bg-white text-[#0f172a] px-6 py-3 rounded-lg font-semibold hover:bg-stone-100 transition-colors text-center"
             >
               Apply Now
             </Link>
@@ -188,7 +188,7 @@ export default function AboutCertificationPage() {
             },
           ].map(({ step, title, body }) => (
             <div key={step} className="flex gap-5">
-              <div className="flex-shrink-0 w-9 h-9 bg-[#2d6a4f] text-white rounded-full flex items-center justify-center font-bold text-sm mt-0.5">
+              <div className="flex-shrink-0 w-9 h-9 bg-[#1e293b] text-white rounded-full flex items-center justify-center font-bold text-sm mt-0.5">
                 {step}
               </div>
               <div className="pb-6 border-b border-stone-100 flex-1 last:border-0">
@@ -209,7 +209,7 @@ export default function AboutCertificationPage() {
         <p className="text-stone-600 mb-8 max-w-2xl">
           At the base level, Regenerate US certification works dish by dish — each certified dish stands on its own. Once a restaurant earns certification on 7 or more dishes, the restaurant itself becomes Regenerate US Certified, reflecting a broader commitment to clean, transparent sourcing across the menu.
         </p>
-        <div className="bg-[#2d6a4f]/5 border border-[#2d6a4f]/20 rounded-xl p-6 mb-8">
+        <div className="bg-[#1e293b]/5 border border-[#1e293b]/20 rounded-xl p-6 mb-8">
           <h3 className="font-semibold text-stone-900 mb-2">The Main Element</h3>
           <p className="text-stone-700 text-sm leading-relaxed">
             Every certified dish has a <strong>main element</strong> — the primary ingredient that defines the dish.
@@ -227,7 +227,7 @@ export default function AboutCertificationPage() {
             <div key={dish} className="border border-stone-200 rounded-lg p-4">
               <p className="font-medium text-stone-900 mb-1">{dish}</p>
               <p className="text-xs text-stone-500">Main element:</p>
-              <p className="text-[#2d6a4f] font-medium text-xs mt-0.5">{element}</p>
+              <p className="text-[#1e293b] font-medium text-xs mt-0.5">{element}</p>
             </div>
           ))}
         </div>
@@ -251,7 +251,7 @@ export default function AboutCertificationPage() {
         <div className="space-y-6">
           {/* Required */}
           <div className="bg-white border border-stone-200 rounded-xl overflow-hidden">
-            <div className="bg-[#1b4332] px-6 py-4">
+            <div className="bg-[#0f172a] px-6 py-4">
               <h3 className="text-white font-semibold">Required Practices</h3>
               <p className="text-white/70 text-sm mt-0.5">
                 These are the non-negotiables. A dish must meet all of these for its main element to be approved.
@@ -260,7 +260,7 @@ export default function AboutCertificationPage() {
             <ul className="divide-y divide-stone-100">
               {REQUIRED_PRACTICES.map((p) => (
                 <li key={p} className="flex items-start gap-3 px-6 py-3.5 text-sm text-stone-700">
-                  <svg className="w-4 h-4 text-[#2d6a4f] mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <svg className="w-4 h-4 text-[#1e293b] mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                   {p}
@@ -398,7 +398,7 @@ export default function AboutCertificationPage() {
               'A public transparency statement',
             ].map((item) => (
               <li key={item} className="flex items-center gap-3 px-6 py-3.5 text-sm text-stone-700">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#2d6a4f] flex-shrink-0" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#1e293b] flex-shrink-0" />
                 {item}
               </li>
             ))}
@@ -423,7 +423,7 @@ export default function AboutCertificationPage() {
       </Reveal>
 
       {/* ── CTA ── */}
-      <Reveal as="section" className="bg-[#1b4332]">
+      <Reveal as="section" className="bg-[#0f172a]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Ready to apply?</h2>
           <p className="text-white/70 mb-8 max-w-lg mx-auto">
@@ -432,7 +432,7 @@ export default function AboutCertificationPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-3">
             <Link
               href="/apply"
-              className="bg-white text-[#1b4332] px-8 py-3 rounded-lg font-semibold hover:bg-stone-100 transition-colors"
+              className="bg-white text-[#0f172a] px-8 py-3 rounded-lg font-semibold hover:bg-stone-100 transition-colors"
             >
               Apply Now
             </Link>
@@ -451,7 +451,7 @@ export default function AboutCertificationPage() {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs font-semibold uppercase tracking-widest text-[#2d6a4f] mb-3">
+    <p className="text-xs font-semibold uppercase tracking-widest text-[#1e293b] mb-3">
       {children}
     </p>
   );

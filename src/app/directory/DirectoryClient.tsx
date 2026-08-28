@@ -154,12 +154,12 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
                 onChange={(e) => setZipCode(e.target.value.replace(/\D/g, '').slice(0, 5))}
                 onKeyDown={(e) => e.key === 'Enter' && handleZipSearch()}
                 placeholder="Enter ZIP code"
-                className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent outline-none"
+                className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e293b] focus:border-transparent outline-none"
               />
               <button
                 onClick={handleZipSearch}
                 disabled={searching || zipCode.length !== 5}
-                className="bg-[#2d6a4f] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#1b4332] transition-colors disabled:opacity-50 whitespace-nowrap"
+                className="bg-[#1e293b] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#0f172a] transition-colors disabled:opacity-50 whitespace-nowrap"
               >
                 {searching ? 'Searching...' : 'Search'}
               </button>
@@ -170,7 +170,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
             <select
               value={searchRadius}
               onChange={(e) => setSearchRadius(Number(e.target.value))}
-              className="border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent outline-none"
+              className="border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e293b] focus:border-transparent outline-none"
             >
               <option value={10}>10 miles</option>
               <option value={25}>25 miles</option>
@@ -200,7 +200,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
             onClick={() => setActiveTab(tab.key)}
             className={`px-5 py-3 text-sm font-medium border-b-2 transition-colors -mb-px flex-shrink-0 ${
               activeTab === tab.key
-                ? 'border-[#2d6a4f] text-[#2d6a4f]'
+                ? 'border-[#1e293b] text-[#1e293b]'
                 : 'border-transparent text-stone-500 hover:text-stone-700'
             }`}
           >
@@ -208,7 +208,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
             {tab.count !== undefined && (
               <span className={`ml-2 text-xs px-2 py-0.5 rounded-full ${
                 activeTab === tab.key
-                  ? 'bg-[#2d6a4f]/10 text-[#2d6a4f]'
+                  ? 'bg-[#1e293b]/10 text-[#1e293b]'
                   : 'bg-stone-100 text-stone-500'
               }`}>
                 {tab.count}
@@ -243,16 +243,16 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
                   <button
                     key={restaurant.id}
                     onClick={() => setSelectedRestaurant(restaurant)}
-                    className="bg-white border border-stone-200 rounded-xl p-6 hover:shadow-lg transition-all hover:border-[#2d6a4f]/30 text-left group"
+                    className="bg-white border border-stone-200 rounded-xl p-6 hover:shadow-lg transition-all hover:border-[#1e293b]/30 text-left group"
                   >
                     <div className="flex items-start justify-between mb-3">
-                      <h2 className="text-lg font-semibold text-stone-900 group-hover:text-[#2d6a4f] transition-colors">
+                      <h2 className="text-lg font-semibold text-stone-900 group-hover:text-[#1e293b] transition-colors">
                         {restaurant.name}
                       </h2>
                       <span className={`text-xs font-medium px-2 py-0.5 rounded-full flex-shrink-0 ml-2 ${
                         restaurant.participation_level === 'certified'
-                          ? 'bg-[#2d6a4f] text-white'
-                          : 'bg-green-100 text-green-800'
+                          ? 'bg-[#1e293b] text-white'
+                          : 'bg-slate-100 text-slate-800'
                       }`}>
                         {restaurant.participation_level === 'certified' ? 'Certified' : 'Participant'}
                       </span>
@@ -266,7 +266,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
                     {restaurant.description && (
                       <p className="text-sm text-stone-600 mb-3 line-clamp-2">{restaurant.description}</p>
                     )}
-                    <div className="text-sm text-[#2d6a4f] font-medium">
+                    <div className="text-sm text-[#1e293b] font-medium">
                       {approvedDishes.length} certified dish{approvedDishes.length !== 1 ? 'es' : ''}
                     </div>
                   </button>
@@ -281,22 +281,22 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
       {activeTab === 'farms' && (
         <>
           {/* Farm CTA banner */}
-          <div className="bg-[#1b4332] rounded-2xl p-6 md:p-8 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+          <div className="bg-[#0f172a] rounded-2xl p-6 md:p-8 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
             <div className="flex-1">
-              <div className="inline-flex items-center gap-2 bg-white/10 text-green-200 text-xs font-semibold px-3 py-1 rounded-full mb-3">
+              <div className="inline-flex items-center gap-2 bg-white/10 text-slate-200 text-xs font-semibold px-3 py-1 rounded-full mb-3">
                 For Farms & Producers
               </div>
               <h3 className="text-lg md:text-xl font-bold text-white mb-1">
                 Get your farm in front of verified buyers
               </h3>
-              <p className="text-sm text-green-200 leading-relaxed max-w-xl">
+              <p className="text-sm text-slate-200 leading-relaxed max-w-xl">
                 Restaurants using this directory are actively looking for local, verified suppliers.
                 Register your farm to showcase your practices, certifications, and products — and get discovered.
               </p>
             </div>
             <Link
               href="/apply?type=farm"
-              className="flex-shrink-0 inline-flex items-center gap-2 bg-white text-[#1b4332] px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-green-50 transition-colors"
+              className="flex-shrink-0 inline-flex items-center gap-2 bg-white text-[#0f172a] px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-slate-50 transition-colors"
             >
               Register Your Farm
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -318,7 +318,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
                   <Link
                     key={farm.id}
                     href={`/directory/farms/${farm.id}`}
-                    className="bg-white border border-stone-200 rounded-xl overflow-hidden hover:shadow-lg transition-all hover:border-[#2d6a4f]/30 group"
+                    className="bg-white border border-stone-200 rounded-xl overflow-hidden hover:shadow-lg transition-all hover:border-[#1e293b]/30 group"
                   >
                     <div className="h-48 bg-stone-100 overflow-hidden">
                       <img
@@ -328,7 +328,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
                       />
                     </div>
                     <div className="p-6">
-                      <h2 className="text-lg font-semibold text-stone-900 group-hover:text-[#2d6a4f] transition-colors mb-1">
+                      <h2 className="text-lg font-semibold text-stone-900 group-hover:text-[#1e293b] transition-colors mb-1">
                         {farm.name}
                       </h2>
                       <p className="text-sm text-stone-500 mb-3">
@@ -347,7 +347,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
                           </span>
                         ))}
                         {farm.produce_types && farm.produce_types.split(',').slice(0, 3).map((t) => (
-                          <span key={t} className="text-xs px-2 py-0.5 rounded-full bg-green-50 text-green-700 border border-green-200">
+                          <span key={t} className="text-xs px-2 py-0.5 rounded-full bg-slate-50 text-slate-700 border border-slate-200">
                             {t.trim()}
                           </span>
                         ))}
@@ -390,7 +390,7 @@ function EmptyState({ type, hasSearch }: { type: 'restaurants' | 'farms'; hasSea
       {!hasSearch && (
         <Link
           href={type === 'farms' ? '/apply?type=farm' : '/apply'}
-          className="inline-block bg-[#2d6a4f] text-white px-6 py-2.5 rounded-lg font-medium hover:bg-[#1b4332] transition-colors"
+          className="inline-block bg-[#1e293b] text-white px-6 py-2.5 rounded-lg font-medium hover:bg-[#0f172a] transition-colors"
         >
           Apply Now
         </Link>
@@ -429,8 +429,8 @@ function RestaurantModal({
           <div className="flex items-center gap-3 mb-6">
             <span className={`text-xs font-medium px-3 py-1 rounded-full ${
               restaurant.participation_level === 'certified'
-                ? 'bg-[#2d6a4f] text-white'
-                : 'bg-green-100 text-green-800 border border-green-200'
+                ? 'bg-[#1e293b] text-white'
+                : 'bg-slate-100 text-slate-800 border border-slate-200'
             }`}>
               {restaurant.participation_level === 'certified' ? 'Regenerate US Certified Restaurant' : 'From the Farm Participant'}
             </span>
@@ -466,7 +466,7 @@ function RestaurantModal({
                 <svg className="w-4 h-4 text-stone-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                 </svg>
-                <a href={restaurant.website} target="_blank" rel="noopener noreferrer" className="text-[#2d6a4f] hover:underline">
+                <a href={restaurant.website} target="_blank" rel="noopener noreferrer" className="text-[#1e293b] hover:underline">
                   {restaurant.website.replace(/^https?:\/\//, '')}
                 </a>
               </div>

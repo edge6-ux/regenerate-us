@@ -109,7 +109,7 @@ export default async function NewFarmAdminPage({
 
   return (
     <div className="max-w-3xl">
-      <Link href="/admin/farmers" className="text-sm text-[#2d6a4f] hover:underline font-medium">
+      <Link href="/admin/farmers" className="text-sm text-[#1e293b] hover:underline font-medium">
         ← Farms
       </Link>
 
@@ -236,7 +236,7 @@ export default async function NewFarmAdminPage({
         <div className="flex items-center gap-3 pt-2">
           <button
             type="submit"
-            className="rounded-lg bg-[#2d6a4f] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#1b4332]"
+            className="rounded-lg bg-[#1e293b] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#0f172a]"
           >
             Create farm
           </button>

@@ -117,13 +117,13 @@ export default function PermissionsPage() {
         <h2 className="text-lg font-semibold text-stone-900 mb-1">Admin Accounts</h2>
         <p className="text-sm text-stone-500 mb-5">
           Change permission tiers or remove admin accounts. To reset passwords or update emails, use the{' '}
-          <a href="/admin/accounts" className="text-[#2d6a4f] hover:underline font-medium">Accounts</a> page.
+          <a href="/admin/accounts" className="text-[#1e293b] hover:underline font-medium">Accounts</a> page.
         </p>
 
         {msg && (
           <div className={`mb-5 px-4 py-3 rounded-lg text-sm ${
             msg.type === 'success'
-              ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+              ? 'bg-slate-50 border border-slate-200 text-slate-800'
               : 'bg-red-50 border border-red-200 text-red-700'
           }`}>
             {msg.text}
@@ -153,7 +153,7 @@ export default function PermissionsPage() {
                         value={admin.tier}
                         disabled={locked || tierUpdating === admin.id}
                         onChange={(e) => handleTierChange(admin.id, Number(e.target.value))}
-                        className="border border-stone-300 rounded-lg px-2 py-1.5 text-xs focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent outline-none disabled:opacity-40 disabled:cursor-not-allowed"
+                        className="border border-stone-300 rounded-lg px-2 py-1.5 text-xs focus:ring-2 focus:ring-[#1e293b] focus:border-transparent outline-none disabled:opacity-40 disabled:cursor-not-allowed"
                       >
                         <option value={1}>Tier 1 — Editor</option>
                         <option value={2}>Tier 2 — Reviewer</option>
@@ -184,7 +184,7 @@ export default function PermissionsPage() {
                         )
                       )}
                       {tierUpdating === admin.id && (
-                        <div className="w-4 h-4 border-2 border-[#2d6a4f] border-t-transparent rounded-full animate-spin" />
+                        <div className="w-4 h-4 border-2 border-[#1e293b] border-t-transparent rounded-full animate-spin" />
                       )}
                     </div>
                   </div>

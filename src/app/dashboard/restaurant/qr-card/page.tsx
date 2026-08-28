@@ -40,7 +40,7 @@ export default async function QRCardPage() {
   const qrDataUrl = await QRCode.toDataURL(restaurantUrl, {
     width: 400,
     margin: 1,
-    color: { dark: '#1b4332', light: '#ffffff' },
+    color: { dark: '#0f172a', light: '#ffffff' },
   });
 
   const isCertified = restaurant.participation_level === 'certified';
@@ -53,7 +53,7 @@ export default async function QRCardPage() {
           html, body { margin: 0; padding: 0; background: white; }
           .no-print { display: none !important; }
           .card-wrapper { padding: 0; min-height: unset; }
-          .card { box-shadow: none !important; border: 2px solid #2d6a4f !important; }
+          .card { box-shadow: none !important; border: 2px solid #1e293b !important; }
         }
       `}</style>
 
@@ -61,7 +61,7 @@ export default async function QRCardPage() {
       <div className="no-print mb-6 flex items-center justify-between">
         <Link
           href="/dashboard/restaurant"
-          className="text-sm text-[#2d6a4f] hover:underline font-medium"
+          className="text-sm text-[#1e293b] hover:underline font-medium"
         >
           ← Back to dashboard
         </Link>
@@ -79,7 +79,7 @@ export default async function QRCardPage() {
           style={{ width: '3.5in', minHeight: '5in' }}
         >
           {/* Header band */}
-          <div className="bg-[#2d6a4f] px-6 py-4 flex items-center justify-between">
+          <div className="bg-[#1e293b] px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span
                 className={`${wordmark.className} text-white text-xl font-semibold tracking-tight`}
@@ -88,7 +88,7 @@ export default async function QRCardPage() {
               </span>
             </div>
             {isCertified && (
-              <span className="text-xs font-semibold text-green-200 border border-green-400/50 rounded-full px-2 py-0.5">
+              <span className="text-xs font-semibold text-slate-200 border border-slate-400/50 rounded-full px-2 py-0.5">
                 Certified
               </span>
             )}
@@ -110,7 +110,7 @@ export default async function QRCardPage() {
             </div>
 
             {/* QR code */}
-            <div className="p-3 rounded-xl border-2 border-[#2d6a4f]/20 bg-white">
+            <div className="p-3 rounded-xl border-2 border-[#1e293b]/20 bg-white">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={qrDataUrl}

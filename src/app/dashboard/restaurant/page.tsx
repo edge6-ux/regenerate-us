@@ -56,7 +56,7 @@ export default async function RestaurantDashboard() {
       dishQrCodes[dish.id] = await QRCode.toDataURL(restaurantUrl, {
         width: 240,
         margin: 1,
-        color: { dark: '#1b4332', light: '#ffffff' },
+        color: { dark: '#0f172a', light: '#ffffff' },
       });
     })
   );
@@ -77,13 +77,13 @@ export default async function RestaurantDashboard() {
                 href={`/restaurants/${restaurant.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-[#2d6a4f] hover:underline font-medium"
+                className="text-sm text-[#1e293b] hover:underline font-medium"
               >
                 View Public Listing →
               </Link>
               <Link
                 href="/dashboard/restaurant/qr-card"
-                className="text-sm border border-[#2d6a4f] text-[#2d6a4f] px-3 py-1.5 rounded-lg font-medium hover:bg-[#2d6a4f]/5 transition-colors"
+                className="text-sm border border-[#1e293b] text-[#1e293b] px-3 py-1.5 rounded-lg font-medium hover:bg-[#1e293b]/5 transition-colors"
               >
                 Get QR Card
               </Link>
@@ -91,7 +91,7 @@ export default async function RestaurantDashboard() {
           )}
           <Link
             href="/dashboard/restaurant/add-dishes"
-            className="bg-[#2d6a4f] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#1b4332] transition-colors"
+            className="bg-[#1e293b] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#0f172a] transition-colors"
           >
             Certify new dishes
           </Link>
@@ -128,15 +128,15 @@ export default async function RestaurantDashboard() {
           </div>
           <span className={`text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0 ${
             restaurant.participation_level === 'certified'
-              ? 'bg-[#2d6a4f] text-white'
-              : 'bg-green-100 text-green-800 border border-green-200'
+              ? 'bg-[#1e293b] text-white'
+              : 'bg-slate-100 text-slate-800 border border-slate-200'
           }`}>
             {restaurant.participation_level === 'certified' ? 'Regenerate US Certified' : 'Participant'}
           </span>
         </div>
         <div className="w-full bg-stone-100 rounded-full h-2">
           <div
-            className="bg-[#2d6a4f] h-2 rounded-full transition-all"
+            className="bg-[#1e293b] h-2 rounded-full transition-all"
             style={{ width: `${Math.min(100, Math.round((approvedDishes.length / 7) * 100))}%` }}
           />
         </div>
@@ -155,7 +155,7 @@ export default async function RestaurantDashboard() {
                 <h2 className="font-semibold text-stone-900">Certified Dishes</h2>
                 <p className="text-xs text-stone-400 mt-0.5">Click a dish to expand details and download its QR code.</p>
               </div>
-              <span className="text-xs text-[#2d6a4f] font-medium bg-[#2d6a4f]/10 px-2 py-0.5 rounded-full">
+              <span className="text-xs text-[#1e293b] font-medium bg-[#1e293b]/10 px-2 py-0.5 rounded-full">
                 {approvedDishes.length} approved
               </span>
             </div>
@@ -173,7 +173,7 @@ export default async function RestaurantDashboard() {
               <p className="mb-4">No submissions yet.</p>
               <Link
                 href="/dashboard/restaurant/add-dishes"
-                className="inline-block bg-[#2d6a4f] text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-[#1b4332] transition-colors"
+                className="inline-block bg-[#1e293b] text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-[#0f172a] transition-colors"
               >
                 Certify your first dishes
               </Link>
@@ -228,7 +228,7 @@ export default async function RestaurantDashboard() {
             <h2 className="font-semibold text-stone-900 mb-3">Better Health Practices</h2>
             <div className="flex flex-wrap gap-2">
               {restaurant.health_practices.map((p: string) => (
-                <span key={p} className="inline-flex items-center gap-1.5 bg-[#2d6a4f]/8 text-[#2d6a4f] text-xs font-medium px-3 py-1.5 rounded-full border border-[#2d6a4f]/20">
+                <span key={p} className="inline-flex items-center gap-1.5 bg-[#1e293b]/8 text-[#1e293b] text-xs font-medium px-3 py-1.5 rounded-full border border-[#1e293b]/20">
                   <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>

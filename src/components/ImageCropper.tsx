@@ -144,7 +144,7 @@ export function useImageCropper() {
             <button
               type="button"
               onClick={() => void onConfirm()}
-              className="px-3 py-2 rounded-lg text-sm bg-[#2d6a4f] text-white hover:bg-[#1b4332]"
+              className="px-3 py-2 rounded-lg text-sm bg-[#1e293b] text-white hover:bg-[#0f172a]"
             >
               Use cropped image
             </button>

@@ -83,11 +83,11 @@ export default function NotificationBell() {
               {notifications.map((n) => (
                 <li key={n.id}>
                   {n.link ? (
-                    <a href={n.link} onClick={() => setOpen(false)} className={`block px-4 py-3.5 hover:bg-stone-50 transition-colors ${!n.read ? 'bg-[#2d6a4f]/[0.03]' : ''}`}>
+                    <a href={n.link} onClick={() => setOpen(false)} className={`block px-4 py-3.5 hover:bg-stone-50 transition-colors ${!n.read ? 'bg-[#1e293b]/[0.03]' : ''}`}>
                       <NotifItem n={n} />
                     </a>
                   ) : (
-                    <div className={`px-4 py-3.5 ${!n.read ? 'bg-[#2d6a4f]/[0.03]' : ''}`}>
+                    <div className={`px-4 py-3.5 ${!n.read ? 'bg-[#1e293b]/[0.03]' : ''}`}>
                       <NotifItem n={n} />
                     </div>
                   )}
@@ -106,7 +106,7 @@ function NotifItem({ n }: { n: AppNotification }) {
     <>
       <div className="flex items-start justify-between gap-2">
         <p className={`text-sm leading-snug ${n.read ? 'text-stone-600' : 'text-stone-900 font-medium'}`}>{n.title}</p>
-        {!n.read && <span className="w-2 h-2 rounded-full bg-[#2d6a4f] flex-shrink-0 mt-1.5" />}
+        {!n.read && <span className="w-2 h-2 rounded-full bg-[#1e293b] flex-shrink-0 mt-1.5" />}
       </div>
       {n.body && <p className="text-xs text-stone-500 mt-0.5 line-clamp-2 leading-relaxed">{n.body}</p>}
       <p className="text-xs text-stone-400 mt-1">{timeAgo(n.created_at)}</p>

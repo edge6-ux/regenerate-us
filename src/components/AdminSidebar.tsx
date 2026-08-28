@@ -150,8 +150,8 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
       collapsed ? 'md:justify-center md:px-2 md:gap-0' : ''
     } ${
       isActive(href)
-        ? 'bg-[#2d6a4f] text-white'
-        : 'text-green-200 hover:bg-[#2d6a4f]/50 hover:text-white'
+        ? 'bg-[#1e293b] text-white'
+        : 'text-slate-200 hover:bg-[#1e293b]/50 hover:text-white'
     }`;
 
   const asideWidth = collapsed
@@ -160,10 +160,10 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
 
   return (
     <aside
-      className={`bg-[#1b4332] text-white md:min-h-screen flex-shrink-0 transition-[width,min-width] duration-200 ease-out ${asideWidth}`}
+      className={`bg-[#0f172a] text-white md:min-h-screen flex-shrink-0 transition-[width,min-width] duration-200 ease-out ${asideWidth}`}
     >
       {/* Brand + toggle */}
-      <div className="px-4 md:px-3 py-4 md:py-4 border-b border-[#2d6a4f] flex items-center gap-2 justify-between">
+      <div className="px-4 md:px-3 py-4 md:py-4 border-b border-[#1e293b] flex items-center gap-2 justify-between">
         <Link
           href="/admin/review-queue"
           title="Regenerate US Admin"
@@ -176,7 +176,7 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
             <div className="font-bold text-sm">Regenerate US Admin</div>
           </div>
           <div
-            className={`hidden ${collapsed ? 'md:flex' : ''} md:mx-auto md:w-9 md:h-9 md:rounded-lg md:bg-[#2d6a4f] md:items-center md:justify-center md:text-sm md:font-bold`}
+            className={`hidden ${collapsed ? 'md:flex' : ''} md:mx-auto md:w-9 md:h-9 md:rounded-lg md:bg-[#1e293b] md:items-center md:justify-center md:text-sm md:font-bold`}
             aria-hidden
           >
             M
@@ -185,7 +185,7 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
         <button
           type="button"
           onClick={() => setCollapsed((c) => !c)}
-          className="hidden md:inline-flex shrink-0 items-center justify-center rounded-lg p-2 text-green-300 hover:bg-[#2d6a4f]/50 hover:text-white transition-colors"
+          className="hidden md:inline-flex shrink-0 items-center justify-center rounded-lg p-2 text-slate-300 hover:bg-[#1e293b]/50 hover:text-white transition-colors"
           aria-expanded={!collapsed}
           aria-controls="admin-sidebar-nav"
           aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
@@ -200,7 +200,7 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
             </svg>
           )}
         </button>
-        <Link href="/" className="md:hidden text-green-300 hover:text-white text-xs transition-colors shrink-0">
+        <Link href="/" className="md:hidden text-slate-300 hover:text-white text-xs transition-colors shrink-0">
           ← Site
         </Link>
       </div>
@@ -221,7 +221,7 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
         {adminTier >= 3 && (
           <div className={`hidden md:block mt-6 ${collapsed ? 'md:mt-4' : ''}`}>
             <p
-              className={`text-xs font-semibold text-green-500 uppercase tracking-wider mb-2 px-1 ${
+              className={`text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1 ${
                 collapsed ? 'md:hidden' : ''
               }`}
             >
@@ -255,9 +255,9 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
       </nav>
 
       {/* Public site links — desktop only */}
-      <div className={`hidden md:block px-3 pb-2 pt-4 border-t border-[#2d6a4f] ${collapsed ? 'px-2' : 'px-3'}`}>
+      <div className={`hidden md:block px-3 pb-2 pt-4 border-t border-[#1e293b] ${collapsed ? 'px-2' : 'px-3'}`}>
         <p
-          className={`text-xs font-semibold text-green-500 uppercase tracking-wider mb-2 px-1 ${
+          className={`text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1 ${
             collapsed ? 'md:hidden' : ''
           }`}
         >
@@ -271,7 +271,7 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
                 target="_blank"
                 rel="noopener noreferrer"
                 title={`${item.label} (opens in new tab)`}
-                className={`flex w-full items-center rounded-lg text-sm text-green-200/95 hover:bg-[#2d6a4f]/50 hover:text-white transition-colors ${
+                className={`flex w-full items-center rounded-lg text-sm text-slate-200/95 hover:bg-[#1e293b]/50 hover:text-white transition-colors ${
                   collapsed
                     ? 'justify-center px-2 py-2'
                     : 'gap-2 px-3 py-1.5'
@@ -285,7 +285,7 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
                 >
                   {item.label}
                   {!collapsed && (
-                    <span className="text-[0.65rem] text-green-400/70 font-normal" aria-hidden>
+                    <span className="text-[0.65rem] text-slate-400/70 font-normal" aria-hidden>
                       ↗
                     </span>
                   )}
@@ -297,11 +297,11 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
       </div>
 
       {/* Desktop footer */}
-      <div className={`hidden md:block p-3 border-t border-[#2d6a4f] ${collapsed ? 'px-2' : ''}`}>
+      <div className={`hidden md:block p-3 border-t border-[#1e293b] ${collapsed ? 'px-2' : ''}`}>
         <Link
           href="/"
           title="Back to site"
-          className={`flex items-center gap-2 text-green-300 hover:text-white text-sm transition-colors mb-4 ${
+          className={`flex items-center gap-2 text-slate-300 hover:text-white text-sm transition-colors mb-4 ${
             collapsed ? 'md:justify-center md:mb-3' : ''
           }`}
         >
@@ -320,7 +320,7 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
           <ProfileDropdown accountHref="/admin/account" variant="dark" dropDirection="up" />
           <Link
             href="/admin/account"
-            className={`text-xs text-green-400 hover:text-white truncate transition-colors underline-offset-2 hover:underline ${collapsed ? 'md:hidden' : ''}`}
+            className={`text-xs text-slate-400 hover:text-white truncate transition-colors underline-offset-2 hover:underline ${collapsed ? 'md:hidden' : ''}`}
           >
             Account
           </Link>
@@ -328,8 +328,8 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
       </div>
 
       {/* Mobile footer */}
-      <div className="md:hidden p-2 border-t border-[#2d6a4f] flex items-center justify-between px-3">
-        <Link href="/" className="text-sm text-green-200 hover:text-white transition-colors">
+      <div className="md:hidden p-2 border-t border-[#1e293b] flex items-center justify-between px-3">
+        <Link href="/" className="text-sm text-slate-200 hover:text-white transition-colors">
           ← Site
         </Link>
         <ProfileDropdown accountHref="/admin/account" variant="dark" dropDirection="up" />

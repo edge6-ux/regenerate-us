@@ -54,7 +54,7 @@ export default async function FarmDashboard() {
           {farm.status === 'approved' && (
             <Link
               href="/directory"
-              className="text-sm text-[#2d6a4f] hover:underline font-medium"
+              className="text-sm text-[#1e293b] hover:underline font-medium"
             >
               View Directory →
             </Link>
@@ -104,7 +104,7 @@ export default async function FarmDashboard() {
                   href={farm.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#2d6a4f] hover:underline"
+                  className="text-[#1e293b] hover:underline"
                 >
                   {farm.website}
                 </a>
@@ -155,7 +155,7 @@ export default async function FarmDashboard() {
                   {regenerativeTags.map((t) => (
                     <span
                       key={t}
-                      className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 text-xs font-medium border border-emerald-200"
+                      className="px-3 py-1 rounded-full bg-slate-50 text-slate-900 text-xs font-medium border border-slate-200"
                     >
                       {t}
                     </span>
@@ -196,7 +196,7 @@ export default async function FarmDashboard() {
               <span className="text-stone-500 text-sm block mb-2">Better Health Practices</span>
               <div className="flex flex-wrap gap-2">
                 {farm.health_practices.map((p: string) => (
-                  <span key={p} className="inline-flex items-center gap-1.5 bg-[#2d6a4f]/8 text-[#2d6a4f] text-xs font-medium px-3 py-1.5 rounded-full border border-[#2d6a4f]/20">
+                  <span key={p} className="inline-flex items-center gap-1.5 bg-[#1e293b]/8 text-[#1e293b] text-xs font-medium px-3 py-1.5 rounded-full border border-[#1e293b]/20">
                     <svg className="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>

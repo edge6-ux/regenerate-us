@@ -47,19 +47,19 @@ function ResetForm() {
     setTimeout(() => router.push('/login'), 3000);
   }
 
-  const inp = 'w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent outline-none';
+  const inp = 'w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e293b] focus:border-transparent outline-none';
 
   return (
     <div className="min-h-screen bg-stone-50 flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-block text-lg font-bold text-[#2d6a4f]">Regenerate US</Link>
+          <Link href="/" className="inline-block text-lg font-bold text-[#1e293b]">Regenerate US</Link>
         </div>
 
         <div className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm">
           {status === 'loading' && (
             <div className="flex items-center justify-center py-10 gap-3 text-stone-400">
-              <div className="w-5 h-5 border-2 border-[#2d6a4f] border-t-transparent rounded-full animate-spin" />
+              <div className="w-5 h-5 border-2 border-[#1e293b] border-t-transparent rounded-full animate-spin" />
               <span className="text-sm">Verifying reset link…</span>
             </div>
           )}
@@ -73,14 +73,14 @@ function ResetForm() {
               </div>
               <h2 className="text-lg font-semibold text-stone-900 mb-2">Link expired</h2>
               <p className="text-sm text-stone-500 mb-6">{errorMsg}</p>
-              <Link href="/login" className="text-sm text-[#2d6a4f] hover:underline font-medium">Back to login</Link>
+              <Link href="/login" className="text-sm text-[#1e293b] hover:underline font-medium">Back to login</Link>
             </div>
           )}
 
           {status === 'done' && (
             <div className="text-center py-4">
-              <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-6 h-6 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -126,7 +126,7 @@ function ResetForm() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="w-full bg-[#2d6a4f] text-white py-2.5 rounded-xl font-semibold hover:bg-[#1b4332] transition-colors disabled:opacity-50 text-sm"
+                  className="w-full bg-[#1e293b] text-white py-2.5 rounded-xl font-semibold hover:bg-[#0f172a] transition-colors disabled:opacity-50 text-sm"
                 >
                   {saving ? 'Updating…' : 'Update Password'}
                 </button>
@@ -143,7 +143,7 @@ export default function ResetPasswordPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-stone-50 flex items-center justify-center">
-        <div className="w-6 h-6 border-2 border-[#2d6a4f] border-t-transparent rounded-full animate-spin" />
+        <div className="w-6 h-6 border-2 border-[#1e293b] border-t-transparent rounded-full animate-spin" />
       </div>
     }>
       <ResetForm />

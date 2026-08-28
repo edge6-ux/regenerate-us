@@ -31,7 +31,7 @@ export default function ErrorDisplay({
           {reset && (
             <button
               onClick={reset}
-              className="bg-[#2d6a4f] text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#1b4332] transition-colors"
+              className="bg-[#1e293b] text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#0f172a] transition-colors"
             >
               Try Again
             </button>

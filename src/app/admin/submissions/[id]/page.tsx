@@ -140,7 +140,7 @@ export default function SubmissionDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#2d6a4f]"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#1e293b]"></div>
       </div>
     );
   }
@@ -149,7 +149,7 @@ export default function SubmissionDetailPage() {
     return (
       <div className="text-center py-20 text-stone-500">
         Submission not found.
-        <button onClick={() => router.push('/admin/restaurants')} className="block mx-auto mt-4 text-[#2d6a4f] hover:underline">
+        <button onClick={() => router.push('/admin/restaurants')} className="block mx-auto mt-4 text-[#1e293b] hover:underline">
           ← Back to restaurant admin
         </button>
       </div>
@@ -163,13 +163,13 @@ export default function SubmissionDetailPage() {
   return (
     <div className="max-w-4xl">
       {saved && (
-        <div className="mb-6 bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3 rounded-lg text-sm font-medium">
+        <div className="mb-6 bg-slate-50 border border-slate-200 text-slate-800 px-4 py-3 rounded-lg text-sm font-medium">
           Changes saved successfully.
         </div>
       )}
       <button
         onClick={() => router.push('/admin/restaurants')}
-        className="text-sm text-[#2d6a4f] hover:underline mb-6 inline-block"
+        className="text-sm text-[#1e293b] hover:underline mb-6 inline-block"
       >
         ← Back to restaurant admin
       </button>
@@ -223,7 +223,7 @@ export default function SubmissionDetailPage() {
           </div>
           <div>
             <span className="font-medium text-stone-600">Email:</span>{' '}
-            <a href={`mailto:${restaurant.contact_email}`} className="text-[#2d6a4f] hover:underline">
+            <a href={`mailto:${restaurant.contact_email}`} className="text-[#1e293b] hover:underline">
               {restaurant.contact_email}
             </a>
           </div>
@@ -234,7 +234,7 @@ export default function SubmissionDetailPage() {
           {restaurant.website && (
             <div>
               <span className="font-medium text-stone-600">Website:</span>{' '}
-              <a href={restaurant.website} target="_blank" rel="noopener noreferrer" className="text-[#2d6a4f] hover:underline">
+              <a href={restaurant.website} target="_blank" rel="noopener noreferrer" className="text-[#1e293b] hover:underline">
                 {restaurant.website}
               </a>
             </div>
@@ -250,7 +250,7 @@ export default function SubmissionDetailPage() {
             <select
               value={participationLevel}
               onChange={(e) => setParticipationLevel(e.target.value as 'participant' | 'certified')}
-              className="border border-stone-300 rounded-lg px-3 py-2 text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent max-w-xs"
+              className="border border-stone-300 rounded-lg px-3 py-2 text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent max-w-xs"
             >
               <option value="participant">From the Farm Participant</option>
               <option value="certified">Regenerate US Certified Restaurant</option>
@@ -268,7 +268,7 @@ export default function SubmissionDetailPage() {
               <span className="font-medium text-stone-600 block mb-2">Better Health Practices</span>
               <div className="flex flex-wrap gap-1.5">
                 {restaurant.health_practices.map((p: string) => (
-                  <span key={p} className="inline-flex items-center gap-1 bg-[#2d6a4f]/8 text-[#2d6a4f] text-xs font-medium px-2.5 py-1 rounded-full border border-[#2d6a4f]/20">
+                  <span key={p} className="inline-flex items-center gap-1 bg-[#1e293b]/8 text-[#1e293b] text-xs font-medium px-2.5 py-1 rounded-full border border-[#1e293b]/20">
                     <svg className="w-2.5 h-2.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                     {p}
                   </span>
@@ -321,8 +321,8 @@ export default function SubmissionDetailPage() {
                 if (cert === 'usda_organic') {
                   const supplierName = dish.supplier_name;
                   return (
-                    <div className="mt-2 flex items-center justify-between gap-2 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2">
-                      <div className="flex items-center gap-2 text-xs text-emerald-800 font-medium">
+                    <div className="mt-2 flex items-center justify-between gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
+                      <div className="flex items-center gap-2 text-xs text-slate-800 font-medium">
                         <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                         USDA Organic Certified
                       </div>
@@ -331,7 +331,7 @@ export default function SubmissionDetailPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         title={`Search for "${supplierName}" on USDA Organic Integrity Database`}
-                        className="flex items-center gap-1 text-xs text-emerald-700 hover:text-emerald-900 font-medium underline underline-offset-2 flex-shrink-0"
+                        className="flex items-center gap-1 text-xs text-slate-700 hover:text-slate-900 font-medium underline underline-offset-2 flex-shrink-0"
                       >
                         Verify on USDA
                         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
@@ -349,7 +349,7 @@ export default function SubmissionDetailPage() {
                 return (
                   <div className="mt-1.5 flex items-center gap-2 bg-stone-50 border border-stone-200 rounded-lg px-3 py-2">
                     <svg className="w-3.5 h-3.5 text-stone-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" /></svg>
-                    <a href={certUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-[#2d6a4f] hover:underline font-medium">
+                    <a href={certUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-[#1e293b] hover:underline font-medium">
                       {isPdf ? 'View certification PDF' : 'View certification document'}
                     </a>
                   </div>
@@ -361,7 +361,7 @@ export default function SubmissionDetailPage() {
                     <>
                       <button
                         onClick={() => handleDishAction(dish.id, 'approved')}
-                        className="text-xs px-3 py-1.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
+                        className="text-xs px-3 py-1.5 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors font-medium"
                       >
                         Approve Dish
                       </button>
@@ -438,7 +438,7 @@ export default function SubmissionDetailPage() {
                         href={upload.file_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-[#2d6a4f] hover:underline font-medium"
+                        className="text-sm text-[#1e293b] hover:underline font-medium"
                       >
                         {upload.file_name || 'View File'}
                       </a>
@@ -465,7 +465,7 @@ export default function SubmissionDetailPage() {
                   value={adminNotes}
                   onChange={(e) => setAdminNotes(e.target.value)}
                   rows={4}
-                  className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent"
+                  className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent"
                   placeholder="Add internal notes about this submission..."
                 />
               </div>
@@ -477,7 +477,7 @@ export default function SubmissionDetailPage() {
                 <select
                   value={selectedStatus}
                   onChange={(e) => setSelectedStatus(e.target.value)}
-                  className="border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent"
+                  className="border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent"
                 >
                   <option value="pending">Pending</option>
                   <option value="needs_clarification">Needs Clarification</option>
@@ -495,7 +495,7 @@ export default function SubmissionDetailPage() {
                 <button
                   onClick={handleUpdateStatus}
                   disabled={saving}
-                  className="bg-[#2d6a4f] text-white px-6 py-2.5 rounded-lg font-medium hover:bg-[#1b4332] transition-colors disabled:opacity-50"
+                  className="bg-[#1e293b] text-white px-6 py-2.5 rounded-lg font-medium hover:bg-[#0f172a] transition-colors disabled:opacity-50"
                 >
                   {saving ? 'Saving...' : 'Update Submission'}
                 </button>
@@ -524,7 +524,7 @@ export default function SubmissionDetailPage() {
           {pwResetMsg && (
             <div className={`mb-4 px-4 py-3 rounded-lg text-sm ${
               pwResetMsg.type === 'success'
-                ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+                ? 'bg-slate-50 border border-slate-200 text-slate-800'
                 : 'bg-red-50 border border-red-200 text-red-700'
             }`}>
               {pwResetMsg.text}

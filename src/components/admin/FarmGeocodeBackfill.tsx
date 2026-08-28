@@ -51,7 +51,7 @@ export default function FarmGeocodeBackfill({ farmsMissingCoordsCount }: { farms
   }
 
   return (
-    <div className="rounded-xl border border-[#2d6a4f]/25 bg-[#2d6a4f]/5 px-4 py-4 text-sm">
+    <div className="rounded-xl border border-[#1e293b]/25 bg-[#1e293b]/5 px-4 py-4 text-sm">
       <h2 className="font-semibold text-stone-900 mb-1">Map coordinates</h2>
       <p className="text-stone-600 mb-3 max-w-2xl">
         <strong>{farmsMissingCoordsCount}</strong> farm{farmsMissingCoordsCount !== 1 ? 's' : ''} missing latitude/longitude
@@ -62,7 +62,7 @@ export default function FarmGeocodeBackfill({ farmsMissingCoordsCount }: { farms
         type="button"
         onClick={() => void run()}
         disabled={loading}
-        className="inline-flex items-center gap-2 rounded-lg bg-[#2d6a4f] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1b4332] disabled:opacity-60 transition-colors"
+        className="inline-flex items-center gap-2 rounded-lg bg-[#1e293b] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0f172a] disabled:opacity-60 transition-colors"
       >
         {loading ? 'Geocoding… (may take a minute)' : 'Fill coordinates from addresses'}
       </button>

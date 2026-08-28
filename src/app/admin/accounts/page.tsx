@@ -317,7 +317,7 @@ export default function AccountsPage() {
     );
   }
 
-  const inp = 'border border-stone-300 rounded-lg px-3 py-1.5 text-sm focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent outline-none';
+  const inp = 'border border-stone-300 rounded-lg px-3 py-1.5 text-sm focus:ring-2 focus:ring-[#1e293b] focus:border-transparent outline-none';
 
   const DeleteBtn = ({ id }: { id: string }) =>
     confirmDelete === id ? (
@@ -364,7 +364,7 @@ export default function AccountsPage() {
         <button
           type="button"
           onClick={() => { setCreateModalOpen(true); setMsg(null); }}
-          className="shrink-0 inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium bg-[#2d6a4f] text-white hover:bg-[#1b4332] shadow-sm transition-colors"
+          className="shrink-0 inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium bg-[#1e293b] text-white hover:bg-[#0f172a] shadow-sm transition-colors"
         >
           New account
         </button>
@@ -565,7 +565,7 @@ export default function AccountsPage() {
                 type="button"
                 disabled={createBusy}
                 onClick={() => void submitNewAccount()}
-                className="text-sm px-4 py-2 rounded-lg bg-[#2d6a4f] text-white hover:bg-[#1b4332] disabled:opacity-50"
+                className="text-sm px-4 py-2 rounded-lg bg-[#1e293b] text-white hover:bg-[#0f172a] disabled:opacity-50"
               >
                 {createBusy ? 'Creating…' : 'Create account'}
               </button>
@@ -577,7 +577,7 @@ export default function AccountsPage() {
       {msg && (
         <div className={`mb-6 px-4 py-3 rounded-lg text-sm ${
           msg.type === 'success'
-            ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+            ? 'bg-slate-50 border border-slate-200 text-slate-800'
             : 'bg-red-50 border border-red-200 text-red-700'
         }`}>
           {msg.text}
@@ -619,7 +619,7 @@ export default function AccountsPage() {
             <div className="bg-white border border-stone-200 rounded-xl overflow-hidden">
               <div className="px-6 py-4 border-b border-stone-100">
                 <h2 className="font-semibold text-stone-900">Admin Accounts</h2>
-                <p className="text-xs text-stone-400 mt-0.5">To change permission tiers, use the <a href="/admin/permissions" className="text-[#2d6a4f] hover:underline">Permissions</a> page.</p>
+                <p className="text-xs text-stone-400 mt-0.5">To change permission tiers, use the <a href="/admin/permissions" className="text-[#1e293b] hover:underline">Permissions</a> page.</p>
               </div>
               <ul className="divide-y divide-stone-100">
                 {admins.map((admin) => {
@@ -660,7 +660,7 @@ export default function AccountsPage() {
                             {!isSelf && (
                               <button
                                 onClick={() => startEmailEdit(editKey, admin.email)}
-                                className="text-xs px-3 py-1.5 border border-[#2d6a4f]/30 rounded-lg text-[#2d6a4f] hover:bg-[#2d6a4f]/5 transition-colors whitespace-nowrap"
+                                className="text-xs px-3 py-1.5 border border-[#1e293b]/30 rounded-lg text-[#1e293b] hover:bg-[#1e293b]/5 transition-colors whitespace-nowrap"
                               >
                                 Change Email
                               </button>
@@ -696,7 +696,7 @@ export default function AccountsPage() {
                               type="button"
                               onClick={() => void saveDirectPassword()}
                               disabled={directPwSaving}
-                              className="text-xs px-3 py-1.5 bg-[#2d6a4f] text-white rounded-lg hover:bg-[#1b4332] disabled:opacity-50"
+                              className="text-xs px-3 py-1.5 bg-[#1e293b] text-white rounded-lg hover:bg-[#0f172a] disabled:opacity-50"
                             >
                               {directPwSaving ? 'Saving…' : 'Save password'}
                             </button>
@@ -718,7 +718,7 @@ export default function AccountsPage() {
                       {isEditing && (
                         <div className="flex items-center gap-2 mt-2 flex-wrap">
                           <input type="email" value={emailDraft} onChange={(e) => setEmailDraft(e.target.value)} className={inp + ' flex-1 min-w-48'} placeholder="New email address" autoFocus />
-                          <button onClick={() => saveEmailChange(admin.id, 'admin', admin.id, editKey)} disabled={emailSaving} className="text-xs px-3 py-1.5 bg-[#2d6a4f] text-white rounded-lg hover:bg-[#1b4332] disabled:opacity-50">
+                          <button onClick={() => saveEmailChange(admin.id, 'admin', admin.id, editKey)} disabled={emailSaving} className="text-xs px-3 py-1.5 bg-[#1e293b] text-white rounded-lg hover:bg-[#0f172a] disabled:opacity-50">
                             {emailSaving ? 'Saving…' : 'Save'}
                           </button>
                           <button onClick={() => setEditingEmail(null)} className="text-xs px-3 py-1.5 border border-stone-300 rounded-lg text-stone-600 hover:bg-stone-50">Cancel</button>
@@ -773,7 +773,7 @@ export default function AccountsPage() {
                             )}
                             <button
                               onClick={() => startEmailEdit(editKey, r.email)}
-                              className="text-xs px-3 py-1.5 border border-[#2d6a4f]/30 rounded-lg text-[#2d6a4f] hover:bg-[#2d6a4f]/5 transition-colors whitespace-nowrap"
+                              className="text-xs px-3 py-1.5 border border-[#1e293b]/30 rounded-lg text-[#1e293b] hover:bg-[#1e293b]/5 transition-colors whitespace-nowrap"
                             >
                               Change Email
                             </button>
@@ -808,7 +808,7 @@ export default function AccountsPage() {
                               type="button"
                               onClick={() => void saveDirectPassword()}
                               disabled={directPwSaving}
-                              className="text-xs px-3 py-1.5 bg-[#2d6a4f] text-white rounded-lg hover:bg-[#1b4332] disabled:opacity-50"
+                              className="text-xs px-3 py-1.5 bg-[#1e293b] text-white rounded-lg hover:bg-[#0f172a] disabled:opacity-50"
                             >
                               {directPwSaving ? 'Saving…' : 'Save password'}
                             </button>
@@ -830,7 +830,7 @@ export default function AccountsPage() {
                         {isEditing && r.profileId && (
                           <div className="flex items-center gap-2 mt-2 flex-wrap">
                             <input type="email" value={emailDraft} onChange={(e) => setEmailDraft(e.target.value)} className={inp + ' flex-1 min-w-48'} placeholder="New email address" autoFocus />
-                            <button onClick={() => saveEmailChange(r.profileId!, 'restaurant', r.id, editKey)} disabled={emailSaving} className="text-xs px-3 py-1.5 bg-[#2d6a4f] text-white rounded-lg hover:bg-[#1b4332] disabled:opacity-50">
+                            <button onClick={() => saveEmailChange(r.profileId!, 'restaurant', r.id, editKey)} disabled={emailSaving} className="text-xs px-3 py-1.5 bg-[#1e293b] text-white rounded-lg hover:bg-[#0f172a] disabled:opacity-50">
                               {emailSaving ? 'Saving…' : 'Save'}
                             </button>
                             <button onClick={() => setEditingEmail(null)} className="text-xs px-3 py-1.5 border border-stone-300 rounded-lg text-stone-600 hover:bg-stone-50">Cancel</button>
@@ -886,7 +886,7 @@ export default function AccountsPage() {
                             )}
                             <button
                               onClick={() => startEmailEdit(editKey, f.email)}
-                              className="text-xs px-3 py-1.5 border border-[#2d6a4f]/30 rounded-lg text-[#2d6a4f] hover:bg-[#2d6a4f]/5 transition-colors whitespace-nowrap"
+                              className="text-xs px-3 py-1.5 border border-[#1e293b]/30 rounded-lg text-[#1e293b] hover:bg-[#1e293b]/5 transition-colors whitespace-nowrap"
                             >
                               Change Email
                             </button>
@@ -921,7 +921,7 @@ export default function AccountsPage() {
                               type="button"
                               onClick={() => void saveDirectPassword()}
                               disabled={directPwSaving}
-                              className="text-xs px-3 py-1.5 bg-[#2d6a4f] text-white rounded-lg hover:bg-[#1b4332] disabled:opacity-50"
+                              className="text-xs px-3 py-1.5 bg-[#1e293b] text-white rounded-lg hover:bg-[#0f172a] disabled:opacity-50"
                             >
                               {directPwSaving ? 'Saving…' : 'Save password'}
                             </button>
@@ -943,7 +943,7 @@ export default function AccountsPage() {
                         {isEditing && f.profileId && (
                           <div className="flex items-center gap-2 mt-2 flex-wrap">
                             <input type="email" value={emailDraft} onChange={(e) => setEmailDraft(e.target.value)} className={inp + ' flex-1 min-w-48'} placeholder="New email address" autoFocus />
-                            <button onClick={() => saveEmailChange(f.profileId!, 'farm', f.id, editKey)} disabled={emailSaving} className="text-xs px-3 py-1.5 bg-[#2d6a4f] text-white rounded-lg hover:bg-[#1b4332] disabled:opacity-50">
+                            <button onClick={() => saveEmailChange(f.profileId!, 'farm', f.id, editKey)} disabled={emailSaving} className="text-xs px-3 py-1.5 bg-[#1e293b] text-white rounded-lg hover:bg-[#0f172a] disabled:opacity-50">
                               {emailSaving ? 'Saving…' : 'Save'}
                             </button>
                             <button onClick={() => setEditingEmail(null)} className="text-xs px-3 py-1.5 border border-stone-300 rounded-lg text-stone-600 hover:bg-stone-50">Cancel</button>

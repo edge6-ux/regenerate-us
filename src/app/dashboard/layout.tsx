@@ -9,7 +9,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="min-h-screen bg-stone-50">
       <header className="bg-white border-b border-stone-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-          <Link href="/" className="text-lg font-bold text-[#2d6a4f]">
+          <Link href="/" className="text-lg font-bold text-[#1e293b]">
             Regenerate US
           </Link>
           <div className="flex items-center gap-3">

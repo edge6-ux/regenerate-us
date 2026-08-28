@@ -19,7 +19,7 @@ export default async function HomePage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1b4332]/85 to-[#2d6a4f]/75" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0f172a]/85 to-[#1e293b]/75" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-24 md:pt-48 md:pb-32">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm mb-6">
@@ -27,9 +27,9 @@ export default async function HomePage() {
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               Know Where Your Food{' '}
-              <span className="text-green-300">Really</span> Comes From
+              <span className="text-slate-300">Really</span> Comes From
             </h1>
-            <p className="text-lg md:text-xl text-green-100 mb-10 leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-100 mb-10 leading-relaxed">
               Regenerate US certifies restaurants that prioritize transparency,
               local sourcing, and verified farm-to-table practices. Every certified dish
               comes with full supplier transparency.
@@ -38,7 +38,7 @@ export default async function HomePage() {
               {showApplyCtas && (
                 <Link
                   href="/apply"
-                  className="bg-white text-[#1b4332] px-8 py-3.5 rounded-xl font-semibold text-center hover:bg-green-50 transition-colors"
+                  className="bg-white text-[#0f172a] px-8 py-3.5 rounded-xl font-semibold text-center hover:bg-slate-50 transition-colors"
                 >
                   Apply for Certification
                 </Link>
@@ -87,7 +87,7 @@ export default async function HomePage() {
             ].map((step, i) => (
               <Reveal key={i} delay={i * 100}>
                 <div className="bg-white border border-stone-200 rounded-xl p-8 hover:shadow-lg transition-shadow">
-                  <div className="text-4xl font-black text-[#2d6a4f]/15 mb-3 leading-none">{step.step}</div>
+                  <div className="text-4xl font-black text-[#1e293b]/15 mb-3 leading-none">{step.step}</div>
                   <h3 className="text-xl font-semibold text-stone-900 mb-3">{step.title}</h3>
                   <p className="text-stone-600 text-sm leading-relaxed">{step.description}</p>
                 </div>
@@ -98,11 +98,11 @@ export default async function HomePage() {
       </section>
 
       {/* Why It Matters */}
-      <section className="py-12 md:py-20 bg-[#1b4332] text-white">
+      <section className="py-12 md:py-20 bg-[#0f172a] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-10 md:mb-16">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Local Sourcing Matters</h2>
-            <p className="text-green-200/80 max-w-2xl mx-auto">
+            <p className="text-slate-200/80 max-w-2xl mx-auto">
               Every purchasing decision a restaurant makes is a vote for the kind of food system we want.
               Regenerate US makes those decisions visible.
             </p>
@@ -139,12 +139,12 @@ export default async function HomePage() {
             ].map((item, i) => (
               <Reveal key={i} delay={i * 100}>
                 <div className="flex flex-col gap-4">
-                  <div className="w-12 h-12 bg-[#2d6a4f] rounded-xl flex items-center justify-center text-green-300 flex-shrink-0">
+                  <div className="w-12 h-12 bg-[#1e293b] rounded-xl flex items-center justify-center text-slate-300 flex-shrink-0">
                     {item.icon}
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
-                    <p className="text-green-200/70 text-sm leading-relaxed">{item.description}</p>
+                    <p className="text-slate-200/70 text-sm leading-relaxed">{item.description}</p>
                   </div>
                 </div>
               </Reveal>
@@ -184,8 +184,8 @@ export default async function HomePage() {
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <div className="border-2 border-[#2d6a4f] rounded-xl p-8 bg-[#2d6a4f]/5 h-full">
-                <div className="inline-flex items-center gap-2 bg-[#2d6a4f]/10 text-[#2d6a4f] text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              <div className="border-2 border-[#1e293b] rounded-xl p-8 bg-[#1e293b]/5 h-full">
+                <div className="inline-flex items-center gap-2 bg-[#1e293b]/10 text-[#1e293b] text-xs font-semibold px-3 py-1 rounded-full mb-4">
                   Full Certification
                 </div>
                 <h3 className="text-xl font-bold text-stone-900 mb-3">Regenerate US Certified Restaurant</h3>
@@ -196,7 +196,7 @@ export default async function HomePage() {
                 <ul className="space-y-2">
                   {['7+ certified dishes', 'Regenerate US Certified badge', 'Featured in directory', 'Restaurant-level recognition'].map((f) => (
                     <li key={f} className="flex items-center gap-2 text-sm text-stone-600">
-                      <svg className="w-4 h-4 text-[#2d6a4f] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      <svg className="w-4 h-4 text-[#1e293b] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                       {f}
                     </li>
                   ))}
@@ -208,23 +208,23 @@ export default async function HomePage() {
       </section>
 
       {/* For Farms */}
-      <section className="py-12 md:py-20 bg-[#1b4332]">
+      <section className="py-12 md:py-20 bg-[#0f172a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <Reveal>
               <div>
-                <div className="inline-flex items-center gap-2 bg-white/10 text-green-200 text-xs font-semibold px-3 py-1 rounded-full mb-5">
+                <div className="inline-flex items-center gap-2 bg-white/10 text-slate-200 text-xs font-semibold px-3 py-1 rounded-full mb-5">
                   For Farms & Producers
                 </div>
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                   Restaurants Are Looking for You
                 </h2>
-                <p className="text-green-100 leading-relaxed mb-4">
+                <p className="text-slate-100 leading-relaxed mb-4">
                   Every Regenerate US-certified dish links directly to a verified farm or producer.
                   Restaurants in our network are actively searching for local suppliers who meet
                   the program&apos;s standards — get in front of them by registering your farm.
                 </p>
-                <p className="text-green-200 leading-relaxed mb-8">
+                <p className="text-slate-200 leading-relaxed mb-8">
                   We verify your certifications and practices so restaurants can source from you
                   with confidence. Your profile, products, and contact info are searchable by
                   buyers in the directory.
@@ -233,14 +233,14 @@ export default async function HomePage() {
                   {showApplyCtas && (
                     <Link
                       href="/apply?type=farm"
-                      className="inline-block bg-white text-[#1b4332] px-6 py-3 rounded-xl font-semibold hover:bg-green-50 transition-colors text-sm"
+                      className="inline-block bg-white text-[#0f172a] px-6 py-3 rounded-xl font-semibold hover:bg-slate-50 transition-colors text-sm"
                     >
                       Register Your Farm
                     </Link>
                   )}
                   <Link
                     href="/directory"
-                    className="text-sm text-green-300 hover:text-white font-medium transition-colors"
+                    className="text-sm text-slate-300 hover:text-white font-medium transition-colors"
                   >
                     View the Directory →
                   </Link>
@@ -257,7 +257,7 @@ export default async function HomePage() {
                 ].map((item, i) => (
                   <div key={i} className="bg-white/10 border border-white/10 rounded-xl p-5">
                     <h4 className="text-sm font-semibold text-white mb-1">{item.label}</h4>
-                    <p className="text-xs text-green-200 leading-relaxed">{item.desc}</p>
+                    <p className="text-xs text-slate-200 leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -319,7 +319,7 @@ export default async function HomePage() {
             ].map((item, i) => (
               <Reveal key={i} delay={i * 80}>
                 <div className="bg-stone-50 border border-stone-100 rounded-xl p-6 h-full">
-                  <div className="w-11 h-11 bg-[#2d6a4f]/10 rounded-xl flex items-center justify-center text-[#2d6a4f] mb-4">
+                  <div className="w-11 h-11 bg-[#1e293b]/10 rounded-xl flex items-center justify-center text-[#1e293b] mb-4">
                     {item.icon}
                   </div>
                   <h3 className="font-semibold text-stone-900 mb-2">{item.title}</h3>
@@ -332,13 +332,13 @@ export default async function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-[#2d6a4f]">
+      <section className="py-16 md:py-24 bg-[#1e293b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Ready to Showcase Your Sourcing?
             </h2>
-            <p className="text-green-200/80 mb-10 max-w-xl mx-auto">
+            <p className="text-slate-200/80 mb-10 max-w-xl mx-auto">
               Join the growing community of restaurants committed to transparency
               and local sourcing.
             </p>
@@ -346,7 +346,7 @@ export default async function HomePage() {
               {showApplyCtas && (
                 <Link
                   href="/apply"
-                  className="inline-block bg-white text-[#1b4332] px-8 py-3.5 rounded-xl font-semibold hover:bg-green-50 transition-colors"
+                  className="inline-block bg-white text-[#0f172a] px-8 py-3.5 rounded-xl font-semibold hover:bg-slate-50 transition-colors"
                 >
                   Start Your Application
                 </Link>

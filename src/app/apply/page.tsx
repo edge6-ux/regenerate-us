@@ -215,7 +215,7 @@ export default function ApplyPage() {
     }
   }
 
-  const inp = 'w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent outline-none';
+  const inp = 'w-full border border-stone-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e293b] focus:border-transparent outline-none';
 
   // ─── Progress Bar ──────────────────────────────────────────────────────────
   const ProgressBar = () => (
@@ -224,7 +224,7 @@ export default function ApplyPage() {
         {/* Connector line */}
         <div className="absolute left-0 right-0 top-4 h-0.5 bg-stone-200 -z-0" />
         <div
-          className="absolute left-0 top-4 h-0.5 bg-[#2d6a4f] transition-all duration-500 -z-0"
+          className="absolute left-0 top-4 h-0.5 bg-[#1e293b] transition-all duration-500 -z-0"
           style={{ width: `${(step / (STEPS.length - 1)) * 100}%` }}
         />
         {STEPS.map((s, i) => {
@@ -237,8 +237,8 @@ export default function ApplyPage() {
                 disabled={!done}
                 onClick={() => { if (done) { setStepError(''); setStep(i); window.scrollTo({ top: 0, behavior: 'smooth' }); } }}
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border-2 transition-all duration-300 ${
-                  done ? 'bg-[#2d6a4f] border-[#2d6a4f] text-white cursor-pointer hover:bg-[#1b4332] hover:border-[#1b4332]'
-                    : active ? 'bg-white border-[#2d6a4f] text-[#2d6a4f] cursor-default'
+                  done ? 'bg-[#1e293b] border-[#1e293b] text-white cursor-pointer hover:bg-[#0f172a] hover:border-[#0f172a]'
+                    : active ? 'bg-white border-[#1e293b] text-[#1e293b] cursor-default'
                     : 'bg-white border-stone-300 text-stone-400 cursor-default'
                 }`}
               >
@@ -246,7 +246,7 @@ export default function ApplyPage() {
                   ? <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                   : i + 1}
               </button>
-              <span className={`text-xs font-medium hidden sm:block ${active ? 'text-[#2d6a4f]' : done ? 'text-stone-500' : 'text-stone-400'}`}>
+              <span className={`text-xs font-medium hidden sm:block ${active ? 'text-[#1e293b]' : done ? 'text-stone-500' : 'text-stone-400'}`}>
                 {s.label}
               </span>
             </div>
@@ -287,13 +287,13 @@ export default function ApplyPage() {
                   type="button"
                   onClick={() => setApplicantType(t)}
                   className={`p-5 rounded-xl border-2 text-left transition-all ${
-                    applicantType === t ? 'border-[#2d6a4f] bg-[#2d6a4f]/5' : 'border-stone-200 hover:border-stone-300'
+                    applicantType === t ? 'border-[#1e293b] bg-[#1e293b]/5' : 'border-stone-200 hover:border-stone-300'
                   }`}
                 >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${applicantType === t ? 'bg-[#2d6a4f]/10' : 'bg-stone-100'}`}>
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${applicantType === t ? 'bg-[#1e293b]/10' : 'bg-stone-100'}`}>
                     {t === 'restaurant'
-                      ? <svg className={`w-5 h-5 ${applicantType === t ? 'text-[#2d6a4f]' : 'text-stone-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
-                      : <svg className={`w-5 h-5 ${applicantType === t ? 'text-[#2d6a4f]' : 'text-stone-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}><path strokeLinecap="round" strokeLinejoin="round" d="M12 3c-1.2 5.4-5 7.8-5 11a5 5 0 0 0 10 0c0-3.2-3.8-5.6-5-11Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 14v4" /></svg>
+                      ? <svg className={`w-5 h-5 ${applicantType === t ? 'text-[#1e293b]' : 'text-stone-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
+                      : <svg className={`w-5 h-5 ${applicantType === t ? 'text-[#1e293b]' : 'text-stone-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}><path strokeLinecap="round" strokeLinejoin="round" d="M12 3c-1.2 5.4-5 7.8-5 11a5 5 0 0 0 10 0c0-3.2-3.8-5.6-5-11Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 14v4" /></svg>
                     }
                   </div>
                   <div className="font-semibold text-stone-900 mb-1 capitalize">{t === 'farm' ? 'Farm / Producer' : 'Restaurant'}</div>
@@ -406,7 +406,7 @@ export default function ApplyPage() {
                     <h2 className="text-xl font-semibold text-stone-900">Dish Submissions</h2>
                     <p className="text-sm text-stone-500 mt-0.5">Add each dish you'd like to certify.</p>
                   </div>
-                  <button type="button" onClick={addDish} className="flex items-center gap-1.5 text-sm font-medium text-[#2d6a4f] hover:text-[#1b4332]">
+                  <button type="button" onClick={addDish} className="flex items-center gap-1.5 text-sm font-medium text-[#1e293b] hover:text-[#0f172a]">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
                     Add Dish
                   </button>
@@ -441,12 +441,12 @@ export default function ApplyPage() {
                         onClick={() => togglePractice(label)}
                         className={`flex items-center gap-3 px-4 py-3 rounded-xl border-2 text-left text-sm font-medium transition-all ${
                           checked
-                            ? 'border-[#2d6a4f] bg-[#2d6a4f]/5 text-[#2d6a4f]'
+                            ? 'border-[#1e293b] bg-[#1e293b]/5 text-[#1e293b]'
                             : 'border-stone-200 text-stone-600 hover:border-stone-300'
                         }`}
                       >
                         <span className={`w-4 h-4 rounded border-2 flex-shrink-0 flex items-center justify-center transition-colors ${
-                          checked ? 'bg-[#2d6a4f] border-[#2d6a4f]' : 'border-stone-300'
+                          checked ? 'bg-[#1e293b] border-[#1e293b]' : 'border-stone-300'
                         }`}>
                           {checked && (
                             <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -494,13 +494,13 @@ export default function ApplyPage() {
                             onClick={() => toggleFarmTag(farmLivestock, setFarmLivestock, label)}
                             className={`flex items-center gap-3 px-4 py-3 rounded-xl border-2 text-left text-sm font-medium transition-all ${
                               checked
-                                ? 'border-[#2d6a4f] bg-[#2d6a4f]/5 text-[#2d6a4f]'
+                                ? 'border-[#1e293b] bg-[#1e293b]/5 text-[#1e293b]'
                                 : 'border-stone-200 text-stone-600 hover:border-stone-300'
                             }`}
                           >
                             <span
                               className={`w-4 h-4 rounded border-2 flex-shrink-0 flex items-center justify-center ${
-                                checked ? 'bg-[#2d6a4f] border-[#2d6a4f]' : 'border-stone-300'
+                                checked ? 'bg-[#1e293b] border-[#1e293b]' : 'border-stone-300'
                               }`}
                             >
                               {checked && (
@@ -529,13 +529,13 @@ export default function ApplyPage() {
                             onClick={() => toggleFarmTag(farmProduce, setFarmProduce, label)}
                             className={`flex items-center gap-3 px-4 py-3 rounded-xl border-2 text-left text-sm font-medium transition-all ${
                               checked
-                                ? 'border-[#2d6a4f] bg-[#2d6a4f]/5 text-[#2d6a4f]'
+                                ? 'border-[#1e293b] bg-[#1e293b]/5 text-[#1e293b]'
                                 : 'border-stone-200 text-stone-600 hover:border-stone-300'
                             }`}
                           >
                             <span
                               className={`w-4 h-4 rounded border-2 flex-shrink-0 flex items-center justify-center ${
-                                checked ? 'bg-[#2d6a4f] border-[#2d6a4f]' : 'border-stone-300'
+                                checked ? 'bg-[#1e293b] border-[#1e293b]' : 'border-stone-300'
                               }`}
                             >
                               {checked && (
@@ -564,13 +564,13 @@ export default function ApplyPage() {
                             onClick={() => toggleFarmTag(farmRegenerative, setFarmRegenerative, label)}
                             className={`flex items-center gap-3 px-4 py-3 rounded-xl border-2 text-left text-sm font-medium transition-all ${
                               checked
-                                ? 'border-[#2d6a4f] bg-[#2d6a4f]/5 text-[#2d6a4f]'
+                                ? 'border-[#1e293b] bg-[#1e293b]/5 text-[#1e293b]'
                                 : 'border-stone-200 text-stone-600 hover:border-stone-300'
                             }`}
                           >
                             <span
                               className={`w-4 h-4 rounded border-2 flex-shrink-0 flex items-center justify-center ${
-                                checked ? 'bg-[#2d6a4f] border-[#2d6a4f]' : 'border-stone-300'
+                                checked ? 'bg-[#1e293b] border-[#1e293b]' : 'border-stone-300'
                               }`}
                             >
                               {checked && (
@@ -618,7 +618,7 @@ export default function ApplyPage() {
                       onClick={() => { setFarmCertUsdaYes(val); setFarmCertType(''); setFarmCertOther(''); setFarmCertFileUrl(''); }}
                       className={`flex-1 py-2.5 rounded-xl border-2 text-sm font-semibold transition-all ${
                         farmCertUsdaYes === val
-                          ? 'border-[#2d6a4f] bg-[#2d6a4f]/5 text-[#2d6a4f]'
+                          ? 'border-[#1e293b] bg-[#1e293b]/5 text-[#1e293b]'
                           : 'border-stone-200 text-stone-600 hover:border-stone-300'
                       }`}
                     >
@@ -629,9 +629,9 @@ export default function ApplyPage() {
 
                 {/* USDA confirmed */}
                 {farmCertUsdaYes === true && (
-                  <div className="flex items-center gap-2.5 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3">
-                    <svg className="w-5 h-5 text-emerald-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    <p className="text-sm text-emerald-800 font-medium">USDA Organic Certified — you&apos;re all set.</p>
+                  <div className="flex items-center gap-2.5 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
+                    <svg className="w-5 h-5 text-slate-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <p className="text-sm text-slate-800 font-medium">USDA Organic Certified — you&apos;re all set.</p>
                   </div>
                 )}
 
@@ -653,7 +653,7 @@ export default function ApplyPage() {
                             onClick={() => { setFarmCertType(value); setFarmCertOther(''); setFarmCertFileUrl(''); }}
                             className={`px-4 py-3 rounded-xl border-2 text-left text-sm font-medium transition-all ${
                               farmCertType === value
-                                ? 'border-[#2d6a4f] bg-[#2d6a4f]/5 text-[#2d6a4f]'
+                                ? 'border-[#1e293b] bg-[#1e293b]/5 text-[#1e293b]'
                                 : 'border-stone-200 text-stone-600 hover:border-stone-300'
                             }`}
                           >
@@ -681,9 +681,9 @@ export default function ApplyPage() {
                         <label className="block text-sm font-medium text-stone-700 mb-1">Upload certification document</label>
                         <p className="text-xs text-stone-400 mb-2">PDF, PNG, or JPG — optional but recommended for faster verification.</p>
                         {farmCertFileUrl ? (
-                          <div className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2">
-                            <svg className="w-4 h-4 text-emerald-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            <span className="text-xs text-emerald-800 flex-1 truncate">Document uploaded</span>
+                          <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
+                            <svg className="w-4 h-4 text-slate-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            <span className="text-xs text-slate-800 flex-1 truncate">Document uploaded</span>
                             <button type="button" onClick={() => setFarmCertFileUrl('')} className="text-xs text-stone-400 hover:text-stone-600">Remove</button>
                           </div>
                         ) : (
@@ -729,8 +729,8 @@ export default function ApplyPage() {
         {/* ── Step 4: Review & Attest ───────────────────────────────────────── */}
         <div className={step === 4 ? '' : 'hidden'}>
           {/* Summary card */}
-          <div className="bg-[#2d6a4f]/5 border border-[#2d6a4f]/20 rounded-xl p-5 mb-6">
-            <h2 className="text-base font-semibold text-[#2d6a4f] mb-3">Application Summary</h2>
+          <div className="bg-[#1e293b]/5 border border-[#1e293b]/20 rounded-xl p-5 mb-6">
+            <h2 className="text-base font-semibold text-[#1e293b] mb-3">Application Summary</h2>
             <div className="text-sm text-stone-600 space-y-1">
               <p><span className="font-medium text-stone-800">Type:</span> {applicantType === 'restaurant' ? 'Restaurant' : 'Farm / Producer'}</p>
               {applicantType === 'restaurant' && (
@@ -775,7 +775,7 @@ export default function ApplyPage() {
                     type="checkbox"
                     checked={attestations[key]}
                     onChange={(e) => setAttestations({ ...attestations, [key]: e.target.checked })}
-                    className="mt-0.5 h-4 w-4 rounded border-stone-300 text-[#2d6a4f] focus:ring-[#2d6a4f]"
+                    className="mt-0.5 h-4 w-4 rounded border-stone-300 text-[#1e293b] focus:ring-[#1e293b]"
                   />
                   <span className="text-sm text-stone-700 leading-relaxed group-hover:text-stone-900">{text}</span>
                 </label>
@@ -786,7 +786,7 @@ export default function ApplyPage() {
           <button
             type="submit"
             disabled={submitting || !allAttested}
-            className="w-full bg-[#2d6a4f] text-white py-3.5 rounded-xl font-semibold hover:bg-[#1b4332] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+            className="w-full bg-[#1e293b] text-white py-3.5 rounded-xl font-semibold hover:bg-[#0f172a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
           >
             {submitting ? 'Submitting…' : 'Submit Application'}
           </button>
@@ -803,7 +803,7 @@ export default function ApplyPage() {
           </button>
         )}
         {step < 4 && (
-          <button type="button" onClick={handleNext} className="flex items-center gap-1.5 bg-[#2d6a4f] text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#1b4332] transition-colors">
+          <button type="button" onClick={handleNext} className="flex items-center gap-1.5 bg-[#1e293b] text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#0f172a] transition-colors">
             Continue
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
           </button>

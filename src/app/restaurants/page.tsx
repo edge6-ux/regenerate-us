@@ -34,7 +34,7 @@ export default async function RestaurantsPage() {
           </p>
           <Link
             href="/apply"
-            className="inline-block bg-[#2d6a4f] text-white px-6 py-2.5 rounded-lg font-medium hover:bg-[#1b4332] transition-colors"
+            className="inline-block bg-[#1e293b] text-white px-6 py-2.5 rounded-lg font-medium hover:bg-[#0f172a] transition-colors"
           >
             Apply Now
           </Link>
@@ -49,16 +49,16 @@ export default async function RestaurantsPage() {
               <Link
                 key={restaurant.id}
                 href={`/restaurants/${restaurant.id}`}
-                className="bg-white border border-stone-200 rounded-xl p-6 hover:shadow-lg transition-all hover:border-[#2d6a4f]/30 group"
+                className="bg-white border border-stone-200 rounded-xl p-6 hover:shadow-lg transition-all hover:border-[#1e293b]/30 group"
               >
                 <div className="flex items-start justify-between mb-3">
-                  <h2 className="text-lg font-semibold text-stone-900 group-hover:text-[#2d6a4f] transition-colors">
+                  <h2 className="text-lg font-semibold text-stone-900 group-hover:text-[#1e293b] transition-colors">
                     {restaurant.name}
                   </h2>
                   <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
                     restaurant.participation_level === 'certified'
-                      ? 'bg-[#2d6a4f] text-white'
-                      : 'bg-green-100 text-green-800'
+                      ? 'bg-[#1e293b] text-white'
+                      : 'bg-slate-100 text-slate-800'
                   }`}>
                     {restaurant.participation_level === 'certified'
                       ? 'Regenerate US Certified'
@@ -73,7 +73,7 @@ export default async function RestaurantsPage() {
                     {restaurant.description}
                   </p>
                 )}
-                <div className="flex items-center gap-2 text-sm text-[#2d6a4f] font-medium">
+                <div className="flex items-center gap-2 text-sm text-[#1e293b] font-medium">
                   <span>{approvedDishes.length} certified dish{approvedDishes.length !== 1 ? 'es' : ''}</span>
                 </div>
               </Link>

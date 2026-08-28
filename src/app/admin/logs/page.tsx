@@ -54,7 +54,7 @@ export default async function AdminLogsPage({
           <label className="block text-xs text-stone-500 mb-1">To date</label>
           <input type="date" name="to" defaultValue={to} className="border border-stone-300 rounded-lg px-3 py-2 text-sm" />
         </div>
-        <button type="submit" className="rounded-lg bg-[#2d6a4f] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1b4332]">
+        <button type="submit" className="rounded-lg bg-[#1e293b] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0f172a]">
           Search
         </button>
         <Link href="/admin/logs" className="text-sm text-stone-600 hover:underline">

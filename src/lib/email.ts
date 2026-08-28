@@ -30,9 +30,9 @@ function base(previewText: string, content: string) {
   <div style="max-width:580px;margin:0 auto;padding:32px 16px;">
 
     <!-- Header -->
-    <div style="background:#1b4332;border-radius:12px 12px 0 0;padding:24px 32px;">
+    <div style="background:#0f172a;border-radius:12px 12px 0 0;padding:24px 32px;">
       <p style="margin:0;font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-0.3px;">Regenerate US</p>
-      <p style="margin:4px 0 0;font-size:12px;color:#6ee7b7;">Certification Program</p>
+      <p style="margin:4px 0 0;font-size:12px;color:#94a3b8;">Certification Program</p>
     </div>
 
     <!-- Body -->
@@ -52,11 +52,11 @@ function base(previewText: string, content: string) {
 }
 
 function btn(text: string, url: string) {
-  return `<a href="${url}" style="display:inline-block;background:#2d6a4f;color:#ffffff;text-decoration:none;font-size:14px;font-weight:600;padding:12px 28px;border-radius:8px;margin-top:8px;">${text}</a>`;
+  return `<a href="${url}" style="display:inline-block;background:#1e293b;color:#ffffff;text-decoration:none;font-size:14px;font-weight:600;padding:12px 28px;border-radius:8px;margin-top:8px;">${text}</a>`;
 }
 
 function statusColor(status: string) {
-  if (status === 'approved') return '#166534';
+  if (status === 'approved') return '#1e293b';
   if (status === 'rejected') return '#991b1b';
   if (status === 'needs_clarification') return '#92400e';
   return '#44403c';
@@ -83,9 +83,9 @@ export async function sendApplicationConfirmation(
     <h1 style="margin:0 0 8px;font-size:22px;font-weight:700;color:#1c1917;">We received your application</h1>
     <p style="margin:0 0 20px;font-size:14px;color:#78716c;">Thank you for submitting your ${label}.</p>
 
-    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:16px 20px;margin-bottom:24px;">
-      <p style="margin:0;font-size:13px;font-weight:600;color:#166534;">${entityName}</p>
-      <p style="margin:4px 0 0;font-size:13px;color:#15803d;">Application received — pending review</p>
+    <div style="background:#f1f5f9;border:1px solid #cbd5e1;border-radius:8px;padding:16px 20px;margin-bottom:24px;">
+      <p style="margin:0;font-size:13px;font-weight:600;color:#1e293b;">${entityName}</p>
+      <p style="margin:4px 0 0;font-size:13px;color:#334155;">Application received — pending review</p>
     </div>
 
     <p style="margin:0 0 8px;font-size:14px;color:#57534e;">What happens next:</p>
@@ -192,7 +192,7 @@ export async function sendFarmDecision(to: string, farmName: string, status: str
     ${body}
     ${btn('View Dashboard', `${SITE}/dashboard/farm`)}
     <p style="margin:20px 0 0;font-size:13px;color:#a8a29e;">
-      Questions? Email us at <a href="mailto:info@regenerateus.com" style="color:#2d6a4f;">info@regenerateus.com</a>
+      Questions? Email us at <a href="mailto:info@regenerateus.com" style="color:#1e293b;">info@regenerateus.com</a>
     </p>
   `;
 

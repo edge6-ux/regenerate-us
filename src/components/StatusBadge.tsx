@@ -5,7 +5,7 @@ interface StatusBadgeProps {
 const statusStyles: Record<string, string> = {
   pending: 'bg-yellow-100 text-yellow-800 border-yellow-200',
   needs_clarification: 'bg-orange-100 text-orange-800 border-orange-200',
-  approved: 'bg-green-100 text-green-800 border-green-200',
+  approved: 'bg-slate-100 text-slate-800 border-slate-200',
   rejected: 'bg-red-100 text-red-800 border-red-200',
 };
 

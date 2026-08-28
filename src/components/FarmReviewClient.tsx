@@ -66,7 +66,7 @@ export default function FarmReviewClient({
   return (
     <div className="max-w-3xl">
       <div className="flex flex-wrap items-center gap-3 mb-6">
-        <Link href="/admin/review-queue" className="text-sm text-[#2d6a4f] hover:underline">
+        <Link href="/admin/review-queue" className="text-sm text-[#1e293b] hover:underline">
           ← Review queue
         </Link>
         <span className="text-stone-300">|</span>
@@ -125,7 +125,7 @@ export default function FarmReviewClient({
             {farm.contact_email && (
               <>
                 {' · '}
-                <a href={`mailto:${farm.contact_email}`} className="text-[#2d6a4f] hover:underline">
+                <a href={`mailto:${farm.contact_email}`} className="text-[#1e293b] hover:underline">
                   {farm.contact_email}
                 </a>
               </>
@@ -163,7 +163,7 @@ export default function FarmReviewClient({
                     href={farm.cert_file_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#2d6a4f] font-medium hover:underline inline-flex items-center gap-1"
+                    className="text-[#1e293b] font-medium hover:underline inline-flex items-center gap-1"
                   >
                     Open certification file
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -197,7 +197,7 @@ export default function FarmReviewClient({
                   {healthFromProfile.map((p) => (
                     <li
                       key={p}
-                      className="inline-flex items-center rounded-full bg-[#2d6a4f]/10 text-[#2d6a4f] text-xs font-medium px-3 py-1 border border-[#2d6a4f]/20"
+                      className="inline-flex items-center rounded-full bg-[#1e293b]/10 text-[#1e293b] text-xs font-medium px-3 py-1 border border-[#1e293b]/20"
                     >
                       {p}
                     </li>
@@ -242,7 +242,7 @@ export default function FarmReviewClient({
                   {regenerativeTags.map((p) => (
                     <li
                       key={p}
-                      className="inline-flex items-center rounded-full bg-emerald-50 text-emerald-900 text-xs font-medium px-3 py-1 border border-emerald-200"
+                      className="inline-flex items-center rounded-full bg-slate-50 text-slate-900 text-xs font-medium px-3 py-1 border border-slate-200"
                     >
                       {p}
                     </li>
