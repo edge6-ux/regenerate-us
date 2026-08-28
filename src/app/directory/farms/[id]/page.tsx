@@ -71,7 +71,7 @@ export default async function FarmProfilePage({
           <p className="text-stone-500">{farm.city}, {farm.state}</p>
         </div>
         <span className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-semibold bg-green-100 text-green-800 border border-green-200 self-start">
-          MAHA Verified Farm
+          Regenerate US Verified Farm
         </span>
       </div>
 
@@ -152,7 +152,7 @@ export default async function FarmProfilePage({
           <div className="bg-white border border-amber-200 rounded-xl p-6">
             <h2 className="text-lg font-semibold text-stone-900 mb-2">Additional details</h2>
             <p className="text-xs text-amber-900/80 mb-3">
-              Submitted under &quot;Other&quot; — listed here for transparency; MAHA may verify separately.
+              Submitted under &quot;Other&quot; — listed here for transparency; Regenerate US may verify separately.
             </p>
             <p className="text-stone-700 text-sm leading-relaxed whitespace-pre-wrap">{otherPractices}</p>
           </div>
@@ -224,7 +224,7 @@ export default async function FarmProfilePage({
       {/* Transparency Statement */}
       <div className="bg-stone-50 border border-stone-200 rounded-xl p-6 text-center">
         <p className="text-sm text-stone-500 italic">
-          Farm information is provided through the MAHA onboarding process and may be subject to ongoing verification.
+          Farm information is provided through the Regenerate US onboarding process and may be subject to ongoing verification.
           Practices and certifications listed are based on farm attestation and supplier transparency.
         </p>
       </div>

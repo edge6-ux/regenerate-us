@@ -1,7 +1,4 @@
 import Link from 'next/link';
-import { Great_Vibes } from 'next/font/google';
-
-const greatVibes = Great_Vibes({ subsets: ['latin'], weight: '400' });
 
 export default function Footer() {
   return (
@@ -11,10 +8,7 @@ export default function Footer() {
           <div>
             <div className="mb-3">
               <span className="text-lg font-bold text-white">
-                MAHA{' '}
-                <span className={`${greatVibes.className} text-2xl font-normal text-green-300`}>
-                  From the Farm
-                </span>
+                Regenerate US
               </span>
             </div>
             <p className="text-sm text-green-200/70">
@@ -46,15 +40,15 @@ export default function Footer() {
             <h3 className="font-semibold text-green-400 mb-3 text-xs uppercase tracking-wider">Contact</h3>
             <p className="text-sm text-green-200/70">
               Questions about the certification program?<br />
-              <a href="mailto:info@mahafromthefarm.com" className="text-green-300 hover:text-white transition-colors hover:underline">
-                info@mahafromthefarm.com
+              <a href="mailto:info@regenerateus.com" className="text-green-300 hover:text-white transition-colors hover:underline">
+                info@regenerateus.com
               </a>
             </p>
           </div>
         </div>
         <div className="border-t border-[#2d6a4f] mt-8 pt-6 text-center">
           <p className="text-xs text-green-200/40">
-            © {new Date().getFullYear()} MAHA From the Farm. All rights reserved.
+            © {new Date().getFullYear()} Regenerate US. All rights reserved.
           </p>
         </div>
       </div>

@@ -4,13 +4,12 @@ import { useState, Suspense } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { Fraunces, Great_Vibes } from 'next/font/google';
+import { Fraunces } from 'next/font/google';
 
-const mahaWordmark = Fraunces({
+const wordmark = Fraunces({
   subsets: ['latin'],
   weight: ['600', '700'],
 });
-const greatVibes = Great_Vibes({ subsets: ['latin'], weight: '400' });
 
 function LoginForm() {
   const searchParams = useSearchParams();
@@ -62,12 +61,9 @@ function LoginForm() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-1.5 justify-center flex-wrap">
             <span
-              className={`${mahaWordmark.className} text-2xl sm:text-[1.65rem] font-semibold text-[#2d6a4f] tracking-tight`}
+              className={`${wordmark.className} text-2xl sm:text-[1.65rem] font-semibold text-[#2d6a4f] tracking-tight`}
             >
-              MAHA
-            </span>
-            <span className={`${greatVibes.className} text-3xl font-normal text-stone-600 leading-none`}>
-              From the Farm
+              Regenerate US
             </span>
           </Link>
           <p className="text-stone-500 text-sm mt-3">Sign in to your account</p>

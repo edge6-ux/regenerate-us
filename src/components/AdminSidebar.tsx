@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import ProfileDropdown from '@/components/ProfileDropdown';
 
-const STORAGE_KEY = 'maha-admin-sidebar-collapsed';
+const STORAGE_KEY = 'regenerate-admin-sidebar-collapsed';
 
 type NavItem = { href: string; label: string; icon: React.ReactNode };
 
@@ -166,15 +166,14 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
       <div className="px-4 md:px-3 py-4 md:py-4 border-b border-[#2d6a4f] flex items-center gap-2 justify-between">
         <Link
           href="/admin/review-queue"
-          title="MAHA Admin"
+          title="Regenerate US Admin"
           className="min-w-0 flex-1 md:flex-1 text-left"
         >
           <div className="md:hidden">
-            <div className="font-bold text-sm">MAHA Admin</div>
+            <div className="font-bold text-sm">Regenerate US Admin</div>
           </div>
           <div className={`hidden md:block ${collapsed ? 'md:hidden' : ''}`}>
-            <div className="font-bold text-sm">MAHA Admin</div>
-            <div className="text-xs text-green-300">From the Farm</div>
+            <div className="font-bold text-sm">Regenerate US Admin</div>
           </div>
           <div
             className={`hidden ${collapsed ? 'md:flex' : ''} md:mx-auto md:w-9 md:h-9 md:rounded-lg md:bg-[#2d6a4f] md:items-center md:justify-center md:text-sm md:font-bold`}

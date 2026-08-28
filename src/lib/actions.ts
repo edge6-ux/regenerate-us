@@ -1115,7 +1115,7 @@ export async function notifySubmissionDecision(
     const bodies: Record<string, string> = {
       approved: 'Your certified dishes are now live in the public directory.',
       rejected: 'Your submission did not meet certification requirements at this time.',
-      needs_clarification: adminNotes ?? 'MAHA needs additional information about your submission.',
+      needs_clarification: adminNotes ?? 'Regenerate US needs additional information about your submission.',
     };
     const title = titles[newStatus] ?? `Submission update — ${restaurant.name}`;
     const body = bodies[newStatus] ?? '';
@@ -1844,7 +1844,7 @@ export async function notifyFarmDecision(farmId: string, newStatus: string): Pro
       ? `Your farm was approved — ${farm.name}`
       : `Farm application update — ${farm.name}`;
     const body = newStatus === 'approved'
-      ? 'Your farm is now listed in the MAHA From the Farm public directory.'
+      ? 'Your farm is now listed in the Regenerate US public directory.'
       : 'Your farm application was not approved at this time.';
     await createNotification(profile.id, title, body, '/dashboard/farm');
   }

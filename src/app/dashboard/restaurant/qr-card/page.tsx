@@ -1,13 +1,12 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect, notFound } from 'next/navigation';
-import { Fraunces, Great_Vibes } from 'next/font/google';
+import { Fraunces } from 'next/font/google';
 import { headers } from 'next/headers';
 import QRCode from 'qrcode';
 import Link from 'next/link';
 import PrintButton from '@/components/PrintButton';
 
-const mahaWordmark = Fraunces({ subsets: ['latin'], weight: ['600'] });
-const greatVibes = Great_Vibes({ subsets: ['latin'], weight: '400' });
+const wordmark = Fraunces({ subsets: ['latin'], weight: ['600'] });
 
 export default async function QRCardPage() {
   const supabase = await createClient();
@@ -83,12 +82,9 @@ export default async function QRCardPage() {
           <div className="bg-[#2d6a4f] px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span
-                className={`${mahaWordmark.className} text-white text-xl font-semibold tracking-tight`}
+                className={`${wordmark.className} text-white text-xl font-semibold tracking-tight`}
               >
-                MAHA
-              </span>
-              <span className={`${greatVibes.className} text-green-200 text-2xl leading-none`}>
-                From the Farm
+                Regenerate US
               </span>
             </div>
             {isCertified && (
@@ -103,7 +99,7 @@ export default async function QRCardPage() {
             {/* Restaurant name */}
             <div className="text-center">
               <p className="text-xs uppercase tracking-widest text-stone-400 mb-1">
-                {isCertified ? 'MAHA Certified Restaurant' : 'From the Farm Participant'}
+                {isCertified ? 'Regenerate US Certified Restaurant' : 'From the Farm Participant'}
               </p>
               <h1 className="text-xl font-bold text-stone-900 leading-tight">
                 {restaurant.name}
@@ -131,14 +127,14 @@ export default async function QRCardPage() {
                 Scan to see our certified dishes
               </p>
               <p className="text-xs text-stone-400 mt-1">
-                Sourced with integrity, verified by MAHA.
+                Sourced with integrity, verified by Regenerate US.
               </p>
             </div>
 
             {/* Divider + standards note */}
             <div className="w-full border-t border-stone-100 pt-4">
               <p className="text-[10px] text-stone-400 text-center leading-relaxed">
-                All certified dishes meet MAHA standards for sourcing and ingredient integrity.
+                All certified dishes meet Regenerate US standards for sourcing and ingredient integrity.
                 Scan to view verified dishes and supplier information.
               </p>
             </div>
@@ -147,7 +143,7 @@ export default async function QRCardPage() {
           {/* Footer band */}
           <div className="bg-stone-50 border-t border-stone-100 px-6 py-3 text-center">
             <p className="text-[11px] text-stone-400 font-medium tracking-wide">
-              MAHA · Make America Healthy Again
+              Regenerate US · Restaurant Certification Program
             </p>
           </div>
         </div>

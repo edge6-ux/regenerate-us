@@ -53,7 +53,7 @@ function ResetForm() {
     <div className="min-h-screen bg-stone-50 flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-block text-lg font-bold text-[#2d6a4f]">MAHA From the Farm</Link>
+          <Link href="/" className="inline-block text-lg font-bold text-[#2d6a4f]">Regenerate US</Link>
         </div>
 
         <div className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm">

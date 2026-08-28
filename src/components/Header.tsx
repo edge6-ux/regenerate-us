@@ -1,16 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { Fraunces, Great_Vibes } from 'next/font/google';
+import { Fraunces } from 'next/font/google';
 import { useState, useEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 
-const mahaWordmark = Fraunces({
+const wordmark = Fraunces({
   subsets: ['latin'],
   weight: ['600', '700'],
 });
-const greatVibes = Great_Vibes({ subsets: ['latin'], weight: '400' });
 
 const BASE_NAV = [
   { label: 'Directory', href: '/directory' },
@@ -123,12 +122,9 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-1.5 min-w-0 shrink">
             <span
-              className={`${mahaWordmark.className} text-xl sm:text-[1.35rem] font-semibold text-white tracking-tight`}
+              className={`${wordmark.className} text-xl sm:text-[1.35rem] font-semibold text-white tracking-tight`}
             >
-              MAHA
-            </span>
-            <span className={`${greatVibes.className} text-2xl font-normal text-green-200 leading-none`}>
-              From the Farm
+              Regenerate US
             </span>
           </Link>
 

@@ -13,7 +13,7 @@ export default async function HomePage() {
       {/* Hero */}
       <section className="relative text-white overflow-hidden -mt-16 min-h-[calc(100dvh+4rem)]">
         <Image
-          src="/mahahero.jpg"
+          src="/hero.jpg"
           alt="Farm hero background"
           fill
           className="object-cover"
@@ -30,7 +30,7 @@ export default async function HomePage() {
               <span className="text-green-300">Really</span> Comes From
             </h1>
             <p className="text-lg md:text-xl text-green-100 mb-10 leading-relaxed">
-              MAHA From the Farm certifies restaurants that prioritize transparency,
+              Regenerate US certifies restaurants that prioritize transparency,
               local sourcing, and verified farm-to-table practices. Every certified dish
               comes with full supplier transparency.
             </p>
@@ -104,7 +104,7 @@ export default async function HomePage() {
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Local Sourcing Matters</h2>
             <p className="text-green-200/80 max-w-2xl mx-auto">
               Every purchasing decision a restaurant makes is a vote for the kind of food system we want.
-              MAHA From the Farm makes those decisions visible.
+              Regenerate US makes those decisions visible.
             </p>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -188,13 +188,13 @@ export default async function HomePage() {
                 <div className="inline-flex items-center gap-2 bg-[#2d6a4f]/10 text-[#2d6a4f] text-xs font-semibold px-3 py-1 rounded-full mb-4">
                   Full Certification
                 </div>
-                <h3 className="text-xl font-bold text-stone-900 mb-3">MAHA Certified Restaurant</h3>
+                <h3 className="text-xl font-bold text-stone-900 mb-3">Regenerate US Certified Restaurant</h3>
                 <p className="text-stone-600 text-sm leading-relaxed mb-4">
                   Full restaurant certification for establishments that demonstrate
                   comprehensive farm-to-table practices across their entire menu.
                 </p>
                 <ul className="space-y-2">
-                  {['7+ certified dishes', 'MAHA Certified badge', 'Featured in directory', 'Restaurant-level recognition'].map((f) => (
+                  {['7+ certified dishes', 'Regenerate US Certified badge', 'Featured in directory', 'Restaurant-level recognition'].map((f) => (
                     <li key={f} className="flex items-center gap-2 text-sm text-stone-600">
                       <svg className="w-4 h-4 text-[#2d6a4f] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                       {f}
@@ -220,7 +220,7 @@ export default async function HomePage() {
                   Restaurants Are Looking for You
                 </h2>
                 <p className="text-green-100 leading-relaxed mb-4">
-                  Every MAHA-certified dish links directly to a verified farm or producer.
+                  Every Regenerate US-certified dish links directly to a verified farm or producer.
                   Restaurants in our network are actively searching for local suppliers who meet
                   the program&apos;s standards — get in front of them by registering your farm.
                 </p>
@@ -251,7 +251,7 @@ export default async function HomePage() {
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { label: 'Reach Buyers', desc: 'Restaurants using our directory are actively sourcing — your farm gets found' },
-                  { label: 'Build Credibility', desc: 'MAHA-verified practices carry weight with health-conscious restaurants' },
+                  { label: 'Build Credibility', desc: 'Regenerate US-verified practices carry weight with health-conscious restaurants' },
                   { label: 'Showcase Standards', desc: 'Display your certifications, welfare practices, and production methods' },
                   { label: 'Grow Your Network', desc: 'Every certified dish that uses your farm builds your reputation' },
                 ].map((item, i) => (

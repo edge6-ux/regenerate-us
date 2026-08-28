@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'MAHA From the Farm - Restaurant Certification Program',
+  title: 'Regenerate US - Restaurant Certification Program',
   description:
     'Certifying restaurants that prioritize local, sustainable sourcing from verified farms and producers.',
 };

@@ -253,7 +253,7 @@ export default function SubmissionDetailPage() {
               className="border border-stone-300 rounded-lg px-3 py-2 text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-[#2d6a4f] focus:border-transparent max-w-xs"
             >
               <option value="participant">From the Farm Participant</option>
-              <option value="certified">MAHA Certified Restaurant</option>
+              <option value="certified">Regenerate US Certified Restaurant</option>
             </select>
             <p className="text-xs text-stone-500 mt-1">Saved when you click &quot;Update Submission&quot; below.</p>
           </div>

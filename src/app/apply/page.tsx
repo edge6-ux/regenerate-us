@@ -261,7 +261,7 @@ export default function ApplyPage() {
       {cropperModal}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-stone-900 mb-1">Apply for Certification</h1>
-        <p className="text-stone-500 text-sm">Complete the steps below to apply for the MAHA From the Farm program.</p>
+        <p className="text-stone-500 text-sm">Complete the steps below to apply for the Regenerate US program.</p>
       </div>
 
       <ProgressBar />
@@ -300,7 +300,7 @@ export default function ApplyPage() {
                   <p className="text-xs text-stone-500">
                     {t === 'restaurant'
                       ? 'I serve dishes sourced from verified farms and want to certify them.'
-                      : 'I raise livestock or grow produce and want to join the MAHA network.'}
+                      : 'I raise livestock or grow produce and want to join the Regenerate US network.'}
                   </p>
                 </button>
               ))}
@@ -589,7 +589,7 @@ export default function ApplyPage() {
                   <div className="border-t border-stone-200 pt-6">
                     <label className="block text-sm font-semibold text-stone-800 mb-1">Other (describe)</label>
                     <p className="text-xs text-stone-500 mb-2">
-                      Use only for items not listed above. MAHA may require additional verification before showing these
+                      Use only for items not listed above. Regenerate US may require additional verification before showing these
                       details publicly.
                     </p>
                     <textarea
@@ -766,8 +766,8 @@ export default function ApplyPage() {
                 { key: 'accurate' as const, text: 'I attest that all information provided in this application is accurate and truthful to the best of my knowledge.' },
                 { key: 'mainElement' as const, text: applicantType === 'restaurant'
                   ? 'I understand that certification applies to the main element of each dish only, and does not necessarily extend to all ingredients.'
-                  : 'I understand that MAHA certification is dish-specific and applies to the main element sourced from our farm.' },
-                { key: 'verification' as const, text: 'I understand that MAHA may conduct additional verification of the claims made in this application, including contacting suppliers or farms directly.' },
+                  : 'I understand that Regenerate US certification is dish-specific and applies to the main element sourced from our farm.' },
+                { key: 'verification' as const, text: 'I understand that Regenerate US may conduct additional verification of the claims made in this application, including contacting suppliers or farms directly.' },
                 { key: 'revocation' as const, text: 'I understand that certification may be revoked if any claims are found to be inaccurate or if practices change without notification.' },
               ].map(({ key, text }) => (
                 <label key={key} className="flex items-start gap-3 cursor-pointer group">
