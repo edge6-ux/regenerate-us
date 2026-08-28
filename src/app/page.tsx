@@ -59,9 +59,28 @@ export default async function HomePage() {
       </section>
 
       {/* How It Works */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="text-center mb-8 md:mb-14">
+      <section className="relative overflow-hidden py-16 md:py-24 bg-[#f5f4f1]">
+        <div
+          className="absolute inset-x-0 top-0 h-[140px] pointer-events-none"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(100deg, rgba(20,36,92,0.05) 0px, rgba(20,36,92,0.05) 2px, transparent 2px, transparent 26px)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black, transparent)',
+            maskImage: 'linear-gradient(to bottom, black, transparent)',
+          }}
+        />
+        <div
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            top: -40,
+            right: '8%',
+            width: 200,
+            height: 200,
+            background: 'radial-gradient(circle, rgba(200,113,15,0.14) 0%, rgba(200,113,15,0) 70%)',
+          }}
+        />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center mb-12 md:mb-16">
             <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-4">How It Works</h2>
             <p className="text-stone-600 max-w-2xl mx-auto">
               Our certification program verifies that restaurants source their key
@@ -71,27 +90,29 @@ export default async function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                step: '01',
+                step: 'Step 01',
                 title: 'Apply',
                 description:
                   'Restaurants submit their dishes with full supplier information for each main element.',
               },
               {
-                step: '02',
+                step: 'Step 02',
                 title: 'Verify',
                 description:
                   'Our team reviews supplier claims, certifications, and sourcing practices for accuracy.',
               },
               {
-                step: '03',
+                step: 'Step 03',
                 title: 'Certify',
                 description:
                   'Approved restaurants receive certification and are listed in our public directory with full transparency.',
               },
             ].map((step, i) => (
               <Reveal key={i} delay={i * 100}>
-                <div className="bg-white border border-stone-200 rounded-xl p-8 hover:shadow-lg transition-shadow">
-                  <div className="text-4xl font-black text-[#1e293b]/15 mb-3 leading-none">{step.step}</div>
+                <div className="bg-white border border-stone-200 border-t-[3px] border-t-[#1e293b] rounded-lg p-7">
+                  <div className="text-xs font-extrabold text-[#1e293b] tracking-wider mb-3">
+                    {step.step.toUpperCase()}
+                  </div>
                   <h3 className="text-xl font-semibold text-stone-900 mb-3">{step.title}</h3>
                   <p className="text-stone-600 text-sm leading-relaxed">{step.description}</p>
                 </div>
@@ -112,7 +133,7 @@ export default async function HomePage() {
                 Every purchasing decision a restaurant makes is a vote for the kind of food system we want.
                 Regenerate US makes those decisions visible.
               </p>
-              <div className="flex items-baseline gap-3">
+              <div className="flex items-center gap-3">
                 <span className="text-4xl font-black text-[#f0a23e]">100%</span>
                 <span className="text-sm text-slate-300 max-w-[22ch] leading-snug">
                   of certified dishes name a real, contactable supplier
@@ -243,7 +264,7 @@ export default async function HomePage() {
                   with confidence. Your profile, products, and contact info are searchable by
                   buyers in the directory.
                 </p>
-                <div className="flex items-baseline gap-3 mb-8">
+                <div className="flex items-center gap-3 mb-8">
                   <span className="text-4xl font-black text-[#f0a23e]">{farmCount}</span>
                   <span className="text-sm text-slate-300 max-w-[24ch] leading-snug">
                     farms already listed and searchable in the directory

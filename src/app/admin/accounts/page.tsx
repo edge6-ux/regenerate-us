@@ -10,6 +10,7 @@ import {
   sendPasswordResetForRestaurant,
   sendPasswordResetForFarm,
   updateUserEmail,
+  deleteAdminAccount,
   deleteRestaurantAccount,
   deleteFarm,
   createAdminAccount,
@@ -34,6 +35,7 @@ const TIER_COLORS: Record<number, string> = {
 
 export default function AccountsPage() {
   const [myId, setMyId] = useState('');
+  const [myEmail, setMyEmail] = useState('');
   const [myTier, setMyTier] = useState(1);
   const [masterEmail] = useState(process.env.NEXT_PUBLIC_MASTER_ADMIN_EMAIL ?? '');
   const [tab, setTab] = useState<Tab>('admins');
@@ -82,6 +84,7 @@ export default function AccountsPage() {
     supabase.auth.getUser().then(async ({ data }) => {
       if (!data.user) return;
       setMyId(data.user.id);
+      setMyEmail(data.user.email ?? '');
       const { data: profile } = await supabase
         .from('profiles').select('admin_tier').eq('id', data.user.id).single();
       setMyTier(profile?.admin_tier ?? 1);
@@ -327,8 +330,10 @@ export default function AccountsPage() {
           onClick={() => {
             if (tab === 'restaurants') {
               handleDelete(id, () => deleteRestaurantAccount(id), () => setRestaurants((p) => p.filter((r) => r.id !== id)));
-            } else {
+            } else if (tab === 'farms') {
               handleDelete(id, () => deleteFarm(id), () => setFarms((p) => p.filter((f) => f.id !== id)));
+            } else {
+              handleDelete(id, () => deleteAdminAccount(id), () => setAdmins((p) => p.filter((a) => a.id !== id)));
             }
           }}
           disabled={deleting === id}
@@ -625,6 +630,8 @@ export default function AccountsPage() {
                 {admins.map((admin) => {
                   const locked = isMaster(admin.email);
                   const isSelf = admin.id === myId;
+                  const iAmMaster = isMaster(myEmail);
+                  const canDelete = !isSelf && (admin.tier < 3 || iAmMaster);
                   const editKey = admin.id;
                   const isEditing = editingEmail === editKey;
                   const isDirectPw = directPwRowKey === editKey;
@@ -664,6 +671,12 @@ export default function AccountsPage() {
                               >
                                 Change Email
                               </button>
+                            )}
+                            {canDelete && <DeleteBtn id={admin.id} />}
+                            {!isSelf && !canDelete && (
+                              <span className="text-xs text-stone-400 italic whitespace-nowrap">
+                                Only the master admin can remove Tier 3
+                              </span>
                             )}
                           </div>
                         )}

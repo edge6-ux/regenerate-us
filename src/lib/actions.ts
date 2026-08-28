@@ -1266,8 +1266,18 @@ export async function deleteAdminAccount(targetId: string): Promise<{ error?: st
 
   // Verify target is an admin
   const { data: profile } = await supabase
-    .from('profiles').select('role').eq('id', targetId).single();
+    .from('profiles').select('role, admin_tier').eq('id', targetId).single();
   if (profile?.role !== 'admin') return { error: 'Target account is not an admin.' };
+
+  // Tier 3 (Super Admin) accounts can only be removed by the master admin —
+  // one Tier 3 cannot delete another.
+  if ((profile.admin_tier ?? 1) >= 3) {
+    const masterEmail = process.env.MASTER_ADMIN_EMAIL;
+    const callerIsMaster = !!masterEmail && user?.email?.toLowerCase() === masterEmail.toLowerCase();
+    if (!callerIsMaster) {
+      return { error: 'Only the master admin can remove other Tier 3 (Super Admin) accounts.' };
+    }
+  }
 
   const admin = createAdminClient();
   const { error } = await admin.auth.admin.deleteUser(targetId);
@@ -1276,6 +1286,7 @@ export async function deleteAdminAccount(targetId: string): Promise<{ error?: st
     action: 'admin_account_deleted',
     target_type: 'user',
     target_id: targetId,
+    metadata: { targetTier: profile.admin_tier ?? 1 },
   });
   return {};
 }
