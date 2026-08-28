@@ -7,6 +7,7 @@ import type { Farm } from '@/lib/types';
 import { distanceMiles } from '@/lib/geocode';
 import Reveal from '@/components/Reveal';
 import { DEFAULT_FARM_HERO_IMAGE } from '@/lib/farmDefaults';
+import { ATMOSPHERE_BG } from '@/components/AtmosphereBanner';
 
 // Dynamic import to avoid SSR issues with Leaflet
 const DirectoryMap = dynamic(() => import('@/components/DirectoryMap'), { ssr: false });
@@ -281,7 +282,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
       {activeTab === 'farms' && (
         <>
           {/* Farm CTA banner */}
-          <div className="bg-[#1e3a8a] rounded-2xl p-6 md:p-8 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+          <div className={`${ATMOSPHERE_BG} rounded-2xl p-6 md:p-8 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5`}>
             <div className="flex-1">
               <div className="inline-flex items-center gap-2 bg-white/10 text-slate-200 text-xs font-semibold px-3 py-1 rounded-full mb-3">
                 For Farms & Producers

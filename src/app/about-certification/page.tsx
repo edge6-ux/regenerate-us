@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Reveal from '@/components/Reveal';
+import { ATMOSPHERE_BG, AtmosphereLayers } from '@/components/AtmosphereBanner';
 
 // ─── CONTENT ────────────────────────────────────────────────────────────────
 // Edit the sections below to update page copy without touching layout code.
@@ -423,8 +424,9 @@ export default function AboutCertificationPage() {
       </Reveal>
 
       {/* ── CTA ── */}
-      <Reveal as="section" className="bg-[#1e3a8a]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+      <Reveal as="section" className={`relative overflow-hidden ${ATMOSPHERE_BG}`}>
+        <AtmosphereLayers />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Ready to apply?</h2>
           <p className="text-white/70 mb-8 max-w-lg mx-auto">
             Submitting takes about 10 minutes per dish. You can apply with a single dish and add more later.

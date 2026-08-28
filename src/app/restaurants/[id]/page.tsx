@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import DishCard from '@/components/DishCard';
 import { Fraunces, Great_Vibes } from 'next/font/google';
+import { ATMOSPHERE_BG } from '@/components/AtmosphereBanner';
 
 export const revalidate = 60;
 
@@ -207,7 +208,7 @@ export default async function RestaurantVerificationPage({
         )}
 
         {/* ── CTA ───────────────────────────────────────────────────────────── */}
-        <section className="bg-[#1e3a8a] rounded-2xl p-8 text-center">
+        <section className={`${ATMOSPHERE_BG} rounded-2xl p-8 text-center`}>
           <span className={`${greatVibes.className} text-slate-300 text-3xl`}>
             Regenerate US
           </span>

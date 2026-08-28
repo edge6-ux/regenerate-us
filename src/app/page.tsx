@@ -2,11 +2,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 import { createClient } from '@/lib/supabase/server';
+import { fetchApprovedFarmsForDirectory } from '@/lib/supabase/directory-farms';
+import { ATMOSPHERE_BG, AtmosphereLayers } from '@/components/AtmosphereBanner';
 
 export default async function HomePage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   const showApplyCtas = !user;
+  const approvedFarms = await fetchApprovedFarmsForDirectory();
+  const farmCount = approvedFarms.length;
 
   return (
     <div>
@@ -98,57 +102,66 @@ export default async function HomePage() {
       </section>
 
       {/* Why It Matters */}
-      <section className="py-12 md:py-20 bg-[#1e3a8a] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="text-center mb-10 md:mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Local Sourcing Matters</h2>
-            <p className="text-slate-200/80 max-w-2xl mx-auto">
-              Every purchasing decision a restaurant makes is a vote for the kind of food system we want.
-              Regenerate US makes those decisions visible.
-            </p>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: (
-                  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-                  </svg>
-                ),
-                title: 'Supports Local Economies',
-                description: 'Dollars spent on local farms stay in the community, supporting livelihoods and building regional food resilience.',
-              },
-              {
-                icon: (
-                  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-                  </svg>
-                ),
-                title: 'Verified Transparency',
-                description: 'Every certified dish names the actual farm or producer behind it — no vague claims, no greenwashing.',
-              },
-              {
-                icon: (
-                  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                  </svg>
-                ),
-                title: 'Better for Your Health',
-                description: 'Locally sourced, regeneratively raised ingredients mean food that\'s fresher, more nutrient-dense, and free from the industrial additives common in long supply chains.',
-              },
-            ].map((item, i) => (
-              <Reveal key={i} delay={i * 100}>
-                <div className="flex flex-col gap-4">
-                  <div className="w-12 h-12 bg-[#1e293b] rounded-xl flex items-center justify-center text-slate-300 flex-shrink-0">
-                    {item.icon}
+      <section className={`relative py-16 md:py-24 text-white overflow-hidden ${ATMOSPHERE_BG}`}>
+        <AtmosphereLayers />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <Reveal>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Local Sourcing Matters</h2>
+              <p className="text-slate-200/80 max-w-md mb-8">
+                Every purchasing decision a restaurant makes is a vote for the kind of food system we want.
+                Regenerate US makes those decisions visible.
+              </p>
+              <div className="flex items-baseline gap-3">
+                <span className="text-4xl font-black text-[#f0a23e]">100%</span>
+                <span className="text-sm text-slate-300 max-w-[22ch] leading-snug">
+                  of certified dishes name a real, contactable supplier
+                </span>
+              </div>
+            </Reveal>
+            <Reveal delay={100}>
+              <div className="flex flex-col gap-6">
+                {[
+                  {
+                    icon: (
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                      </svg>
+                    ),
+                    title: 'Supports Local Economies',
+                    description: 'Dollars spent on local farms stay in the community, supporting livelihoods and building regional food resilience.',
+                  },
+                  {
+                    icon: (
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                      </svg>
+                    ),
+                    title: 'Verified Transparency',
+                    description: 'Every certified dish names the actual farm or producer behind it — no vague claims, no greenwashing.',
+                  },
+                  {
+                    icon: (
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                      </svg>
+                    ),
+                    title: 'Better for Your Health',
+                    description: 'Locally sourced, regeneratively raised ingredients mean food that\'s fresher, more nutrient-dense, and free from the industrial additives common in long supply chains.',
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white flex-shrink-0">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-white mb-1">{item.title}</h3>
+                      <p className="text-slate-200/70 text-sm leading-relaxed">{item.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
-                    <p className="text-slate-200/70 text-sm leading-relaxed">{item.description}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                ))}
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -208,9 +221,10 @@ export default async function HomePage() {
       </section>
 
       {/* For Farms */}
-      <section className="py-12 md:py-20 bg-[#1e3a8a]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <section className={`relative py-16 md:py-24 overflow-hidden ${ATMOSPHERE_BG}`}>
+        <AtmosphereLayers />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <Reveal>
               <div>
                 <div className="inline-flex items-center gap-2 bg-white/10 text-slate-200 text-xs font-semibold px-3 py-1 rounded-full mb-5">
@@ -224,11 +238,17 @@ export default async function HomePage() {
                   Restaurants in our network are actively searching for local suppliers who meet
                   the program&apos;s standards — get in front of them by registering your farm.
                 </p>
-                <p className="text-slate-200 leading-relaxed mb-8">
+                <p className="text-slate-200 leading-relaxed mb-6">
                   We verify your certifications and practices so restaurants can source from you
                   with confidence. Your profile, products, and contact info are searchable by
                   buyers in the directory.
                 </p>
+                <div className="flex items-baseline gap-3 mb-8">
+                  <span className="text-4xl font-black text-[#f0a23e]">{farmCount}</span>
+                  <span className="text-sm text-slate-300 max-w-[24ch] leading-snug">
+                    farms already listed and searchable in the directory
+                  </span>
+                </div>
                 <div className="flex items-center gap-4 flex-wrap">
                   {showApplyCtas && (
                     <Link
@@ -248,7 +268,7 @@ export default async function HomePage() {
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col gap-4">
                 {[
                   { label: 'Reach Buyers', desc: 'Restaurants using our directory are actively sourcing — your farm gets found' },
                   { label: 'Build Credibility', desc: 'Regenerate US-verified practices carry weight with health-conscious restaurants' },
