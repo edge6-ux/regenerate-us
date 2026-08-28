@@ -115,7 +115,7 @@ export default function Header() {
     }`;
 
   return (
-    <header className={`${isHome ? 'absolute' : 'relative'} top-0 left-0 right-0 z-50 border-b ${isHome ? 'bg-transparent border-white/10' : 'bg-[#1e293b] border-[#0f172a]'}`}>
+    <header className={`${isHome ? 'absolute' : 'relative'} top-0 left-0 right-0 z-50 border-b ${isHome ? 'bg-transparent border-white/10' : 'bg-[#1e3a8a] border-[#1e3a8a]'}`}>
       <div className="w-full pl-2 pr-2 sm:pl-3 sm:pr-3 md:pl-4 md:pr-4">
         <div className="flex justify-between items-center h-16 gap-2">
 

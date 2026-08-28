@@ -78,7 +78,7 @@ export default async function AdminRestaurantsPage() {
                                   : 'bg-slate-100 text-slate-800'
                               }`}
                             >
-                              {r.participation_level === 'certified' ? 'Certified' : 'Participant'}
+                              {r.participation_level === 'certified' ? 'Certified' : 'Partner'}
                             </span>
                           );
                         }
@@ -91,7 +91,7 @@ export default async function AdminRestaurantsPage() {
                                   : 'bg-slate-100 text-slate-800'
                               }`}
                             >
-                              {r.participation_level === 'certified' ? 'Certified' : 'Participant'}
+                              {r.participation_level === 'certified' ? 'Certified' : 'Partner'}
                             </span>
                           );
                         }

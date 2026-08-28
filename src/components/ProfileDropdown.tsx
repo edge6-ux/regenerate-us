@@ -57,7 +57,7 @@ export default function ProfileDropdown({
 
   const avatarClass =
     variant === 'dark'
-      ? 'bg-[#1e293b] text-white border border-[#52b788] hover:bg-[#40916c]'
+      ? 'bg-[#1e293b] text-white border border-[#64748b] hover:bg-[#0f172a]'
       : 'bg-stone-200 text-stone-700 hover:bg-stone-300';
 
   const dropPos =
@@ -67,7 +67,7 @@ export default function ProfileDropdown({
 
   const panelClass =
     variant === 'dark'
-      ? 'bg-[#112d21] border-[#1e293b] text-white'
+      ? 'bg-[#0f172a] border-[#1e293b] text-white'
       : 'bg-white border-stone-200 text-stone-900';
 
   const itemClass =

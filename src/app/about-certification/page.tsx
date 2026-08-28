@@ -202,10 +202,10 @@ export default function AboutCertificationPage() {
 
       <div className="border-t border-stone-100" />
 
-      {/* ── What Is a From the Farm Dish ── */}
+      {/* ── What Is a Regenerate US Dish ── */}
       <Reveal as="section" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <SectionLabel>Scope</SectionLabel>
-        <h2 className="text-3xl font-bold text-stone-900 mb-4">What Is a From the Farm Dish?</h2>
+        <h2 className="text-3xl font-bold text-stone-900 mb-4">What Is a Regenerate US Dish?</h2>
         <p className="text-stone-600 mb-8 max-w-2xl">
           At the base level, Regenerate US certification works dish by dish — each certified dish stands on its own. Once a restaurant earns certification on 7 or more dishes, the restaurant itself becomes Regenerate US Certified, reflecting a broader commitment to clean, transparent sourcing across the menu.
         </p>
@@ -423,7 +423,7 @@ export default function AboutCertificationPage() {
       </Reveal>
 
       {/* ── CTA ── */}
-      <Reveal as="section" className="bg-[#0f172a]">
+      <Reveal as="section" className="bg-[#1e3a8a]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Ready to apply?</h2>
           <p className="text-white/70 mb-8 max-w-lg mx-auto">
@@ -432,7 +432,7 @@ export default function AboutCertificationPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-3">
             <Link
               href="/apply"
-              className="bg-white text-[#0f172a] px-8 py-3 rounded-lg font-semibold hover:bg-stone-100 transition-colors"
+              className="bg-white text-[#1e3a8a] px-8 py-3 rounded-lg font-semibold hover:bg-stone-100 transition-colors"
             >
               Apply Now
             </Link>

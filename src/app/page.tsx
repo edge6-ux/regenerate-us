@@ -98,7 +98,7 @@ export default async function HomePage() {
       </section>
 
       {/* Why It Matters */}
-      <section className="py-12 md:py-20 bg-[#0f172a] text-white">
+      <section className="py-12 md:py-20 bg-[#1e3a8a] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-10 md:mb-16">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Local Sourcing Matters</h2>
@@ -164,11 +164,11 @@ export default async function HomePage() {
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Reveal delay={0}>
-              <div className="border-2 border-[#40916c] rounded-xl p-8 h-full">
-                <div className="inline-flex items-center gap-2 bg-[#40916c]/10 text-[#40916c] text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              <div className="border-2 border-[#475569] rounded-xl p-8 h-full">
+                <div className="inline-flex items-center gap-2 bg-[#475569]/10 text-[#475569] text-xs font-semibold px-3 py-1 rounded-full mb-4">
                   Entry Level
                 </div>
-                <h3 className="text-xl font-bold text-stone-900 mb-3">From the Farm Participant</h3>
+                <h3 className="text-xl font-bold text-stone-900 mb-3">Regenerate US Partner</h3>
                 <p className="text-stone-600 text-sm leading-relaxed mb-4">
                   Restaurants that submit one or more dishes with verified local sourcing.
                   Dishes are individually certified and displayed in our directory.
@@ -176,7 +176,7 @@ export default async function HomePage() {
                 <ul className="space-y-2">
                   {['1+ certified dishes', 'Listed in public directory', 'Per-dish supplier transparency'].map((f) => (
                     <li key={f} className="flex items-center gap-2 text-sm text-stone-600">
-                      <svg className="w-4 h-4 text-[#40916c] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      <svg className="w-4 h-4 text-[#475569] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                       {f}
                     </li>
                   ))}
@@ -208,7 +208,7 @@ export default async function HomePage() {
       </section>
 
       {/* For Farms */}
-      <section className="py-12 md:py-20 bg-[#0f172a]">
+      <section className="py-12 md:py-20 bg-[#1e3a8a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <Reveal>
@@ -233,7 +233,7 @@ export default async function HomePage() {
                   {showApplyCtas && (
                     <Link
                       href="/apply?type=farm"
-                      className="inline-block bg-white text-[#0f172a] px-6 py-3 rounded-xl font-semibold hover:bg-slate-50 transition-colors text-sm"
+                      className="inline-block bg-white text-[#1e3a8a] px-6 py-3 rounded-xl font-semibold hover:bg-slate-50 transition-colors text-sm"
                     >
                       Register Your Farm
                     </Link>

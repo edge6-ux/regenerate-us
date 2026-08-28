@@ -338,7 +338,7 @@ export default function AdminRestaurantDetailPage() {
             onChange={(e) => setParticipationLevel(e.target.value as 'participant' | 'certified')}
             className="w-full sm:w-64 border border-stone-300 rounded-lg px-3 py-2 text-sm"
           >
-            <option value="participant">Participant</option>
+            <option value="participant">Partner</option>
             <option value="certified">Certified</option>
           </select>
         </div>

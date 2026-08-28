@@ -99,7 +99,7 @@ export default async function QRCardPage() {
             {/* Restaurant name */}
             <div className="text-center">
               <p className="text-xs uppercase tracking-widest text-stone-400 mb-1">
-                {isCertified ? 'Regenerate US Certified Restaurant' : 'From the Farm Participant'}
+                {isCertified ? 'Regenerate US Certified Restaurant' : 'Regenerate US Partner'}
               </p>
               <h1 className="text-xl font-bold text-stone-900 leading-tight">
                 {restaurant.name}

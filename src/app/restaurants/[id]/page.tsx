@@ -85,7 +85,7 @@ export default async function RestaurantVerificationPage({
                 <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.403 12.652a3 3 0 0 0 0-5.304 3 3 0 0 0-3.75-3.751 3 3 0 0 0-5.305 0 3 3 0 0 0-3.751 3.75 3 3 0 0 0 0 5.305 3 3 0 0 0 3.75 3.751 3 3 0 0 0 5.305 0 3 3 0 0 0 3.751-3.75Zm-2.546-4.46a.75.75 0 0 0-1.214-.883l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
                 </svg>
-                {isCertified ? 'Regenerate US Certified Restaurant' : 'From the Farm Participant'}
+                {isCertified ? 'Regenerate US Certified Restaurant' : 'Regenerate US Partner'}
               </div>
 
               <h1 className={`${wordmark.className} text-4xl sm:text-5xl font-bold text-white leading-tight`}>
@@ -207,7 +207,7 @@ export default async function RestaurantVerificationPage({
         )}
 
         {/* ── CTA ───────────────────────────────────────────────────────────── */}
-        <section className="bg-[#0f172a] rounded-2xl p-8 text-center">
+        <section className="bg-[#1e3a8a] rounded-2xl p-8 text-center">
           <span className={`${greatVibes.className} text-slate-300 text-3xl`}>
             Regenerate US
           </span>
@@ -219,7 +219,7 @@ export default async function RestaurantVerificationPage({
           </p>
           <Link
             href="/restaurants"
-            className="inline-flex items-center gap-2 bg-white text-[#0f172a] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-slate-50 transition-colors"
+            className="inline-flex items-center gap-2 bg-white text-[#1e3a8a] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-slate-50 transition-colors"
           >
             Explore the directory
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

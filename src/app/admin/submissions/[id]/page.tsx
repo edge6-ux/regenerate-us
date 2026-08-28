@@ -252,7 +252,7 @@ export default function SubmissionDetailPage() {
               onChange={(e) => setParticipationLevel(e.target.value as 'participant' | 'certified')}
               className="border border-stone-300 rounded-lg px-3 py-2 text-sm text-stone-900 focus:outline-none focus:ring-2 focus:ring-[#1e293b] focus:border-transparent max-w-xs"
             >
-              <option value="participant">From the Farm Participant</option>
+              <option value="participant">Regenerate US Partner</option>
               <option value="certified">Regenerate US Certified Restaurant</option>
             </select>
             <p className="text-xs text-stone-500 mt-1">Saved when you click &quot;Update Submission&quot; below.</p>

@@ -131,7 +131,7 @@ export default async function RestaurantDashboard() {
               ? 'bg-[#1e293b] text-white'
               : 'bg-slate-100 text-slate-800 border border-slate-200'
           }`}>
-            {restaurant.participation_level === 'certified' ? 'Regenerate US Certified' : 'Participant'}
+            {restaurant.participation_level === 'certified' ? 'Regenerate US Certified' : 'Partner'}
           </span>
         </div>
         <div className="w-full bg-stone-100 rounded-full h-2">

@@ -254,7 +254,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
                           ? 'bg-[#1e293b] text-white'
                           : 'bg-slate-100 text-slate-800'
                       }`}>
-                        {restaurant.participation_level === 'certified' ? 'Certified' : 'Participant'}
+                        {restaurant.participation_level === 'certified' ? 'Certified' : 'Partner'}
                       </span>
                     </div>
                     <p className="text-sm text-stone-500 mb-3">
@@ -281,7 +281,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
       {activeTab === 'farms' && (
         <>
           {/* Farm CTA banner */}
-          <div className="bg-[#0f172a] rounded-2xl p-6 md:p-8 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+          <div className="bg-[#1e3a8a] rounded-2xl p-6 md:p-8 mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
             <div className="flex-1">
               <div className="inline-flex items-center gap-2 bg-white/10 text-slate-200 text-xs font-semibold px-3 py-1 rounded-full mb-3">
                 For Farms & Producers
@@ -296,7 +296,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
             </div>
             <Link
               href="/apply?type=farm"
-              className="flex-shrink-0 inline-flex items-center gap-2 bg-white text-[#0f172a] px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-slate-50 transition-colors"
+              className="flex-shrink-0 inline-flex items-center gap-2 bg-white text-[#1e3a8a] px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-slate-50 transition-colors"
             >
               Register Your Farm
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -432,7 +432,7 @@ function RestaurantModal({
                 ? 'bg-[#1e293b] text-white'
                 : 'bg-slate-100 text-slate-800 border border-slate-200'
             }`}>
-              {restaurant.participation_level === 'certified' ? 'Regenerate US Certified Restaurant' : 'From the Farm Participant'}
+              {restaurant.participation_level === 'certified' ? 'Regenerate US Certified Restaurant' : 'Regenerate US Partner'}
             </span>
             {approvalDate && (
               <span className="text-xs text-stone-400">

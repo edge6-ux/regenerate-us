@@ -62,7 +62,7 @@ export default async function RestaurantsPage() {
                   }`}>
                     {restaurant.participation_level === 'certified'
                       ? 'Regenerate US Certified'
-                      : 'Participant'}
+                      : 'Partner'}
                   </span>
                 </div>
                 <p className="text-sm text-stone-500 mb-4">
