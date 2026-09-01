@@ -78,13 +78,13 @@ export default function AboutCertificationPage() {
     <div className="bg-white">
 
       {/* ── Hero ── */}
-      <section className="relative bg-[#0f172a] text-white overflow-hidden">
+      <section className="relative bg-[#0f172a] text-white overflow-hidden -mt-16">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{ backgroundImage: "url('/regen-hero2.avif')" }}
           aria-hidden="true"
         />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 md:pt-44 md:pb-28">
           <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
             How It Works
           </div>

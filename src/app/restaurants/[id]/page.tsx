@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Fraunces, Great_Vibes } from 'next/font/google';
 import { ATMOSPHERE_BG } from '@/components/AtmosphereBanner';
-import UsFlag from '@/components/UsFlag';
 
 export const revalidate = 60;
 
@@ -31,15 +30,8 @@ export default async function RestaurantProfilePage({
     <div className="min-h-screen bg-stone-50">
 
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
-      <div className="bg-[#0f172a] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12">
-
-          <div className="flex items-center gap-2 mb-8">
-            <span className={`${wordmark.className} text-white text-lg font-semibold tracking-tight`}>
-              Regen USA
-            </span>
-            <UsFlag />
-          </div>
+      <div className="bg-[#0f172a] text-white -mt-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12">
 
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
             <div>

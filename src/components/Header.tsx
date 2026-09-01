@@ -26,7 +26,14 @@ export default function Header() {
   const menuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const router = useRouter();
-  const isHome = pathname === '/';
+  // Pages with their own full-bleed dark hero banner at the top get the
+  // transparent, absolutely-positioned nav (matching the homepage). Every
+  // other page keeps the solid dark header, since a transparent nav there
+  // would sit over a light background and become unreadable.
+  const hasTransparentHero =
+    pathname === '/' ||
+    pathname === '/about-certification' ||
+    /^\/restaurants\/[^/]+$/.test(pathname);
 
   const navLinks = [
     ...BASE_NAV,
@@ -116,7 +123,7 @@ export default function Header() {
     }`;
 
   return (
-    <header className={`${isHome ? 'absolute' : 'relative'} top-0 left-0 right-0 z-50 border-b ${isHome ? 'bg-transparent border-white/10' : 'bg-[#0f172a] border-[#0f172a]'}`}>
+    <header className={`${hasTransparentHero ? 'absolute' : 'relative'} top-0 left-0 right-0 z-50 border-b ${hasTransparentHero ? 'bg-transparent border-white/10' : 'bg-[#0f172a] border-[#0f172a]'}`}>
       <div className="w-full pl-2 pr-2 sm:pl-3 sm:pr-3 md:pl-4 md:pr-4">
         <div className="flex justify-between items-center h-16 gap-2">
 
