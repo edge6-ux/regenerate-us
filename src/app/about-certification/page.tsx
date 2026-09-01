@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 import { ATMOSPHERE_BG, AtmosphereLayers } from '@/components/AtmosphereBanner';
-import UsFlag from '@/components/UsFlag';
 
 // ─── CONTENT ────────────────────────────────────────────────────────────────
 // Edit the sections below to update page copy without touching layout code.
@@ -89,7 +88,7 @@ export default function AboutCertificationPage() {
             How It Works
           </div>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-            Regen USA <UsFlag className="inline-block w-9 h-[0.6em] rounded-sm align-middle" /><br className="hidden sm:block" /> Farms &amp; Directory
+            Regen USA<br className="hidden sm:block" /> Farms &amp; Directory
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed mb-8">
             We verify farms using clean, regenerative practices, and connect them with the
