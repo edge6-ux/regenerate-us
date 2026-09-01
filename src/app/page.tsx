@@ -224,8 +224,8 @@ export default async function HomePage() {
                 </div>
                 <h3 className="text-xl font-bold text-stone-900 mb-3">Get Listed as a Farm-to-Table Partner</h3>
                 <p className="text-stone-600 text-sm leading-relaxed mb-6 flex-1">
-                  A free directory listing for restaurants that source from regenerative farms — no dish-by-dish
-                  certification, no tiers. Apply, pass a quick review, and get discovered.
+                  A free directory listing for restaurants that source from regenerative farms.
+                  Apply, pass a quick review, and get discovered.
                 </p>
                 {showApplyCtas && (
                   <Link
