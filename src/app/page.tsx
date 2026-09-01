@@ -27,16 +27,15 @@ export default async function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-24 md:pt-48 md:pb-32">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm mb-6">
-              <span>Farm-to-Table Certification Program</span>
+              <span>Regenerative Farms &amp; Farm-to-Table Directory</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               Know Where Your Food{' '}
               <span className="text-slate-300">Really</span> Comes From
             </h1>
             <p className="text-lg md:text-xl text-slate-100 mb-10 leading-relaxed">
-              Regen USA certifies restaurants that prioritize transparency,
-              local sourcing, and verified farm-to-table practices. Every certified dish
-              comes with full supplier transparency.
+              Regen USA verifies farms committed to regenerative, transparent practices, and
+              connects them with the farm-to-table restaurants that source from them.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               {showApplyCtas && (
@@ -44,7 +43,7 @@ export default async function HomePage() {
                   href="/apply"
                   className="bg-white text-[#0f172a] px-8 py-3.5 rounded-xl font-semibold text-center hover:bg-slate-50 transition-colors"
                 >
-                  Apply for Certification
+                  Apply Now
                 </Link>
               )}
               <Link
@@ -83,8 +82,8 @@ export default async function HomePage() {
           <Reveal className="text-center mb-12 md:mb-16">
             <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-4">How It Works</h2>
             <p className="text-stone-600 max-w-2xl mx-auto">
-              Our certification program verifies that restaurants source their key
-              ingredients from real, identifiable farms and producers.
+              Farms apply with their practices and certifications; restaurants apply to be listed as
+              farm-to-table partners. Both go through a quick review before appearing publicly.
             </p>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -93,19 +92,19 @@ export default async function HomePage() {
                 step: 'Step 01',
                 title: 'Apply',
                 description:
-                  'Restaurants submit their dishes with full supplier information for each main element.',
+                  'Farms submit their practices and certifications; restaurants submit their profile and story.',
               },
               {
                 step: 'Step 02',
                 title: 'Verify',
                 description:
-                  'Our team reviews supplier claims, certifications, and sourcing practices for accuracy.',
+                  'Our team reviews the application — practices, certifications, and sourcing claims.',
               },
               {
                 step: 'Step 03',
-                title: 'Certify',
+                title: 'Get Listed',
                 description:
-                  'Approved restaurants receive certification and are listed in our public directory with full transparency.',
+                  'Approved farms and restaurants appear in our public directory with full transparency.',
               },
             ].map((step, i) => (
               <Reveal key={i} delay={i * 100}>
@@ -136,7 +135,7 @@ export default async function HomePage() {
               <div className="flex items-center gap-3">
                 <span className="text-4xl font-black text-[#f0a23e]">100%</span>
                 <span className="text-sm text-slate-300 max-w-[22ch] leading-snug">
-                  of certified dishes name a real, contactable supplier
+                  of listed farms are reviewed before appearing in the directory
                 </span>
               </div>
             </Reveal>
@@ -159,7 +158,7 @@ export default async function HomePage() {
                       </svg>
                     ),
                     title: 'Verified Transparency',
-                    description: 'Every certified dish names the actual farm or producer behind it — no vague claims, no greenwashing.',
+                    description: 'Every listed farm names its actual practices and certifications — no vague claims, no greenwashing.',
                   },
                   {
                     icon: (
@@ -187,57 +186,27 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Participation Levels */}
+      {/* Restaurants: Get Listed */}
       <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="text-center mb-8 md:mb-14">
-            <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-4">Participation Levels</h2>
-            <p className="text-stone-600 max-w-2xl mx-auto">
-              Certification is dish-by-dish. The more you verify, the higher your recognition.
+          <Reveal className="max-w-2xl mx-auto text-center border border-stone-200 rounded-xl p-8 md:p-10">
+            <div className="inline-flex items-center gap-2 bg-[#1e293b]/10 text-[#1e293b] text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              For Restaurants
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-3">Get Listed as a Farm-to-Table Partner</h2>
+            <p className="text-stone-600 leading-relaxed mb-6">
+              A free directory listing for restaurants that source from regenerative farms — no dish-by-dish
+              certification, no tiers. Apply, pass a quick review, and get discovered.
             </p>
+            {showApplyCtas && (
+              <Link
+                href="/apply"
+                className="inline-block bg-[#1e293b] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#0f172a] transition-colors text-sm"
+              >
+                Apply Now
+              </Link>
+            )}
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Reveal delay={0}>
-              <div className="border-2 border-[#475569] rounded-xl p-8 h-full">
-                <div className="inline-flex items-center gap-2 bg-[#475569]/10 text-[#475569] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                  Entry Level
-                </div>
-                <h3 className="text-xl font-bold text-stone-900 mb-3">Regen USA Partner</h3>
-                <p className="text-stone-600 text-sm leading-relaxed mb-4">
-                  Restaurants that submit one or more dishes with verified local sourcing.
-                  Dishes are individually certified and displayed in our directory.
-                </p>
-                <ul className="space-y-2">
-                  {['1+ certified dishes', 'Listed in public directory', 'Per-dish supplier transparency'].map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-sm text-stone-600">
-                      <svg className="w-4 h-4 text-[#475569] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-            <Reveal delay={100}>
-              <div className="border-2 border-[#1e293b] rounded-xl p-8 bg-[#1e293b]/5 h-full">
-                <div className="inline-flex items-center gap-2 bg-[#1e293b]/10 text-[#1e293b] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                  Full Certification
-                </div>
-                <h3 className="text-xl font-bold text-stone-900 mb-3">Regen USA Certified Restaurant</h3>
-                <p className="text-stone-600 text-sm leading-relaxed mb-4">
-                  Full restaurant certification for establishments that demonstrate
-                  comprehensive farm-to-table practices across their entire menu.
-                </p>
-                <ul className="space-y-2">
-                  {['7+ certified dishes', 'Regen USA Certified badge', 'Featured in directory', 'Restaurant-level recognition'].map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-sm text-stone-600">
-                      <svg className="w-4 h-4 text-[#1e293b] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          </div>
         </div>
       </section>
 
@@ -255,7 +224,7 @@ export default async function HomePage() {
                   Restaurants Are Looking for You
                 </h2>
                 <p className="text-slate-100 leading-relaxed mb-4">
-                  Every Regen USA-certified dish links directly to a verified farm or producer.
+                  Every farm in our directory is reviewed and verified for its practices.
                   Restaurants in our network are actively searching for local suppliers who meet
                   the program&apos;s standards — get in front of them by registering your farm.
                 </p>
@@ -294,7 +263,7 @@ export default async function HomePage() {
                   { label: 'Reach Buyers', desc: 'Restaurants using our directory are actively sourcing — your farm gets found' },
                   { label: 'Build Credibility', desc: 'Regen USA-verified practices carry weight with health-conscious restaurants' },
                   { label: 'Showcase Standards', desc: 'Display your certifications, welfare practices, and production methods' },
-                  { label: 'Grow Your Network', desc: 'Every certified dish that uses your farm builds your reputation' },
+                  { label: 'Grow Your Network', desc: 'Every restaurant that lists you as a source builds your reputation' },
                 ].map((item, i) => (
                   <div key={i} className="bg-white/10 border border-white/10 rounded-xl p-5">
                     <h4 className="text-sm font-semibold text-white mb-1">{item.label}</h4>
@@ -313,7 +282,7 @@ export default async function HomePage() {
           <Reveal className="text-center mb-8 md:mb-14">
             <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-4">What We Look For</h2>
             <p className="text-stone-600 max-w-2xl mx-auto">
-              Every dish submission is reviewed against a consistent set of sourcing standards.
+              Every farm application is reviewed against a consistent set of practice standards.
               Here&apos;s what matters most.
             </p>
           </Reveal>
@@ -326,8 +295,8 @@ export default async function HomePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                   </svg>
                 ),
-                title: 'Identified Supplier',
-                desc: 'The farm or producer behind each main ingredient must be named — no anonymous distributors.',
+                title: 'Identified Producer',
+                desc: 'The farm behind the food must be named and locatable — no anonymous distributors.',
               },
               {
                 icon: (
@@ -337,7 +306,7 @@ export default async function HomePage() {
                   </svg>
                 ),
                 title: 'Local & Regional',
-                desc: 'We prioritize suppliers within the region, supporting shorter supply chains and fresher ingredients.',
+                desc: 'We prioritize producers within the region, supporting shorter supply chains and fresher food.',
               },
               {
                 icon: (
@@ -346,7 +315,7 @@ export default async function HomePage() {
                   </svg>
                 ),
                 title: 'Verifiable Practices',
-                desc: 'Suppliers should be able to back up sourcing claims with documentation or certifications when asked.',
+                desc: 'Farms should be able to back up sourcing and production claims with documentation or certifications when asked.',
               },
               {
                 icon: (
@@ -355,7 +324,7 @@ export default async function HomePage() {
                   </svg>
                 ),
                 title: 'Honest Representation',
-                desc: 'Restaurants must accurately represent how dishes are prepared and what ingredients are truly local.',
+                desc: 'Farms must accurately represent their practices, and restaurants must accurately represent who they source from.',
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 80}>
@@ -377,11 +346,10 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Ready to Showcase Your Sourcing?
+              Ready to Join the Directory?
             </h2>
             <p className="text-slate-200/80 mb-10 max-w-xl mx-auto">
-              Join the growing community of restaurants committed to transparency
-              and local sourcing.
+              Join the growing network of regenerative farms and the restaurants that source from them.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               {showApplyCtas && (

@@ -2,11 +2,13 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { createBrowserClient } from '@supabase/ssr';
+import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import type { Restaurant } from '@/lib/types';
 import { US_STATES } from '@/lib/types';
 import { geocodeAddress } from '@/lib/geocode';
 import { sendPasswordResetForRestaurant, updateAdminRestaurantProfile } from '@/lib/actions';
+import StatusBadge from '@/components/StatusBadge';
 
 function getSupabase() {
   return createBrowserClient(
@@ -38,7 +40,6 @@ export default function AdminRestaurantDetailPage() {
   const [state, setState] = useState('');
   const [zip, setZip] = useState('');
   const [description, setDescription] = useState('');
-  const [participationLevel, setParticipationLevel] = useState<'participant' | 'certified'>('participant');
   const [healthPracticesText, setHealthPracticesText] = useState('');
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
@@ -60,7 +61,6 @@ export default function AdminRestaurantDetailPage() {
       setState(r.state);
       setZip(r.zip);
       setDescription(r.description ?? '');
-      setParticipationLevel(r.participation_level === 'certified' ? 'certified' : 'participant');
       setHealthPracticesText((r.health_practices ?? []).join(', '));
       setLatitude(r.latitude != null ? String(r.latitude) : '');
       setLongitude(r.longitude != null ? String(r.longitude) : '');
@@ -76,7 +76,6 @@ export default function AdminRestaurantDetailPage() {
           state: r.state,
           zip: r.zip,
           description: r.description ?? '',
-          participationLevel: r.participation_level === 'certified' ? 'certified' : 'participant',
           healthPracticesText: (r.health_practices ?? []).join(', '),
           latitude: r.latitude != null ? String(r.latitude) : '',
           longitude: r.longitude != null ? String(r.longitude) : '',
@@ -103,7 +102,6 @@ export default function AdminRestaurantDetailPage() {
       state,
       zip,
       description,
-      participationLevel,
       healthPracticesText,
       latitude,
       longitude,
@@ -121,7 +119,6 @@ export default function AdminRestaurantDetailPage() {
     latitude,
     longitude,
     name,
-    participationLevel,
     state,
     website,
     zip,
@@ -163,7 +160,6 @@ export default function AdminRestaurantDetailPage() {
       state: state.trim(),
       zip: zip.trim(),
       description: description.trim() || null,
-      participation_level: participationLevel,
       health_practices: practices.length > 0 ? practices : null,
       latitude: lat != null && !Number.isNaN(lat) ? lat : null,
       longitude: lng != null && !Number.isNaN(lng) ? lng : null,
@@ -233,7 +229,18 @@ export default function AdminRestaurantDetailPage() {
         </button>
       </div>
 
-      <h1 className="text-2xl font-bold text-stone-900 mb-6">Edit restaurant</h1>
+      <div className="flex items-center justify-between gap-3 mb-6">
+        <h1 className="text-2xl font-bold text-stone-900">Edit restaurant</h1>
+        <div className="flex items-center gap-3">
+          <StatusBadge status={restaurant.status} />
+          <Link
+            href={`/admin/restaurants/${id}/review`}
+            className="text-sm font-medium text-[#1e293b] hover:underline"
+          >
+            Review status →
+          </Link>
+        </div>
+      </div>
 
       <div className="space-y-6 bg-white border border-stone-200 rounded-xl p-6">
         <div>
@@ -329,18 +336,6 @@ export default function AdminRestaurantDetailPage() {
               className="w-full border border-stone-300 rounded-lg px-3 py-2 text-sm"
             />
           </div>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-stone-700 mb-1">Participation level</label>
-          <select
-            value={participationLevel}
-            onChange={(e) => setParticipationLevel(e.target.value as 'participant' | 'certified')}
-            className="w-full sm:w-64 border border-stone-300 rounded-lg px-3 py-2 text-sm"
-          >
-            <option value="participant">Partner</option>
-            <option value="certified">Certified</option>
-          </select>
         </div>
 
         <div>

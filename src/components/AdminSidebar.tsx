@@ -130,7 +130,9 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
       return (
         pathname === '/admin/review-queue' ||
         pathname === '/admin/farms/pending' ||
-        /^\/admin\/farms\/[^/]+\/review\/?$/.test(pathname)
+        pathname === '/admin/restaurants/pending' ||
+        /^\/admin\/farms\/[^/]+\/review\/?$/.test(pathname) ||
+        /^\/admin\/restaurants\/[^/]+\/review\/?$/.test(pathname)
       );
     }
     if (href === '/admin') {

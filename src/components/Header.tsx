@@ -160,11 +160,11 @@ export default function Header() {
                   {isAdmin && (
                     <>
                       <Link
-                        href="/admin/submissions"
-                        className={menuItemClass('/admin/submissions')}
+                        href="/admin/review-queue"
+                        className={menuItemClass('/admin/review-queue')}
                         onClick={() => setOpen(false)}
                       >
-                        All applications
+                        Review queue
                       </Link>
                       {adminTier >= 3 && (
                         <Link

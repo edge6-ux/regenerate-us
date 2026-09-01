@@ -21,11 +21,11 @@ interface RestaurantRow {
   website: string | null;
   contact_phone: string;
   description: string | null;
-  participation_level: string;
+  status: string;
+  health_practices: string[] | null;
+  approved_at: string | null;
   latitude: number | null;
   longitude: number | null;
-  submissions: { id: string; status: string; reviewed_at: string | null }[];
-  dishes: { id: string; name: string; category: string; main_element: string; supplier_name: string; supplier_city: string | null; supplier_state: string | null; status: string }[];
 }
 
 interface Props {
@@ -236,7 +236,6 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredRestaurants.map((restaurant) => {
-                const approvedDishes = restaurant.dishes.filter((d) => d.status === 'approved');
                 const distance = searchCenter && restaurant.latitude && restaurant.longitude
                   ? distanceMiles(searchCenter[0], searchCenter[1], restaurant.latitude, restaurant.longitude)
                   : null;
@@ -246,18 +245,9 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
                     onClick={() => setSelectedRestaurant(restaurant)}
                     className="bg-white border border-stone-200 rounded-xl p-6 hover:shadow-lg transition-all hover:border-[#1e293b]/30 text-left group"
                   >
-                    <div className="flex items-start justify-between mb-3">
-                      <h2 className="text-lg font-semibold text-stone-900 group-hover:text-[#1e293b] transition-colors">
-                        {restaurant.name}
-                      </h2>
-                      <span className={`text-xs font-medium px-2 py-0.5 rounded-full flex-shrink-0 ml-2 ${
-                        restaurant.participation_level === 'certified'
-                          ? 'bg-[#1e293b] text-white'
-                          : 'bg-slate-100 text-slate-800'
-                      }`}>
-                        {restaurant.participation_level === 'certified' ? 'Certified' : 'Partner'}
-                      </span>
-                    </div>
+                    <h2 className="text-lg font-semibold text-stone-900 group-hover:text-[#1e293b] transition-colors mb-1">
+                      {restaurant.name}
+                    </h2>
                     <p className="text-sm text-stone-500 mb-3">
                       {restaurant.city}, {restaurant.state}
                       {distance !== null && (
@@ -267,9 +257,15 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
                     {restaurant.description && (
                       <p className="text-sm text-stone-600 mb-3 line-clamp-2">{restaurant.description}</p>
                     )}
-                    <div className="text-sm text-[#1e293b] font-medium">
-                      {approvedDishes.length} certified dish{approvedDishes.length !== 1 ? 'es' : ''}
-                    </div>
+                    {restaurant.health_practices && restaurant.health_practices.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {restaurant.health_practices.slice(0, 3).map((t) => (
+                          <span key={t} className="text-xs px-2 py-0.5 rounded-full bg-[#1e293b]/8 text-[#1e293b] border border-[#1e293b]/20">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </button>
                 );
               })}
@@ -385,7 +381,7 @@ function EmptyState({ type, hasSearch }: { type: 'restaurants' | 'farms'; hasSea
         {hasSearch
           ? 'Try expanding your search radius or clearing your search.'
           : type === 'restaurants'
-            ? 'Be the first restaurant to earn Regen USA certification.'
+            ? 'Be the first restaurant listed in the Regen USA directory.'
             : 'Farms will appear here once approved through our onboarding process.'}
       </p>
       {!hasSearch && (
@@ -407,8 +403,7 @@ function RestaurantModal({
   restaurant: RestaurantRow;
   onClose: () => void;
 }) {
-  const approvedDishes = restaurant.dishes.filter((d) => d.status === 'approved');
-  const approvalDate = restaurant.submissions.find((s) => s.status === 'approved')?.reviewed_at;
+  const approvalDate = restaurant.approved_at;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -428,12 +423,8 @@ function RestaurantModal({
           </div>
 
           <div className="flex items-center gap-3 mb-6">
-            <span className={`text-xs font-medium px-3 py-1 rounded-full ${
-              restaurant.participation_level === 'certified'
-                ? 'bg-[#1e293b] text-white'
-                : 'bg-slate-100 text-slate-800 border border-slate-200'
-            }`}>
-              {restaurant.participation_level === 'certified' ? 'Regen USA Certified Restaurant' : 'Regen USA Partner'}
+            <span className="text-xs font-medium px-3 py-1 rounded-full bg-slate-100 text-slate-800 border border-slate-200">
+              Farm-to-Table Partner
             </span>
             {approvalDate && (
               <span className="text-xs text-stone-400">
@@ -474,32 +465,27 @@ function RestaurantModal({
             )}
           </div>
 
-          {approvedDishes.length > 0 && (
+          {restaurant.health_practices && restaurant.health_practices.length > 0 && (
             <div>
-              <h3 className="text-sm font-semibold text-stone-900 mb-3 uppercase tracking-wider">Certified Dishes</h3>
-              <div className="space-y-2">
-                {approvedDishes.map((dish) => (
-                  <div key={dish.id} className="bg-stone-50 rounded-lg p-3">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-medium text-stone-900 text-sm">{dish.name}</span>
-                      <span className="text-xs text-stone-500 bg-stone-200/50 px-2 py-0.5 rounded-full">{dish.category}</span>
-                    </div>
-                    <div className="text-xs text-stone-500">
-                      {dish.main_element} — sourced from {dish.supplier_name}
-                      {(dish.supplier_city || dish.supplier_state) && (
-                        <>, {[dish.supplier_city, dish.supplier_state].filter(Boolean).join(', ')}</>
-                      )}
-                    </div>
-                  </div>
+              <h3 className="text-sm font-semibold text-stone-900 mb-3 uppercase tracking-wider">Better Health Practices</h3>
+              <div className="flex flex-wrap gap-2">
+                {restaurant.health_practices.map((p) => (
+                  <span key={p} className="text-xs px-2.5 py-1 rounded-full bg-[#1e293b]/8 text-[#1e293b] border border-[#1e293b]/20">
+                    {p}
+                  </span>
                 ))}
               </div>
             </div>
           )}
 
           <div className="mt-6 pt-4 border-t border-stone-100">
-            <p className="text-xs text-stone-400 italic">
-              Certified dishes meet Regen USA standards for the main element only and may be subject to ongoing review.
-            </p>
+            <Link
+              href="/directory"
+              onClick={onClose}
+              className="inline-flex items-center gap-1.5 text-sm text-[#1e293b] font-medium hover:underline"
+            >
+              Browse Regen USA farms →
+            </Link>
           </div>
         </div>
       </div>

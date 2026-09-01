@@ -9,71 +9,16 @@ export interface Restaurant {
   city: string;
   state: string;
   zip: string;
-  participation_level: 'participant' | 'certified';
+  status: 'pending' | 'approved' | 'rejected';
   description: string | null;
   health_practices: string[] | null;
   latitude: number | null;
   longitude: number | null;
+  approved_at: string | null;
+  reviewed_by: string | null;
+  admin_notes: string | null;
   created_at: string;
   updated_at: string;
-}
-
-export interface Submission {
-  id: string;
-  restaurant_id: string;
-  status: 'pending' | 'approved' | 'rejected' | 'needs_clarification';
-  admin_notes: string | null;
-  submitted_at: string;
-  reviewed_at: string | null;
-  reviewer_id: string | null;
-  reviewed_by: string | null;
-}
-
-export interface Dish {
-  id: string;
-  submission_id: string;
-  restaurant_id: string;
-  name: string;
-  category: 'Entrée' | 'Appetizer' | 'Side' | 'Special' | 'Other';
-  description: string | null;
-  main_element: string;
-  supplier_name: string;
-  supplier_city: string | null;
-  supplier_state: string | null;
-  supplier_website: string | null;
-  supplier_certifications: string | null;
-  main_element_cert_type: 'usda_organic' | 'aga' | 'raa' | 'other' | 'none' | null;
-  main_element_cert_other: string | null;
-  meets_non_negotiables: boolean;
-  notes: string | null;
-  status: 'pending' | 'approved' | 'rejected';
-  approved_at: string | null;
-  created_at: string;
-}
-
-export interface Upload {
-  id: string;
-  submission_id: string | null;
-  dish_id: string | null;
-  file_type: string;
-  file_url: string;
-  file_name: string | null;
-  created_at: string;
-}
-
-export interface SubmissionWithRestaurant extends Submission {
-  restaurants: Restaurant;
-}
-
-export interface SubmissionWithDetails extends Submission {
-  restaurants: Restaurant;
-  dishes: Dish[];
-  uploads: Upload[];
-}
-
-export interface RestaurantWithDishes extends Restaurant {
-  dishes: Dish[];
-  submissions: Submission[];
 }
 
 export interface Farm {
@@ -112,23 +57,6 @@ export interface Farm {
   updated_at: string;
 }
 
-export interface DishFormData {
-  name: string;
-  category: string;
-  description: string;
-  main_element: string;
-  supplier_name: string;
-  supplier_city: string;
-  supplier_state: string;
-  supplier_website: string;
-  supplier_certifications: string;
-  main_element_cert_type: 'usda_organic' | 'aga' | 'raa' | 'other' | 'none' | '';
-  main_element_cert_other: string;
-  cert_file_url: string;
-  meets_non_negotiables: boolean;
-  notes: string;
-}
-
 export const US_STATES = [
   'AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA',
   'HI','ID','IL','IN','IA','KS','KY','LA','ME','MD',
@@ -150,5 +78,3 @@ export const US_STATE_NAMES: Record<string, string> = {
   VA: 'Virginia', WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin', WY: 'Wyoming',
   DC: 'District of Columbia'
 };
-
-export const DISH_CATEGORIES = ['Entrée', 'Appetizer', 'Side', 'Special', 'Other'] as const;

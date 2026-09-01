@@ -72,6 +72,7 @@ export default function AccountsPage() {
   const [extraWebsite, setExtraWebsite] = useState('');
   const [extraDescription, setExtraDescription] = useState('');
   const [farmListingStatus, setFarmListingStatus] = useState<'approved' | 'pending' | 'rejected'>('pending');
+  const [restaurantListingStatus, setRestaurantListingStatus] = useState<'approved' | 'pending' | 'rejected'>('pending');
 
   const [directPwRowKey, setDirectPwRowKey] = useState<string | null>(null);
   const [directPwTargetUserId, setDirectPwTargetUserId] = useState<string | null>(null);
@@ -178,6 +179,7 @@ export default function AccountsPage() {
           zip: extraZip.trim(),
           website: extraWebsite.trim() || null,
           description: extraDescription.trim() || null,
+          status: restaurantListingStatus,
         });
         if (r.error) showMsg({ type: 'error', text: r.error });
         else {
@@ -474,6 +476,19 @@ export default function AccountsPage() {
                   <div>
                     <label htmlFor="new-acc-r-phone" className="block text-xs text-stone-600 mb-1">Phone</label>
                     <input id="new-acc-r-phone" value={extraPhone} onChange={(e) => setExtraPhone(e.target.value)} className={`${inp} w-full`} />
+                  </div>
+                  <div>
+                    <label htmlFor="new-acc-r-status" className="block text-xs text-stone-600 mb-1">Listing status</label>
+                    <select
+                      id="new-acc-r-status"
+                      value={restaurantListingStatus}
+                      onChange={(e) => setRestaurantListingStatus(e.target.value as 'approved' | 'pending' | 'rejected')}
+                      className={`${inp} w-full`}
+                    >
+                      <option value="pending">Pending</option>
+                      <option value="approved">Approved</option>
+                      <option value="rejected">Rejected</option>
+                    </select>
                   </div>
                   <div>
                     <label htmlFor="new-acc-r-addr" className="block text-xs text-stone-600 mb-1">Street address</label>

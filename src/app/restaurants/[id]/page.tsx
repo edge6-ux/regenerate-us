@@ -1,7 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import DishCard from '@/components/DishCard';
 import { Fraunces, Great_Vibes } from 'next/font/google';
 import { ATMOSPHERE_BG } from '@/components/AtmosphereBanner';
 
@@ -10,7 +9,7 @@ export const revalidate = 60;
 const wordmark = Fraunces({ subsets: ['latin'], weight: ['600', '700'] });
 const greatVibes = Great_Vibes({ subsets: ['latin'], weight: '400' });
 
-export default async function RestaurantVerificationPage({
+export default async function RestaurantProfilePage({
   params,
 }: {
   params: Promise<{ id: string }>;
@@ -20,50 +19,12 @@ export default async function RestaurantVerificationPage({
 
   const { data: restaurant } = await supabase
     .from('restaurants')
-    .select(`*, submissions(id, status, reviewed_at), dishes(*)`)
+    .select('*')
     .eq('id', id)
+    .eq('status', 'approved')
     .single();
 
   if (!restaurant) notFound();
-
-  const approvedSubmission = (restaurant.submissions || []).find(
-    (s: { status: string }) => s.status === 'approved'
-  );
-  const approvedDishes = (restaurant.dishes || []).filter(
-    (d: { status: string }) => d.status === 'approved'
-  );
-  const isCertified =
-    restaurant.participation_level === 'certified' || approvedDishes.length >= 7;
-
-  const standards = [
-    {
-      icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21a48.25 48.25 0 0 1-8.135-.687c-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-        </svg>
-      ),
-      title: 'No Seed Oils or Additives',
-      body: 'Certified dishes contain no seed oils, synthetic dyes, or artificial additives in the main element.',
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-        </svg>
-      ),
-      title: 'No Added Hormones',
-      body: 'Animal products in certified dishes come from animals raised without added hormones or routine antibiotics.',
-    },
-    {
-      icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-        </svg>
-      ),
-      title: 'Verified Sourcing',
-      body: 'Every certified dish is reviewed by Regen USA. Suppliers are named, certifications are checked, and claims are verified.',
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-stone-50">
@@ -72,7 +33,6 @@ export default async function RestaurantVerificationPage({
       <div className="bg-[#0f172a] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12">
 
-          {/* Regen USA wordmark */}
           <div className="flex items-center gap-2 mb-8">
             <span className={`${wordmark.className} text-white text-lg font-semibold tracking-tight`}>
               Regen USA
@@ -81,12 +41,11 @@ export default async function RestaurantVerificationPage({
 
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
             <div>
-              {/* Certification label */}
               <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-3 py-1 text-xs font-semibold text-slate-200 mb-4">
                 <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.403 12.652a3 3 0 0 0 0-5.304 3 3 0 0 0-3.75-3.751 3 3 0 0 0-5.305 0 3 3 0 0 0-3.751 3.75 3 3 0 0 0 0 5.305 3 3 0 0 0 3.75 3.751 3 3 0 0 0 5.305 0 3 3 0 0 0 3.751-3.75Zm-2.546-4.46a.75.75 0 0 0-1.214-.883l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
                 </svg>
-                {isCertified ? 'Regen USA Certified Restaurant' : 'Regen USA Partner'}
+                Farm-to-Table Partner
               </div>
 
               <h1 className={`${wordmark.className} text-4xl sm:text-5xl font-bold text-white leading-tight`}>
@@ -95,22 +54,6 @@ export default async function RestaurantVerificationPage({
               <p className="text-slate-300 mt-2 text-lg">
                 {restaurant.city}, {restaurant.state}
               </p>
-            </div>
-
-            {/* Stats pill */}
-            <div className="flex gap-3 sm:flex-col sm:items-end">
-              <div className="bg-white/10 border border-white/20 rounded-xl px-5 py-3 text-center">
-                <div className="text-3xl font-bold text-white">{approvedDishes.length}</div>
-                <div className="text-xs text-slate-300 mt-0.5">Certified {approvedDishes.length === 1 ? 'dish' : 'dishes'}</div>
-              </div>
-              {approvedSubmission && (
-                <div className="bg-white/10 border border-white/20 rounded-xl px-5 py-3 text-center">
-                  <div className="text-sm font-semibold text-white">
-                    {new Date(approvedSubmission.reviewed_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-                  </div>
-                  <div className="text-xs text-slate-300 mt-0.5">Verified</div>
-                </div>
-              )}
             </div>
           </div>
 
@@ -138,50 +81,25 @@ export default async function RestaurantVerificationPage({
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
 
-        {/* ── What Regen USA Certified means ──────────────────────────────────────── */}
-        <section>
-          <div className="text-center mb-8">
-            <h2 className={`${wordmark.className} text-2xl font-bold text-stone-900`}>
-              What Regen USA Certified Means
-            </h2>
-            <p className="text-stone-500 mt-2 text-sm max-w-xl mx-auto">
-              Every dish on this list has been reviewed and verified by Regen USA against a strict set of sourcing standards.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {standards.map((s) => (
-              <div key={s.title} className="bg-white border border-stone-200 rounded-xl p-6">
-                <div className="text-[#1e293b] mb-3">{s.icon}</div>
-                <h3 className="font-semibold text-stone-900 text-sm mb-1">{s.title}</h3>
-                <p className="text-xs text-stone-500 leading-relaxed">{s.body}</p>
-              </div>
-            ))}
-          </div>
+        {/* ── Sourcing ──────────────────────────────────────────────────────── */}
+        <section className="bg-white border border-stone-200 rounded-xl p-8 text-center">
+          <h2 className={`${wordmark.className} text-2xl font-bold text-stone-900 mb-2`}>
+            Sourced from Regen USA Farms
+          </h2>
+          <p className="text-stone-500 text-sm max-w-lg mx-auto mb-6">
+            {restaurant.name} is a farm-to-table partner in the Regen USA directory. Browse the farms
+            in the network to see who supplies restaurants like this one.
+          </p>
+          <Link
+            href="/directory"
+            className="inline-flex items-center gap-2 bg-[#1e293b] text-white font-semibold px-6 py-3 rounded-xl text-sm hover:bg-[#0f172a] transition-colors"
+          >
+            Browse Regen USA Farms
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+            </svg>
+          </Link>
         </section>
-
-        {/* ── Certified Dishes ──────────────────────────────────────────────── */}
-        {approvedDishes.length > 0 && (
-          <section>
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h2 className={`${wordmark.className} text-2xl font-bold text-stone-900`}>
-                  Certified Dishes
-                </h2>
-                <p className="text-stone-500 text-sm mt-1">
-                  Each dish below meets Regen USA standards for its main element.
-                </p>
-              </div>
-              <span className="bg-[#1e293b] text-white text-xs font-semibold px-3 py-1.5 rounded-full">
-                {approvedDishes.length} verified
-              </span>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {approvedDishes.map((dish: Parameters<typeof DishCard>[0]['dish']) => (
-                <DishCard key={dish.id} dish={dish} />
-              ))}
-            </div>
-          </section>
-        )}
 
         {/* ── Health Practices ──────────────────────────────────────────────── */}
         {restaurant.health_practices && restaurant.health_practices.length > 0 && (
@@ -216,10 +134,10 @@ export default async function RestaurantVerificationPage({
             Find more restaurants like this one
           </h3>
           <p className="text-slate-200/80 text-sm mb-6 max-w-md mx-auto">
-            Regen USA is building a verified network of restaurants committed to clean sourcing and honest ingredients.
+            Regen USA is building a directory of farm-to-table restaurants and the regenerative farms behind them.
           </p>
           <Link
-            href="/restaurants"
+            href="/directory"
             className="inline-flex items-center gap-2 bg-white text-[#1e3a8a] font-semibold px-6 py-3 rounded-xl text-sm hover:bg-slate-50 transition-colors"
           >
             Explore the directory
@@ -229,14 +147,8 @@ export default async function RestaurantVerificationPage({
           </Link>
         </section>
 
-        {/* ── Transparency footer ───────────────────────────────────────────── */}
         <div className="text-center pb-4">
-          <p className="text-xs text-stone-400 leading-relaxed max-w-xl mx-auto">
-            Certified dishes meet Regen USA standards for the main element only and may be subject to
-            ongoing review. Certification is based on restaurant attestation, supplier transparency,
-            and selective verification by Regen USA.
-          </p>
-          <Link href="/restaurants" className="inline-block mt-4 text-xs text-[#1e293b] hover:underline">
+          <Link href="/directory" className="inline-block text-xs text-[#1e293b] hover:underline">
             ← Back to directory
           </Link>
         </div>

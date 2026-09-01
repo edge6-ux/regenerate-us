@@ -8,15 +8,14 @@ import { ATMOSPHERE_BG, AtmosphereLayers } from '@/components/AtmosphereBanner';
 const REQUIRED_PRACTICES = [
   'No added hormones or routine antibiotics (for animal products)',
   'No chemical preservatives in raw or minimally processed meat',
-  'No synthetic dyes or artificial additives in the certified item',
-  'No seed oils used in the preparation of the certified main element',
+  'No synthetic dyes or artificial additives',
+  'No seed oils used in on-farm processing',
 ];
 
 const ENCOURAGED_PRACTICES = [
   'Pasture-raised or free-range animal systems',
   'Rotational or managed grazing',
   'Cover cropping and soil-first growing practices',
-  'Local or regional sourcing (within a defined radius)',
   'Crop diversity and heritage breed use',
   'Traceable, verifiable sourcing relationships',
   'Low-input or reduced-chemical growing methods',
@@ -27,7 +26,7 @@ const BONUS_PRACTICES = [
   'Community relationships and direct-to-restaurant sales',
   'Animal care philosophy and living-condition descriptions',
   'Soil health commitment and carbon sequestration efforts',
-  'Growing method transparency beyond the main element',
+  'Growing method transparency',
   'Conservation and habitat restoration practices',
 ];
 
@@ -42,44 +41,32 @@ const THIRD_PARTY_CERTS = [
 
 const FAQS = [
   {
-    q: 'Is the whole restaurant certified?',
-    a: 'No. Regen USA is a dish-level certification. Only individual dishes whose main element meets Regen USA standards are approved. The restaurant is listed because it has at least one certified dish.',
+    q: 'Is the whole farm reviewed, or just certain products?',
+    a: 'The farm as a whole is reviewed — its practices, certifications, and the products it raises or grows. There is no product-by-product certification.',
   },
   {
-    q: 'What does "main element" mean?',
-    a: 'The main element is the primary ingredient that defines a dish — typically the featured protein, dairy product, eggs, or primary produce component. For a grass-fed ribeye, the main element is the beef. For a farm egg appetizer, it is the eggs.',
-  },
-  {
-    q: 'Do all ingredients in the dish have to qualify?',
-    a: 'Not in the current program. Regen USA reviews the main element only. Side dishes, sauces, garnishes, and supporting ingredients are not required to meet Regen USA standards at this stage of the program.',
-  },
-  {
-    q: 'How does Regen USA verify claims?',
-    a: 'Restaurants provide attestations and supplier information at the time of submission. Regen USA may follow up directly with suppliers or farms, request documentation or photos, and may conduct random spot-checks. No costly in-person inspections are required.',
+    q: 'Do restaurants get certified too?',
+    a: 'No. Restaurants apply for a free awareness listing in the directory as farm-to-table partners — there is no certification tier or review of individual dishes. Certification applies to farms.',
   },
   {
     q: 'Do farms need to be certified already?',
-    a: 'No prior certification is required. Restaurants attest to their sourcing practices, and Regen USA reviews those claims. However, existing third-party certifications (like USDA Organic or Certified Humane) can strengthen a submission and may be required for certain harder-to-verify claims.',
+    a: 'No prior certification is required. Farms attest to their practices, and Regen USA reviews those claims. Existing third-party certifications (like USDA Organic or Certified Humane) can strengthen an application and may be required for certain harder-to-verify claims.',
   },
   {
-    q: 'Can a restaurant apply with just one dish?',
-    a: 'Yes. There is no minimum number of dishes. A restaurant can submit a single dish and, if approved, will be listed in the Regen USA directory with that dish highlighted.',
+    q: 'How does Regen USA verify claims?',
+    a: 'Farms provide attestations and practice details at the time of application. Regen USA may follow up directly, request documentation or photos, and may conduct random spot-checks. No costly in-person inspections are required.',
   },
   {
-    q: 'What happens if sourcing changes after approval?',
-    a: 'Restaurants are responsible for notifying Regen USA if a supplier, sourcing relationship, or ingredient changes for a certified dish. Failure to update sourcing information may result in removal from the directory.',
+    q: 'What happens if a farm’s practices change after approval?',
+    a: 'Farms are responsible for notifying Regen USA if their practices or certifications change. Failure to update this information may result in removal from the directory.',
   },
   {
-    q: 'Can certification be revoked?',
-    a: 'Yes. If a claim is found to be inaccurate, if sourcing changes without notification, or if a supplier no longer meets program standards, Regen USA may remove individual dishes or a restaurant from the directory.',
+    q: 'Can approval be revoked?',
+    a: 'Yes. If a claim is found to be inaccurate or practices change without notification, Regen USA may remove a farm or restaurant from the directory.',
   },
   {
     q: 'Will the standards evolve over time?',
-    a: 'Yes. The current standards represent a practical V1 designed to be achievable, credible, and scalable. Regen USA expects to refine both the required and encouraged practice criteria as the program develops.',
-  },
-  {
-    q: 'Do farms need to agree to remote confirmation?',
-    a: 'Farms do not apply directly in the current model — restaurants apply on behalf of the supplier relationship. However, Regen USA may contact farms to confirm sourcing details, and cooperation is expected as part of participating in the program.',
+    a: 'Yes. The current standards represent a practical starting point designed to be achievable, credible, and scalable. Regen USA expects to refine both the required and encouraged practice criteria — including a more detailed scoring model — as the program develops.',
   },
 ];
 
@@ -98,15 +85,14 @@ export default function AboutCertificationPage() {
         />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
-            Certification Program
+            How It Works
           </div>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-            Regen USA<br className="hidden sm:block" /> Certification
+            Regen USA<br className="hidden sm:block" /> Farms &amp; Directory
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed mb-8">
-            A dish-level certification program that highlights restaurants serving food whose
-            main ingredients come from farms using clean and regenerative practices —
-            with full sourcing transparency for consumers.
+            We verify farms using clean, regenerative practices, and connect them with the
+            farm-to-table restaurants that source from them — with full transparency for consumers.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
@@ -130,16 +116,16 @@ export default function AboutCertificationPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
-              title: 'For Restaurants',
-              body: 'Showcase the real sourcing behind your dishes. Build credibility with guests who care where their food comes from.',
+              title: 'For Farms',
+              body: 'Get reviewed and listed as a verified Regen USA farm. Get discovered by restaurants looking for clean, traceable suppliers, and tell the story behind how you raise and grow.',
             },
             {
-              title: 'For Farms',
-              body: 'Get discovered by restaurants looking for clean, traceable suppliers. Tell the story behind how you raise and grow.',
+              title: 'For Restaurants',
+              body: 'List your restaurant as a farm-to-table partner — a free directory listing, no dish-by-dish certification. Build credibility with guests who care where their food comes from.',
             },
             {
               title: 'For Consumers',
-              body: 'Find restaurants and dishes you can trust. See exactly where the main ingredient came from and how it was raised.',
+              body: 'Find farms and restaurants you can trust. See exactly which practices a farm follows and which restaurants source from the network.',
             },
           ].map(({ title, body }) => (
             <div key={title} className="bg-stone-50 border border-stone-200 rounded-xl p-6">
@@ -157,84 +143,50 @@ export default function AboutCertificationPage() {
         <SectionLabel>Process</SectionLabel>
         <h2 className="text-3xl font-bold text-stone-900 mb-4">How It Works</h2>
         <p className="text-stone-600 mb-12 max-w-2xl">
-          The process is designed to be straightforward for restaurants and farms while maintaining
-          the credibility the certification is built on.
+          The process is lightweight by design — a quick review, then a public listing.
         </p>
-        <div className="space-y-4">
-          {[
-            {
-              step: '1',
-              title: 'Restaurant submits dishes',
-              body: 'The restaurant fills out an application for one or more dishes, providing the dish name, the main element (e.g., "grass-fed beef brisket"), and full supplier information including farm name, location, and any existing certifications.',
-            },
-            {
-              step: '2',
-              title: 'Regen USA reviews the submission',
-              body: 'Regen USA reviews the main element of each dish against program standards. This may include following up with the supplier or requesting additional documentation. No in-person inspection is required.',
-            },
-            {
-              step: '3',
-              title: 'Approved dishes go public',
-              body: 'Approved dishes are listed in the public Regen USA directory, showing the dish name, main element, and full supplier sourcing information.',
-            },
-            {
-              step: '4',
-              title: 'Restaurant displays Regen USA recognition',
-              body: 'Participating restaurants can display their Regen USA status on menus, websites, and in-location signage, linking back to the public directory for full transparency.',
-            },
-            {
-              step: '5',
-              title: 'Ongoing review',
-              body: 'Certified dishes are subject to ongoing review. Restaurants are responsible for notifying Regen USA if sourcing changes. Regen USA may conduct spot-checks at any time.',
-            },
-          ].map(({ step, title, body }) => (
-            <div key={step} className="flex gap-5">
-              <div className="flex-shrink-0 w-9 h-9 bg-[#1e293b] text-white rounded-full flex items-center justify-center font-bold text-sm mt-0.5">
-                {step}
-              </div>
-              <div className="pb-6 border-b border-stone-100 flex-1 last:border-0">
-                <h3 className="font-semibold text-stone-900 mb-1">{title}</h3>
-                <p className="text-sm text-stone-600 leading-relaxed">{body}</p>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div>
+            <h3 className="font-semibold text-stone-900 mb-4">Farms</h3>
+            <div className="space-y-4">
+              {[
+                { step: '1', title: 'Apply', body: 'Share your practices, certifications, and what you raise or grow.' },
+                { step: '2', title: 'Review', body: 'Regen USA reviews your application against our practice standards.' },
+                { step: '3', title: 'Get listed', body: 'Approved farms appear in the public directory, searchable by restaurants and consumers.' },
+              ].map(({ step, title, body }) => (
+                <div key={step} className="flex gap-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-[#1e293b] text-white rounded-full flex items-center justify-center font-bold text-xs mt-0.5">
+                    {step}
+                  </div>
+                  <div className="pb-4 border-b border-stone-100 flex-1 last:border-0">
+                    <h4 className="font-semibold text-stone-900 text-sm mb-1">{title}</h4>
+                    <p className="text-sm text-stone-600 leading-relaxed">{body}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </Reveal>
-
-      <div className="border-t border-stone-100" />
-
-      {/* ── What Is a Regen USA Dish ── */}
-      <Reveal as="section" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <SectionLabel>Scope</SectionLabel>
-        <h2 className="text-3xl font-bold text-stone-900 mb-4">What Is a Regen USA Dish?</h2>
-        <p className="text-stone-600 mb-8 max-w-2xl">
-          At the base level, Regen USA certification works dish by dish — each certified dish stands on its own. Once a restaurant earns certification on 7 or more dishes, the restaurant itself becomes Regen USA Certified, reflecting a broader commitment to clean, transparent sourcing across the menu.
-        </p>
-        <div className="bg-[#1e293b]/5 border border-[#1e293b]/20 rounded-xl p-6 mb-8">
-          <h3 className="font-semibold text-stone-900 mb-2">The Main Element</h3>
-          <p className="text-stone-700 text-sm leading-relaxed">
-            Every certified dish has a <strong>main element</strong> — the primary ingredient that defines the dish.
-            This is typically the featured protein, dairy product, eggs, or dominant produce component.
-            Regen USA reviews the main element only. Side dishes, sauces, garnishes, and supporting ingredients
-            are <em>not</em> required to meet Regen USA standards in the current program.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
-          {[
-            { dish: 'Grass-Fed Ribeye', element: 'Grass-fed beef ribeye' },
-            { dish: 'Farm Egg Appetizer', element: 'Pasture-raised eggs' },
-            { dish: 'Heritage Pork Chop', element: 'Heritage breed pork chop' },
-          ].map(({ dish, element }) => (
-            <div key={dish} className="border border-stone-200 rounded-lg p-4">
-              <p className="font-medium text-stone-900 mb-1">{dish}</p>
-              <p className="text-xs text-stone-500">Main element:</p>
-              <p className="text-[#1e293b] font-medium text-xs mt-0.5">{element}</p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-stone-900 mb-4">Restaurants</h3>
+            <div className="space-y-4">
+              {[
+                { step: '1', title: 'Apply', body: 'Share your restaurant profile and story — no dish submissions required.' },
+                { step: '2', title: 'Review', body: 'Regen USA does a light review to keep the directory accurate and spam-free.' },
+                { step: '3', title: 'Get listed', body: 'Approved restaurants appear as farm-to-table partners in the public directory.' },
+              ].map(({ step, title, body }) => (
+                <div key={step} className="flex gap-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-stone-600 text-white rounded-full flex items-center justify-center font-bold text-xs mt-0.5">
+                    {step}
+                  </div>
+                  <div className="pb-4 border-b border-stone-100 flex-1 last:border-0">
+                    <h4 className="font-semibold text-stone-900 text-sm mb-1">{title}</h4>
+                    <p className="text-sm text-stone-600 leading-relaxed">{body}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
-        <p className="text-xs text-stone-400 mt-4">
-          Certification applies to the main element only. Other dish components are not evaluated in the current program.
-        </p>
       </Reveal>
 
       <div className="border-t border-stone-100" />
@@ -242,11 +194,10 @@ export default function AboutCertificationPage() {
       {/* ── Standards ── */}
       <Reveal as="section" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <SectionLabel>Standards</SectionLabel>
-        <h2 className="text-3xl font-bold text-stone-900 mb-4">Program Standards</h2>
+        <h2 className="text-3xl font-bold text-stone-900 mb-4">Farm Practice Standards</h2>
         <p className="text-stone-600 mb-12 max-w-2xl">
-          Standards are applied to the main element of each submitted dish. The tiers below
-          reflect what Regen USA requires, what strengthens a submission, and what tells a deeper story.
-          Encouraged and bonus practices may evolve as the program develops.
+          The tiers below reflect what Regen USA requires of a farm, what strengthens an application,
+          and what tells a deeper story. Encouraged and bonus practices may evolve as the program develops.
         </p>
 
         <div className="space-y-6">
@@ -255,7 +206,7 @@ export default function AboutCertificationPage() {
             <div className="bg-[#0f172a] px-6 py-4">
               <h3 className="text-white font-semibold">Required Practices</h3>
               <p className="text-white/70 text-sm mt-0.5">
-                These are the non-negotiables. A dish must meet all of these for its main element to be approved.
+                These are the non-negotiables. A farm must meet all of these to be approved.
               </p>
             </div>
             <ul className="divide-y divide-stone-100">
@@ -275,7 +226,7 @@ export default function AboutCertificationPage() {
             <div className="bg-stone-700 px-6 py-4">
               <h3 className="text-white font-semibold">Encouraged Practices</h3>
               <p className="text-white/70 text-sm mt-0.5">
-                These are strong signals that support and strengthen a submission. They are not required but are
+                These are strong signals that support and strengthen an application. They are not required but are
                 given significant weight in review. This list may expand over time.
               </p>
             </div>
@@ -327,20 +278,20 @@ export default function AboutCertificationPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
           {[
             {
-              title: 'Restaurant Attestation',
-              body: 'Every applicant formally attests that the sourcing information provided is accurate. Misrepresentation may result in immediate removal and may be reported.',
+              title: 'Farm Attestation',
+              body: 'Every applicant formally attests that the information provided is accurate. Misrepresentation may result in immediate removal and may be reported.',
             },
             {
-              title: 'Supplier Transparency',
-              body: 'Restaurants provide full supplier details including farm name, city, state, and website. This information is displayed publicly on approved listings.',
+              title: 'Practice Transparency',
+              body: 'Farms provide details on livestock, produce, and practices. This information is displayed publicly on approved listings.',
             },
             {
               title: 'Image-Based Verification',
-              body: 'Restaurants are encouraged to submit photos of packaging, invoices, or farm documentation. Imagery may be requested as part of the review process.',
+              body: 'Farms are encouraged to submit photos of operations, packaging, or documentation. Imagery may be requested as part of the review process.',
             },
             {
               title: 'Spot-Checks',
-              body: 'Regen USA may conduct random verification checks on approved listings at any time. This may include reviewing updated invoices, supplier contacts, or on-site visits in limited cases.',
+              body: 'Regen USA may conduct random verification checks on approved listings at any time. This may include reviewing updated documentation or on-site visits in limited cases.',
             },
           ].map(({ title, body }) => (
             <div key={title} className="border border-stone-200 rounded-xl p-5">
@@ -357,7 +308,7 @@ export default function AboutCertificationPage() {
             Some claims — particularly around organic status, animal welfare, or regenerative practices —
             may rely on existing third-party certifications for verification. While Regen USA does not require
             prior certification, holding a recognized credential can satisfy harder-to-verify claims
-            and strengthen a submission.
+            and strengthen an application.
           </p>
           <p className="text-xs text-stone-500 mb-3 font-medium uppercase tracking-wide">Examples of accepted credentials</p>
           <div className="flex flex-wrap gap-2">
@@ -381,29 +332,46 @@ export default function AboutCertificationPage() {
         <SectionLabel>Transparency</SectionLabel>
         <h2 className="text-3xl font-bold text-stone-900 mb-4">What Gets Listed Publicly</h2>
         <p className="text-stone-600 mb-10 max-w-2xl">
-          Approved restaurants and their certified dishes are displayed in the public Regen USA directory.
-          Transparency is a core part of the program — consumers can see exactly where a dish's main
-          element comes from.
+          Approved farms and restaurants are displayed in the public Regen USA directory. Transparency is a
+          core part of the program — consumers can see exactly what practices a farm follows.
         </p>
-        <div className="border border-stone-200 rounded-xl overflow-hidden">
-          <div className="px-6 py-4 bg-stone-50 border-b border-stone-200">
-            <p className="text-sm font-medium text-stone-700">Each approved listing includes:</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="border border-stone-200 rounded-xl overflow-hidden">
+            <div className="px-6 py-4 bg-stone-50 border-b border-stone-200">
+              <p className="text-sm font-medium text-stone-700">Each approved farm listing includes:</p>
+            </div>
+            <ul className="divide-y divide-stone-100">
+              {[
+                'Farm name, city, and state',
+                'Livestock, produce, and regenerative practices',
+                'Certifications (if provided)',
+                'Approval date',
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3 px-6 py-3.5 text-sm text-stone-700">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#1e293b] flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="divide-y divide-stone-100">
-            {[
-              'Restaurant name, city, and state',
-              'Approved dish name and main element description',
-              'Supplier / farm name and location',
-              'Supplier certifications (if provided)',
-              'Certification or approval date',
-              'A public transparency statement',
-            ].map((item) => (
-              <li key={item} className="flex items-center gap-3 px-6 py-3.5 text-sm text-stone-700">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#1e293b] flex-shrink-0" />
-                {item}
-              </li>
-            ))}
-          </ul>
+          <div className="border border-stone-200 rounded-xl overflow-hidden">
+            <div className="px-6 py-4 bg-stone-50 border-b border-stone-200">
+              <p className="text-sm font-medium text-stone-700">Each approved restaurant listing includes:</p>
+            </div>
+            <ul className="divide-y divide-stone-100">
+              {[
+                'Restaurant name, city, and state',
+                'Description and website',
+                'Better health practices (if provided)',
+                'A link to browse Regen USA farms',
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3 px-6 py-3.5 text-sm text-stone-700">
+                  <div className="w-1.5 h-1.5 rounded-full bg-stone-600 flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Reveal>
 
@@ -429,7 +397,7 @@ export default function AboutCertificationPage() {
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Ready to apply?</h2>
           <p className="text-white/70 mb-8 max-w-lg mx-auto">
-            Submitting takes about 10 minutes per dish. You can apply with a single dish and add more later.
+            Farms and restaurants can both apply in a few minutes.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
             <Link

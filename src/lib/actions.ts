@@ -5,7 +5,7 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { redirect } from 'next/navigation';
 import {
   sendApplicationConfirmation,
-  sendSubmissionDecision,
+  sendRestaurantDecision,
   sendFarmDecision,
   sendPasswordResetEmail,
 } from '@/lib/email';
@@ -15,35 +15,6 @@ import { logAdminAction } from '@/lib/adminAudit';
 
 function farmCertRequiresVerifierAck(certType: string | null | undefined): boolean {
   return certType === 'aga' || certType === 'raa' || certType === 'other';
-}
-
-type DishPayload = {
-  name: string;
-  category: string;
-  description: string | null;
-  main_element: string;
-  supplier_name: string;
-  supplier_city: string | null;
-  supplier_state: string | null;
-  supplier_website: string | null;
-  supplier_certifications: string | null;
-  main_element_cert_type: string | null;
-  main_element_cert_other: string | null;
-  cert_file_url: string | null;
-  meets_non_negotiables: boolean;
-  notes: string | null;
-};
-
-function isDishPayload(x: unknown): x is DishPayload {
-  if (!x || typeof x !== 'object') return false;
-  const o = x as Record<string, unknown>;
-  return (
-    typeof o.name === 'string' &&
-    typeof o.category === 'string' &&
-    typeof o.main_element === 'string' &&
-    typeof o.supplier_name === 'string' &&
-    typeof o.meets_non_negotiables === 'boolean'
-  );
 }
 
 /**
@@ -169,19 +140,6 @@ export async function submitApplication(
         throw new Error(pError.message);
       }
     } else {
-      let dishes: unknown[];
-      try {
-        dishes = JSON.parse((formData.get('dishes_json') as string) || '[]');
-      } catch {
-        throw new Error('Invalid dish data.');
-      }
-      if (!Array.isArray(dishes) || dishes.length === 0) {
-        throw new Error('Add at least one dish.');
-      }
-      if (!dishes.every(isDishPayload)) {
-        throw new Error('Each dish must include name, category, main element, supplier, and attestations.');
-      }
-
       let healthPractices: string[] = [];
       try {
         const raw = formData.get('health_practices_json') as string | null;
@@ -198,7 +156,7 @@ export async function submitApplication(
         city: formData.get('city') as string,
         state: formData.get('state') as string,
         zip: formData.get('zip') as string,
-        participation_level: 'participant' as const,
+        status: 'pending' as const,
         description: (formData.get('description') as string) || null,
         health_practices: healthPractices.length > 0 ? healthPractices : null,
       };
@@ -211,40 +169,6 @@ export async function submitApplication(
 
       if (rError || !restaurant) {
         throw new Error(rError?.message ?? 'Failed to save restaurant.');
-      }
-
-      const { data: submission, error: sError } = await admin
-        .from('submissions')
-        .insert({ restaurant_id: restaurant.id })
-        .select('id')
-        .single();
-
-      if (sError || !submission) {
-        throw new Error(sError?.message ?? 'Failed to create submission.');
-      }
-
-      for (const dish of dishes) {
-        const { error: dError } = await admin.from('dishes').insert({
-          submission_id: submission.id,
-          restaurant_id: restaurant.id,
-          name: dish.name,
-          category: dish.category,
-          description: dish.description || null,
-          main_element: dish.main_element,
-          supplier_name: dish.supplier_name,
-          supplier_city: dish.supplier_city || null,
-          supplier_state: dish.supplier_state || null,
-          supplier_website: dish.supplier_website || null,
-          supplier_certifications: dish.supplier_certifications || null,
-          main_element_cert_type: dish.main_element_cert_type || null,
-          main_element_cert_other: dish.main_element_cert_other || null,
-          meets_non_negotiables: dish.meets_non_negotiables,
-          cert_file_url: dish.cert_file_url || null,
-          notes: dish.notes || null,
-        });
-        if (dError) {
-          throw new Error(dError.message);
-        }
       }
 
       const { error: pError } = await admin.from('profiles').insert({
@@ -269,103 +193,6 @@ export async function submitApplication(
   sendApplicationConfirmation(email, entityName, applicantType).catch(() => {});
 
   redirect(`/login?applied=1&email=${encodeURIComponent(email)}`);
-}
-
-/**
- * Logged-in restaurants: add one or more dishes as a new pending submission (no full re-application).
- */
-export async function submitAdditionalRestaurantDishes(
-  formData: FormData
-): Promise<{ error: string } | void> {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return { error: 'Not authenticated.' };
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role, restaurant_id')
-    .eq('id', user.id)
-    .single();
-
-  if (!profile || profile.role !== 'restaurant' || !profile.restaurant_id) {
-    return { error: 'Unauthorized.' };
-  }
-
-  let admin: ReturnType<typeof createAdminClient>;
-  try {
-    admin = createAdminClient();
-  } catch {
-    return { error: 'Server configuration error.' };
-  }
-
-  const restaurantId = profile.restaurant_id;
-
-  let dishes: unknown[];
-  try {
-    dishes = JSON.parse((formData.get('dishes_json') as string) || '[]');
-  } catch {
-    return { error: 'Invalid dish data.' };
-  }
-  if (!Array.isArray(dishes) || dishes.length === 0) {
-    return { error: 'Add at least one dish.' };
-  }
-  if (!dishes.every(isDishPayload)) {
-    return { error: 'Each dish must include name, category, main element, supplier, and attestations.' };
-  }
-
-  const { data: submission, error: sError } = await admin
-    .from('submissions')
-    .insert({ restaurant_id: restaurantId })
-    .select('id')
-    .single();
-
-  if (sError || !submission) {
-    return { error: sError?.message ?? 'Failed to create submission.' };
-  }
-
-  try {
-    for (const dish of dishes) {
-      const { error: dError } = await admin.from('dishes').insert({
-        submission_id: submission.id,
-        restaurant_id: restaurantId,
-        name: dish.name,
-        category: dish.category,
-        description: dish.description || null,
-        main_element: dish.main_element,
-        supplier_name: dish.supplier_name,
-        supplier_city: dish.supplier_city || null,
-        supplier_state: dish.supplier_state || null,
-        supplier_website: dish.supplier_website || null,
-        supplier_certifications: dish.supplier_certifications || null,
-        main_element_cert_type: dish.main_element_cert_type || null,
-        main_element_cert_other: dish.main_element_cert_other || null,
-        meets_non_negotiables: dish.meets_non_negotiables,
-        cert_file_url: dish.cert_file_url || null,
-        notes: dish.notes || null,
-      });
-      if (dError) throw new Error(dError.message);
-    }
-  } catch (err) {
-    await admin.from('submissions').delete().eq('id', submission.id);
-    const message = err instanceof Error ? err.message : 'Failed to save dishes.';
-    return { error: message };
-  }
-
-  const { data: restaurant } = await admin
-    .from('restaurants')
-    .select('name, contact_email')
-    .eq('id', restaurantId)
-    .single();
-
-  if (restaurant?.contact_email) {
-    sendApplicationConfirmation(
-      restaurant.contact_email,
-      restaurant.name,
-      'restaurant'
-    ).catch(() => {});
-  }
-
-  redirect('/dashboard/restaurant');
 }
 
 export async function uploadCertFile(
@@ -562,7 +389,6 @@ type AdminRestaurantUpdatePayload = {
   state: string;
   zip: string;
   description: string | null;
-  participation_level: 'participant' | 'certified';
   health_practices: string[] | null;
   latitude: number | null;
   longitude: number | null;
@@ -590,10 +416,82 @@ export async function updateAdminRestaurantProfile(
     target_type: 'restaurant',
     target_id: restaurantId,
     metadata: {
-      participation_level: payload.participation_level,
       hasCoordinates: Boolean(payload.latitude && payload.longitude),
     },
   });
+  return {};
+}
+
+/**
+ * Reviewer workflow: set restaurant listing status. Tier 2+. Mirrors submitFarmReviewDecision.
+ */
+export async function submitRestaurantReviewDecision(
+  restaurantId: string,
+  decision: 'approved' | 'rejected' | 'pending',
+  adminNotes?: string
+): Promise<{ error?: string }> {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user?.email) return { error: 'Not authenticated.' };
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('admin_tier, role')
+    .eq('id', user.id)
+    .single();
+
+  if (profile?.role !== 'admin' || (profile?.admin_tier ?? 1) < 2) {
+    return { error: 'Reviewer access (Tier 2+) required.' };
+  }
+
+  const { data: restaurant, error: fetchErr } = await supabase
+    .from('restaurants')
+    .select('*')
+    .eq('id', restaurantId)
+    .single();
+
+  if (fetchErr || !restaurant) return { error: 'Restaurant not found.' };
+
+  const prevStatus = restaurant.status as string;
+
+  const updatePayload: Record<string, unknown> = {
+    status: decision,
+    reviewed_by: user.email,
+    admin_notes: adminNotes ?? null,
+    updated_at: new Date().toISOString(),
+  };
+
+  if (decision === 'approved') {
+    updatePayload.approved_at = new Date().toISOString();
+    if (!restaurant.latitude && restaurant.city && restaurant.state) {
+      const geo = await geocodeAddress(
+        restaurant.address || '',
+        restaurant.city as string,
+        restaurant.state as string,
+        restaurant.zip
+      );
+      if (geo) {
+        updatePayload.latitude = geo.latitude;
+        updatePayload.longitude = geo.longitude;
+      }
+    }
+  } else {
+    updatePayload.approved_at = null;
+  }
+
+  const { error: upErr } = await supabase.from('restaurants').update(updatePayload).eq('id', restaurantId);
+  if (upErr) return { error: upErr.message };
+  await logAdminAction({
+    action: 'restaurant_review_decision',
+    target_type: 'restaurant',
+    target_id: restaurantId,
+    metadata: { previousStatus: prevStatus, newStatus: decision },
+  });
+
+  if (prevStatus !== decision && (decision === 'approved' || decision === 'rejected')) {
+    notifyRestaurantDecision(restaurantId, decision).catch(() => {});
+  }
+
   return {};
 }
 
@@ -879,156 +777,6 @@ export async function backfillMissingFarmCoordinates(options?: {
   };
 }
 
-export async function updateSubmissionStatus(
-  submissionId: string,
-  status: string,
-  adminNotes?: string
-) {
-  const tierErr = await assertTier2Admin();
-  if (tierErr) throw new Error(tierErr.error);
-  const supabase = await createClient();
-
-  const updateData: Record<string, unknown> = {
-    status,
-    reviewed_at: new Date().toISOString(),
-  };
-
-  if (adminNotes !== undefined) {
-    updateData.admin_notes = adminNotes;
-  }
-
-  const { error } = await supabase
-    .from('submissions')
-    .update(updateData)
-    .eq('id', submissionId);
-
-  if (error) {
-    throw new Error(`Failed to update submission: ${error.message}`);
-  }
-  await logAdminAction({
-    action: 'submission_status_updated',
-    target_type: 'submission',
-    target_id: submissionId,
-    metadata: { status, hasAdminNotes: Boolean(adminNotes?.trim()) },
-  });
-}
-
-export async function reviewSubmissionAdmin(
-  submissionId: string,
-  status: 'pending' | 'approved' | 'rejected' | 'needs_clarification',
-  adminNotes: string,
-  participationLevel: 'participant' | 'certified'
-): Promise<{ error?: string }> {
-  const tierErr = await assertTier2Admin();
-  if (tierErr) return tierErr;
-
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  const { data: submission, error: fetchErr } = await supabase
-    .from('submissions')
-    .select('id, status, restaurant_id')
-    .eq('id', submissionId)
-    .single();
-  if (fetchErr || !submission) return { error: 'Submission not found.' };
-
-  const { error: subErr } = await supabase
-    .from('submissions')
-    .update({
-      status,
-      admin_notes: adminNotes,
-      reviewed_at: new Date().toISOString(),
-      reviewed_by: user?.email ?? null,
-    })
-    .eq('id', submissionId);
-  if (subErr) return { error: subErr.message };
-
-  await supabase
-    .from('restaurants')
-    .update({ participation_level: participationLevel })
-    .eq('id', submission.restaurant_id);
-
-  if (status === 'approved') {
-    const { data: pendingDishes } = await supabase
-      .from('dishes')
-      .select('id')
-      .eq('submission_id', submissionId)
-      .eq('status', 'pending');
-    for (const dish of pendingDishes ?? []) {
-      await supabase
-        .from('dishes')
-        .update({ status: 'approved', approved_at: new Date().toISOString() })
-        .eq('id', dish.id);
-    }
-  }
-
-  if (status !== submission.status) {
-    notifySubmissionDecision(submissionId, status, adminNotes).catch(() => {});
-  }
-
-  await logAdminAction({
-    action: 'submission_review_updated',
-    target_type: 'submission',
-    target_id: submissionId,
-    metadata: { previousStatus: submission.status, newStatus: status, participationLevel },
-  });
-  return {};
-}
-
-export async function updateDishStatus(dishId: string, status: string) {
-  const tierErr = await assertTier2Admin();
-  if (tierErr) throw new Error(tierErr.error);
-  const supabase = await createClient();
-
-  const updateData: Record<string, unknown> = { status };
-  if (status === 'approved') {
-    updateData.approved_at = new Date().toISOString();
-  }
-
-  // Get the restaurant_id before updating
-  const { data: dish, error: dishFetchError } = await supabase
-    .from('dishes')
-    .select('restaurant_id')
-    .eq('id', dishId)
-    .single();
-
-  if (dishFetchError || !dish) {
-    throw new Error('Dish not found');
-  }
-
-  const { error } = await supabase
-    .from('dishes')
-    .update(updateData)
-    .eq('id', dishId);
-
-  if (error) {
-    throw new Error(`Failed to update dish: ${error.message}`);
-  }
-
-  // Recount approved dishes for this restaurant and sync participation_level
-  const { count } = await supabase
-    .from('dishes')
-    .select('id', { count: 'exact', head: true })
-    .eq('restaurant_id', dish.restaurant_id)
-    .eq('status', 'approved');
-
-  const approvedCount = count ?? 0;
-  const newLevel = approvedCount >= 7 ? 'certified' : 'participant';
-
-  await supabase
-    .from('restaurants')
-    .update({ participation_level: newLevel })
-    .eq('id', dish.restaurant_id);
-  await logAdminAction({
-    action: 'dish_status_updated',
-    target_type: 'dish',
-    target_id: dishId,
-    metadata: { status, restaurantId: dish.restaurant_id, participationLevel: newLevel },
-  });
-}
-
 // ─── Notifications ────────────────────────────────────────────────────────────
 
 async function createNotification(
@@ -1076,49 +824,36 @@ export async function markAllNotificationsRead(): Promise<void> {
 
 // ─── Email + notify when admin makes a decision ───────────────────────────────
 
-export async function notifySubmissionDecision(
-  submissionId: string,
-  newStatus: string,
-  adminNotes?: string | null
-): Promise<void> {
+export async function notifyRestaurantDecision(restaurantId: string, newStatus: string): Promise<void> {
   const supabase = await createClient();
 
-  const { data } = await supabase
-    .from('submissions')
-    .select('restaurants(id, name, contact_email)')
-    .eq('id', submissionId)
+  const { data: restaurant } = await supabase
+    .from('restaurants')
+    .select('name, contact_email')
+    .eq('id', restaurantId)
     .single();
 
-  const restaurantsRaw = data?.restaurants;
-  const restaurant = (Array.isArray(restaurantsRaw) ? restaurantsRaw[0] : restaurantsRaw) as { id: string; name: string; contact_email: string } | null;
   if (!restaurant) return;
 
-  // Get user_id linked to this restaurant
   const { data: profile } = await supabase
     .from('profiles')
     .select('id')
-    .eq('restaurant_id', restaurant.id)
+    .eq('restaurant_id', restaurantId)
     .single();
 
   // Email
   if (restaurant.contact_email) {
-    await sendSubmissionDecision(restaurant.contact_email, restaurant.name, newStatus, adminNotes);
+    await sendRestaurantDecision(restaurant.contact_email, restaurant.name, newStatus);
   }
 
   // In-app notification
   if (profile?.id) {
-    const titles: Record<string, string> = {
-      approved: `Your submission was approved — ${restaurant.name}`,
-      rejected: `Your submission was not approved — ${restaurant.name}`,
-      needs_clarification: `Action needed on your submission — ${restaurant.name}`,
-    };
-    const bodies: Record<string, string> = {
-      approved: 'Your certified dishes are now live in the public directory.',
-      rejected: 'Your submission did not meet certification requirements at this time.',
-      needs_clarification: adminNotes ?? 'Regen USA needs additional information about your submission.',
-    };
-    const title = titles[newStatus] ?? `Submission update — ${restaurant.name}`;
-    const body = bodies[newStatus] ?? '';
+    const title = newStatus === 'approved'
+      ? `Your restaurant was approved — ${restaurant.name}`
+      : `Restaurant application update — ${restaurant.name}`;
+    const body = newStatus === 'approved'
+      ? 'Your restaurant is now listed in the Regen USA public directory.'
+      : 'Your restaurant application was not approved at this time.';
     await createNotification(profile.id, title, body, '/dashboard/restaurant');
   }
 }
@@ -1330,9 +1065,7 @@ export async function deleteRestaurantAccount(restaurantId: string): Promise<{ e
   const { data: profile } = await supabase
     .from('profiles').select('id').eq('restaurant_id', restaurantId).single();
 
-  // Delete dishes, then submissions, then restaurant
-  await supabase.from('dishes').delete().eq('restaurant_id', restaurantId);
-  await supabase.from('submissions').delete().eq('restaurant_id', restaurantId);
+  // Historical submissions/dishes cascade automatically via FK on delete.
   const { error: rErr } = await supabase.from('restaurants').delete().eq('id', restaurantId);
   if (rErr) return { error: rErr.message };
 
@@ -1350,37 +1083,6 @@ export async function deleteRestaurantAccount(restaurantId: string): Promise<{ e
   return {};
 }
 
-// ─── Delete dish ──────────────────────────────────────────────────────────────
-
-export async function deleteDish(dishId: string): Promise<{ error?: string }> {
-  const authErr = await assertTier3();
-  if (authErr) return authErr;
-
-  const supabase = await createClient();
-  const { data: dish } = await supabase
-    .from('dishes').select('restaurant_id').eq('id', dishId).single();
-
-  const { error } = await supabase.from('dishes').delete().eq('id', dishId);
-  if (error) return { error: error.message };
-
-  // Re-sync participation_level
-  if (dish?.restaurant_id) {
-    const { count } = await supabase
-      .from('dishes').select('id', { count: 'exact', head: true })
-      .eq('restaurant_id', dish.restaurant_id).eq('status', 'approved');
-    const newLevel = (count ?? 0) >= 7 ? 'certified' : 'participant';
-    await supabase.from('restaurants').update({ participation_level: newLevel }).eq('id', dish.restaurant_id);
-  }
-  await logAdminAction({
-    action: 'dish_deleted',
-    target_type: 'dish',
-    target_id: dishId,
-    metadata: { restaurantId: dish?.restaurant_id ?? null },
-  });
-
-  return {};
-}
-
 // ─── Get restaurant / farm user lists ────────────────────────────────────────
 
 export interface RestaurantUser {
@@ -1390,7 +1092,7 @@ export interface RestaurantUser {
   email: string;
   city: string;
   state: string;
-  participationLevel: string;
+  status: string;
   profileId: string | null;
 }
 
@@ -1414,7 +1116,7 @@ export async function getRestaurantUsers(): Promise<RestaurantUser[]> {
 
   const { data: restaurants } = await supabase
     .from('restaurants')
-    .select('id, name, contact_name, contact_email, city, state, participation_level')
+    .select('id, name, contact_name, contact_email, city, state, status')
     .order('name');
   if (!restaurants) return [];
 
@@ -1431,7 +1133,7 @@ export async function getRestaurantUsers(): Promise<RestaurantUser[]> {
     email: r.contact_email,
     city: r.city,
     state: r.state,
-    participationLevel: r.participation_level,
+    status: r.status,
     profileId: profileMap[r.id] ?? null,
   }));
 }
@@ -1562,6 +1264,7 @@ export async function createRestaurantUserAccount(input: {
   zip: string;
   website?: string | null;
   description?: string | null;
+  status: 'approved' | 'pending' | 'rejected';
 }): Promise<{ error?: string; restaurantId?: string; userId?: string }> {
   const authErr = await assertTier3();
   if (authErr) return authErr;
@@ -1594,6 +1297,14 @@ export async function createRestaurantUserAccount(input: {
     return { error: 'Please fill in all required fields.' };
   }
 
+  const status = input.status;
+  if (status !== 'approved' && status !== 'pending' && status !== 'rejected') {
+    return { error: 'Invalid restaurant status.' };
+  }
+
+  const supabase = await createClient();
+  const { data: { user: actor } } = await supabase.auth.getUser();
+
   const { data: authData, error: createUserError } = await admin.auth.admin.createUser({
     email,
     password: input.password,
@@ -1618,7 +1329,9 @@ export async function createRestaurantUserAccount(input: {
       city,
       state,
       zip,
-      participation_level: 'participant' as const,
+      status,
+      approved_at: status === 'approved' ? new Date().toISOString() : null,
+      reviewed_by: actor?.email ?? null,
       description: input.description?.trim() || null,
     };
 
@@ -1649,7 +1362,7 @@ export async function createRestaurantUserAccount(input: {
       action: 'restaurant_account_created',
       target_type: 'restaurant',
       target_id: restaurant.id,
-      metadata: { userId },
+      metadata: { userId, status },
     });
 
     return { restaurantId: restaurant.id, userId };

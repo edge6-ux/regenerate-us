@@ -12,8 +12,8 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-slate-200/70">
-              Certifying restaurants that prioritize local, sustainable sourcing
-              from verified farms and producers.
+              Verifying regenerative farms and connecting them with the farm-to-table
+              restaurants that source from them.
             </p>
           </div>
           <div>
@@ -21,12 +21,12 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link href="/apply" className="text-sm text-slate-200/80 hover:text-white transition-colors">
-                  Apply for Certification
+                  Apply to Join
                 </Link>
               </li>
               <li>
                 <Link href="/directory" className="text-sm text-slate-200/80 hover:text-white transition-colors">
-                  Certified Restaurants
+                  Directory
                 </Link>
               </li>
               <li>
@@ -39,7 +39,7 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-slate-400 mb-3 text-xs uppercase tracking-wider">Contact</h3>
             <p className="text-sm text-slate-200/70">
-              Questions about the certification program?<br />
+              Questions about Regen USA?<br />
               <a href="mailto:info@regenusa.org" className="text-slate-300 hover:text-white transition-colors hover:underline">
                 info@regenusa.org
               </a>

@@ -1,9 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import DishFormSection from '@/components/DishFormSection';
 import { useImageCropper } from '@/components/ImageCropper';
-import { DishFormData, US_STATES, US_STATE_NAMES } from '@/lib/types';
+import { US_STATES, US_STATE_NAMES } from '@/lib/types';
 import { submitApplication, uploadCertFile } from '@/lib/actions';
 import {
   FARM_LIVESTOCK_OPTIONS,
@@ -22,23 +21,6 @@ const HEALTH_PRACTICE_OPTIONS = [
   'Regenerative sourced',
 ];
 
-const emptyDish: DishFormData = {
-  name: '',
-  category: '',
-  description: '',
-  main_element: '',
-  supplier_name: '',
-  supplier_city: '',
-  supplier_state: '',
-  supplier_website: '',
-  supplier_certifications: '',
-  main_element_cert_type: '',
-  main_element_cert_other: '',
-  cert_file_url: '',
-  meets_non_negotiables: false,
-  notes: '',
-};
-
 const STEPS = [
   { label: 'Type' },
   { label: 'Info' },
@@ -51,7 +33,6 @@ export default function ApplyPage() {
   const formRef = useRef<HTMLFormElement>(null);
   const [step, setStep] = useState(0);
   const [applicantType, setApplicantType] = useState<'restaurant' | 'farm'>('restaurant');
-  const [dishes, setDishes] = useState<DishFormData[]>([{ ...emptyDish }]);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [stepError, setStepError] = useState('');
@@ -97,7 +78,6 @@ export default function ApplyPage() {
 
   const [attestations, setAttestations] = useState({
     accurate: false,
-    mainElement: false,
     verification: false,
     revocation: false,
   });
@@ -131,18 +111,6 @@ export default function ApplyPage() {
       if (pw !== confirm) return 'Passwords do not match.';
     }
 
-    if (s === 3 && applicantType === 'restaurant') {
-      for (const dish of dishes) {
-        if (!dish.name.trim()) return 'Each dish must have a name.';
-        if (!dish.main_element.trim()) return 'Each dish must have a main element.';
-        if (!dish.supplier_name.trim()) return 'Each dish must have a supplier name.';
-        if (!dish.main_element_cert_type) return 'Please answer the certification question for each dish.';
-        if (dish.main_element_cert_type === 'other' && !dish.main_element_cert_other.trim()) {
-          return 'Please enter the certification name for the "Other" option.';
-        }
-      }
-    }
-
     if (s === 3 && applicantType === 'farm') {
       if (farmCertUsdaYes === null) return 'Please answer the USDA Organic certification question.';
       if (farmCertUsdaYes === false && !farmCertType) return 'Please select your certification type.';
@@ -166,15 +134,6 @@ export default function ApplyPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  const handleDishChange = (index: number, dish: DishFormData) => {
-    const updated = [...dishes];
-    updated[index] = dish;
-    setDishes(updated);
-  };
-
-  const addDish = () => setDishes([...dishes, { ...emptyDish }]);
-  const removeDish = (index: number) => setDishes(dishes.filter((_, i) => i !== index));
-
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!allAttested) { setError('Please agree to all attestation statements.'); return; }
@@ -184,7 +143,6 @@ export default function ApplyPage() {
 
     const formData = new FormData(e.currentTarget);
     formData.set('applicant_type', applicantType);
-    formData.set('dishes_json', JSON.stringify(dishes));
     const allPractices = [
       ...healthPractices,
       ...(otherPractice.trim() ? [otherPractice.trim()] : []),
@@ -299,7 +257,7 @@ export default function ApplyPage() {
                   <div className="font-semibold text-stone-900 mb-1 capitalize">{t === 'farm' ? 'Farm / Producer' : 'Restaurant'}</div>
                   <p className="text-xs text-stone-500">
                     {t === 'restaurant'
-                      ? 'I serve dishes sourced from verified farms and want to certify them.'
+                      ? 'I run a farm-to-table restaurant and want to be listed in the directory.'
                       : 'I raise livestock or grow produce and want to join the Regen USA network.'}
                   </p>
                 </button>
@@ -399,32 +357,6 @@ export default function ApplyPage() {
         <div className={step === 3 ? '' : 'hidden'}>
           {applicantType === 'restaurant' ? (
             <>
-              {/* Dish submissions */}
-              <div className="mb-6">
-                <div className="flex items-center justify-between mb-5">
-                  <div>
-                    <h2 className="text-xl font-semibold text-stone-900">Dish Submissions</h2>
-                    <p className="text-sm text-stone-500 mt-0.5">Add each dish you'd like to certify.</p>
-                  </div>
-                  <button type="button" onClick={addDish} className="flex items-center gap-1.5 text-sm font-medium text-[#1e293b] hover:text-[#0f172a]">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-                    Add Dish
-                  </button>
-                </div>
-                <div className="space-y-6">
-                  {dishes.map((dish, i) => (
-                    <DishFormSection
-                      key={i}
-                      index={i}
-                      dish={dish}
-                      onChange={handleDishChange}
-                      onRemove={removeDish}
-                      canRemove={dishes.length > 1}
-                    />
-                  ))}
-                </div>
-              </div>
-
               {/* Better Health Practices */}
               <div className="bg-white border border-stone-200 rounded-xl p-6 mb-6">
                 <h2 className="text-xl font-semibold text-stone-900 mb-1">Better Health Practices</h2>
@@ -734,7 +666,12 @@ export default function ApplyPage() {
             <div className="text-sm text-stone-600 space-y-1">
               <p><span className="font-medium text-stone-800">Type:</span> {applicantType === 'restaurant' ? 'Restaurant' : 'Farm / Producer'}</p>
               {applicantType === 'restaurant' && (
-                <p><span className="font-medium text-stone-800">Dishes:</span> {dishes.length} submitted</p>
+                <p>
+                  <span className="font-medium text-stone-800">Health practices:</span>{' '}
+                  {healthPractices.length + (otherPractice.trim() ? 1 : 0) > 0
+                    ? `${healthPractices.length + (otherPractice.trim() ? 1 : 0)} selected`
+                    : 'None selected'}
+                </p>
               )}
               {applicantType === 'farm' && (
                 <>
@@ -764,9 +701,6 @@ export default function ApplyPage() {
             <div className="space-y-4">
               {[
                 { key: 'accurate' as const, text: 'I attest that all information provided in this application is accurate and truthful to the best of my knowledge.' },
-                { key: 'mainElement' as const, text: applicantType === 'restaurant'
-                  ? 'I understand that certification applies to the main element of each dish only, and does not necessarily extend to all ingredients.'
-                  : 'I understand that Regen USA certification is dish-specific and applies to the main element sourced from our farm.' },
                 { key: 'verification' as const, text: 'I understand that Regen USA may conduct additional verification of the claims made in this application, including contacting suppliers or farms directly.' },
                 { key: 'revocation' as const, text: 'I understand that certification may be revoked if any claims are found to be inaccurate or if practices change without notification.' },
               ].map(({ key, text }) => (

@@ -25,7 +25,7 @@ export default async function QRCardPage() {
 
   const { data: restaurant } = await supabase
     .from('restaurants')
-    .select('id, name, city, state, participation_level')
+    .select('id, name, city, state, status')
     .eq('id', profile.restaurant_id)
     .single();
 
@@ -42,8 +42,6 @@ export default async function QRCardPage() {
     margin: 1,
     color: { dark: '#0f172a', light: '#ffffff' },
   });
-
-  const isCertified = restaurant.participation_level === 'certified';
 
   return (
     <>
@@ -87,11 +85,6 @@ export default async function QRCardPage() {
                 Regen USA
               </span>
             </div>
-            {isCertified && (
-              <span className="text-xs font-semibold text-slate-200 border border-slate-400/50 rounded-full px-2 py-0.5">
-                Certified
-              </span>
-            )}
           </div>
 
           {/* Body */}
@@ -99,7 +92,7 @@ export default async function QRCardPage() {
             {/* Restaurant name */}
             <div className="text-center">
               <p className="text-xs uppercase tracking-widest text-stone-400 mb-1">
-                {isCertified ? 'Regen USA Certified Restaurant' : 'Regen USA Partner'}
+                Farm-to-Table Partner
               </p>
               <h1 className="text-xl font-bold text-stone-900 leading-tight">
                 {restaurant.name}
@@ -124,18 +117,17 @@ export default async function QRCardPage() {
             {/* Tagline */}
             <div className="text-center">
               <p className="text-sm font-semibold text-stone-800">
-                Scan to see our certified dishes
+                Scan to see our story
               </p>
               <p className="text-xs text-stone-400 mt-1">
-                Sourced with integrity, verified by Regen USA.
+                Ask us about the farms we source from.
               </p>
             </div>
 
-            {/* Divider + standards note */}
+            {/* Divider + note */}
             <div className="w-full border-t border-stone-100 pt-4">
               <p className="text-[10px] text-stone-400 text-center leading-relaxed">
-                All certified dishes meet Regen USA standards for sourcing and ingredient integrity.
-                Scan to view verified dishes and supplier information.
+                Scan to view our profile and the Regen USA farms behind our menu.
               </p>
             </div>
           </div>
@@ -143,7 +135,7 @@ export default async function QRCardPage() {
           {/* Footer band */}
           <div className="bg-stone-50 border-t border-stone-100 px-6 py-3 text-center">
             <p className="text-[11px] text-stone-400 font-medium tracking-wide">
-              Regen USA · Restaurant Certification Program
+              Regen USA · Farms &amp; Farm-to-Table Directory
             </p>
           </div>
         </div>

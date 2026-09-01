@@ -66,12 +66,7 @@ export default async function AdminFarmersPage({
         )}
       </div>
       <p className="text-sm text-stone-500 mb-8 max-w-2xl">
-        Manage farm profiles, map coordinates, and reviews. For the full historical list with the
-        same filters, see{' '}
-        <Link href="/admin/submissions?tab=farms" className="text-[#1e293b] font-medium hover:underline">
-          All applications → Farms
-        </Link>
-        .
+        Manage farm profiles, map coordinates, and reviews.
       </p>
 
       <div className="mb-8">

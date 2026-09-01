@@ -11,25 +11,25 @@ const TIER_LABELS: Record<number, string> = {
 
 const TIER_PERMISSIONS: Record<number, string[]> = {
   1: [
-    'View all restaurant submissions and farm applications',
+    'View all restaurant and farm applications',
     'Edit restaurant and farm contact info, images, and descriptions',
   ],
   2: [
     'Everything in Tier 1 (Editor)',
-    'Approve or reject restaurant submissions and farm applications',
-    'Edit admin notes and change participation levels',
+    'Approve or reject restaurant and farm applications',
+    'Edit admin notes and listing status',
     'Actions are attributed in the audit trail',
   ],
   3: [
     'Everything in Tier 2 (Reviewer)',
     'Manage admin accounts and permission tiers',
     'Remove admin, farm, and restaurant accounts',
-    'Delete dishes and reset passwords for any user',
+    'Reset passwords for any user',
   ],
 };
 
 interface ActivityItem {
-  type: 'submission' | 'farm';
+  type: 'restaurant' | 'farm';
   label: string;
   status: string;
   date: string;
@@ -65,12 +65,12 @@ export default function AdminAccountPage() {
 
       setAdminTier(profile?.admin_tier ?? 1);
 
-      const [{ data: subs }, { data: farms }] = await Promise.all([
+      const [{ data: restaurants }, { data: farms }] = await Promise.all([
         supabase
-          .from('submissions')
-          .select('id, status, reviewed_at, restaurants(name)')
+          .from('restaurants')
+          .select('id, name, status, updated_at')
           .eq('reviewed_by', user.email)
-          .order('reviewed_at', { ascending: false })
+          .order('updated_at', { ascending: false })
           .limit(20),
         supabase
           .from('farms')
@@ -81,17 +81,8 @@ export default function AdminAccountPage() {
       ]);
 
       const items: ActivityItem[] = [];
-      (subs ?? []).forEach((s: { status: string; reviewed_at: string | null; restaurants: { name?: string } | { name?: string }[] | null }) => {
-        if (!s.reviewed_at) return;
-        const restaurantName = Array.isArray(s.restaurants)
-          ? s.restaurants[0]?.name
-          : (s.restaurants as { name?: string } | null)?.name;
-        items.push({
-          type: 'submission',
-          label: `Reviewed submission — ${restaurantName ?? 'Unknown Restaurant'}`,
-          status: s.status,
-          date: s.reviewed_at,
-        });
+      (restaurants ?? []).forEach((r: { name: string; status: string; updated_at: string }) => {
+        items.push({ type: 'restaurant', label: `Updated restaurant — ${r.name}`, status: r.status, date: r.updated_at });
       });
       (farms ?? []).forEach((f: { name: string; status: string; updated_at: string }) => {
         items.push({ type: 'farm', label: `Updated farm — ${f.name}`, status: f.status, date: f.updated_at });

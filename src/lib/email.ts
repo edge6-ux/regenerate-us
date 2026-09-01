@@ -32,7 +32,7 @@ function base(previewText: string, content: string) {
     <!-- Header -->
     <div style="background:#0f172a;border-radius:12px 12px 0 0;padding:24px 32px;">
       <p style="margin:0;font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-0.3px;">Regen USA</p>
-      <p style="margin:4px 0 0;font-size:12px;color:#94a3b8;">Certification Program</p>
+      <p style="margin:4px 0 0;font-size:12px;color:#94a3b8;">Farms &amp; Farm-to-Table Directory</p>
     </div>
 
     <!-- Body -->
@@ -90,7 +90,7 @@ export async function sendApplicationConfirmation(
 
     <p style="margin:0 0 8px;font-size:14px;color:#57534e;">What happens next:</p>
     <ul style="margin:0 0 24px;padding-left:20px;font-size:14px;color:#57534e;line-height:1.8;">
-      <li>Our team will review your ${type === 'restaurant' ? 'dish submissions and supplier details' : 'farm profile and certifications'}</li>
+      <li>Our team will review your ${type === 'restaurant' ? 'restaurant profile' : 'farm profile and certifications'}</li>
       <li>We may reach out if we need additional information</li>
       <li>You'll receive an email once a decision has been made</li>
     </ul>
@@ -102,14 +102,9 @@ export async function sendApplicationConfirmation(
   await send(to, `Application received — ${entityName}`, base(`We received your ${label} for ${entityName}`, content));
 }
 
-// ─── Submission Decision ─────────────────────────────────────────────────────
+// ─── Restaurant Decision ──────────────────────────────────────────────────────
 
-export async function sendSubmissionDecision(
-  to: string,
-  restaurantName: string,
-  status: string,
-  adminNotes?: string | null
-) {
+export async function sendRestaurantDecision(to: string, restaurantName: string, status: string) {
   const color = statusColor(status);
   const label = statusLabel(status);
 
@@ -117,24 +112,12 @@ export async function sendSubmissionDecision(
   let body = '';
 
   if (status === 'approved') {
-    headline = 'Your submission has been approved!';
-    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">Congratulations — your submission for <strong>${restaurantName}</strong> has been reviewed and approved. Your certified dishes are now listed in the Regen USA public directory.</p>`;
-  } else if (status === 'rejected') {
-    headline = 'Your submission was not approved';
-    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">After review, we were unable to approve this submission for <strong>${restaurantName}</strong>. This may be due to certification requirements not being met for the main element of one or more dishes.</p>`;
-  } else if (status === 'needs_clarification') {
-    headline = 'We need more information';
-    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">Our team has a question about your submission for <strong>${restaurantName}</strong>. Please review the note below and contact us if you have additional information to provide.</p>`;
+    headline = 'Your restaurant has been approved!';
+    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">Welcome to the Regen USA network. <strong>${restaurantName}</strong> is now listed in the public directory as a farm-to-table partner.</p>`;
   } else {
-    headline = `Submission update: ${label}`;
-    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">Your submission for <strong>${restaurantName}</strong> has been updated.</p>`;
+    headline = 'Your restaurant application was not approved';
+    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">After review, we were unable to approve the listing for <strong>${restaurantName}</strong> at this time. If you have questions or would like to discuss your application, please reach out to us directly.</p>`;
   }
-
-  const notesBlock = adminNotes ? `
-    <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:16px 20px;margin-bottom:24px;">
-      <p style="margin:0 0 4px;font-size:12px;font-weight:600;color:#92400e;text-transform:uppercase;letter-spacing:0.5px;">Note from Regen USA</p>
-      <p style="margin:0;font-size:14px;color:#78350f;line-height:1.6;">${adminNotes}</p>
-    </div>` : '';
 
   const content = `
     <div style="display:inline-block;background:${color}20;border:1px solid ${color}40;border-radius:20px;padding:4px 12px;margin-bottom:16px;">
@@ -142,9 +125,10 @@ export async function sendSubmissionDecision(
     </div>
     <h1 style="margin:0 0 16px;font-size:22px;font-weight:700;color:#1c1917;">${headline}</h1>
     ${body}
-    ${notesBlock}
     ${btn('View Dashboard', `${SITE}/dashboard/restaurant`)}
-    ${status === 'rejected' ? `<p style="margin:16px 0 0;font-size:13px;color:#a8a29e;">You are welcome to reapply with updated sourcing information.</p>` : ''}
+    <p style="margin:20px 0 0;font-size:13px;color:#a8a29e;">
+      Questions? Email us at <a href="mailto:info@regenusa.org" style="color:#1e293b;">info@regenusa.org</a>
+    </p>
   `;
 
   await send(to, `${label} — ${restaurantName}`, base(headline, content));

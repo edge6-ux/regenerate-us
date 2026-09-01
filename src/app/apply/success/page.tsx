@@ -6,11 +6,10 @@ export default function SuccessPage() {
       <div className="bg-white border border-stone-200 rounded-2xl p-10">
         <h1 className="text-3xl font-bold text-stone-900 mb-4">Application Submitted!</h1>
         <p className="text-stone-600 mb-2 leading-relaxed">
-          Thank you for applying to the Regen USA certification program.
+          Thank you for applying to Regen USA.
         </p>
         <p className="text-stone-600 mb-8 leading-relaxed">
-          Our team will review your submission and verify the supplier information you
-          provided. You&apos;ll hear from us within 5-7 business days.
+          Our team will review your application. You&apos;ll hear from us within 5-7 business days.
         </p>
         <p className="text-stone-600 mb-8 text-sm leading-relaxed">
           You can sign in anytime at{' '}
@@ -33,10 +32,10 @@ export default function SuccessPage() {
             Return Home
           </Link>
           <Link
-            href="/restaurants"
+            href="/directory"
             className="border border-stone-300 text-stone-700 px-6 py-2.5 rounded-lg font-medium hover:bg-stone-50 transition-colors"
           >
-            View Certified Restaurants
+            Browse the Directory
           </Link>
         </div>
       </div>

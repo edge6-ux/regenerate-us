@@ -1,44 +1,57 @@
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import StatusBadge from '@/components/StatusBadge';
 
-export default async function AdminRestaurantsPage() {
+export default async function AdminRestaurantsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string }>;
+}) {
+  const params = await searchParams;
+  const filterStatus = params.status || 'all';
   const supabase = await createClient();
 
-  const { data: restaurants } = await supabase
+  let query = supabase
     .from('restaurants')
-    .select('id, name, city, state, participation_level, contact_email, created_at')
-    .order('name', { ascending: true });
+    .select('id, name, city, state, status, contact_email, created_at')
+    .order('created_at', { ascending: false });
 
-  const { data: submissions } = await supabase
-    .from('submissions')
-    .select('restaurant_id, status, reviewed_at, submitted_at');
-
-  const rows = restaurants ?? [];
-  const latestStatusByRestaurant = new Map<string, string>();
-  const latestTimestampByRestaurant = new Map<string, number>();
-
-  for (const submission of submissions ?? []) {
-    const restaurantId = submission.restaurant_id;
-    if (!restaurantId) continue;
-    const ts = Date.parse(submission.reviewed_at ?? submission.submitted_at ?? '');
-    const prevTs = latestTimestampByRestaurant.get(restaurantId) ?? Number.NEGATIVE_INFINITY;
-    if (ts >= prevTs) {
-      latestTimestampByRestaurant.set(restaurantId, ts);
-      latestStatusByRestaurant.set(restaurantId, submission.status ?? 'pending');
-    }
+  if (filterStatus !== 'all') {
+    query = query.eq('status', filterStatus);
   }
+
+  const { data: restaurants } = await query;
+  const rows = restaurants ?? [];
+
+  const statuses = [
+    { key: 'all', label: 'All' },
+    { key: 'pending', label: 'Pending' },
+    { key: 'approved', label: 'Approved' },
+    { key: 'rejected', label: 'Rejected' },
+  ];
 
   return (
     <div>
       <h1 className="text-2xl font-bold text-stone-900 mb-2">Restaurants</h1>
       <p className="text-sm text-stone-500 mb-8 max-w-2xl">
-        Edit restaurant profiles, participation level, health practices, and map coordinates. Submission and
-        dish review workflows stay under{' '}
-        <Link href="/admin/submissions" className="text-[#1e293b] font-medium hover:underline">
-          All applications
-        </Link>{' '}
-        → Restaurants.
+        Manage restaurant listings — profile edits, approval status, and map coordinates.
       </p>
+
+      <div className="flex flex-wrap gap-2 mb-6">
+        {statuses.map((s) => (
+          <Link
+            key={s.key}
+            href={s.key === 'all' ? '/admin/restaurants' : `/admin/restaurants?status=${s.key}`}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+              filterStatus === s.key
+                ? 'bg-[#1e293b] text-white'
+                : 'bg-white text-stone-600 border border-stone-200 hover:bg-stone-50'
+            }`}
+          >
+            {s.label}
+          </Link>
+        ))}
+      </div>
 
       <div className="bg-white border border-stone-200 rounded-xl overflow-hidden">
         {rows.length === 0 ? (
@@ -50,7 +63,7 @@ export default async function AdminRestaurantsPage() {
                 <tr className="bg-stone-50 border-b border-stone-200">
                   <th className="text-left px-6 py-3 font-medium text-stone-600">Name</th>
                   <th className="text-left px-6 py-3 font-medium text-stone-600 hidden md:table-cell">Location</th>
-                  <th className="text-left px-6 py-3 font-medium text-stone-600">Level</th>
+                  <th className="text-left px-6 py-3 font-medium text-stone-600">Status</th>
                   <th className="text-left px-6 py-3 font-medium text-stone-600 hidden sm:table-cell">Contact</th>
                   <th className="px-6 py-3"></th>
                 </tr>
@@ -59,7 +72,10 @@ export default async function AdminRestaurantsPage() {
                 {rows.map((r) => (
                   <tr key={r.id} className="hover:bg-stone-50 transition-colors">
                     <td className="px-6 py-4 font-medium text-stone-900">
-                      <Link href={`/admin/restaurants/${r.id}`} className="hover:underline">
+                      <Link
+                        href={r.status === 'pending' ? `/admin/restaurants/${r.id}/review` : `/admin/restaurants/${r.id}`}
+                        className="hover:underline"
+                      >
                         {r.name}
                       </Link>
                     </td>
@@ -67,57 +83,17 @@ export default async function AdminRestaurantsPage() {
                       {r.city}, {r.state}
                     </td>
                     <td className="px-6 py-4">
-                      {(() => {
-                        const latestStatus = latestStatusByRestaurant.get(r.id);
-                        if (!latestStatus) {
-                          return (
-                            <span
-                              className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full ${
-                                r.participation_level === 'certified'
-                                  ? 'bg-[#1e293b] text-white'
-                                  : 'bg-slate-100 text-slate-800'
-                              }`}
-                            >
-                              {r.participation_level === 'certified' ? 'Certified' : 'Partner'}
-                            </span>
-                          );
-                        }
-                        if (latestStatus === 'approved') {
-                          return (
-                            <span
-                              className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full ${
-                                r.participation_level === 'certified'
-                                  ? 'bg-[#1e293b] text-white'
-                                  : 'bg-slate-100 text-slate-800'
-                              }`}
-                            >
-                              {r.participation_level === 'certified' ? 'Certified' : 'Partner'}
-                            </span>
-                          );
-                        }
-                        if (latestStatus === 'rejected') {
-                          return (
-                            <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full bg-red-100 text-red-800">
-                              Rejected
-                            </span>
-                          );
-                        }
-                        return (
-                          <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-100 text-amber-800">
-                            Pending
-                          </span>
-                        );
-                      })()}
+                      <StatusBadge status={r.status} />
                     </td>
                     <td className="px-6 py-4 text-stone-500 text-xs hidden sm:table-cell truncate max-w-[200px]">
                       {r.contact_email}
                     </td>
                     <td className="px-6 py-4 text-right">
                       <Link
-                        href={`/admin/restaurants/${r.id}`}
+                        href={r.status === 'pending' ? `/admin/restaurants/${r.id}/review` : `/admin/restaurants/${r.id}`}
                         className="text-[#1e293b] hover:underline font-medium whitespace-nowrap"
                       >
-                        Edit →
+                        {r.status === 'pending' ? 'Review →' : 'Manage →'}
                       </Link>
                     </td>
                   </tr>
