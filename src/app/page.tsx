@@ -35,7 +35,7 @@ export default async function HomePage() {
             </h1>
             <p className="text-lg md:text-xl text-slate-100 mb-10 leading-relaxed">
               Regen USA verifies farms committed to regenerative, transparent practices, and
-              connects them with the farm-to-table restaurants that source from them.
+              connects them directly with the restaurants and consumers looking to source from them.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               {showApplyCtas && (

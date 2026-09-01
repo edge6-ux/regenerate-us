@@ -91,8 +91,8 @@ export default function AboutCertificationPage() {
             Regen USA<br className="hidden sm:block" /> Farms &amp; Directory
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed mb-8">
-            We verify farms using clean, regenerative practices, and connect them with the
-            farm-to-table restaurants that source from them — with full transparency for consumers.
+            We verify farms using clean, regenerative practices, and connect them directly with the
+            restaurants and consumers looking to source from them — with full transparency for everyone.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
