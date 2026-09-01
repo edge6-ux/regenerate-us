@@ -30,7 +30,7 @@ export default async function RestaurantsPage() {
         <div className="text-center py-20">
                     <h2 className="text-xl font-semibold text-stone-700 mb-2">No Certified Restaurants Yet</h2>
           <p className="text-stone-500 mb-6">
-            Be the first restaurant to earn Regenerate US certification.
+            Be the first restaurant to earn Regen USA certification.
           </p>
           <Link
             href="/apply"
@@ -61,7 +61,7 @@ export default async function RestaurantsPage() {
                       : 'bg-slate-100 text-slate-800'
                   }`}>
                     {restaurant.participation_level === 'certified'
-                      ? 'Regenerate US Certified'
+                      ? 'Regen USA Certified'
                       : 'Partner'}
                   </span>
                 </div>

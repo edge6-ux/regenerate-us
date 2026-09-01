@@ -6,7 +6,7 @@ export default function SuccessPage() {
       <div className="bg-white border border-stone-200 rounded-2xl p-10">
         <h1 className="text-3xl font-bold text-stone-900 mb-4">Application Submitted!</h1>
         <p className="text-stone-600 mb-2 leading-relaxed">
-          Thank you for applying to the Regenerate US certification program.
+          Thank you for applying to the Regen USA certification program.
         </p>
         <p className="text-stone-600 mb-8 leading-relaxed">
           Our team will review your submission and verify the supplier information you

@@ -43,7 +43,7 @@ const THIRD_PARTY_CERTS = [
 const FAQS = [
   {
     q: 'Is the whole restaurant certified?',
-    a: 'No. Regenerate US is a dish-level certification. Only individual dishes whose main element meets Regenerate US standards are approved. The restaurant is listed because it has at least one certified dish.',
+    a: 'No. Regen USA is a dish-level certification. Only individual dishes whose main element meets Regen USA standards are approved. The restaurant is listed because it has at least one certified dish.',
   },
   {
     q: 'What does "main element" mean?',
@@ -51,35 +51,35 @@ const FAQS = [
   },
   {
     q: 'Do all ingredients in the dish have to qualify?',
-    a: 'Not in the current program. Regenerate US reviews the main element only. Side dishes, sauces, garnishes, and supporting ingredients are not required to meet Regenerate US standards at this stage of the program.',
+    a: 'Not in the current program. Regen USA reviews the main element only. Side dishes, sauces, garnishes, and supporting ingredients are not required to meet Regen USA standards at this stage of the program.',
   },
   {
-    q: 'How does Regenerate US verify claims?',
-    a: 'Restaurants provide attestations and supplier information at the time of submission. Regenerate US may follow up directly with suppliers or farms, request documentation or photos, and may conduct random spot-checks. No costly in-person inspections are required.',
+    q: 'How does Regen USA verify claims?',
+    a: 'Restaurants provide attestations and supplier information at the time of submission. Regen USA may follow up directly with suppliers or farms, request documentation or photos, and may conduct random spot-checks. No costly in-person inspections are required.',
   },
   {
     q: 'Do farms need to be certified already?',
-    a: 'No prior certification is required. Restaurants attest to their sourcing practices, and Regenerate US reviews those claims. However, existing third-party certifications (like USDA Organic or Certified Humane) can strengthen a submission and may be required for certain harder-to-verify claims.',
+    a: 'No prior certification is required. Restaurants attest to their sourcing practices, and Regen USA reviews those claims. However, existing third-party certifications (like USDA Organic or Certified Humane) can strengthen a submission and may be required for certain harder-to-verify claims.',
   },
   {
     q: 'Can a restaurant apply with just one dish?',
-    a: 'Yes. There is no minimum number of dishes. A restaurant can submit a single dish and, if approved, will be listed in the Regenerate US directory with that dish highlighted.',
+    a: 'Yes. There is no minimum number of dishes. A restaurant can submit a single dish and, if approved, will be listed in the Regen USA directory with that dish highlighted.',
   },
   {
     q: 'What happens if sourcing changes after approval?',
-    a: 'Restaurants are responsible for notifying Regenerate US if a supplier, sourcing relationship, or ingredient changes for a certified dish. Failure to update sourcing information may result in removal from the directory.',
+    a: 'Restaurants are responsible for notifying Regen USA if a supplier, sourcing relationship, or ingredient changes for a certified dish. Failure to update sourcing information may result in removal from the directory.',
   },
   {
     q: 'Can certification be revoked?',
-    a: 'Yes. If a claim is found to be inaccurate, if sourcing changes without notification, or if a supplier no longer meets program standards, Regenerate US may remove individual dishes or a restaurant from the directory.',
+    a: 'Yes. If a claim is found to be inaccurate, if sourcing changes without notification, or if a supplier no longer meets program standards, Regen USA may remove individual dishes or a restaurant from the directory.',
   },
   {
     q: 'Will the standards evolve over time?',
-    a: 'Yes. The current standards represent a practical V1 designed to be achievable, credible, and scalable. Regenerate US expects to refine both the required and encouraged practice criteria as the program develops.',
+    a: 'Yes. The current standards represent a practical V1 designed to be achievable, credible, and scalable. Regen USA expects to refine both the required and encouraged practice criteria as the program develops.',
   },
   {
     q: 'Do farms need to agree to remote confirmation?',
-    a: 'Farms do not apply directly in the current model — restaurants apply on behalf of the supplier relationship. However, Regenerate US may contact farms to confirm sourcing details, and cooperation is expected as part of participating in the program.',
+    a: 'Farms do not apply directly in the current model — restaurants apply on behalf of the supplier relationship. However, Regen USA may contact farms to confirm sourcing details, and cooperation is expected as part of participating in the program.',
   },
 ];
 
@@ -93,7 +93,7 @@ export default function AboutCertificationPage() {
       <section className="relative bg-[#0f172a] text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/regenerate-hero2.avif')" }}
+          style={{ backgroundImage: "url('/regen-hero2.avif')" }}
           aria-hidden="true"
         />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
@@ -101,7 +101,7 @@ export default function AboutCertificationPage() {
             Certification Program
           </div>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-            Regenerate US<br className="hidden sm:block" /> Certification
+            Regen USA<br className="hidden sm:block" /> Certification
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed mb-8">
             A dish-level certification program that highlights restaurants serving food whose
@@ -169,23 +169,23 @@ export default function AboutCertificationPage() {
             },
             {
               step: '2',
-              title: 'Regenerate US reviews the submission',
-              body: 'Regenerate US reviews the main element of each dish against program standards. This may include following up with the supplier or requesting additional documentation. No in-person inspection is required.',
+              title: 'Regen USA reviews the submission',
+              body: 'Regen USA reviews the main element of each dish against program standards. This may include following up with the supplier or requesting additional documentation. No in-person inspection is required.',
             },
             {
               step: '3',
               title: 'Approved dishes go public',
-              body: 'Approved dishes are listed in the public Regenerate US directory, showing the dish name, main element, and full supplier sourcing information.',
+              body: 'Approved dishes are listed in the public Regen USA directory, showing the dish name, main element, and full supplier sourcing information.',
             },
             {
               step: '4',
-              title: 'Restaurant displays Regenerate US recognition',
-              body: 'Participating restaurants can display their Regenerate US status on menus, websites, and in-location signage, linking back to the public directory for full transparency.',
+              title: 'Restaurant displays Regen USA recognition',
+              body: 'Participating restaurants can display their Regen USA status on menus, websites, and in-location signage, linking back to the public directory for full transparency.',
             },
             {
               step: '5',
               title: 'Ongoing review',
-              body: 'Certified dishes are subject to ongoing review. Restaurants are responsible for notifying Regenerate US if sourcing changes. Regenerate US may conduct spot-checks at any time.',
+              body: 'Certified dishes are subject to ongoing review. Restaurants are responsible for notifying Regen USA if sourcing changes. Regen USA may conduct spot-checks at any time.',
             },
           ].map(({ step, title, body }) => (
             <div key={step} className="flex gap-5">
@@ -203,20 +203,20 @@ export default function AboutCertificationPage() {
 
       <div className="border-t border-stone-100" />
 
-      {/* ── What Is a Regenerate US Dish ── */}
+      {/* ── What Is a Regen USA Dish ── */}
       <Reveal as="section" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <SectionLabel>Scope</SectionLabel>
-        <h2 className="text-3xl font-bold text-stone-900 mb-4">What Is a Regenerate US Dish?</h2>
+        <h2 className="text-3xl font-bold text-stone-900 mb-4">What Is a Regen USA Dish?</h2>
         <p className="text-stone-600 mb-8 max-w-2xl">
-          At the base level, Regenerate US certification works dish by dish — each certified dish stands on its own. Once a restaurant earns certification on 7 or more dishes, the restaurant itself becomes Regenerate US Certified, reflecting a broader commitment to clean, transparent sourcing across the menu.
+          At the base level, Regen USA certification works dish by dish — each certified dish stands on its own. Once a restaurant earns certification on 7 or more dishes, the restaurant itself becomes Regen USA Certified, reflecting a broader commitment to clean, transparent sourcing across the menu.
         </p>
         <div className="bg-[#1e293b]/5 border border-[#1e293b]/20 rounded-xl p-6 mb-8">
           <h3 className="font-semibold text-stone-900 mb-2">The Main Element</h3>
           <p className="text-stone-700 text-sm leading-relaxed">
             Every certified dish has a <strong>main element</strong> — the primary ingredient that defines the dish.
             This is typically the featured protein, dairy product, eggs, or dominant produce component.
-            Regenerate US reviews the main element only. Side dishes, sauces, garnishes, and supporting ingredients
-            are <em>not</em> required to meet Regenerate US standards in the current program.
+            Regen USA reviews the main element only. Side dishes, sauces, garnishes, and supporting ingredients
+            are <em>not</em> required to meet Regen USA standards in the current program.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
@@ -245,7 +245,7 @@ export default function AboutCertificationPage() {
         <h2 className="text-3xl font-bold text-stone-900 mb-4">Program Standards</h2>
         <p className="text-stone-600 mb-12 max-w-2xl">
           Standards are applied to the main element of each submitted dish. The tiers below
-          reflect what Regenerate US requires, what strengthens a submission, and what tells a deeper story.
+          reflect what Regen USA requires, what strengthens a submission, and what tells a deeper story.
           Encouraged and bonus practices may evolve as the program develops.
         </p>
 
@@ -297,7 +297,7 @@ export default function AboutCertificationPage() {
               <h3 className="text-white font-semibold">Bonus / Narrative Practices</h3>
               <p className="text-white/70 text-sm mt-0.5">
                 These are not approval requirements, but they help tell the farm's story and demonstrate
-                stronger alignment with the Regenerate US mission. These may be featured in public listings.
+                stronger alignment with the Regen USA mission. These may be featured in public listings.
               </p>
             </div>
             <ul className="divide-y divide-stone-100">
@@ -321,7 +321,7 @@ export default function AboutCertificationPage() {
         <SectionLabel>Verification</SectionLabel>
         <h2 className="text-3xl font-bold text-stone-900 mb-4">How We Verify</h2>
         <p className="text-stone-600 mb-10 max-w-2xl">
-          Regenerate US prioritizes practices that can be reasonably confirmed through remote or virtual methods,
+          Regen USA prioritizes practices that can be reasonably confirmed through remote or virtual methods,
           keeping the program accessible without sacrificing credibility.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
@@ -340,7 +340,7 @@ export default function AboutCertificationPage() {
             },
             {
               title: 'Spot-Checks',
-              body: 'Regenerate US may conduct random verification checks on approved listings at any time. This may include reviewing updated invoices, supplier contacts, or on-site visits in limited cases.',
+              body: 'Regen USA may conduct random verification checks on approved listings at any time. This may include reviewing updated invoices, supplier contacts, or on-site visits in limited cases.',
             },
           ].map(({ title, body }) => (
             <div key={title} className="border border-stone-200 rounded-xl p-5">
@@ -355,7 +355,7 @@ export default function AboutCertificationPage() {
           <h3 className="font-semibold text-stone-900 mb-2">Third-Party Certifications</h3>
           <p className="text-sm text-stone-600 leading-relaxed mb-4">
             Some claims — particularly around organic status, animal welfare, or regenerative practices —
-            may rely on existing third-party certifications for verification. While Regenerate US does not require
+            may rely on existing third-party certifications for verification. While Regen USA does not require
             prior certification, holding a recognized credential can satisfy harder-to-verify claims
             and strengthen a submission.
           </p>
@@ -368,7 +368,7 @@ export default function AboutCertificationPage() {
             ))}
           </div>
           <p className="text-xs text-stone-400 mt-4">
-            Third-party certifications are referenced as supporting evidence only. Regenerate US makes no representations
+            Third-party certifications are referenced as supporting evidence only. Regen USA makes no representations
             about the scope or coverage of any external certification body.
           </p>
         </div>
@@ -381,7 +381,7 @@ export default function AboutCertificationPage() {
         <SectionLabel>Transparency</SectionLabel>
         <h2 className="text-3xl font-bold text-stone-900 mb-4">What Gets Listed Publicly</h2>
         <p className="text-stone-600 mb-10 max-w-2xl">
-          Approved restaurants and their certified dishes are displayed in the public Regenerate US directory.
+          Approved restaurants and their certified dishes are displayed in the public Regen USA directory.
           Transparency is a core part of the program — consumers can see exactly where a dish's main
           element comes from.
         </p>

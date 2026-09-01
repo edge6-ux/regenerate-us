@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Regenerate US - Restaurant Certification Program',
+  title: 'Regen USA - Restaurant Certification Program',
   description:
     'Certifying restaurants that prioritize local, sustainable sourcing from verified farms and producers.',
 };

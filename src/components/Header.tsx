@@ -124,7 +124,7 @@ export default function Header() {
             <span
               className={`${wordmark.className} text-xl sm:text-[1.35rem] font-semibold text-white tracking-tight`}
             >
-              Regenerate US
+              Regen USA
             </span>
           </Link>
 

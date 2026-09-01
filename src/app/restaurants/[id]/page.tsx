@@ -61,7 +61,7 @@ export default async function RestaurantVerificationPage({
         </svg>
       ),
       title: 'Verified Sourcing',
-      body: 'Every certified dish is reviewed by Regenerate US. Suppliers are named, certifications are checked, and claims are verified.',
+      body: 'Every certified dish is reviewed by Regen USA. Suppliers are named, certifications are checked, and claims are verified.',
     },
   ];
 
@@ -72,10 +72,10 @@ export default async function RestaurantVerificationPage({
       <div className="bg-[#0f172a] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-12">
 
-          {/* Regenerate US wordmark */}
+          {/* Regen USA wordmark */}
           <div className="flex items-center gap-2 mb-8">
             <span className={`${wordmark.className} text-white text-lg font-semibold tracking-tight`}>
-              Regenerate US
+              Regen USA
             </span>
           </div>
 
@@ -86,7 +86,7 @@ export default async function RestaurantVerificationPage({
                 <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.403 12.652a3 3 0 0 0 0-5.304 3 3 0 0 0-3.75-3.751 3 3 0 0 0-5.305 0 3 3 0 0 0-3.751 3.75 3 3 0 0 0 0 5.305 3 3 0 0 0 3.75 3.751 3 3 0 0 0 5.305 0 3 3 0 0 0 3.751-3.75Zm-2.546-4.46a.75.75 0 0 0-1.214-.883l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
                 </svg>
-                {isCertified ? 'Regenerate US Certified Restaurant' : 'Regenerate US Partner'}
+                {isCertified ? 'Regen USA Certified Restaurant' : 'Regen USA Partner'}
               </div>
 
               <h1 className={`${wordmark.className} text-4xl sm:text-5xl font-bold text-white leading-tight`}>
@@ -138,14 +138,14 @@ export default async function RestaurantVerificationPage({
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
 
-        {/* ── What Regenerate US Certified means ──────────────────────────────────────── */}
+        {/* ── What Regen USA Certified means ──────────────────────────────────────── */}
         <section>
           <div className="text-center mb-8">
             <h2 className={`${wordmark.className} text-2xl font-bold text-stone-900`}>
-              What Regenerate US Certified Means
+              What Regen USA Certified Means
             </h2>
             <p className="text-stone-500 mt-2 text-sm max-w-xl mx-auto">
-              Every dish on this list has been reviewed and verified by Regenerate US against a strict set of sourcing standards.
+              Every dish on this list has been reviewed and verified by Regen USA against a strict set of sourcing standards.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -168,7 +168,7 @@ export default async function RestaurantVerificationPage({
                   Certified Dishes
                 </h2>
                 <p className="text-stone-500 text-sm mt-1">
-                  Each dish below meets Regenerate US standards for its main element.
+                  Each dish below meets Regen USA standards for its main element.
                 </p>
               </div>
               <span className="bg-[#1e293b] text-white text-xs font-semibold px-3 py-1.5 rounded-full">
@@ -210,13 +210,13 @@ export default async function RestaurantVerificationPage({
         {/* ── CTA ───────────────────────────────────────────────────────────── */}
         <section className={`${ATMOSPHERE_BG} rounded-2xl p-8 text-center`}>
           <span className={`${greatVibes.className} text-slate-300 text-3xl`}>
-            Regenerate US
+            Regen USA
           </span>
           <h3 className={`${wordmark.className} text-xl font-bold text-white mt-1 mb-3`}>
             Find more restaurants like this one
           </h3>
           <p className="text-slate-200/80 text-sm mb-6 max-w-md mx-auto">
-            Regenerate US is building a verified network of restaurants committed to clean sourcing and honest ingredients.
+            Regen USA is building a verified network of restaurants committed to clean sourcing and honest ingredients.
           </p>
           <Link
             href="/restaurants"
@@ -232,9 +232,9 @@ export default async function RestaurantVerificationPage({
         {/* ── Transparency footer ───────────────────────────────────────────── */}
         <div className="text-center pb-4">
           <p className="text-xs text-stone-400 leading-relaxed max-w-xl mx-auto">
-            Certified dishes meet Regenerate US standards for the main element only and may be subject to
+            Certified dishes meet Regen USA standards for the main element only and may be subject to
             ongoing review. Certification is based on restaurant attestation, supplier transparency,
-            and selective verification by Regenerate US.
+            and selective verification by Regen USA.
           </p>
           <Link href="/restaurants" className="inline-block mt-4 text-xs text-[#1e293b] hover:underline">
             ← Back to directory

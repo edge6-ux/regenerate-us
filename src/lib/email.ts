@@ -1,8 +1,8 @@
 import { Resend } from 'resend';
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const FROM = process.env.EMAIL_FROM ?? 'Regenerate US <noreply@regenerateus.com>';
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://regenerateus.com';
+const FROM = process.env.EMAIL_FROM ?? 'Regen USA <noreply@regenusa.org>';
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://regenusa.org';
 
 async function send(to: string, subject: string, html: string) {
   if (!resend) {
@@ -31,7 +31,7 @@ function base(previewText: string, content: string) {
 
     <!-- Header -->
     <div style="background:#0f172a;border-radius:12px 12px 0 0;padding:24px 32px;">
-      <p style="margin:0;font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-0.3px;">Regenerate US</p>
+      <p style="margin:0;font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-0.3px;">Regen USA</p>
       <p style="margin:4px 0 0;font-size:12px;color:#94a3b8;">Certification Program</p>
     </div>
 
@@ -42,8 +42,8 @@ function base(previewText: string, content: string) {
 
     <!-- Footer -->
     <p style="text-align:center;font-size:11px;color:#a8a29e;margin-top:20px;line-height:1.6;">
-      © ${new Date().getFullYear()} Regenerate US &nbsp;·&nbsp;
-      <a href="${SITE}" style="color:#a8a29e;text-decoration:underline;">regenerateus.com</a>
+      © ${new Date().getFullYear()} Regen USA &nbsp;·&nbsp;
+      <a href="${SITE}" style="color:#a8a29e;text-decoration:underline;">regenusa.org</a>
     </p>
 
   </div>
@@ -118,7 +118,7 @@ export async function sendSubmissionDecision(
 
   if (status === 'approved') {
     headline = 'Your submission has been approved!';
-    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">Congratulations — your submission for <strong>${restaurantName}</strong> has been reviewed and approved. Your certified dishes are now listed in the Regenerate US public directory.</p>`;
+    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">Congratulations — your submission for <strong>${restaurantName}</strong> has been reviewed and approved. Your certified dishes are now listed in the Regen USA public directory.</p>`;
   } else if (status === 'rejected') {
     headline = 'Your submission was not approved';
     body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">After review, we were unable to approve this submission for <strong>${restaurantName}</strong>. This may be due to certification requirements not being met for the main element of one or more dishes.</p>`;
@@ -132,7 +132,7 @@ export async function sendSubmissionDecision(
 
   const notesBlock = adminNotes ? `
     <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:16px 20px;margin-bottom:24px;">
-      <p style="margin:0 0 4px;font-size:12px;font-weight:600;color:#92400e;text-transform:uppercase;letter-spacing:0.5px;">Note from Regenerate US</p>
+      <p style="margin:0 0 4px;font-size:12px;font-weight:600;color:#92400e;text-transform:uppercase;letter-spacing:0.5px;">Note from Regen USA</p>
       <p style="margin:0;font-size:14px;color:#78350f;line-height:1.6;">${adminNotes}</p>
     </div>` : '';
 
@@ -156,7 +156,7 @@ export async function sendPasswordResetEmail(to: string, resetLink: string) {
   const content = `
     <h1 style="margin:0 0 8px;font-size:22px;font-weight:700;color:#1c1917;">Reset your password</h1>
     <p style="margin:0 0 20px;font-size:14px;color:#78716c;">
-      A password reset was requested for your Regenerate US account. Click the button below to set a new password.
+      A password reset was requested for your Regen USA account. Click the button below to set a new password.
       This link expires in 24 hours.
     </p>
     ${btn('Reset Password', resetLink)}
@@ -164,7 +164,7 @@ export async function sendPasswordResetEmail(to: string, resetLink: string) {
       If you didn't request this, you can safely ignore this email. Your password will not change.
     </p>
   `;
-  await send(to, 'Reset your Regenerate US password', base('Reset your password', content));
+  await send(to, 'Reset your Regen USA password', base('Reset your password', content));
 }
 
 // ─── Farm Decision ────────────────────────────────────────────────────────────
@@ -178,7 +178,7 @@ export async function sendFarmDecision(to: string, farmName: string, status: str
 
   if (status === 'approved') {
     headline = 'Your farm has been approved!';
-    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">Welcome to the Regenerate US network. <strong>${farmName}</strong> is now listed in the public directory and visible to restaurants looking for verified local suppliers.</p>`;
+    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">Welcome to the Regen USA network. <strong>${farmName}</strong> is now listed in the public directory and visible to restaurants looking for verified local suppliers.</p>`;
   } else {
     headline = 'Your farm application was not approved';
     body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">After review, we were unable to approve the listing for <strong>${farmName}</strong> at this time. If you have questions or would like to discuss your application, please reach out to us directly.</p>`;
@@ -192,7 +192,7 @@ export async function sendFarmDecision(to: string, farmName: string, status: str
     ${body}
     ${btn('View Dashboard', `${SITE}/dashboard/farm`)}
     <p style="margin:20px 0 0;font-size:13px;color:#a8a29e;">
-      Questions? Email us at <a href="mailto:info@regenerateus.com" style="color:#1e293b;">info@regenerateus.com</a>
+      Questions? Email us at <a href="mailto:info@regenusa.org" style="color:#1e293b;">info@regenusa.org</a>
     </p>
   `;
 

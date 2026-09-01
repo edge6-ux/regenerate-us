@@ -84,7 +84,7 @@ export default async function QRCardPage() {
               <span
                 className={`${wordmark.className} text-white text-xl font-semibold tracking-tight`}
               >
-                Regenerate US
+                Regen USA
               </span>
             </div>
             {isCertified && (
@@ -99,7 +99,7 @@ export default async function QRCardPage() {
             {/* Restaurant name */}
             <div className="text-center">
               <p className="text-xs uppercase tracking-widest text-stone-400 mb-1">
-                {isCertified ? 'Regenerate US Certified Restaurant' : 'Regenerate US Partner'}
+                {isCertified ? 'Regen USA Certified Restaurant' : 'Regen USA Partner'}
               </p>
               <h1 className="text-xl font-bold text-stone-900 leading-tight">
                 {restaurant.name}
@@ -127,14 +127,14 @@ export default async function QRCardPage() {
                 Scan to see our certified dishes
               </p>
               <p className="text-xs text-stone-400 mt-1">
-                Sourced with integrity, verified by Regenerate US.
+                Sourced with integrity, verified by Regen USA.
               </p>
             </div>
 
             {/* Divider + standards note */}
             <div className="w-full border-t border-stone-100 pt-4">
               <p className="text-[10px] text-stone-400 text-center leading-relaxed">
-                All certified dishes meet Regenerate US standards for sourcing and ingredient integrity.
+                All certified dishes meet Regen USA standards for sourcing and ingredient integrity.
                 Scan to view verified dishes and supplier information.
               </p>
             </div>
@@ -143,7 +143,7 @@ export default async function QRCardPage() {
           {/* Footer band */}
           <div className="bg-stone-50 border-t border-stone-100 px-6 py-3 text-center">
             <p className="text-[11px] text-stone-400 font-medium tracking-wide">
-              Regenerate US · Restaurant Certification Program
+              Regen USA · Restaurant Certification Program
             </p>
           </div>
         </div>

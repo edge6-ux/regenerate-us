@@ -43,7 +43,7 @@ export default function AdminLoginPage() {
         <div className="bg-white border border-stone-200 rounded-2xl p-8">
           <div className="text-center mb-8">
                         <h1 className="text-xl font-bold text-stone-900">Admin Login</h1>
-            <p className="text-sm text-stone-500">Regenerate US</p>
+            <p className="text-sm text-stone-500">Regen USA</p>
           </div>
 
           {error && (

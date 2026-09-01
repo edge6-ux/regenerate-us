@@ -63,7 +63,7 @@ function LoginForm() {
             <span
               className={`${wordmark.className} text-2xl sm:text-[1.65rem] font-semibold text-[#1e293b] tracking-tight`}
             >
-              Regenerate US
+              Regen USA
             </span>
           </Link>
           <p className="text-stone-500 text-sm mt-3">Sign in to your account</p>

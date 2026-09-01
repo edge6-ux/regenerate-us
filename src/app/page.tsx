@@ -34,7 +34,7 @@ export default async function HomePage() {
               <span className="text-slate-300">Really</span> Comes From
             </h1>
             <p className="text-lg md:text-xl text-slate-100 mb-10 leading-relaxed">
-              Regenerate US certifies restaurants that prioritize transparency,
+              Regen USA certifies restaurants that prioritize transparency,
               local sourcing, and verified farm-to-table practices. Every certified dish
               comes with full supplier transparency.
             </p>
@@ -131,7 +131,7 @@ export default async function HomePage() {
               <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Local Sourcing Matters</h2>
               <p className="text-slate-200/80 max-w-md mb-8">
                 Every purchasing decision a restaurant makes is a vote for the kind of food system we want.
-                Regenerate US makes those decisions visible.
+                Regen USA makes those decisions visible.
               </p>
               <div className="flex items-center gap-3">
                 <span className="text-4xl font-black text-[#f0a23e]">100%</span>
@@ -202,7 +202,7 @@ export default async function HomePage() {
                 <div className="inline-flex items-center gap-2 bg-[#475569]/10 text-[#475569] text-xs font-semibold px-3 py-1 rounded-full mb-4">
                   Entry Level
                 </div>
-                <h3 className="text-xl font-bold text-stone-900 mb-3">Regenerate US Partner</h3>
+                <h3 className="text-xl font-bold text-stone-900 mb-3">Regen USA Partner</h3>
                 <p className="text-stone-600 text-sm leading-relaxed mb-4">
                   Restaurants that submit one or more dishes with verified local sourcing.
                   Dishes are individually certified and displayed in our directory.
@@ -222,13 +222,13 @@ export default async function HomePage() {
                 <div className="inline-flex items-center gap-2 bg-[#1e293b]/10 text-[#1e293b] text-xs font-semibold px-3 py-1 rounded-full mb-4">
                   Full Certification
                 </div>
-                <h3 className="text-xl font-bold text-stone-900 mb-3">Regenerate US Certified Restaurant</h3>
+                <h3 className="text-xl font-bold text-stone-900 mb-3">Regen USA Certified Restaurant</h3>
                 <p className="text-stone-600 text-sm leading-relaxed mb-4">
                   Full restaurant certification for establishments that demonstrate
                   comprehensive farm-to-table practices across their entire menu.
                 </p>
                 <ul className="space-y-2">
-                  {['7+ certified dishes', 'Regenerate US Certified badge', 'Featured in directory', 'Restaurant-level recognition'].map((f) => (
+                  {['7+ certified dishes', 'Regen USA Certified badge', 'Featured in directory', 'Restaurant-level recognition'].map((f) => (
                     <li key={f} className="flex items-center gap-2 text-sm text-stone-600">
                       <svg className="w-4 h-4 text-[#1e293b] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                       {f}
@@ -255,7 +255,7 @@ export default async function HomePage() {
                   Restaurants Are Looking for You
                 </h2>
                 <p className="text-slate-100 leading-relaxed mb-4">
-                  Every Regenerate US-certified dish links directly to a verified farm or producer.
+                  Every Regen USA-certified dish links directly to a verified farm or producer.
                   Restaurants in our network are actively searching for local suppliers who meet
                   the program&apos;s standards — get in front of them by registering your farm.
                 </p>
@@ -292,7 +292,7 @@ export default async function HomePage() {
               <div className="flex flex-col gap-4">
                 {[
                   { label: 'Reach Buyers', desc: 'Restaurants using our directory are actively sourcing — your farm gets found' },
-                  { label: 'Build Credibility', desc: 'Regenerate US-verified practices carry weight with health-conscious restaurants' },
+                  { label: 'Build Credibility', desc: 'Regen USA-verified practices carry weight with health-conscious restaurants' },
                   { label: 'Showcase Standards', desc: 'Display your certifications, welfare practices, and production methods' },
                   { label: 'Grow Your Network', desc: 'Every certified dish that uses your farm builds your reputation' },
                 ].map((item, i) => (

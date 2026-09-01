@@ -47,7 +47,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
     try {
       const res = await fetch(
         `https://nominatim.openstreetmap.org/search?format=json&postalcode=${zipCode}&countrycodes=us&limit=1`,
-        { headers: { 'User-Agent': 'RegenerateUS/1.0' } }
+        { headers: { 'User-Agent': 'RegenUSA/1.0' } }
       );
       const data = await res.json();
       if (data && data.length > 0) {
@@ -139,7 +139,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
       <Reveal className="mb-10">
         <h1 className="text-3xl font-bold text-stone-900 mb-2">Directory</h1>
         <p className="text-stone-600">
-          Explore restaurants and farms participating in the Regenerate US program.
+          Explore restaurants and farms participating in the Regen USA program.
         </p>
       </Reveal>
 
@@ -385,7 +385,7 @@ function EmptyState({ type, hasSearch }: { type: 'restaurants' | 'farms'; hasSea
         {hasSearch
           ? 'Try expanding your search radius or clearing your search.'
           : type === 'restaurants'
-            ? 'Be the first restaurant to earn Regenerate US certification.'
+            ? 'Be the first restaurant to earn Regen USA certification.'
             : 'Farms will appear here once approved through our onboarding process.'}
       </p>
       {!hasSearch && (
@@ -433,7 +433,7 @@ function RestaurantModal({
                 ? 'bg-[#1e293b] text-white'
                 : 'bg-slate-100 text-slate-800 border border-slate-200'
             }`}>
-              {restaurant.participation_level === 'certified' ? 'Regenerate US Certified Restaurant' : 'Regenerate US Partner'}
+              {restaurant.participation_level === 'certified' ? 'Regen USA Certified Restaurant' : 'Regen USA Partner'}
             </span>
             {approvalDate && (
               <span className="text-xs text-stone-400">
@@ -498,7 +498,7 @@ function RestaurantModal({
 
           <div className="mt-6 pt-4 border-t border-stone-100">
             <p className="text-xs text-stone-400 italic">
-              Certified dishes meet Regenerate US standards for the main element only and may be subject to ongoing review.
+              Certified dishes meet Regen USA standards for the main element only and may be subject to ongoing review.
             </p>
           </div>
         </div>

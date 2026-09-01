@@ -118,12 +118,12 @@ export default async function RestaurantDashboard() {
         <div className="flex items-center justify-between mb-3">
           <div>
             <h2 className="text-sm font-semibold text-stone-900">
-              {restaurant.participation_level === 'certified' ? 'Regenerate US Certified Restaurant' : 'Certification Progress'}
+              {restaurant.participation_level === 'certified' ? 'Regen USA Certified Restaurant' : 'Certification Progress'}
             </h2>
             <p className="text-xs text-stone-500 mt-0.5">
               {restaurant.participation_level === 'certified'
-                ? 'Your restaurant has achieved full Regenerate US Certified status.'
-                : `${approvedDishes.length} of 7 dishes certified — ${Math.max(0, 7 - approvedDishes.length)} more needed for Regenerate US Certified status`}
+                ? 'Your restaurant has achieved full Regen USA Certified status.'
+                : `${approvedDishes.length} of 7 dishes certified — ${Math.max(0, 7 - approvedDishes.length)} more needed for Regen USA Certified status`}
             </p>
           </div>
           <span className={`text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0 ${
@@ -131,7 +131,7 @@ export default async function RestaurantDashboard() {
               ? 'bg-[#1e293b] text-white'
               : 'bg-slate-100 text-slate-800 border border-slate-200'
           }`}>
-            {restaurant.participation_level === 'certified' ? 'Regenerate US Certified' : 'Partner'}
+            {restaurant.participation_level === 'certified' ? 'Regen USA Certified' : 'Partner'}
           </span>
         </div>
         <div className="w-full bg-stone-100 rounded-full h-2">
@@ -142,7 +142,7 @@ export default async function RestaurantDashboard() {
         </div>
         <div className="flex justify-between mt-1.5">
           <span className="text-xs text-stone-400">{approvedDishes.length} approved</span>
-          <span className="text-xs text-stone-400">7 = Regenerate US Certified</span>
+          <span className="text-xs text-stone-400">7 = Regen USA Certified</span>
         </div>
       </div>
 
@@ -205,7 +205,7 @@ export default async function RestaurantDashboard() {
                     </div>
                     {submission.status === 'needs_clarification' && submission.admin_notes && (
                       <div className="bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-xs text-amber-800 mt-2">
-                        <span className="font-semibold">Note from Regenerate US:</span> {submission.admin_notes}
+                        <span className="font-semibold">Note from Regen USA:</span> {submission.admin_notes}
                       </div>
                     )}
                     {submission.reviewed_at && submission.status !== 'pending' && (
@@ -236,7 +236,7 @@ export default async function RestaurantDashboard() {
                 </span>
               ))}
             </div>
-            <p className="text-xs text-stone-400 mt-3">To update your practices, contact Regenerate US directly.</p>
+            <p className="text-xs text-stone-400 mt-3">To update your practices, contact Regen USA directly.</p>
           </div>
         )}
 
@@ -268,7 +268,7 @@ export default async function RestaurantDashboard() {
             </div>
           </div>
           <p className="text-xs text-stone-400 mt-4">
-            To update your info, contact Regenerate US directly.
+            To update your info, contact Regen USA directly.
           </p>
         </div>
       </div>

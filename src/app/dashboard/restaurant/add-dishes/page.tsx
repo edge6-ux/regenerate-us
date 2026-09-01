@@ -12,7 +12,7 @@ function RedirectBanner() {
   if (params.get('from') !== 'apply') return null;
   return (
     <div className="bg-blue-50 border border-blue-200 text-blue-800 rounded-xl px-4 py-3 text-sm mb-6">
-      You already have a Regenerate US account. Use this form to submit additional dishes for certification — your restaurant profile on file stays the same.
+      You already have a Regen USA account. Use this form to submit additional dishes for certification — your restaurant profile on file stays the same.
     </div>
   );
 }
@@ -114,7 +114,7 @@ export default function AddRestaurantDishesPage() {
         </Link>
         <h1 className="text-2xl font-bold text-stone-900 mt-2">Certify new dishes</h1>
         <p className="text-stone-500 text-sm mt-1">
-          Submit dishes for Regenerate US review. Your restaurant profile on file will stay the same.
+          Submit dishes for Regen USA review. Your restaurant profile on file will stay the same.
         </p>
       </div>
 
@@ -173,7 +173,7 @@ export default function AddRestaurantDishesPage() {
               },
               {
                 key: 'verification' as const,
-                text: 'I understand that Regenerate US may conduct additional verification of the claims made in this application, including contacting suppliers or farms directly.',
+                text: 'I understand that Regen USA may conduct additional verification of the claims made in this application, including contacting suppliers or farms directly.',
               },
               {
                 key: 'revocation' as const,

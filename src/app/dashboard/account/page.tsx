@@ -183,7 +183,7 @@ export default function DashboardAccountPage() {
         <div className="bg-white border border-stone-200 rounded-xl p-6 mb-6">
           <h2 className="text-lg font-semibold text-stone-900 mb-1">Contact Information</h2>
           <p className="text-sm text-stone-500 mb-5">
-            Updates what Regenerate US has on file. Contact Regenerate US directly for address or name changes.
+            Updates what Regen USA has on file. Contact Regen USA directly for address or name changes.
           </p>
           {contactMessage && (
             <div className={`mb-4 px-4 py-3 rounded-lg text-sm ${

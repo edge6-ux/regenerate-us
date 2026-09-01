@@ -166,14 +166,14 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
       <div className="px-4 md:px-3 py-4 md:py-4 border-b border-[#1e293b] flex items-center gap-2 justify-between">
         <Link
           href="/admin/review-queue"
-          title="Regenerate US Admin"
+          title="Regen USA Admin"
           className="min-w-0 flex-1 md:flex-1 text-left"
         >
           <div className="md:hidden">
-            <div className="font-bold text-sm">Regenerate US Admin</div>
+            <div className="font-bold text-sm">Regen USA Admin</div>
           </div>
           <div className={`hidden md:block ${collapsed ? 'md:hidden' : ''}`}>
-            <div className="font-bold text-sm">Regenerate US Admin</div>
+            <div className="font-bold text-sm">Regen USA Admin</div>
           </div>
           <div
             className={`hidden ${collapsed ? 'md:flex' : ''} md:mx-auto md:w-9 md:h-9 md:rounded-lg md:bg-[#1e293b] md:items-center md:justify-center md:text-sm md:font-bold`}

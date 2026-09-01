@@ -8,7 +8,7 @@ export default function Footer() {
           <div>
             <div className="mb-3">
               <span className="text-lg font-bold text-white">
-                Regenerate US
+                Regen USA
               </span>
             </div>
             <p className="text-sm text-slate-200/70">
@@ -40,15 +40,15 @@ export default function Footer() {
             <h3 className="font-semibold text-slate-400 mb-3 text-xs uppercase tracking-wider">Contact</h3>
             <p className="text-sm text-slate-200/70">
               Questions about the certification program?<br />
-              <a href="mailto:info@regenerateus.com" className="text-slate-300 hover:text-white transition-colors hover:underline">
-                info@regenerateus.com
+              <a href="mailto:info@regenusa.org" className="text-slate-300 hover:text-white transition-colors hover:underline">
+                info@regenusa.org
               </a>
             </p>
           </div>
         </div>
         <div className="border-t border-[#1e293b] mt-8 pt-6 text-center">
           <p className="text-xs text-slate-200/40">
-            © {new Date().getFullYear()} Regenerate US. All rights reserved.
+            © {new Date().getFullYear()} Regen USA. All rights reserved.
           </p>
         </div>
       </div>
