@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Fraunces, Great_Vibes } from 'next/font/google';
 import { ATMOSPHERE_BG } from '@/components/AtmosphereBanner';
+import UsFlag from '@/components/UsFlag';
 
 export const revalidate = 60;
 
@@ -37,6 +38,7 @@ export default async function RestaurantProfilePage({
             <span className={`${wordmark.className} text-white text-lg font-semibold tracking-tight`}>
               Regen USA
             </span>
+            <UsFlag />
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">

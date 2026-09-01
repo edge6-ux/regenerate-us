@@ -5,6 +5,7 @@ import { Fraunces } from 'next/font/google';
 import { useState, useEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import UsFlag from '@/components/UsFlag';
 
 const wordmark = Fraunces({
   subsets: ['latin'],
@@ -126,6 +127,7 @@ export default function Header() {
             >
               Regen USA
             </span>
+            <UsFlag className="inline-block w-5 h-[0.75em] rounded-[1px]" />
           </Link>
 
           <div ref={menuRef} className="relative ml-auto shrink-0 -mr-0.5 sm:-mr-1">

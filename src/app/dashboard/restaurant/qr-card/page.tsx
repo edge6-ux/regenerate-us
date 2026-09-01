@@ -5,6 +5,7 @@ import { headers } from 'next/headers';
 import QRCode from 'qrcode';
 import Link from 'next/link';
 import PrintButton from '@/components/PrintButton';
+import UsFlag from '@/components/UsFlag';
 
 const wordmark = Fraunces({ subsets: ['latin'], weight: ['600'] });
 
@@ -84,6 +85,7 @@ export default async function QRCardPage() {
               >
                 Regen USA
               </span>
+              <UsFlag />
             </div>
           </div>
 

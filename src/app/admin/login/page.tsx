@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
+import UsFlag from '@/components/UsFlag';
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState('');
@@ -43,7 +44,7 @@ export default function AdminLoginPage() {
         <div className="bg-white border border-stone-200 rounded-2xl p-8">
           <div className="text-center mb-8">
                         <h1 className="text-xl font-bold text-stone-900">Admin Login</h1>
-            <p className="text-sm text-stone-500">Regen USA</p>
+            <p className="text-sm text-stone-500 flex items-center justify-center gap-1.5">Regen USA <UsFlag /></p>
           </div>
 
           {error && (

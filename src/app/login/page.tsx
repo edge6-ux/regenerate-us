@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Fraunces } from 'next/font/google';
+import UsFlag from '@/components/UsFlag';
 
 const wordmark = Fraunces({
   subsets: ['latin'],
@@ -65,6 +66,7 @@ function LoginForm() {
             >
               Regen USA
             </span>
+            <UsFlag className="inline-block w-6 h-[0.75em] rounded-[1px]" />
           </Link>
           <p className="text-stone-500 text-sm mt-3">Sign in to your account</p>
         </div>

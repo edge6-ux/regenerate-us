@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import ProfileDropdown from '@/components/ProfileDropdown';
+import UsFlag from '@/components/UsFlag';
 
 const STORAGE_KEY = 'regenerate-admin-sidebar-collapsed';
 
@@ -172,10 +173,10 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
           className="min-w-0 flex-1 md:flex-1 text-left"
         >
           <div className="md:hidden">
-            <div className="font-bold text-sm">Regen USA Admin</div>
+            <div className="font-bold text-sm flex items-center gap-1.5">Regen USA <UsFlag /> Admin</div>
           </div>
           <div className={`hidden md:block ${collapsed ? 'md:hidden' : ''}`}>
-            <div className="font-bold text-sm">Regen USA Admin</div>
+            <div className="font-bold text-sm flex items-center gap-1.5">Regen USA <UsFlag /> Admin</div>
           </div>
           <div
             className={`hidden ${collapsed ? 'md:flex' : ''} md:mx-auto md:w-9 md:h-9 md:rounded-lg md:bg-[#1e293b] md:items-center md:justify-center md:text-sm md:font-bold`}

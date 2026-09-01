@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import UsFlag from '@/components/UsFlag';
 
 export default function Footer() {
   return (
@@ -6,10 +7,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <div className="mb-3">
+            <div className="mb-3 flex items-center gap-2">
               <span className="text-lg font-bold text-white">
                 Regen USA
               </span>
+              <UsFlag />
             </div>
             <p className="text-sm text-slate-200/70">
               Verifying regenerative farms and connecting them with the farm-to-table

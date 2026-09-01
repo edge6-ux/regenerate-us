@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
+import UsFlag from '@/components/UsFlag';
 
 function ResetForm() {
   const params = useSearchParams();
@@ -53,7 +54,7 @@ function ResetForm() {
     <div className="min-h-screen bg-stone-50 flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-block text-lg font-bold text-[#1e293b]">Regen USA</Link>
+          <Link href="/" className="inline-flex items-center gap-1.5 text-lg font-bold text-[#1e293b]">Regen USA <UsFlag /></Link>
         </div>
 
         <div className="bg-white border border-stone-200 rounded-2xl p-8 shadow-sm">
