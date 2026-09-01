@@ -186,27 +186,58 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Restaurants: Get Listed */}
+      {/* Join the Network: Farms + Restaurants */}
       <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="max-w-2xl mx-auto text-center border border-stone-200 rounded-xl p-8 md:p-10">
-            <div className="inline-flex items-center gap-2 bg-[#1e293b]/10 text-[#1e293b] text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              For Restaurants
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-3">Get Listed as a Farm-to-Table Partner</h2>
-            <p className="text-stone-600 leading-relaxed mb-6">
-              A free directory listing for restaurants that source from regenerative farms — no dish-by-dish
-              certification, no tiers. Apply, pass a quick review, and get discovered.
+          <Reveal className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-3">Join the Regen USA Network</h2>
+            <p className="text-stone-600 max-w-2xl mx-auto">
+              Two ways to be part of the directory — get your farm certified, or list your restaurant as a
+              farm-to-table partner.
             </p>
-            {showApplyCtas && (
-              <Link
-                href="/apply"
-                className="inline-block bg-[#1e293b] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#0f172a] transition-colors text-sm"
-              >
-                Apply Now
-              </Link>
-            )}
           </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <Reveal delay={0}>
+              <div className="border-2 border-[#1e293b] bg-[#1e293b]/5 rounded-xl p-8 h-full flex flex-col">
+                <div className="inline-flex items-center gap-2 bg-[#1e293b] text-white text-xs font-semibold px-3 py-1 rounded-full mb-4 w-fit">
+                  For Farms
+                </div>
+                <h3 className="text-xl font-bold text-stone-900 mb-3">Get Certified as a Regen USA Farm</h3>
+                <p className="text-stone-600 text-sm leading-relaxed mb-6 flex-1">
+                  Share your practices and certifications, pass our review, and get discovered by restaurants
+                  and consumers looking for verified, regenerative producers.
+                </p>
+                {showApplyCtas && (
+                  <Link
+                    href="/apply?type=farm"
+                    className="inline-block bg-[#1e293b] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#0f172a] transition-colors text-sm text-center"
+                  >
+                    Apply as a Farm
+                  </Link>
+                )}
+              </div>
+            </Reveal>
+            <Reveal delay={100}>
+              <div className="border border-stone-200 rounded-xl p-8 h-full flex flex-col">
+                <div className="inline-flex items-center gap-2 bg-stone-100 text-stone-700 text-xs font-semibold px-3 py-1 rounded-full mb-4 w-fit">
+                  For Restaurants
+                </div>
+                <h3 className="text-xl font-bold text-stone-900 mb-3">Get Listed as a Farm-to-Table Partner</h3>
+                <p className="text-stone-600 text-sm leading-relaxed mb-6 flex-1">
+                  A free directory listing for restaurants that source from regenerative farms — no dish-by-dish
+                  certification, no tiers. Apply, pass a quick review, and get discovered.
+                </p>
+                {showApplyCtas && (
+                  <Link
+                    href="/apply"
+                    className="inline-block border-2 border-[#1e293b] text-[#1e293b] px-6 py-3 rounded-xl font-semibold hover:bg-[#1e293b]/5 transition-colors text-sm text-center"
+                  >
+                    Apply as a Restaurant
+                  </Link>
+                )}
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
