@@ -15,6 +15,7 @@ const wordmark = Fraunces({
 const BASE_NAV = [
   { label: 'Directory', href: '/directory' },
   { label: 'How it Works', href: '/about-certification' },
+  { label: 'Resources', href: '/resources' },
 ] as const;
 
 export default function Header() {

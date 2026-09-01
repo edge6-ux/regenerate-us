@@ -39,7 +39,14 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold text-slate-400 mb-3 text-xs uppercase tracking-wider">Resources</h3>
+            <h3 className="mb-3">
+              <Link
+                href="/resources"
+                className="font-semibold text-slate-400 text-xs uppercase tracking-wider hover:text-white transition-colors"
+              >
+                Resources
+              </Link>
+            </h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/soil-credits" className="text-sm text-slate-200/80 hover:text-white transition-colors">
