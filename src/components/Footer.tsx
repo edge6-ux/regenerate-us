@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0f172a] mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           <div>
             <div className="mb-3 flex items-center gap-2">
               <span className="text-lg font-bold text-white">
@@ -34,6 +34,36 @@ export default function Footer() {
               <li>
                 <Link href="/about-certification" className="text-sm text-slate-200/80 hover:text-white transition-colors">
                   How it Works
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold text-slate-400 mb-3 text-xs uppercase tracking-wider">Resources</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/soil-credits" className="text-sm text-slate-200/80 hover:text-white transition-colors">
+                  Soil Credits
+                </Link>
+              </li>
+              <li>
+                <Link href="/oz-education" className="text-sm text-slate-200/80 hover:text-white transition-colors">
+                  Opportunity Zone Education
+                </Link>
+              </li>
+              <li>
+                <Link href="/conservation-grants" className="text-sm text-slate-200/80 hover:text-white transition-colors">
+                  Conservation Easements &amp; Grants
+                </Link>
+              </li>
+              <li>
+                <Link href="/regenerative-resources" className="text-sm text-slate-200/80 hover:text-white transition-colors">
+                  Regenerative Resources
+                </Link>
+              </li>
+              <li>
+                <Link href="/general-resources" className="text-sm text-slate-200/80 hover:text-white transition-colors">
+                  General Resources
                 </Link>
               </li>
             </ul>
