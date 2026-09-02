@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Reveal from '@/components/Reveal';
@@ -106,12 +107,14 @@ export default async function StatePage({
         </div>
 
         {/* Hero photo with overlay caption + CTAs */}
-        <div className="relative rounded-xl overflow-hidden border border-[#DCE3CD]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+        <div className="relative rounded-xl overflow-hidden border border-[#DCE3CD] h-[280px] sm:h-[380px] md:h-[440px]">
+          <Image
             src={config.heroImage.src}
             alt={config.heroImage.alt}
-            className="w-full h-[280px] sm:h-[380px] md:h-[440px] object-cover"
+            fill
+            priority
+            sizes="(max-width: 1152px) 100vw, 1152px"
+            className="object-cover"
           />
           <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/65 to-transparent" aria-hidden="true" />
           <div className="absolute bottom-4 left-4 text-white text-xs font-medium drop-shadow">

@@ -38,6 +38,11 @@ export default function Header() {
     pathname === '/about-certification' ||
     /^\/restaurants\/[^/]+$/.test(pathname);
 
+  // State pages (e.g. /utah) have their own distinct branded nav (StateSubNav)
+  // and don't want the global site header stacked on top of it.
+  const stateSlugFromPath = pathname.match(/^\/([^/]+)\/?$/)?.[1];
+  const isStatePage = Boolean(stateSlugFromPath && STATE_CONFIGS[stateSlugFromPath]);
+
   const navLinks = [
     ...BASE_NAV,
     ...(dashboardHref === null ? [{ label: 'Apply Now' as const, href: '/apply' as const }] : []),
@@ -124,6 +129,8 @@ export default function Header() {
         ? 'text-[#1e293b] bg-[#1e293b]/5'
         : 'text-stone-700 hover:bg-stone-50 hover:text-stone-900'
     }`;
+
+  if (isStatePage) return null;
 
   return (
     <header className={`${hasTransparentHero ? 'absolute' : 'relative'} top-0 left-0 right-0 z-50 border-b ${hasTransparentHero ? 'bg-transparent border-white/10' : 'bg-[#0f172a] border-[#0f172a]'}`}>
