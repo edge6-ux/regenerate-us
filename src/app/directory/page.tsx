@@ -1,11 +1,19 @@
 import { createClient } from '@/lib/supabase/server';
 import { fetchApprovedFarmsForDirectory } from '@/lib/supabase/directory-farms';
+import { getStateConfig } from '@/lib/stateContent';
 import DirectoryClient from './DirectoryClient';
 
 /** Always fetch fresh directory data (avoid stale empty cache after new approvals). */
 export const dynamic = 'force-dynamic';
 
-export default async function DirectoryPage() {
+export default async function DirectoryPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ state?: string }>;
+}) {
+  const { state } = await searchParams;
+  const stateConfig = state ? getStateConfig(state) : null;
+
   const supabase = await createClient();
 
   // Fetch approved restaurants
@@ -21,6 +29,8 @@ export default async function DirectoryPage() {
     <DirectoryClient
       restaurants={restaurants || []}
       farms={farms}
+      initialCenter={stateConfig?.centroid}
+      initialStateName={stateConfig?.name}
     />
   );
 }

@@ -31,15 +31,22 @@ interface RestaurantRow {
 interface Props {
   restaurants: RestaurantRow[];
   farms: Farm[];
+  /** Set when the directory is opened with ?state=slug — pre-zooms the map to that state. */
+  initialCenter?: [number, number];
+  initialStateName?: string;
 }
 
-export default function DirectoryClient({ restaurants, farms }: Props) {
+/** Radius (miles) used to approximate "the whole state" when arriving via a state filter. */
+const STATE_FILTER_RADIUS = 250;
+
+export default function DirectoryClient({ restaurants, farms, initialCenter, initialStateName }: Props) {
   const [activeTab, setActiveTab] = useState<'map' | 'restaurants' | 'farms'>('map');
   const [selectedRestaurant, setSelectedRestaurant] = useState<RestaurantRow | null>(null);
   const [zipCode, setZipCode] = useState('');
-  const [searchCenter, setSearchCenter] = useState<[number, number] | null>(null);
-  const [searchRadius, setSearchRadius] = useState(50);
+  const [searchCenter, setSearchCenter] = useState<[number, number] | null>(initialCenter ?? null);
+  const [searchRadius, setSearchRadius] = useState(initialCenter ? STATE_FILTER_RADIUS : 50);
   const [searching, setSearching] = useState(false);
+  const [stateFilterName, setStateFilterName] = useState<string | null>(initialStateName ?? null);
 
   const handleZipSearch = useCallback(async () => {
     if (!zipCode || zipCode.length !== 5) return;
@@ -51,6 +58,8 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
       );
       const data = await res.json();
       if (data && data.length > 0) {
+        setStateFilterName(null);
+        setSearchRadius(50);
         setSearchCenter([parseFloat(data[0].lat), parseFloat(data[0].lon)]);
       }
     } catch {
@@ -62,6 +71,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
   const clearSearch = () => {
     setZipCode('');
     setSearchCenter(null);
+    setStateFilterName(null);
   };
 
   // All map pins
@@ -145,6 +155,18 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
 
       {/* Zip Code Search */}
       <Reveal delay={80} className="bg-white border border-stone-200 rounded-xl p-5 mb-8">
+        {stateFilterName && (
+          <div className="inline-flex items-center gap-2 bg-[#1e293b]/8 text-[#1e293b] text-sm font-medium px-3 py-1.5 rounded-full mb-4">
+            Showing: {stateFilterName}
+            <button
+              onClick={clearSearch}
+              aria-label={`Clear ${stateFilterName} filter`}
+              className="text-[#1e293b]/60 hover:text-[#1e293b]"
+            >
+              ×
+            </button>
+          </div>
+        )}
         <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-end">
           <div className="flex-1 sm:max-w-xs">
             <label className="block text-sm font-medium text-stone-700 mb-1">Find near you</label>
@@ -186,7 +208,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
             </button>
           )}
         </div>
-        {searchCenter && (
+        {searchCenter && zipCode && (
           <p className="text-xs text-stone-500 mt-2">
             Showing {filteredPins.length} result{filteredPins.length !== 1 ? 's' : ''} within {searchRadius} miles of {zipCode}
           </p>
@@ -224,7 +246,8 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
         <DirectoryMap
           pins={filteredPins}
           center={searchCenter || undefined}
-          zoom={searchCenter ? 10 : 4}
+          zoom={stateFilterName ? 6.5 : searchCenter ? 10 : 4}
+          fitToPins={!stateFilterName}
         />
       )}
 

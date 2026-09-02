@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import UsFlag from '@/components/UsFlag';
+import { STATE_CONFIGS } from '@/lib/stateContent';
 
 const wordmark = Fraunces({
   subsets: ['latin'],
@@ -20,6 +21,7 @@ const BASE_NAV = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [statesOpen, setStatesOpen] = useState(false);
   const [dashboardHref, setDashboardHref] = useState<string | null>(null);
   const [accountHref, setAccountHref] = useState<string | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -42,7 +44,7 @@ export default function Header() {
   ];
 
   // Close on route change
-  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => { setOpen(false); setStatesOpen(false); }, [pathname]);
 
   // Auth: dashboard link only; Apply Now is for signed-out visitors (avoids duplicating Dashboard for admins, etc.)
   useEffect(() => {
@@ -159,6 +161,41 @@ export default function Header() {
                       {label}
                     </Link>
                   ))}
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => setStatesOpen((v) => !v)}
+                      aria-expanded={statesOpen}
+                      className="w-full flex items-center justify-between px-4 py-2.5 text-sm font-medium text-stone-700 hover:bg-stone-50 hover:text-stone-900 transition-colors"
+                    >
+                      States
+                      <svg
+                        className={`w-3.5 h-3.5 transition-transform ${statesOpen ? 'rotate-180' : ''}`}
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    {statesOpen && (
+                      <div className="bg-stone-50">
+                        {Object.values(STATE_CONFIGS).map((s) => (
+                          <Link
+                            key={s.slug}
+                            href={`/${s.slug}`}
+                            className={`block pl-8 pr-4 py-2.5 text-sm font-medium transition-colors ${
+                              pathname === `/${s.slug}`
+                                ? 'text-[#1e293b] bg-[#1e293b]/5'
+                                : 'text-stone-700 hover:bg-stone-100 hover:text-stone-900'
+                            }`}
+                            onClick={() => setOpen(false)}
+                          >
+                            {s.name}
+                          </Link>
+                        ))}
+                        <span className="block pl-8 pr-4 py-2.5 text-sm text-stone-400">+ next state</span>
+                      </div>
+                    )}
+                  </div>
                   <div className="my-2 border-t border-stone-100" />
                   <Link
                     href={dashboardHref ?? '/login'}

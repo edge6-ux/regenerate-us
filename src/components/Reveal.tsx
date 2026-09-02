@@ -8,9 +8,10 @@ interface RevealProps {
   className?: string;
   delay?: number; // ms — use for staggered children
   as?: ElementType;
+  id?: string;
 }
 
-export default function Reveal({ children, className = '', delay = 0, as: Tag = 'div' }: RevealProps) {
+export default function Reveal({ children, className = '', delay = 0, as: Tag = 'div', id }: RevealProps) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function Reveal({ children, className = '', delay = 0, as: Tag = 
   }, [delay]);
 
   return (
-    <Tag ref={ref as never} className={`reveal ${className}`}>
+    <Tag ref={ref as never} id={id} className={`reveal ${className}`}>
       {children}
     </Tag>
   );

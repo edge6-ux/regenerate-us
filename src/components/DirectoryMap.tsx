@@ -21,6 +21,8 @@ interface DirectoryMapProps {
   pins: MapPin[];
   center?: [number, number];
   zoom?: number;
+  /** Zoom to fit the pins in view. Set false to keep an explicit wide view (e.g. a whole-state search) even with few/no nearby pins. */
+  fitToPins?: boolean;
 }
 
 // Custom marker icons
@@ -51,7 +53,7 @@ const farmIcon = L.divIcon({
   popupAnchor: [0, -20],
 });
 
-export default function DirectoryMap({ pins, center, zoom }: DirectoryMapProps) {
+export default function DirectoryMap({ pins, center, zoom, fitToPins = true }: DirectoryMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<L.Map | null>(null);
   const markersRef = useRef<L.LayerGroup | null>(null);
@@ -113,12 +115,12 @@ export default function DirectoryMap({ pins, center, zoom }: DirectoryMapProps) 
       markersRef.current!.addLayer(marker);
     });
 
-    // Fit bounds if we have pins
-    if (validPins.length > 0) {
+    // Fit bounds if we have pins (skipped when an explicit wide view — e.g. a state search — is wanted)
+    if (fitToPins && validPins.length > 0) {
       const bounds = L.latLngBounds(validPins.map((p) => [p.latitude, p.longitude]));
       mapInstance.current.fitBounds(bounds, { padding: [50, 50], maxZoom: 12 });
     }
-  }, [pins, mapReady]);
+  }, [pins, mapReady, fitToPins]);
 
   // Update center/zoom when changed (zip search)
   useEffect(() => {
