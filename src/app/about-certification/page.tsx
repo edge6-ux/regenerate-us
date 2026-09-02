@@ -121,7 +121,7 @@ export default function AboutCertificationPage() {
             },
             {
               title: 'For Restaurants',
-              body: 'List your restaurant as a farm-to-table partner — a free directory listing, no dish-by-dish certification. Build credibility with guests who care where their food comes from.',
+              body: 'List your restaurant as a farm-to-table partner — a free directory listing. Build credibility with guests who care where their food comes from.',
             },
             {
               title: 'For Consumers',

@@ -14,8 +14,8 @@ export default function Footer() {
               <UsFlag />
             </div>
             <p className="text-sm text-slate-200/70">
-              Verifying regenerative farms and connecting them with the farm-to-table
-              restaurants that source from them.
+              Verifying regenerative farms and connecting them directly with the
+              restaurants and consumers looking to source from them.
             </p>
           </div>
           <div>

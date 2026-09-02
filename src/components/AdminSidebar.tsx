@@ -182,7 +182,7 @@ export default function AdminSidebar({ adminTier = 1 }: { adminTier?: number }) 
             className={`hidden ${collapsed ? 'md:flex' : ''} md:mx-auto md:w-9 md:h-9 md:rounded-lg md:bg-[#1e293b] md:items-center md:justify-center md:text-sm md:font-bold`}
             aria-hidden
           >
-            M
+            R
           </div>
         </Link>
         <button

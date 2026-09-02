@@ -7,9 +7,9 @@ import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Regen USA - Restaurant Certification Program',
+  title: 'Regen USA - Regenerative Farms & Farm-to-Table Directory',
   description:
-    'Certifying restaurants that prioritize local, sustainable sourcing from verified farms and producers.',
+    'Verifying regenerative farms and connecting them directly with the restaurants and consumers looking to source from them.',
 };
 
 export default function RootLayout({
