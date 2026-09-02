@@ -50,23 +50,23 @@ const FAQS = [
   },
   {
     q: 'Do farms need to be certified already?',
-    a: 'No prior certification is required. Farms attest to their practices, and Regen USA reviews those claims. Existing third-party certifications (like USDA Organic or Certified Humane) can strengthen an application and may be required for certain harder-to-verify claims.',
+    a: 'No prior certification is required. Farms attest to their practices, and RegenUS reviews those claims. Existing third-party certifications (like USDA Organic or Certified Humane) can strengthen an application and may be required for certain harder-to-verify claims.',
   },
   {
-    q: 'How does Regen USA verify claims?',
-    a: 'Farms provide attestations and practice details at the time of application. Regen USA may follow up directly, request documentation or photos, and may conduct random spot-checks. No costly in-person inspections are required.',
+    q: 'How does RegenUS verify claims?',
+    a: 'Farms provide attestations and practice details at the time of application. RegenUS may follow up directly, request documentation or photos, and may conduct random spot-checks. No costly in-person inspections are required.',
   },
   {
     q: 'What happens if a farm’s practices change after approval?',
-    a: 'Farms are responsible for notifying Regen USA if their practices or certifications change. Failure to update this information may result in removal from the directory.',
+    a: 'Farms are responsible for notifying RegenUS if their practices or certifications change. Failure to update this information may result in removal from the directory.',
   },
   {
     q: 'Can approval be revoked?',
-    a: 'Yes. If a claim is found to be inaccurate or practices change without notification, Regen USA may remove a farm or restaurant from the directory.',
+    a: 'Yes. If a claim is found to be inaccurate or practices change without notification, RegenUS may remove a farm or restaurant from the directory.',
   },
   {
     q: 'Will the standards evolve over time?',
-    a: 'Yes. The current standards represent a practical starting point designed to be achievable, credible, and scalable. Regen USA expects to refine both the required and encouraged practice criteria — including a more detailed scoring model — as the program develops.',
+    a: 'Yes. The current standards represent a practical starting point designed to be achievable, credible, and scalable. RegenUS expects to refine both the required and encouraged practice criteria — including a more detailed scoring model — as the program develops.',
   },
 ];
 
@@ -88,7 +88,7 @@ export default function AboutCertificationPage() {
             How It Works
           </div>
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-            Regen USA<br className="hidden sm:block" /> Farms &amp; Directory
+            RegenUS<br className="hidden sm:block" /> Farms &amp; Directory
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed mb-8">
             We verify farms using clean, regenerative practices, and connect them directly with the
@@ -117,7 +117,7 @@ export default function AboutCertificationPage() {
           {[
             {
               title: 'For Farms',
-              body: 'Get reviewed and listed as a verified Regen USA farm. Get discovered by restaurants looking for clean, traceable suppliers, and tell the story behind how you raise and grow.',
+              body: 'Get reviewed and listed as a verified RegenUS farm. Get discovered by restaurants looking for clean, traceable suppliers, and tell the story behind how you raise and grow.',
             },
             {
               title: 'For Restaurants',
@@ -151,7 +151,7 @@ export default function AboutCertificationPage() {
             <div className="space-y-4">
               {[
                 { step: '1', title: 'Apply', body: 'Share your practices, certifications, and what you raise or grow.' },
-                { step: '2', title: 'Review', body: 'Regen USA reviews your application against our practice standards.' },
+                { step: '2', title: 'Review', body: 'RegenUS reviews your application against our practice standards.' },
                 { step: '3', title: 'Get listed', body: 'Approved farms appear in the public directory, searchable by restaurants and consumers.' },
               ].map(({ step, title, body }) => (
                 <div key={step} className="flex gap-4">
@@ -171,7 +171,7 @@ export default function AboutCertificationPage() {
             <div className="space-y-4">
               {[
                 { step: '1', title: 'Apply', body: 'Share your restaurant profile and story — no dish submissions required.' },
-                { step: '2', title: 'Review', body: 'Regen USA does a light review to keep the directory accurate and spam-free.' },
+                { step: '2', title: 'Review', body: 'RegenUS does a light review to keep the directory accurate and spam-free.' },
                 { step: '3', title: 'Get listed', body: 'Approved restaurants appear as farm-to-table partners in the public directory.' },
               ].map(({ step, title, body }) => (
                 <div key={step} className="flex gap-4">
@@ -196,7 +196,7 @@ export default function AboutCertificationPage() {
         <SectionLabel>Standards</SectionLabel>
         <h2 className="text-3xl font-bold text-stone-900 mb-4">Farm Practice Standards</h2>
         <p className="text-stone-600 mb-12 max-w-2xl">
-          The tiers below reflect what Regen USA requires of a farm, what strengthens an application,
+          The tiers below reflect what RegenUS requires of a farm, what strengthens an application,
           and what tells a deeper story. Encouraged and bonus practices may evolve as the program develops.
         </p>
 
@@ -248,7 +248,7 @@ export default function AboutCertificationPage() {
               <h3 className="text-white font-semibold">Bonus / Narrative Practices</h3>
               <p className="text-white/70 text-sm mt-0.5">
                 These are not approval requirements, but they help tell the farm's story and demonstrate
-                stronger alignment with the Regen USA mission. These may be featured in public listings.
+                stronger alignment with the RegenUS mission. These may be featured in public listings.
               </p>
             </div>
             <ul className="divide-y divide-stone-100">
@@ -272,7 +272,7 @@ export default function AboutCertificationPage() {
         <SectionLabel>Verification</SectionLabel>
         <h2 className="text-3xl font-bold text-stone-900 mb-4">How We Verify</h2>
         <p className="text-stone-600 mb-10 max-w-2xl">
-          Regen USA prioritizes practices that can be reasonably confirmed through remote or virtual methods,
+          RegenUS prioritizes practices that can be reasonably confirmed through remote or virtual methods,
           keeping the program accessible without sacrificing credibility.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
@@ -291,7 +291,7 @@ export default function AboutCertificationPage() {
             },
             {
               title: 'Spot-Checks',
-              body: 'Regen USA may conduct random verification checks on approved listings at any time. This may include reviewing updated documentation or on-site visits in limited cases.',
+              body: 'RegenUS may conduct random verification checks on approved listings at any time. This may include reviewing updated documentation or on-site visits in limited cases.',
             },
           ].map(({ title, body }) => (
             <div key={title} className="border border-stone-200 rounded-xl p-5">
@@ -306,7 +306,7 @@ export default function AboutCertificationPage() {
           <h3 className="font-semibold text-stone-900 mb-2">Third-Party Certifications</h3>
           <p className="text-sm text-stone-600 leading-relaxed mb-4">
             Some claims — particularly around organic status, animal welfare, or regenerative practices —
-            may rely on existing third-party certifications for verification. While Regen USA does not require
+            may rely on existing third-party certifications for verification. While RegenUS does not require
             prior certification, holding a recognized credential can satisfy harder-to-verify claims
             and strengthen an application.
           </p>
@@ -319,7 +319,7 @@ export default function AboutCertificationPage() {
             ))}
           </div>
           <p className="text-xs text-stone-400 mt-4">
-            Third-party certifications are referenced as supporting evidence only. Regen USA makes no representations
+            Third-party certifications are referenced as supporting evidence only. RegenUS makes no representations
             about the scope or coverage of any external certification body.
           </p>
         </div>
@@ -332,7 +332,7 @@ export default function AboutCertificationPage() {
         <SectionLabel>Transparency</SectionLabel>
         <h2 className="text-3xl font-bold text-stone-900 mb-4">What Gets Listed Publicly</h2>
         <p className="text-stone-600 mb-10 max-w-2xl">
-          Approved farms and restaurants are displayed in the public Regen USA directory. Transparency is a
+          Approved farms and restaurants are displayed in the public RegenUS directory. Transparency is a
           core part of the program — consumers can see exactly what practices a farm follows.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -363,7 +363,7 @@ export default function AboutCertificationPage() {
                 'Restaurant name, city, and state',
                 'Description and website',
                 'Better health practices (if provided)',
-                'A link to browse Regen USA farms',
+                'A link to browse RegenUS farms',
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3 px-6 py-3.5 text-sm text-stone-700">
                   <div className="w-1.5 h-1.5 rounded-full bg-stone-600 flex-shrink-0" />

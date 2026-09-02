@@ -31,7 +31,7 @@ export default async function RestaurantDashboard() {
 
   const statusCopy: Record<string, string> = {
     pending: 'Your listing is awaiting review. We’ll email you once a decision is made.',
-    approved: 'Your restaurant is live in the Regen USA public directory.',
+    approved: 'Your restaurant is live in the RegenUS public directory.',
     rejected: 'Your listing was not approved.',
   };
 
@@ -74,7 +74,7 @@ export default async function RestaurantDashboard() {
           <p className="text-sm text-stone-500 mt-2">{statusCopy[restaurant.status] ?? ''}</p>
           {restaurant.status === 'rejected' && restaurant.admin_notes && (
             <div className="bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-xs text-amber-800 mt-3">
-              <span className="font-semibold">Note from Regen USA:</span> {restaurant.admin_notes}
+              <span className="font-semibold">Note from RegenUS:</span> {restaurant.admin_notes}
             </div>
           )}
         </div>
@@ -82,7 +82,7 @@ export default async function RestaurantDashboard() {
         {/* Sourcing CTA */}
         <div className="bg-[#1e293b]/5 border border-[#1e293b]/20 rounded-xl p-6 flex items-center justify-between gap-4 flex-wrap">
           <div>
-            <h2 className="font-semibold text-stone-900">Sources from Regen USA farms?</h2>
+            <h2 className="font-semibold text-stone-900">Sources from RegenUS farms?</h2>
             <p className="text-sm text-stone-500 mt-1">
               Browse the directory to find and promote the farms behind your menu.
             </p>
@@ -91,7 +91,7 @@ export default async function RestaurantDashboard() {
             href="/directory"
             className="bg-[#1e293b] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#0f172a] transition-colors whitespace-nowrap"
           >
-            Browse Regen USA Farms →
+            Browse RegenUS Farms →
           </Link>
         </div>
 
@@ -109,7 +109,7 @@ export default async function RestaurantDashboard() {
                 </span>
               ))}
             </div>
-            <p className="text-xs text-stone-400 mt-3">To update your practices, contact Regen USA directly.</p>
+            <p className="text-xs text-stone-400 mt-3">To update your practices, contact RegenUS directly.</p>
           </div>
         )}
 
@@ -137,7 +137,7 @@ export default async function RestaurantDashboard() {
             </div>
           </div>
           <p className="text-xs text-stone-400 mt-4">
-            To update your info, contact Regen USA directly.
+            To update your info, contact RegenUS directly.
           </p>
         </div>
       </div>

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ComingSoonPage from '@/components/ComingSoonPage';
 
 export const metadata: Metadata = {
-  title: 'Regenerative Resources — Regen USA',
+  title: 'Regenerative Resources — RegenUS',
 };
 
 export default function RegenerativeResourcesPage() {

@@ -34,7 +34,7 @@ export default async function HomePage() {
               <span className="text-slate-300">Really</span> Comes From
             </h1>
             <p className="text-lg md:text-xl text-slate-100 mb-10 leading-relaxed">
-              Regen USA verifies farms committed to regenerative, transparent practices, and
+              RegenUS verifies farms committed to regenerative, transparent practices, and
               connects them directly with the restaurants and consumers looking to source from them.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -130,7 +130,7 @@ export default async function HomePage() {
               <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Local Sourcing Matters</h2>
               <p className="text-slate-200/80 max-w-md mb-8">
                 Every purchasing decision a restaurant makes is a vote for the kind of food system we want.
-                Regen USA makes those decisions visible.
+                RegenUS makes those decisions visible.
               </p>
               <div className="flex items-center gap-3">
                 <span className="text-4xl font-black text-[#f0a23e]">100%</span>
@@ -190,7 +190,7 @@ export default async function HomePage() {
       <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-3">Join the Regen USA Network</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-3">Join the RegenUS Network</h2>
             <p className="text-stone-600 max-w-2xl mx-auto">
               Two ways to be part of the directory — get your farm certified, or list your restaurant as a
               farm-to-table partner.
@@ -202,7 +202,7 @@ export default async function HomePage() {
                 <div className="inline-flex items-center gap-2 bg-[#1e293b] text-white text-xs font-semibold px-3 py-1 rounded-full mb-4 w-fit">
                   For Farms
                 </div>
-                <h3 className="text-xl font-bold text-stone-900 mb-3">Get Certified as a Regen USA Farm</h3>
+                <h3 className="text-xl font-bold text-stone-900 mb-3">Get Certified as a RegenUS Farm</h3>
                 <p className="text-stone-600 text-sm leading-relaxed mb-6 flex-1">
                   Share your practices and certifications, pass our review, and get discovered by restaurants
                   and consumers looking for verified, regenerative producers.
@@ -292,7 +292,7 @@ export default async function HomePage() {
               <div className="flex flex-col gap-4">
                 {[
                   { label: 'Reach Buyers', desc: 'Restaurants using our directory are actively sourcing — your farm gets found' },
-                  { label: 'Build Credibility', desc: 'Regen USA-verified practices carry weight with health-conscious restaurants' },
+                  { label: 'Build Credibility', desc: 'RegenUS-verified practices carry weight with health-conscious restaurants' },
                   { label: 'Showcase Standards', desc: 'Display your certifications, welfare practices, and production methods' },
                   { label: 'Grow Your Network', desc: 'Every restaurant that lists you as a source builds your reputation' },
                 ].map((item, i) => (

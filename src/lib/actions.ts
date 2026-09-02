@@ -852,7 +852,7 @@ export async function notifyRestaurantDecision(restaurantId: string, newStatus: 
       ? `Your restaurant was approved — ${restaurant.name}`
       : `Restaurant application update — ${restaurant.name}`;
     const body = newStatus === 'approved'
-      ? 'Your restaurant is now listed in the Regen USA public directory.'
+      ? 'Your restaurant is now listed in the RegenUS public directory.'
       : 'Your restaurant application was not approved at this time.';
     await createNotification(profile.id, title, body, '/dashboard/restaurant');
   }
@@ -1568,7 +1568,7 @@ export async function notifyFarmDecision(farmId: string, newStatus: string): Pro
       ? `Your farm was approved — ${farm.name}`
       : `Farm application update — ${farm.name}`;
     const body = newStatus === 'approved'
-      ? 'Your farm is now listed in the Regen USA public directory.'
+      ? 'Your farm is now listed in the RegenUS public directory.'
       : 'Your farm application was not approved at this time.';
     await createNotification(profile.id, title, body, '/dashboard/farm');
   }

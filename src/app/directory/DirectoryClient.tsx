@@ -47,7 +47,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
     try {
       const res = await fetch(
         `https://nominatim.openstreetmap.org/search?format=json&postalcode=${zipCode}&countrycodes=us&limit=1`,
-        { headers: { 'User-Agent': 'RegenUSA/1.0' } }
+        { headers: { 'User-Agent': 'RegenUS/1.0' } }
       );
       const data = await res.json();
       if (data && data.length > 0) {
@@ -139,7 +139,7 @@ export default function DirectoryClient({ restaurants, farms }: Props) {
       <Reveal className="mb-10">
         <h1 className="text-3xl font-bold text-stone-900 mb-2">Directory</h1>
         <p className="text-stone-600">
-          Explore restaurants and farms participating in the Regen USA program.
+          Explore restaurants and farms participating in the RegenUS program.
         </p>
       </Reveal>
 
@@ -381,7 +381,7 @@ function EmptyState({ type, hasSearch }: { type: 'restaurants' | 'farms'; hasSea
         {hasSearch
           ? 'Try expanding your search radius or clearing your search.'
           : type === 'restaurants'
-            ? 'Be the first restaurant listed in the Regen USA directory.'
+            ? 'Be the first restaurant listed in the RegenUS directory.'
             : 'Farms will appear here once approved through our onboarding process.'}
       </p>
       {!hasSearch && (
@@ -484,7 +484,7 @@ function RestaurantModal({
               onClick={onClose}
               className="inline-flex items-center gap-1.5 text-sm text-[#1e293b] font-medium hover:underline"
             >
-              Browse Regen USA farms →
+              Browse RegenUS farms →
             </Link>
           </div>
         </div>

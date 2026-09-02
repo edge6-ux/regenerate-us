@@ -78,17 +78,17 @@ export default async function RestaurantProfilePage({
         {/* ── Sourcing ──────────────────────────────────────────────────────── */}
         <section className="bg-white border border-stone-200 rounded-xl p-8 text-center">
           <h2 className={`${wordmark.className} text-2xl font-bold text-stone-900 mb-2`}>
-            Sourced from Regen USA Farms
+            Sourced from RegenUS Farms
           </h2>
           <p className="text-stone-500 text-sm max-w-lg mx-auto mb-6">
-            {restaurant.name} is a farm-to-table partner in the Regen USA directory. Browse the farms
+            {restaurant.name} is a farm-to-table partner in the RegenUS directory. Browse the farms
             in the network to see who supplies restaurants like this one.
           </p>
           <Link
             href="/directory"
             className="inline-flex items-center gap-2 bg-[#1e293b] text-white font-semibold px-6 py-3 rounded-xl text-sm hover:bg-[#0f172a] transition-colors"
           >
-            Browse Regen USA Farms
+            Browse RegenUS Farms
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
             </svg>
@@ -122,13 +122,13 @@ export default async function RestaurantProfilePage({
         {/* ── CTA ───────────────────────────────────────────────────────────── */}
         <section className={`${ATMOSPHERE_BG} rounded-2xl p-8 text-center`}>
           <span className={`${greatVibes.className} text-slate-300 text-3xl`}>
-            Regen USA
+            RegenUS
           </span>
           <h3 className={`${wordmark.className} text-xl font-bold text-white mt-1 mb-3`}>
             Find more restaurants like this one
           </h3>
           <p className="text-slate-200/80 text-sm mb-6 max-w-md mx-auto">
-            Regen USA is building a directory of farm-to-table restaurants and the regenerative farms behind them.
+            RegenUS is building a directory of farm-to-table restaurants and the regenerative farms behind them.
           </p>
           <Link
             href="/directory"

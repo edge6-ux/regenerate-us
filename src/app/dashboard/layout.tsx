@@ -11,7 +11,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <header className="bg-white border-b border-stone-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
           <Link href="/" className="text-lg font-bold text-[#1e293b] flex items-center gap-1.5">
-            Regen USA <UsFlag />
+            RegenUS <UsFlag />
           </Link>
           <div className="flex items-center gap-3">
             <Link

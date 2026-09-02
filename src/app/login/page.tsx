@@ -64,7 +64,7 @@ function LoginForm() {
             <span
               className={`${wordmark.className} text-2xl sm:text-[1.65rem] font-semibold text-[#1e293b] tracking-tight`}
             >
-              Regen USA
+              RegenUS
             </span>
             <UsFlag className="inline-block w-6 h-[0.75em] rounded-[1px]" />
           </Link>

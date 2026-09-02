@@ -83,7 +83,7 @@ export default async function QRCardPage() {
               <span
                 className={`${wordmark.className} text-white text-xl font-semibold tracking-tight`}
               >
-                Regen USA
+                RegenUS
               </span>
               <UsFlag />
             </div>
@@ -129,7 +129,7 @@ export default async function QRCardPage() {
             {/* Divider + note */}
             <div className="w-full border-t border-stone-100 pt-4">
               <p className="text-[10px] text-stone-400 text-center leading-relaxed">
-                Scan to view our profile and the Regen USA farms behind our menu.
+                Scan to view our profile and the RegenUS farms behind our menu.
               </p>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default async function QRCardPage() {
           {/* Footer band */}
           <div className="bg-stone-50 border-t border-stone-100 px-6 py-3 text-center">
             <p className="text-[11px] text-stone-400 font-medium tracking-wide">
-              Regen USA · Farms &amp; Farm-to-Table Directory
+              RegenUS · Farms &amp; Farm-to-Table Directory
             </p>
           </div>
         </div>

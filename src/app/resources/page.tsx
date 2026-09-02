@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Resources — Regen USA',
+  title: 'Resources — RegenUS',
 };
 
 const RESOURCES = [
@@ -33,7 +33,7 @@ const RESOURCES = [
   {
     href: '/general-resources',
     title: 'General Resources',
-    description: 'General resources for farms and restaurants in the Regen USA network.',
+    description: 'General resources for farms and restaurants in the RegenUS network.',
   },
 ] as const;
 
@@ -43,7 +43,7 @@ export default function ResourcesPage() {
       <div className="mb-12 max-w-2xl">
         <h1 className="text-3xl md:text-4xl font-bold text-stone-900 mb-3">Resources</h1>
         <p className="text-stone-600 leading-relaxed">
-          Guides, education, and program details for farms and restaurants in the Regen USA
+          Guides, education, and program details for farms and restaurants in the RegenUS
           network. These sections are being built out — check back as they go live.
         </p>
       </div>

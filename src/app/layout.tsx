@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Regen USA - Regenerative Farms & Farm-to-Table Directory',
+  title: 'RegenUS - Regenerative Farms & Farm-to-Table Directory',
   description:
     'Verifying regenerative farms and connecting them directly with the restaurants and consumers looking to source from them.',
 };

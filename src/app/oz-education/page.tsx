@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ComingSoonPage from '@/components/ComingSoonPage';
 
 export const metadata: Metadata = {
-  title: 'Opportunity Zone Education — Regen USA',
+  title: 'Opportunity Zone Education — RegenUS',
 };
 
 export default function OzEducationPage() {

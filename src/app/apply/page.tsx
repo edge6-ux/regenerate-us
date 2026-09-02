@@ -219,7 +219,7 @@ export default function ApplyPage() {
       {cropperModal}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-stone-900 mb-1">Apply for Certification</h1>
-        <p className="text-stone-500 text-sm">Complete the steps below to apply for the Regen USA program.</p>
+        <p className="text-stone-500 text-sm">Complete the steps below to apply for the RegenUS program.</p>
       </div>
 
       <ProgressBar />
@@ -258,7 +258,7 @@ export default function ApplyPage() {
                   <p className="text-xs text-stone-500">
                     {t === 'restaurant'
                       ? 'I run a farm-to-table restaurant and want to be listed in the directory.'
-                      : 'I raise livestock or grow produce and want to join the Regen USA network.'}
+                      : 'I raise livestock or grow produce and want to join the RegenUS network.'}
                   </p>
                 </button>
               ))}
@@ -521,7 +521,7 @@ export default function ApplyPage() {
                   <div className="border-t border-stone-200 pt-6">
                     <label className="block text-sm font-semibold text-stone-800 mb-1">Other (describe)</label>
                     <p className="text-xs text-stone-500 mb-2">
-                      Use only for items not listed above. Regen USA may require additional verification before showing these
+                      Use only for items not listed above. RegenUS may require additional verification before showing these
                       details publicly.
                     </p>
                     <textarea
@@ -701,7 +701,7 @@ export default function ApplyPage() {
             <div className="space-y-4">
               {[
                 { key: 'accurate' as const, text: 'I attest that all information provided in this application is accurate and truthful to the best of my knowledge.' },
-                { key: 'verification' as const, text: 'I understand that Regen USA may conduct additional verification of the claims made in this application, including contacting suppliers or farms directly.' },
+                { key: 'verification' as const, text: 'I understand that RegenUS may conduct additional verification of the claims made in this application, including contacting suppliers or farms directly.' },
                 { key: 'revocation' as const, text: 'I understand that certification may be revoked if any claims are found to be inaccurate or if practices change without notification.' },
               ].map(({ key, text }) => (
                 <label key={key} className="flex items-start gap-3 cursor-pointer group">

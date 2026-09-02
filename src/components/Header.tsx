@@ -133,7 +133,7 @@ export default function Header() {
             <span
               className={`${wordmark.className} text-xl sm:text-[1.35rem] font-semibold text-white tracking-tight`}
             >
-              Regen USA
+              RegenUS
             </span>
             <UsFlag className="inline-block w-5 h-[0.75em] rounded-[1px]" />
           </Link>

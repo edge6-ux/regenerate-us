@@ -14,7 +14,7 @@ async function queryNominatim(query: string): Promise<GeoResult | null> {
   }`;
 
   const res = await fetch(url, {
-    headers: { 'User-Agent': `RegenUSA/1.0${contactSuffix}` },
+    headers: { 'User-Agent': `RegenUS/1.0${contactSuffix}` },
   });
   if (!res.ok) return null;
 
@@ -66,7 +66,7 @@ export async function geocodeZip(zip: string): Promise<GeoResult | null> {
 
   try {
     const res = await fetch(url, {
-      headers: { 'User-Agent': `RegenUSA/1.0${contactSuffix}` },
+      headers: { 'User-Agent': `RegenUS/1.0${contactSuffix}` },
     });
     if (!res.ok) return null;
     const data = await res.json();

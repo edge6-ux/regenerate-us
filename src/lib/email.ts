@@ -1,8 +1,8 @@
 import { Resend } from 'resend';
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const FROM = process.env.EMAIL_FROM ?? 'Regen USA <noreply@regenusa.org>';
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://regenusa.org';
+const FROM = process.env.EMAIL_FROM ?? 'RegenUS <noreply@regenus.org>';
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://regenus.org';
 
 async function send(to: string, subject: string, html: string) {
   if (!resend) {
@@ -31,7 +31,7 @@ function base(previewText: string, content: string) {
 
     <!-- Header -->
     <div style="background:#0f172a;border-radius:12px 12px 0 0;padding:24px 32px;">
-      <p style="margin:0;font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-0.3px;">Regen USA</p>
+      <p style="margin:0;font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-0.3px;">RegenUS</p>
       <p style="margin:4px 0 0;font-size:12px;color:#94a3b8;">Farms &amp; Farm-to-Table Directory</p>
     </div>
 
@@ -42,8 +42,8 @@ function base(previewText: string, content: string) {
 
     <!-- Footer -->
     <p style="text-align:center;font-size:11px;color:#a8a29e;margin-top:20px;line-height:1.6;">
-      © ${new Date().getFullYear()} Regen USA &nbsp;·&nbsp;
-      <a href="${SITE}" style="color:#a8a29e;text-decoration:underline;">regenusa.org</a>
+      © ${new Date().getFullYear()} RegenUS &nbsp;·&nbsp;
+      <a href="${SITE}" style="color:#a8a29e;text-decoration:underline;">regenus.org</a>
     </p>
 
   </div>
@@ -113,7 +113,7 @@ export async function sendRestaurantDecision(to: string, restaurantName: string,
 
   if (status === 'approved') {
     headline = 'Your restaurant has been approved!';
-    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">Welcome to the Regen USA network. <strong>${restaurantName}</strong> is now listed in the public directory as a farm-to-table partner.</p>`;
+    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">Welcome to the RegenUS network. <strong>${restaurantName}</strong> is now listed in the public directory as a farm-to-table partner.</p>`;
   } else {
     headline = 'Your restaurant application was not approved';
     body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">After review, we were unable to approve the listing for <strong>${restaurantName}</strong> at this time. If you have questions or would like to discuss your application, please reach out to us directly.</p>`;
@@ -127,7 +127,7 @@ export async function sendRestaurantDecision(to: string, restaurantName: string,
     ${body}
     ${btn('View Dashboard', `${SITE}/dashboard/restaurant`)}
     <p style="margin:20px 0 0;font-size:13px;color:#a8a29e;">
-      Questions? Email us at <a href="mailto:info@regenusa.org" style="color:#1e293b;">info@regenusa.org</a>
+      Questions? Email us at <a href="mailto:info@regenus.org" style="color:#1e293b;">info@regenus.org</a>
     </p>
   `;
 
@@ -140,7 +140,7 @@ export async function sendPasswordResetEmail(to: string, resetLink: string) {
   const content = `
     <h1 style="margin:0 0 8px;font-size:22px;font-weight:700;color:#1c1917;">Reset your password</h1>
     <p style="margin:0 0 20px;font-size:14px;color:#78716c;">
-      A password reset was requested for your Regen USA account. Click the button below to set a new password.
+      A password reset was requested for your RegenUS account. Click the button below to set a new password.
       This link expires in 24 hours.
     </p>
     ${btn('Reset Password', resetLink)}
@@ -148,7 +148,7 @@ export async function sendPasswordResetEmail(to: string, resetLink: string) {
       If you didn't request this, you can safely ignore this email. Your password will not change.
     </p>
   `;
-  await send(to, 'Reset your Regen USA password', base('Reset your password', content));
+  await send(to, 'Reset your RegenUS password', base('Reset your password', content));
 }
 
 // ─── Farm Decision ────────────────────────────────────────────────────────────
@@ -162,7 +162,7 @@ export async function sendFarmDecision(to: string, farmName: string, status: str
 
   if (status === 'approved') {
     headline = 'Your farm has been approved!';
-    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">Welcome to the Regen USA network. <strong>${farmName}</strong> is now listed in the public directory and visible to restaurants looking for verified local suppliers.</p>`;
+    body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">Welcome to the RegenUS network. <strong>${farmName}</strong> is now listed in the public directory and visible to restaurants looking for verified local suppliers.</p>`;
   } else {
     headline = 'Your farm application was not approved';
     body = `<p style="margin:0 0 16px;font-size:14px;color:#57534e;">After review, we were unable to approve the listing for <strong>${farmName}</strong> at this time. If you have questions or would like to discuss your application, please reach out to us directly.</p>`;
@@ -176,7 +176,7 @@ export async function sendFarmDecision(to: string, farmName: string, status: str
     ${body}
     ${btn('View Dashboard', `${SITE}/dashboard/farm`)}
     <p style="margin:20px 0 0;font-size:13px;color:#a8a29e;">
-      Questions? Email us at <a href="mailto:info@regenusa.org" style="color:#1e293b;">info@regenusa.org</a>
+      Questions? Email us at <a href="mailto:info@regenus.org" style="color:#1e293b;">info@regenus.org</a>
     </p>
   `;
 

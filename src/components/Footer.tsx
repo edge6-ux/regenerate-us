@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <div className="mb-3 flex items-center gap-2">
               <span className="text-lg font-bold text-white">
-                Regen USA
+                RegenUS
               </span>
               <UsFlag />
             </div>
@@ -78,16 +78,16 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-slate-400 mb-3 text-xs uppercase tracking-wider">Contact</h3>
             <p className="text-sm text-slate-200/70">
-              Questions about Regen USA?<br />
-              <a href="mailto:info@regenusa.org" className="text-slate-300 hover:text-white transition-colors hover:underline">
-                info@regenusa.org
+              Questions about RegenUS?<br />
+              <a href="mailto:info@regenus.org" className="text-slate-300 hover:text-white transition-colors hover:underline">
+                info@regenus.org
               </a>
             </p>
           </div>
         </div>
         <div className="border-t border-[#1e293b] mt-8 pt-6 text-center">
           <p className="text-xs text-slate-200/40">
-            © {new Date().getFullYear()} Regen USA. All rights reserved.
+            © {new Date().getFullYear()} RegenUS. All rights reserved.
           </p>
         </div>
       </div>

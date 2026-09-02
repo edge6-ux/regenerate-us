@@ -207,13 +207,13 @@ export default async function FarmDashboard() {
             </div>
           )}
           <p className="text-xs text-stone-400 mt-4 sm:col-span-2">
-            Restaurants list your farm as a supplier on dish submissions. To change your profile, contact Regen USA.
+            Restaurants list your farm as a supplier on dish submissions. To change your profile, contact RegenUS.
           </p>
         </div>
 
         {farm.status === 'pending' && (
           <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-sm text-amber-900">
-            Your farm profile is awaiting Regen USA review before it can appear in the public directory.
+            Your farm profile is awaiting RegenUS review before it can appear in the public directory.
           </div>
         )}
       </div>

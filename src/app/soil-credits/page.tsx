@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ComingSoonPage from '@/components/ComingSoonPage';
 
 export const metadata: Metadata = {
-  title: 'Soil Credits — Regen USA',
+  title: 'Soil Credits — RegenUS',
 };
 
 export default function SoilCreditsPage() {
