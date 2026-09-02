@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Reveal from '@/components/Reveal';
 import StateSubNav from '@/components/StateSubNav';
-import { ATMOSPHERE_BG, AtmosphereLayers } from '@/components/AtmosphereBanner';
-import { STATE_CONFIGS, getStateConfig } from '@/lib/stateContent';
+import { STATE_CONFIGS, getStateConfig, type StateConfig } from '@/lib/stateContent';
+import { stateDisplayFont, stateBodyFont, stateMonoFont } from '@/lib/stateFonts';
 
 export function generateStaticParams() {
   return Object.keys(STATE_CONFIGS).map((slug) => ({ state: slug }));
@@ -21,135 +21,203 @@ export async function generateMetadata({
   return { title: `${config.name} — RegenUS` };
 }
 
+function TeaserCard({
+  accent,
+  href,
+  label,
+  headline,
+  body,
+}: {
+  accent: string;
+  href: string;
+  label: string;
+  headline: string;
+  body: string;
+}) {
+  return (
+    <a
+      href={href}
+      className="block bg-white border border-[#DCE3CD] rounded-lg p-4 border-t-[3px] hover:shadow-md transition-shadow"
+      style={{ borderTopColor: accent }}
+    >
+      <p className={`${stateMonoFont.className} text-[10px] font-semibold uppercase tracking-wider mb-1.5`} style={{ color: accent }}>
+        {label}
+      </p>
+      <p className={`${stateDisplayFont.className} uppercase text-sm font-bold text-[#1C2116] leading-tight mb-1`}>
+        {headline}
+      </p>
+      <p className="text-xs text-[#565F49] leading-snug">{body}</p>
+    </a>
+  );
+}
+
+function SectionLabel({ children, color }: { children: React.ReactNode; color: string }) {
+  return (
+    <p
+      className={`${stateMonoFont.className} text-[11px] font-semibold uppercase tracking-widest mb-3`}
+      style={{ color }}
+    >
+      {children}
+    </p>
+  );
+}
+
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className={`${stateDisplayFont.className} uppercase text-3xl sm:text-4xl font-black text-[#1C2116] mb-4 leading-[1.02]`}>
+      {children}
+    </h2>
+  );
+}
+
 export default async function StatePage({
   params,
 }: {
   params: Promise<{ state: string }>;
 }) {
   const { state } = await params;
-  const config = getStateConfig(state);
+  const config: StateConfig | null = getStateConfig(state);
   if (!config) notFound();
 
+  const directoryHref = `/directory?state=${config.slug}`;
+
   return (
-    <div className="bg-white">
+    <div className={`${stateBodyFont.className} bg-[#F3F6ED]`}>
       <StateSubNav stateSlug={config.slug} stateName={config.name} />
 
       {/* ── Hero (#why) ── */}
-      <section id="why" className="relative bg-[#0f172a] text-white overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: "url('/hero.jpg')" /* placeholder — swap for Richard's cow photography */ }}
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0f172a]/60 via-[#0f172a]/70 to-[#0f172a]" aria-hidden="true" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
-            {config.hero.eyebrow}
+      <section id="why" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-8">
+        <p className={`${stateMonoFont.className} text-[11px] font-semibold uppercase tracking-widest text-[#2E7A3E] mb-3`}>
+          Platform · {config.platformLabel}
+        </p>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
+          <div>
+            <h1 className={`${stateDisplayFont.className} uppercase text-5xl sm:text-6xl lg:text-7xl font-black text-[#1C2116] leading-[0.92] mb-4`}>
+              {config.heroHeadline}
+            </h1>
+            <p className="text-sm sm:text-base text-[#565F49] max-w-md leading-relaxed">{config.heroBody}</p>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">{config.hero.headline}</h1>
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed mb-8">{config.hero.body}</p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <a
-              href="#get-involved"
-              className="bg-white text-[#0f172a] px-6 py-3 rounded-lg font-semibold hover:bg-stone-100 transition-colors text-center"
-            >
-              Get Involved
-            </a>
+          <div className={`${stateMonoFont.className} text-left lg:text-right text-xs text-[#565F49] shrink-0`}>
+            <p>
+              <strong className="text-[#1C2116] font-semibold">{config.statHeadline}</strong> {config.statRest}
+            </p>
+            <p className="mt-1">{config.statSub}</p>
+          </div>
+        </div>
+
+        {/* Hero photo with overlay caption + CTAs */}
+        <div className="relative rounded-xl overflow-hidden border border-[#DCE3CD]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={config.heroImage.src}
+            alt={config.heroImage.alt}
+            className="w-full h-[280px] sm:h-[380px] md:h-[440px] object-cover"
+          />
+          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/65 to-transparent" aria-hidden="true" />
+          <div className="absolute bottom-4 left-4 text-white text-xs font-medium drop-shadow">
+            {config.heroImage.credit}
+          </div>
+          <div className="absolute bottom-4 right-4 flex flex-wrap gap-2 justify-end">
             <Link
-              href={`/directory?state=${config.slug}`}
-              className="border border-white/40 text-white px-6 py-3 rounded-lg font-medium hover:bg-white/10 transition-colors text-center"
+              href="/apply?type=farm"
+              className="bg-[#E3A93F] text-[#1C2116] text-sm font-semibold px-4 py-2 rounded-lg hover:brightness-95 transition"
             >
-              Browse the Directory
+              Enroll Your Farm
+            </Link>
+            <Link
+              href={directoryHref}
+              className="bg-[#1C2116] text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-black transition"
+            >
+              Browse Directory →
             </Link>
           </div>
+        </div>
+
+        {/* Three-card teaser strip */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+          <TeaserCard accent="#9C6A16" href="#certification" {...config.cards.certification} />
+          <TeaserCard accent="#2E7A3E" href="#soil-credits" {...config.cards.soilCredits} />
+          <TeaserCard accent="#215F86" href={directoryHref} {...config.cards.directory} />
         </div>
       </section>
 
       {/* ── Certification ── */}
-      <Reveal as="section" id="certification" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <p className="text-xs font-semibold uppercase tracking-widest text-[#1e293b] mb-3">Certification</p>
-        <h2 className="text-3xl font-bold text-stone-900 mb-4">{config.certification.headline}</h2>
-        <p className="text-stone-600 max-w-2xl leading-relaxed mb-8">{config.certification.body}</p>
-        <div className="flex items-center gap-3 mb-8">
-          <span className="text-4xl font-black text-[#9C6A16]">~8,000</span>
-          <span className="text-sm text-stone-500 max-w-[26ch] leading-snug">
-            beef farmers in {config.name} alone — the starting point, not the limit
-          </span>
-        </div>
-        <Link href="/about-certification" className="text-sm font-medium text-[#1e293b] hover:underline">
+      <Reveal as="section" id="certification" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 border-t border-[#DCE3CD]">
+        <SectionLabel color="#9C6A16">Certification</SectionLabel>
+        <SectionHeading>{config.certification.headline}</SectionHeading>
+        <p className="text-[#565F49] max-w-2xl leading-relaxed mb-6">{config.certification.body}</p>
+        <Link href="/about-certification" className="text-sm font-semibold text-[#9C6A16] hover:underline">
           See full certification standards →
         </Link>
       </Reveal>
 
-      <div className="border-t border-stone-100" />
-
       {/* ── Soil Credits ── */}
-      <Reveal as="section" id="soil-credits" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <p className="text-xs font-semibold uppercase tracking-widest text-[#1e293b] mb-3">Soil Credits</p>
-        <h2 className="text-3xl font-bold text-stone-900 mb-4">{config.soilCredits.headline}</h2>
-        <p className="text-stone-600 max-w-2xl leading-relaxed mb-8">{config.soilCredits.body}</p>
+      <Reveal as="section" id="soil-credits" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 border-t border-[#DCE3CD]">
+        <SectionLabel color="#2E7A3E">Soil Credits</SectionLabel>
+        <SectionHeading>{config.soilCredits.headline}</SectionHeading>
+        <p className="text-[#565F49] max-w-2xl leading-relaxed mb-6">{config.soilCredits.body}</p>
         <div className="flex flex-wrap gap-4">
-          <Link href="/soil-credits" className="text-sm font-medium text-[#1e293b] hover:underline">
+          <Link href="/soil-credits" className="text-sm font-semibold text-[#2E7A3E] hover:underline">
             Soil credits explainer →
           </Link>
-          <Link href="/oz-education" className="text-sm font-medium text-[#1e293b] hover:underline">
+          <Link href="/oz-education" className="text-sm font-semibold text-[#2E7A3E] hover:underline">
             Opportunity Zone education →
           </Link>
         </div>
       </Reveal>
 
-      <div className="border-t border-stone-100" />
-
       {/* ── Impact ── */}
-      <Reveal as="section" id="impact" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <p className="text-xs font-semibold uppercase tracking-widest text-[#1e293b] mb-3">Impact</p>
-        <h2 className="text-3xl font-bold text-stone-900 mb-4">Real farms, real soil data</h2>
-        <p className="text-stone-600 max-w-2xl leading-relaxed mb-8">
+      <Reveal as="section" id="impact" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 border-t border-[#DCE3CD]">
+        <SectionLabel color="#157163">Impact</SectionLabel>
+        <SectionHeading>Real farms, real soil data</SectionHeading>
+        <p className="text-[#565F49] max-w-2xl leading-relaxed mb-6">
           Nutrient density, water retention, and biodiversity — tracked by farm and region, with
           before-and-after stories from the practices behind the numbers.
         </p>
-        <div className="border border-dashed border-stone-300 rounded-xl p-8 text-center">
-          <p className="text-sm font-medium text-stone-700 mb-1">Featured {config.name} farms coming soon</p>
-          <p className="text-xs text-stone-500">This section goes live once the first enrolled farms are confirmed.</p>
+        <div className="border border-dashed border-[#DCE3CD] rounded-xl p-8 text-center bg-white">
+          <p className="text-sm font-medium text-[#1C2116] mb-1">Featured {config.name} farms coming soon</p>
+          <p className="text-xs text-[#565F49]">This section goes live once the first enrolled farms are confirmed.</p>
         </div>
       </Reveal>
 
-      <div className="border-t border-stone-100" />
-
       {/* ── Resources ── */}
-      <Reveal as="section" id="resources" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <p className="text-xs font-semibold uppercase tracking-widest text-[#1e293b] mb-3">Resources</p>
-        <h2 className="text-3xl font-bold text-stone-900 mb-4">{config.resources.headline}</h2>
-        <p className="text-stone-600 max-w-2xl leading-relaxed mb-6">{config.resources.body}</p>
-        <div className="border border-dashed border-stone-300 rounded-xl p-6 text-sm text-stone-500">
+      <Reveal as="section" id="resources" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 border-t border-[#DCE3CD]">
+        <SectionLabel color="#7A4A26">Resources</SectionLabel>
+        <SectionHeading>{config.resources.headline}</SectionHeading>
+        <p className="text-[#565F49] max-w-2xl leading-relaxed mb-6">{config.resources.body}</p>
+        <div className="border border-dashed border-[#DCE3CD] rounded-xl p-6 text-sm text-[#565F49] bg-white">
           Specific financing and grant programs for {config.name} producers are being added here.
         </div>
       </Reveal>
 
       {/* ── Get Involved ── */}
-      <section id="get-involved" className={`relative py-16 md:py-24 overflow-hidden ${ATMOSPHERE_BG}`}>
-        <AtmosphereLayers />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="get-involved" className="bg-[#1C2116] py-16 md:py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">Get Involved</h2>
-            <p className="text-slate-200/80 max-w-xl mx-auto">
-              Two ways in — get your farm certified, or find {config.name} producers you can trust.
+            <p className={`${stateMonoFont.className} text-[11px] font-semibold uppercase tracking-widest text-[#E3A93F] mb-3`}>
+              Get Involved
+            </p>
+            <h2 className={`${stateDisplayFont.className} uppercase text-3xl md:text-4xl font-black text-white mb-3`}>
+              Two ways in
+            </h2>
+            <p className="text-[#A9AF9A] max-w-xl mx-auto">
+              Get your farm certified, or find {config.name} producers you can trust.
             </p>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             <Reveal delay={0}>
-              <div className="bg-white/10 border border-white/15 rounded-xl p-8 h-full flex flex-col">
-                <div className="inline-flex items-center gap-2 bg-white text-[#0f172a] text-xs font-semibold px-3 py-1 rounded-full mb-4 w-fit">
+              <div className="bg-white/5 border border-white/15 rounded-xl p-8 h-full flex flex-col">
+                <p className={`${stateMonoFont.className} text-[10px] font-semibold uppercase tracking-wider text-[#E3A93F] mb-3`}>
                   Farmers &amp; Producers
-                </div>
-                <h3 className="text-lg font-bold text-white mb-3">Get Certified</h3>
-                <p className="text-sm text-slate-200/80 leading-relaxed mb-6 flex-1">
+                </p>
+                <h3 className={`${stateDisplayFont.className} uppercase text-xl font-black text-white mb-3`}>Get Certified</h3>
+                <p className="text-sm text-[#A9AF9A] leading-relaxed mb-6 flex-1">
                   Share your practices and certifications, and get discovered by buyers looking for
                   verified, regenerative {config.name} producers.
                 </p>
                 <Link
                   href="/apply?type=farm"
-                  className="inline-block bg-white text-[#0f172a] px-5 py-2.5 rounded-xl font-semibold hover:bg-slate-100 transition-colors text-sm text-center"
+                  className="inline-block bg-[#E3A93F] text-[#1C2116] px-5 py-2.5 rounded-lg font-semibold hover:brightness-95 transition text-sm text-center"
                 >
                   Apply as a Farm
                 </Link>
@@ -157,17 +225,19 @@ export default async function StatePage({
             </Reveal>
             <Reveal delay={100}>
               <div className="bg-white/5 border border-white/15 rounded-xl p-8 h-full flex flex-col">
-                <div className="inline-flex items-center gap-2 bg-white/10 text-slate-200 text-xs font-semibold px-3 py-1 rounded-full mb-4 w-fit">
+                <p className={`${stateMonoFont.className} text-[10px] font-semibold uppercase tracking-wider text-[#A9AF9A] mb-3`}>
                   Consumers &amp; Businesses
-                </div>
-                <h3 className="text-lg font-bold text-white mb-3">Find {config.name} Producers</h3>
-                <p className="text-sm text-slate-200/80 leading-relaxed mb-6 flex-1">
+                </p>
+                <h3 className={`${stateDisplayFont.className} uppercase text-xl font-black text-white mb-3`}>
+                  Find {config.name} Producers
+                </h3>
+                <p className="text-sm text-[#A9AF9A] leading-relaxed mb-6 flex-1">
                   Browse the RegenUS directory, pre-filtered to {config.name}, to find certified farms
                   and the restaurants that source from them.
                 </p>
                 <Link
-                  href={`/directory?state=${config.slug}`}
-                  className="inline-block border-2 border-white text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-white/10 transition-colors text-sm text-center"
+                  href={directoryHref}
+                  className="inline-block border-2 border-white text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-white/10 transition text-sm text-center"
                 >
                   Browse the Directory
                 </Link>

@@ -5,23 +5,32 @@ export interface StateConfig {
   abbr: string;
   /** Approximate geographic center, used to pre-zoom the directory map. */
   centroid: [number, number];
-  hero: {
-    eyebrow: string;
-    headline: string;
-    body: string;
+
+  /** Small "PLATFORM · ___" eyebrow tag, e.g. "Utah Pilot". */
+  platformLabel: string;
+  heroImage: {
+    src: string;
+    alt: string;
+    /** Short caption shown over the photo — describe what's shown, not a specific real place, since the photo is generated. */
+    credit: string;
   };
-  certification: {
-    headline: string;
-    body: string;
+  heroHeadline: string;
+  heroBody: string;
+  /** Right-aligned stat pairing, e.g. statHeadline="First state" statRest="in the country to run this". */
+  statHeadline: string;
+  statRest: string;
+  statSub: string;
+
+  /** Three-card teaser strip directly under the hero photo. */
+  cards: {
+    certification: { label: string; headline: string; body: string };
+    soilCredits: { label: string; headline: string; body: string };
+    directory: { label: string; headline: string; body: string };
   };
-  soilCredits: {
-    headline: string;
-    body: string;
-  };
-  resources: {
-    headline: string;
-    body: string;
-  };
+
+  certification: { headline: string; body: string };
+  soilCredits: { headline: string; body: string };
+  resources: { headline: string; body: string };
 }
 
 /**
@@ -35,11 +44,37 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
     name: 'Utah',
     abbr: 'UT',
     centroid: [39.321, -111.0937],
-    hero: {
-      eyebrow: 'First state in the country to run this',
-      headline: 'Regenerative agriculture, Utah first.',
-      body: 'A movement, not a party — Utah is the first state to bring RegenUS certification and soil credits directly to its producers.',
+
+    platformLabel: 'Utah Pilot',
+    heroImage: {
+      src: '/utah-hero.png',
+      alt: 'Cattle grazing on high desert rangeland in Utah at sunset',
+      credit: 'Cattle grazing on Utah rangeland',
     },
+    heroHeadline: 'Regen Utah',
+    heroBody: 'Nutrient density to clean soil to regeneration to the food on your plate — certified, tracked, and paid for right here in Utah.',
+    statHeadline: 'First state',
+    statRest: 'in the country to run this',
+    statSub: '8,000+ Utah beef farms',
+
+    cards: {
+      certification: {
+        label: 'Certification',
+        headline: 'Beef first, built on grass fed',
+        body: 'American Grass Fed baseline, open to every Utah producer after.',
+      },
+      soilCredits: {
+        label: 'Soil Credits',
+        headline: 'Get paid for good ground',
+        body: 'Income for stewardship, plus funding for the testing behind it.',
+      },
+      directory: {
+        label: 'Directory',
+        headline: 'Find certified Utah product',
+        body: 'National reach, zoomed straight to Utah listings.',
+      },
+    },
+
     certification: {
       headline: 'Built on the American Grass Fed baseline',
       body: "Utah is home to roughly 8,000 beef farmers, with alfalfa feeding much of that cattle — so certification leads with beef, built on the American Grass Fed standard. It's open to every Utah producer, not just beef and eggs.",

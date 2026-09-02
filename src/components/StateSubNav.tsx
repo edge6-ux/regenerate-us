@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { stateBodyFont, stateMonoFont } from '@/lib/stateFonts';
 
 const SECTIONS = [
   { href: '#why', label: 'Why' },
@@ -12,13 +13,13 @@ const SECTIONS = [
 export default function StateSubNav({ stateSlug, stateName }: { stateSlug: string; stateName: string }) {
   return (
     <nav
-      className="sticky top-0 z-40 bg-[#0f172a] border-b border-white/10 overflow-x-auto scrollbar-none"
+      className={`${stateBodyFont.className} sticky top-0 z-40 bg-white border-b border-[#DCE3CD] overflow-x-auto scrollbar-none`}
       aria-label={`${stateName} page sections`}
     >
-      <div className="flex items-center gap-1 px-4 sm:px-6 lg:px-8 h-12 whitespace-nowrap min-w-max">
+      <div className="flex items-center gap-2 px-4 sm:px-6 lg:px-8 h-14 whitespace-nowrap min-w-max">
         <Link
           href="/"
-          className="text-xs font-semibold text-slate-300 hover:text-white transition-colors pr-3 mr-2 border-r border-white/10"
+          className={`${stateMonoFont.className} text-xs font-medium text-[#565F49] hover:text-[#1C2116] transition-colors pr-3 mr-1 border-r border-[#DCE3CD]`}
         >
           ← RegenUS
         </Link>
@@ -26,14 +27,14 @@ export default function StateSubNav({ stateSlug, stateName }: { stateSlug: strin
           <a
             key={s.href}
             href={s.href}
-            className="text-xs font-medium text-slate-300 hover:text-white transition-colors px-3 py-1.5 rounded-full hover:bg-white/10"
+            className="text-[13px] font-medium text-[#1C2116] px-3.5 py-1.5 rounded-full border border-[#DCE3CD] hover:border-[#565F49] hover:bg-[#F3F6ED] transition-colors"
           >
             {s.label}
           </a>
         ))}
         <Link
           href={`/directory?state=${stateSlug}`}
-          className="ml-2 text-xs font-semibold bg-white text-[#0f172a] px-3 py-1.5 rounded-full hover:bg-slate-100 transition-colors"
+          className="text-[13px] font-semibold text-[#215F86] px-3.5 py-1.5 rounded-full border border-[#215F86] bg-[#215F86]/5 hover:bg-[#215F86]/10 transition-colors"
         >
           Directory ↗
         </Link>
