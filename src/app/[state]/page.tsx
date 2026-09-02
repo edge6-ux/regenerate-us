@@ -87,16 +87,16 @@ export default async function StatePage({
       <StateSubNav stateSlug={config.slug} stateName={config.name} />
 
       {/* ── Hero (#why) ── */}
-      <section id="why" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-8">
-        <p className={`${stateMonoFont.className} text-[11px] font-semibold uppercase tracking-widest text-[#2E7A3E] mb-3`}>
+      <section id="why" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6">
+        <p className={`${stateMonoFont.className} text-[11px] font-semibold uppercase tracking-widest text-[#2E7A3E] mb-2`}>
           Platform · {config.platformLabel}
         </p>
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-5">
           <div>
-            <h1 className={`${stateDisplayFont.className} uppercase text-5xl sm:text-6xl lg:text-7xl font-black text-[#1C2116] leading-[0.92] mb-4`}>
+            <h1 className={`${stateDisplayFont.className} uppercase text-4xl sm:text-5xl lg:text-6xl font-black text-[#1C2116] leading-[0.92] mb-3`}>
               {config.heroHeadline}
             </h1>
-            <p className="text-sm sm:text-base text-[#565F49] max-w-md leading-relaxed">{config.heroBody}</p>
+            <p className="text-sm sm:text-base text-[#565F49] max-w-lg leading-relaxed">{config.heroBody}</p>
           </div>
           <div className={`${stateMonoFont.className} text-left lg:text-right text-xs text-[#565F49] shrink-0`}>
             <p>
@@ -107,7 +107,7 @@ export default async function StatePage({
         </div>
 
         {/* Hero photo with overlay caption + CTAs */}
-        <div className="relative rounded-xl overflow-hidden border border-[#DCE3CD] h-[280px] sm:h-[380px] md:h-[440px]">
+        <div className="relative rounded-xl overflow-hidden border border-[#DCE3CD] h-[220px] sm:h-[300px] md:h-[380px]">
           <Image
             src={config.heroImage.src}
             alt={config.heroImage.alt}
@@ -137,7 +137,7 @@ export default async function StatePage({
         </div>
 
         {/* Three-card teaser strip */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
           <TeaserCard accent="#9C6A16" href="#certification" {...config.cards.certification} />
           <TeaserCard accent="#2E7A3E" href="#soil-credits" {...config.cards.soilCredits} />
           <TeaserCard accent="#215F86" href={directoryHref} {...config.cards.directory} />
