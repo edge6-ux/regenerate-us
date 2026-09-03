@@ -71,6 +71,40 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
+function MountainHorizon() {
+  return (
+    <div className="w-full h-28 sm:h-40 md:h-56" aria-hidden="true">
+      <svg viewBox="0 0 1440 360" preserveAspectRatio="xMidYMax slice" className="block w-full h-full">
+        {/* distant mesa */}
+        <path
+          d="M0 210 L180 210 L210 168 L330 168 L360 210 L640 210 L680 150 L900 150 L940 210 L1440 210 L1440 360 L0 360 Z"
+          fill="#D9CBA3"
+        />
+        {/* sandstone bench */}
+        <path
+          d="M0 250 L260 250 L300 216 L520 216 L560 250 L980 250 L1030 200 L1180 200 L1230 250 L1440 250 L1440 360 L0 360 Z"
+          fill="#9C6A16"
+        />
+        {/* rock stratum */}
+        <path
+          d="M0 282 L340 282 L380 258 L760 258 L800 282 L1440 282 L1440 360 L0 360 Z"
+          fill="#7A4A26"
+        />
+        {/* sage foothills */}
+        <path
+          d="M0 300 C220 268 420 318 640 296 C860 274 1060 322 1280 300 C1360 292 1400 296 1440 300 L1440 360 L0 360 Z"
+          fill="#6B7C5A"
+        />
+        {/* foreground grass */}
+        <path
+          d="M0 330 C260 310 480 346 720 332 C960 318 1200 350 1440 334 L1440 360 L0 360 Z"
+          fill="#3C4A32"
+        />
+      </svg>
+    </div>
+  );
+}
+
 function CreditPoint({ label, body }: { label: string; body: string }) {
   return (
     <div>
@@ -147,7 +181,8 @@ export default async function StatePage({
       <StateSubNav stateSlug={config.slug} stateName={config.name} />
 
       {/* ── Hero (#why) ── */}
-      <section id="why" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6">
+      <section id="why" className="pt-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           <div>
             <h1 className={`${stateDisplayFont.className} uppercase text-4xl sm:text-5xl lg:text-6xl font-black text-[#1C2116] leading-[0.92] mb-3`}>
@@ -193,6 +228,9 @@ export default async function StatePage({
           <TeaserCard accent="#2E7A3E" href="#soil-credits" {...config.cards.soilCredits} />
           <TeaserCard accent="#215F86" href={directoryHref} {...config.cards.directory} />
         </div>
+        </div>
+
+        <MountainHorizon />
       </section>
 
       {/* ── Certification ── */}
