@@ -49,7 +49,7 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
       credit: 'Cattle at dusk on grazing land',
     },
     heroHeadline: 'Regen Utah',
-    heroBody: 'Nutrient density to clean soil to regeneration to the food on your plate — certified, tracked, and paid for right here in Utah.',
+    heroBody: 'Certification for regenerative Utah beef, and soil credits that pay producers for the practices behind it.',
     statHeadline: 'First state',
     statRest: 'in the country to run this',
     statSub: '8,000+ Utah beef farms',
