@@ -185,9 +185,22 @@ export default async function StatePage({
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           <div>
-            <h1 className={`${stateDisplayFont.className} uppercase text-4xl sm:text-5xl lg:text-6xl font-black text-[#1C2116] leading-[0.92] mb-3`}>
-              {config.heroHeadline}
-            </h1>
+            {config.heroLogo ? (
+              <h1 className="mb-4">
+                <Image
+                  src={config.heroLogo.src}
+                  alt={config.heroLogo.alt}
+                  width={240}
+                  height={240}
+                  priority
+                  className="w-40 sm:w-48 lg:w-56 h-auto mix-blend-multiply"
+                />
+              </h1>
+            ) : (
+              <h1 className={`${stateDisplayFont.className} uppercase text-4xl sm:text-5xl lg:text-6xl font-black text-[#1C2116] leading-[0.92] mb-3`}>
+                {config.heroHeadline}
+              </h1>
+            )}
             <p className="text-sm sm:text-base text-[#565F49] max-w-lg leading-relaxed">{config.heroBody}</p>
             <div className="flex flex-wrap gap-3 mt-6">
               <Link

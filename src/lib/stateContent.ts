@@ -14,6 +14,8 @@ export interface StateConfig {
   };
   heroHeadline: string;
   heroBody: string;
+  /** Optional wordmark/badge logo shown in place of the plain-text headline. */
+  heroLogo?: { src: string; alt: string };
 
   /** Three-card teaser strip directly under the hero photo. */
   cards: {
@@ -46,6 +48,7 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
     },
     heroHeadline: 'Regen Utah',
     heroBody: 'Certification for regenerative Utah beef, and soil credits that pay producers for the practices behind it.',
+    heroLogo: { src: '/utah-logo.png', alt: 'Regen Utah logo' },
 
     cards: {
       certification: {
