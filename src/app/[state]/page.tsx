@@ -193,7 +193,7 @@ export default async function StatePage({
                   width={240}
                   height={240}
                   priority
-                  className="block mx-auto w-[120px] sm:w-[144px] lg:w-[168px] h-auto mix-blend-multiply"
+                  className="block mx-auto w-40 sm:w-48 lg:w-56 h-auto mix-blend-multiply"
                 />
               </h1>
             ) : (
