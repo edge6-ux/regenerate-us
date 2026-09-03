@@ -168,12 +168,6 @@ export default async function StatePage({
                 Browse Directory →
               </Link>
             </div>
-            <div className={`${stateMonoFont.className} text-xs text-[#565F49] mt-8`}>
-              <p>
-                <strong className="text-[#1C2116] font-semibold">{config.statHeadline}</strong> {config.statRest}
-              </p>
-              <p className="mt-1">{config.statSub}</p>
-            </div>
           </div>
 
           {/* Hero photo, filling the column beside the copy */}

@@ -14,10 +14,6 @@ export interface StateConfig {
   };
   heroHeadline: string;
   heroBody: string;
-  /** Right-aligned stat pairing, e.g. statHeadline="First state" statRest="in the country to run this". */
-  statHeadline: string;
-  statRest: string;
-  statSub: string;
 
   /** Three-card teaser strip directly under the hero photo. */
   cards: {
@@ -50,9 +46,6 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
     },
     heroHeadline: 'Regen Utah',
     heroBody: 'Certification for regenerative Utah beef, and soil credits that pay producers for the practices behind it.',
-    statHeadline: 'First state',
-    statRest: 'in the country to run this',
-    statSub: '8,000+ Utah beef farms',
 
     cards: {
       certification: {
