@@ -47,7 +47,7 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
       credit: 'Cattle at dusk on grazing land',
     },
     heroHeadline: 'Regen Utah',
-    heroBody: 'Certification for regenerative Utah producers, starting with beef, and soil credits that pay for the practices behind it.',
+    heroBody: 'Certification for regenerative Utah producers, and soil credits that pay for the practices behind it.',
     heroLogo: { src: '/utah-logo.png', alt: 'Regen Utah logo' },
 
     cards: {
