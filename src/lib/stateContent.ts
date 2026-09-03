@@ -47,7 +47,7 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
       credit: 'Cattle at dusk on grazing land',
     },
     heroHeadline: 'Regen Utah',
-    heroBody: 'Certification for regenerative Utah producers, and soil credits that pay for the practices behind it. Every Utah producer is welcome, no matter what you raise or grow.',
+    heroBody: "Regen Utah is a certification and soil credit program for producers across Utah who grow and raise regeneratively. Operations are assessed on the ranch or farm against a standard tuned for Utah's land and conditions, with soil sampled at the same visit to set a baseline for credits. Certified producers earn a market premium for what they sell and get paid over time for the soil they build.",
     heroLogo: { src: '/utah-logo.png', alt: 'Regen Utah logo' },
 
     cards: {
