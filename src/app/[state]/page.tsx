@@ -275,11 +275,11 @@ export default async function StatePage({
           <div className="flex flex-col gap-6">
             <CreditPoint
               label="Measured, Not Modeled"
-              body="Credits start from real soil samples taken on the ranch at certification, then tracked over time — improvement you can dig up, not an estimate from a satellite."
+              body="Credits start from real soil samples taken on the farm at certification, then tracked over time — improvement you can dig up, not an estimate from a satellite."
             />
             <CreditPoint
-              label="Stacked With the Beef Premium"
-              body="Certification earns the market premium; soil credits earn on top of it — two income streams from the same grazing management."
+              label="Stacked With the Certification Premium"
+              body="Certification earns the market premium; soil credits earn on top of it — two income streams from the same regenerative practices."
             />
             <CreditPoint
               label="Your Data Stays Yours"

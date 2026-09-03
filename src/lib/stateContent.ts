@@ -47,7 +47,7 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
       credit: 'Cattle at dusk on grazing land',
     },
     heroHeadline: 'Regen Utah',
-    heroBody: 'Certification for regenerative Utah beef, and soil credits that pay producers for the practices behind it.',
+    heroBody: 'Certification for regenerative Utah producers, starting with beef, and soil credits that pay for the practices behind it.',
     heroLogo: { src: '/utah-logo.png', alt: 'Regen Utah logo' },
 
     cards: {
@@ -78,7 +78,7 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
     },
     resources: {
       headline: 'Financing and grants for Utah producers',
-      body: 'Funding and grant options specific to Utah beef producers.',
+      body: 'Funding and grant options for Utah producers.',
     },
   },
 };
