@@ -6,8 +6,6 @@ export interface StateConfig {
   /** Approximate geographic center, used to pre-zoom the directory map. */
   centroid: [number, number];
 
-  /** Small "PLATFORM · ___" eyebrow tag, e.g. "Utah Pilot". */
-  platformLabel: string;
   heroImage: {
     src: string;
     alt: string;
@@ -45,7 +43,6 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
     abbr: 'UT',
     centroid: [39.321, -111.0937],
 
-    platformLabel: 'Utah Pilot',
     heroImage: {
       src: '/utah-hero.jpg',
       alt: 'Silhouettes of cattle grazing in a grassy field at dusk',

@@ -88,9 +88,6 @@ export default async function StatePage({
 
       {/* ── Hero (#why) ── */}
       <section id="why" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6">
-        <p className={`${stateMonoFont.className} text-[11px] font-semibold uppercase tracking-widest text-[#2E7A3E] mb-2`}>
-          Platform · {config.platformLabel}
-        </p>
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-5">
           <div>
             <h1 className={`${stateDisplayFont.className} uppercase text-4xl sm:text-5xl lg:text-6xl font-black text-[#1C2116] leading-[0.92] mb-3`}>
