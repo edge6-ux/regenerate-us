@@ -53,8 +53,8 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
     cards: {
       certification: {
         label: 'Certification',
-        headline: 'Beef first, built on grass fed',
-        body: 'American Grass Fed baseline, open to every Utah producer after.',
+        headline: 'Beef first, pasture-based standard',
+        body: 'A rigorous, pasture-based standard, open to every Utah producer after.',
       },
       soilCredits: {
         label: 'Soil Credits',
@@ -69,8 +69,8 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
     },
 
     certification: {
-      headline: 'Built on the American Grass Fed baseline',
-      body: "Utah is home to roughly 8,000 beef farmers, with alfalfa feeding much of that cattle — so certification leads with beef, built on the American Grass Fed standard. It's open to every Utah producer, not just beef and eggs.",
+      headline: 'Built on a rigorous, pasture-based standard',
+      body: "Utah is home to roughly 8,000 beef farmers, with alfalfa feeding much of that cattle — so certification leads with beef, grounded in a rigorous, pasture-based standard. It's open to every Utah producer, not just beef and eggs.",
     },
     soilCredits: {
       headline: 'Income and stewardship, together',
