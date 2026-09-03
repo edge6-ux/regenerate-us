@@ -47,14 +47,14 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
       credit: 'Cattle at dusk on grazing land',
     },
     heroHeadline: 'Regen Utah',
-    heroBody: 'Certification for regenerative Utah producers, and soil credits that pay for the practices behind it. Beef leads the way, but every Utah producer is welcome.',
+    heroBody: 'Certification for regenerative Utah producers, and soil credits that pay for the practices behind it. Every Utah producer is welcome, no matter what you raise or grow.',
     heroLogo: { src: '/utah-logo.png', alt: 'Regen Utah logo' },
 
     cards: {
       certification: {
         label: 'Certification',
-        headline: 'Beef first, pasture-based standard',
-        body: 'A rigorous, pasture-based standard, open to every Utah producer after.',
+        headline: 'A pasture-based standard for every producer',
+        body: 'A rigorous, pasture-based standard, open to every Utah producer.',
       },
       soilCredits: {
         label: 'Soil Credits',
@@ -70,7 +70,7 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
 
     certification: {
       headline: 'Built on a rigorous, pasture-based standard',
-      body: "Utah is home to roughly 8,000 beef farmers, with alfalfa feeding much of that cattle — so certification leads with beef, grounded in a rigorous, pasture-based standard. It's open to every Utah producer, not just beef and eggs.",
+      body: "Certification is open to every Utah producer, grounded in a rigorous, pasture-based standard. Utah is home to roughly 8,000 beef farmers, with alfalfa feeding much of that cattle, alongside the state's other producers.",
     },
     soilCredits: {
       headline: 'Income and stewardship, together',
