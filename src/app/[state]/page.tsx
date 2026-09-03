@@ -228,10 +228,6 @@ export default async function StatePage({
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
-            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 to-transparent" aria-hidden="true" />
-            <div className="absolute bottom-3 left-3 text-white text-xs font-medium drop-shadow">
-              {config.heroImage.credit}
-            </div>
           </div>
         </div>
 
