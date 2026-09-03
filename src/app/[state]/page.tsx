@@ -71,6 +71,66 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
+function CreditPoint({ label, body }: { label: string; body: string }) {
+  return (
+    <div>
+      <p className={`${stateDisplayFont.className} uppercase text-base font-black text-[#1C2116] mb-1`}>{label}</p>
+      <p className="text-sm text-[#565F49] leading-relaxed">{body}</p>
+    </div>
+  );
+}
+
+function SoilProfileDiagram() {
+  return (
+    <figure className="bg-white border border-[#DCE3CD] rounded-lg overflow-hidden">
+      <svg
+        viewBox="0 0 520 420"
+        role="img"
+        aria-label="Soil profile diagram showing surface grass, topsoil, subsoil, and parent rock, with sampling depths marked"
+        className="block w-full h-auto"
+      >
+        {/* grass surface */}
+        <rect y="0" width="520" height="70" fill="#2E7A3E" />
+        <g stroke="#1C2116" strokeWidth="3" strokeLinecap="round">
+          <path d="M40 70 L36 44" /><path d="M52 70 L54 40" /><path d="M120 70 L114 48" />
+          <path d="M190 70 L194 42" /><path d="M260 70 L256 46" /><path d="M330 70 L336 44" />
+          <path d="M400 70 L396 48" /><path d="M470 70 L474 42" />
+        </g>
+        {/* O/A horizon: topsoil */}
+        <rect y="70" width="520" height="130" fill="#4A3826" />
+        <g fill="#1C2116" opacity=".5">
+          <circle cx="80" cy="110" r="4" /><circle cx="210" cy="140" r="3" /><circle cx="340" cy="105" r="4" />
+          <circle cx="440" cy="150" r="3" /><circle cx="150" cy="175" r="3" /><circle cx="390" cy="180" r="4" />
+        </g>
+        {/* roots reaching down */}
+        <g stroke="#1C2116" strokeWidth="2" fill="none" opacity=".8">
+          <path d="M60 70 C64 120 52 160 60 200" />
+          <path d="M200 70 C196 130 210 170 202 210" />
+          <path d="M350 70 C356 125 344 175 352 215" />
+          <path d="M460 70 C456 120 468 160 462 195" />
+        </g>
+        {/* B horizon: subsoil */}
+        <rect y="200" width="520" height="120" fill="#7A5636" />
+        {/* parent rock */}
+        <rect y="320" width="520" height="100" fill="#8A5A3C" />
+        <g stroke="#6E4630" strokeWidth="2">
+          <path d="M0 350 L520 344" /><path d="M0 385 L520 380" />
+        </g>
+        {/* depth ruler */}
+        <g fontSize="14" fill="#F2EFE3">
+          <line x1="26" y1="70" x2="26" y2="410" stroke="#F2EFE3" strokeWidth="1.5" />
+          <line x1="20" y1="70" x2="32" y2="70" stroke="#F2EFE3" strokeWidth="1.5" />
+          <line x1="20" y1="200" x2="32" y2="200" stroke="#F2EFE3" strokeWidth="1.5" />
+          <line x1="20" y1="320" x2="32" y2="320" stroke="#F2EFE3" strokeWidth="1.5" />
+          <text x="40" y="96">0–12 in · topsoil, sampled at baseline</text>
+          <text x="40" y="226">12–24 in · subsoil, resampled over time</text>
+          <text x="40" y="346" fill="#E9E0D2">parent material</text>
+        </g>
+      </svg>
+    </figure>
+  );
+}
+
 export default async function StatePage({
   params,
 }: {
@@ -88,53 +148,53 @@ export default async function StatePage({
 
       {/* ── Hero (#why) ── */}
       <section id="why" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           <div>
             <h1 className={`${stateDisplayFont.className} uppercase text-4xl sm:text-5xl lg:text-6xl font-black text-[#1C2116] leading-[0.92] mb-3`}>
               {config.heroHeadline}
             </h1>
             <p className="text-sm sm:text-base text-[#565F49] max-w-lg leading-relaxed">{config.heroBody}</p>
+            <div className="flex flex-wrap gap-3 mt-6">
+              <Link
+                href="/apply?type=farm"
+                className="bg-[#E3A93F] text-[#1C2116] text-sm font-semibold px-5 py-2.5 rounded-lg hover:brightness-95 transition"
+              >
+                Enroll Your Farm
+              </Link>
+              <Link
+                href={directoryHref}
+                className="bg-[#1C2116] text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-black transition"
+              >
+                Browse Directory →
+              </Link>
+            </div>
+            <div className={`${stateMonoFont.className} text-xs text-[#565F49] mt-8`}>
+              <p>
+                <strong className="text-[#1C2116] font-semibold">{config.statHeadline}</strong> {config.statRest}
+              </p>
+              <p className="mt-1">{config.statSub}</p>
+            </div>
           </div>
-          <div className={`${stateMonoFont.className} text-left lg:text-right text-xs text-[#565F49] shrink-0`}>
-            <p>
-              <strong className="text-[#1C2116] font-semibold">{config.statHeadline}</strong> {config.statRest}
-            </p>
-            <p className="mt-1">{config.statSub}</p>
-          </div>
-        </div>
 
-        {/* Hero photo with overlay caption + CTAs */}
-        <div className="relative rounded-xl overflow-hidden border border-[#DCE3CD] h-[220px] sm:h-[300px] md:h-[380px]">
-          <Image
-            src={config.heroImage.src}
-            alt={config.heroImage.alt}
-            fill
-            priority
-            sizes="(max-width: 1152px) 100vw, 1152px"
-            className="object-cover"
-          />
-          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/65 to-transparent" aria-hidden="true" />
-          <div className="absolute bottom-4 left-4 text-white text-xs font-medium drop-shadow">
-            {config.heroImage.credit}
-          </div>
-          <div className="absolute bottom-4 right-4 flex flex-wrap gap-2 justify-end">
-            <Link
-              href="/apply?type=farm"
-              className="bg-[#E3A93F] text-[#1C2116] text-sm font-semibold px-4 py-2 rounded-lg hover:brightness-95 transition"
-            >
-              Enroll Your Farm
-            </Link>
-            <Link
-              href={directoryHref}
-              className="bg-[#1C2116] text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-black transition"
-            >
-              Browse Directory →
-            </Link>
+          {/* Hero photo, filling the column beside the copy */}
+          <div className="relative rounded-xl overflow-hidden border border-[#DCE3CD] aspect-[4/3]">
+            <Image
+              src={config.heroImage.src}
+              alt={config.heroImage.alt}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 to-transparent" aria-hidden="true" />
+            <div className="absolute bottom-3 left-3 text-white text-xs font-medium drop-shadow">
+              {config.heroImage.credit}
+            </div>
           </div>
         </div>
 
         {/* Three-card teaser strip */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
           <TeaserCard accent="#9C6A16" href="#certification" {...config.cards.certification} />
           <TeaserCard accent="#2E7A3E" href="#soil-credits" {...config.cards.soilCredits} />
           <TeaserCard accent="#215F86" href={directoryHref} {...config.cards.directory} />
@@ -163,6 +223,24 @@ export default async function StatePage({
           <Link href="/oz-education" className="text-sm font-semibold text-[#2E7A3E] hover:underline">
             Opportunity Zone education →
           </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10 items-center">
+          <SoilProfileDiagram />
+          <div className="flex flex-col gap-6">
+            <CreditPoint
+              label="Measured, Not Modeled"
+              body="Credits start from real soil samples taken on the ranch at certification, then tracked over time — improvement you can dig up, not an estimate from a satellite."
+            />
+            <CreditPoint
+              label="Stacked With the Beef Premium"
+              body="Certification earns the market premium; soil credits earn on top of it — two income streams from the same grazing management."
+            />
+            <CreditPoint
+              label="Your Data Stays Yours"
+              body="Farm data collected for the credit program belongs to the operation. We use it to verify credits — nothing else."
+            />
+          </div>
         </div>
       </Reveal>
 
