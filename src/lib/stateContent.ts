@@ -47,9 +47,9 @@ export const STATE_CONFIGS: Record<string, StateConfig> = {
 
     platformLabel: 'Utah Pilot',
     heroImage: {
-      src: '/utah-hero.png',
-      alt: 'Cattle grazing on high desert rangeland in Utah at sunset',
-      credit: 'Cattle grazing on Utah rangeland',
+      src: '/utah-hero.jpg',
+      alt: 'Silhouettes of cattle grazing in a grassy field at dusk',
+      credit: 'Cattle at dusk on grazing land',
     },
     heroHeadline: 'Regen Utah',
     heroBody: 'Nutrient density to clean soil to regeneration to the food on your plate — certified, tracked, and paid for right here in Utah.',
